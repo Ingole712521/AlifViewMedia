@@ -16,6 +16,7 @@ const About: React.FC = () => {
     const observer = new MutationObserver(() => {
       const currentTheme = document.documentElement.getAttribute('data-theme')
       setLogoUrl(currentTheme === 'dark' ? darkLogo : companyLogo)
+      logoUrl
     })
     
     observer.observe(document.documentElement, { 
