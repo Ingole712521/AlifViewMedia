@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer theme {
+  :root {
+    --primary-color: #dc2626;
+    --secondary-color: #b91c1c;
+    --accent-color: #f59e0b;
+    --red-accent: #ef4444;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb;
+    --border-color: #e5e7eb;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #f87171;
+    --secondary-color: #dc2626;
+    --accent-color: #fbbf24;
+    --red-accent: #ff6b6b;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --border-color: #374151;
+  }
+}
+
+@layer base {
+  * {
+    transition: all 0.3s ease;
+  }
+  
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), var(--red-accent), var(--accent-color));
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  .red-gradient-bg {
+    background: linear-gradient(135deg, var(--primary-color), var(--red-accent), var(--secondary-color));
+    background-size: 300% 300%;
+    animation: gradientShift 12s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .floating-animation {
+    animation: floating 6s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  }
+  
+  .btn-secondary {
+    @apply px-8 py-3 rounded-lg font-semibold border-2 transition-all duration-300 transform hover:scale-105;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+  
+  .nav-link {
+    @apply text-[var(--text-primary)] hover:text-[var(--primary-color)] transition-colors duration-300 font-medium;
+  }
+  
+  .card {
+    @apply p-8 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-105;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+  }
+  
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+}
