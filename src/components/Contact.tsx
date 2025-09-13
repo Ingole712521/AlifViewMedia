@@ -66,7 +66,7 @@ const Contact: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Contact Form */}
           <div className="card">
             <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
@@ -85,7 +85,7 @@ const Contact: React.FC = () => {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
                     Full Name *
@@ -126,7 +126,7 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
                     Phone Number

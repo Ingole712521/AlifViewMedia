@@ -98,7 +98,7 @@ function App() {
           
           <main>
             <section id="home">
-              <Hero />
+              <Hero onSectionChange={handleSectionChange} />
             </section>
             
             <section id="about">

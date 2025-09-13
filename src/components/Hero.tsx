@@ -1,7 +1,49 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ArrowRight, Phone, ChevronDown } from 'lucide-react'
 
 const Hero: React.FC = () => {
+  const [displayText, setDisplayText] = useState('')
+  const [isTyping, setIsTyping] = useState(true)
+  const [isErasing, setIsErasing] = useState(false)
+  const fullText = "Innovation meets Excellence"
+
+  useEffect(() => {
+    let index = 0
+    let isDeleting = false
+    let pauseCount = 0
+    const pauseDuration = 20 // 20 * 100ms = 2 seconds pause
+    
+    const typingInterval = setInterval(() => {
+      if (!isDeleting) {
+        // Typing phase
+        if (index < fullText.length) {
+          setDisplayText(fullText.substring(0, index + 1))
+          index++
+        } else {
+          // Finished typing, pause before erasing
+          pauseCount++
+          if (pauseCount >= pauseDuration) {
+            isDeleting = true
+            setIsErasing(true)
+            pauseCount = 0
+          }
+        }
+      } else {
+        // Erasing phase
+        if (index > 0) {
+          setDisplayText(fullText.substring(0, index - 1))
+          index--
+        } else {
+          // Finished erasing, start typing again
+          isDeleting = false
+          setIsErasing(false)
+          setIsTyping(true)
+        }
+      }
+    }, 100) // Consistent timing
+
+    return () => clearInterval(typingInterval)
+  }, [])
   return (
     <section 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -24,14 +66,18 @@ const Hero: React.FC = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto section-padding">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
           <span className="block text-[var(--text-primary)]">Alif View Media</span>
-          <span 
-            className="block text-transparent bg-clip-text mt-2"
-            style={{
-              backgroundImage: `linear-gradient(135deg, var(--primary-color), var(--accent-color))`
-            }}
-          >
-            Innovation meets Excellence
-          </span>
+          <div className="typing-container">
+            <span 
+              className="block text-transparent bg-clip-text mt-2 typing-text-line text-left"
+              style={{
+                backgroundImage: `linear-gradient(135deg, var(--primary-color), var(--accent-color))`,
+                marginLeft: '-60px'
+              }}
+            >
+              {displayText}
+              {(isTyping || isErasing) && <span className="typing-cursor">|</span>}
+            </span>
+          </div>
         </h1>
         
         <p className="text-lg text-[var(--text-secondary)] mb-12 max-w-3xl mx-auto leading-relaxed">
