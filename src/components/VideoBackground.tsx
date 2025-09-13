@@ -63,7 +63,7 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ onVideoEnd }) => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black w-full h-full flex items-center justify-center overflow-hidden">
+    <div className="fixed inset-0 z-50 bg-black w-screen h-screen overflow-hidden">
       
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black z-10">
@@ -74,19 +74,19 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ onVideoEnd }) => {
       {/* Video - Perfectly Centered and Responsive */}
       <video
         ref={videoRef}
-        className="w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover"
         muted
         playsInline
         preload="auto"
         autoPlay
         crossOrigin="anonymous"
         style={{
-          width: '100%',
-          height: '100%',
+          width: '100vw',
+          height: '100vh',
           objectFit: 'cover',
           objectPosition: 'center',
-          maxWidth: '100vw',
-          maxHeight: '100vh'
+          minWidth: '100%',
+          minHeight: '100%'
         }}
       >
         <source src="/assets/background.mp4" type="video/mp4" />

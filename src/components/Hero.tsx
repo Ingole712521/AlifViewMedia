@@ -92,11 +92,11 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
 
       {/* Content */}
       <div className="relative z-10 text-center w-full max-w-xs xs:max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto section-padding px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16">
-        <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-3 xs:mb-4 sm:mb-5 md:mb-6 lg:mb-7 xl:mb-8 leading-tight">
+        <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
           <span className="block text-[var(--text-primary)]">Alif View Media</span>
-          <div className="typing-container flex justify-center mt-1 xs:mt-2">
+          <div className="typing-container flex justify-center mt-2">
             <span 
-              className="text-transparent bg-clip-text typing-text-line text-center text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold"
+              className="text-transparent bg-clip-text typing-text-line text-center text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
               style={{
                 backgroundImage: `linear-gradient(135deg, var(--primary-color), var(--accent-color))`
               }}
@@ -107,7 +107,7 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
           </div>
         </h1>
         
-        <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-[var(--text-secondary)] mb-6 xs:mb-7 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14 max-w-xs xs:max-w-sm sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto leading-relaxed px-1 xs:px-2 sm:px-3 md:px-4">
+        <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[var(--text-secondary)] mb-6 sm:mb-8 md:mb-10 max-w-sm sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2 sm:px-4">
           We specialize in transforming ordinary moments into extraordinary experiences. 
           AlifView Media aims to be passionate about bringing your vision to life through 
           innovative and creative media solutions.
