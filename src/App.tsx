@@ -5,6 +5,7 @@ import About from './components/About'
 import MediaGallery from './components/MediaGallery'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import VideoBackground from './components/VideoBackground'
 
 interface ErrorBoundaryState {
   hasError: boolean
@@ -53,6 +54,7 @@ class ErrorBoundary extends React.Component<
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [currentSection, setCurrentSection] = useState<string>('home')
+  const [showVideo, setShowVideo] = useState(true)
 
   useEffect(() => {
     const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
@@ -75,36 +77,46 @@ function App() {
     }
   }
 
+  const handleVideoEnd = () => {
+    setShowVideo(false)
+  }
+
   return (
     <ErrorBoundary>
-      <div className="min-h-screen">
-        <Navigation 
-          theme={theme} 
-          toggleTheme={toggleTheme}
-          currentSection={currentSection}
-          onSectionChange={handleSectionChange}
-        />
-        
-        <main>
-          <section id="home">
-            <Hero />
-          </section>
+      {/* Video Background - Shows first as splash screen */}
+      {showVideo && <VideoBackground onVideoEnd={handleVideoEnd} />}
+      
+      {/* Main Website Content - Only shows after video ends */}
+      {!showVideo && (
+        <div className="min-h-screen">
+          <Navigation 
+            theme={theme} 
+            toggleTheme={toggleTheme}
+            currentSection={currentSection}
+            onSectionChange={handleSectionChange}
+          />
           
-          <section id="about">
-            <About />
-          </section>
+          <main>
+            <section id="home">
+              <Hero />
+            </section>
+            
+            <section id="about">
+              <About />
+            </section>
+            
+            <section id="gallery">
+              <MediaGallery />
+            </section>
+            
+            <section id="contact">
+              <Contact />
+            </section>
+          </main>
           
-          <section id="gallery">
-            <MediaGallery />
-          </section>
-          
-          <section id="contact">
-            <Contact />
-          </section>
-        </main>
-        
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      )}
     </ErrorBoundary>
   )
 }
