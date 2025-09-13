@@ -40,7 +40,17 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ onVideoEnd }) => {
       }, 2000)
     })
 
+    // Fallback: if video doesn't load within 10 seconds, proceed to main content
+    const fallbackTimer = setTimeout(() => {
+      if (isLoading) {
+        console.warn('Video loading timeout, proceeding to main content')
+        setShowVideo(false)
+        onVideoEnd()
+      }
+    }, 10000)
+
     return () => {
+      clearTimeout(fallbackTimer)
       video.removeEventListener('loadeddata', handleLoadedData)
       video.removeEventListener('ended', handleEnded)
       video.removeEventListener('error', handleError)
@@ -71,8 +81,11 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ onVideoEnd }) => {
         playsInline
         preload="auto"
         autoPlay
+        crossOrigin="anonymous"
       >
-        <source src="/public/assets/background.mp4" type="video/mp4" />
+        <source src="/assets/background.mp4" type="video/mp4" />
+        <source src="./assets/background.mp4" type="video/mp4" />
+        <source src="assets/background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
