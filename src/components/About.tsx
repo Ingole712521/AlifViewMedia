@@ -2,28 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { ExternalLink, Users, Lightbulb, Award, Globe, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const About: React.FC = () => {
-  const [logoUrl, setLogoUrl] = useState<string>('')
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    // Get the appropriate logo based on current theme
-    const theme = document.documentElement.getAttribute('data-theme')
-    const companyLogo = 'https://app.trickle.so/storage/public/images/usr_1452d643e0000001/e35e791a-3f5e-42cb-aeff-d5c9c40f0821.png'
-    const darkLogo = 'https://app.trickle.so/storage/public/images/usr_1452d643e0000001/d3044b19-cda1-4ab8-b5bc-1aeb931b233c.png'
-    
-    setLogoUrl(theme === 'dark' ? darkLogo : companyLogo)
-    
-    // Listen for theme changes
-    const observer = new MutationObserver(() => {
-      const currentTheme = document.documentElement.getAttribute('data-theme')
-      setLogoUrl(currentTheme === 'dark' ? darkLogo : companyLogo)
-    })
-    
-    observer.observe(document.documentElement, { 
-      attributes: true, 
-      attributeFilter: ['data-theme'] 
-    })
 
     // Check if mobile
     const checkMobile = () => {
@@ -34,7 +16,6 @@ const About: React.FC = () => {
     window.addEventListener('resize', checkMobile)
     
     return () => {
-      observer.disconnect()
       window.removeEventListener('resize', checkMobile)
     }
   }, [])
