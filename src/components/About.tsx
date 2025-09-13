@@ -57,50 +57,22 @@ const About: React.FC = () => {
 
   return (
     <section 
-      className="section-padding px-4 sm:px-6 lg:px-8" 
+      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 w-full" 
       style={{ backgroundColor: 'var(--bg-secondary)' }}
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 md:mb-6">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6 leading-tight">
             About Us
           </h2>
-          
-          {/* Company Logo */}
-        
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-4 md:space-y-6 order-2 lg:order-1">
-            <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-              AlifView Media is a premier conference organizer. We are dedicated to delivering 
-              exceptional value through landmark summits that provide unique opportunities for 
-              delegates to exchange knowledge and learn about the latest technological and 
-              innovative advancements.
-            </p>
-            
-            <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-              A prestigious platform that honors the exceptional contributions and success of 
-              individuals, teams, and organizations who have demonstrated excellence, innovation, 
-              and impact in their respective domains.
-            </p>
-
-            <div className="pt-4 md:pt-6">
-              <button className="btn-primary w-full sm:w-auto">
-                <span className="flex items-center justify-center space-x-2">
-                  <span>Learn More About Our Services</span>
-                  <ExternalLink size={18} />
-                </span>
-              </button>
-            </div>
-          </div>
-
-          {/* Features - Desktop Grid / Mobile Carousel */}
-          <div className="order-1 lg:order-2">
-            {isMobile ? (
-              // Mobile Carousel
-              <div className="relative">
+        <div className="w-full">
+          {/* Mobile Layout - Single Column */}
+          <div className="block lg:hidden w-full">
+            {/* Features Carousel - Mobile */}
+            <div className="mb-8 sm:mb-12">
+              <div className="relative w-full">
                 <div className="overflow-hidden rounded-xl">
                   <div 
                     className="flex transition-transform duration-300 ease-in-out"
@@ -108,7 +80,7 @@ const About: React.FC = () => {
                   >
                     {features.map((feature, index) => (
                       <div key={index} className="w-full flex-shrink-0 px-2">
-                        <div className="card text-center h-full">
+                        <div className="card text-center h-full min-h-[200px] flex flex-col justify-center">
                           <div 
                             className="w-16 h-16 mx-auto mb-4 rounded-lg flex items-center justify-center" 
                             style={{ backgroundColor: feature.color }}
@@ -155,23 +127,76 @@ const About: React.FC = () => {
                   </button>
                 </div>
               </div>
-            ) : (
-              // Desktop Grid
-              <div className="grid grid-cols-2 gap-4">
-                {features.map((feature, index) => (
-                  <div key={index} className="card text-center">
-                    <div 
-                      className="w-12 h-12 mx-auto mb-4 rounded-lg flex items-center justify-center" 
-                      style={{ backgroundColor: feature.color }}
-                    >
-                      {feature.icon}
-                    </div>
-                    <h3 className="font-semibold text-[var(--text-primary)] mb-2">{feature.title}</h3>
-                    <p className="text-sm text-[var(--text-secondary)]">{feature.description}</p>
-                  </div>
-                ))}
+            </div>
+
+            {/* Content - Mobile */}
+            <div className="space-y-4 sm:space-y-6 text-center">
+              <p className="text-sm xs:text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed px-2">
+                AlifView Media is a premier conference organizer. We are dedicated to delivering 
+                exceptional value through landmark summits that provide unique opportunities for 
+                delegates to exchange knowledge and learn about the latest technological and 
+                innovative advancements.
+              </p>
+              
+              <p className="text-sm xs:text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed px-2">
+                A prestigious platform that honors the exceptional contributions and success of 
+                individuals, teams, and organizations who have demonstrated excellence, innovation, 
+                and impact in their respective domains.
+              </p>
+
+              <div className="pt-4 sm:pt-6">
+                <button className="btn-primary w-full max-w-xs mx-auto">
+                  <span className="flex items-center justify-center space-x-2">
+                    <span>Learn More About Our Services</span>
+                    <ExternalLink size={18} />
+                  </span>
+                </button>
               </div>
-            )}
+            </div>
+          </div>
+
+          {/* Desktop Layout - Two Column */}
+          <div className="hidden lg:grid lg:grid-cols-2 gap-8 xl:gap-12 items-center">
+            {/* Content */}
+            <div className="space-y-6 xl:space-y-8">
+              <p className="text-lg xl:text-xl text-[var(--text-secondary)] leading-relaxed">
+                AlifView Media is a premier conference organizer. We are dedicated to delivering 
+                exceptional value through landmark summits that provide unique opportunities for 
+                delegates to exchange knowledge and learn about the latest technological and 
+                innovative advancements.
+              </p>
+              
+              <p className="text-lg xl:text-xl text-[var(--text-secondary)] leading-relaxed">
+                A prestigious platform that honors the exceptional contributions and success of 
+                individuals, teams, and organizations who have demonstrated excellence, innovation, 
+                and impact in their respective domains.
+              </p>
+
+              <div className="pt-6 xl:pt-8">
+                <button className="btn-primary">
+                  <span className="flex items-center space-x-2">
+                    <span>Learn More About Our Services</span>
+                    <ExternalLink size={18} />
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* Features - Desktop Grid */}
+            <div className="grid grid-cols-2 gap-4 xl:gap-6">
+              {features.map((feature, index) => (
+                <div key={index} className="card text-center">
+                  <div 
+                    className="w-12 h-12 xl:w-16 xl:h-16 mx-auto mb-4 rounded-lg flex items-center justify-center" 
+                    style={{ backgroundColor: feature.color }}
+                  >
+                    {feature.icon}
+                  </div>
+                  <h3 className="font-semibold text-[var(--text-primary)] mb-2 text-sm xl:text-base">{feature.title}</h3>
+                  <p className="text-xs xl:text-sm text-[var(--text-secondary)]">{feature.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

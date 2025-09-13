@@ -81,37 +81,31 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ onVideoEnd }) => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden">
+    <div className="fixed inset-0 z-50 bg-black w-full h-full">
       
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black z-10">
-          <div className="flex flex-col items-center space-y-2 xs:space-y-3 sm:space-y-4">
-            <div className="animate-spin rounded-full h-8 w-8 xs:h-10 xs:w-10 sm:h-12 sm:w-12 border-b-2 border-white"></div>
-            <p className="text-white text-sm xs:text-base sm:text-lg">Loading...</p>
+        <div className="absolute inset-0 flex items-center justify-center bg-black z-10 w-full h-full">
+          <div className="flex flex-col items-center space-y-3 sm:space-y-4 px-4">
+            <div className="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-b-2 border-white"></div>
+            <p className="text-white text-sm sm:text-base">Loading...</p>
           </div>
         </div>
       )}
 
-      {/* Full Screen Video - Perfectly Centered */}
+      {/* Full Screen Video - Responsive and Centered */}
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="w-full h-full object-cover"
         muted
         playsInline
         preload="auto"
         autoPlay
         crossOrigin="anonymous"
         style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          minWidth: '100%',
-          minHeight: '100%',
-          width: 'auto',
-          height: 'auto',
-          maxWidth: 'none',
-          maxHeight: 'none'
+          width: '100vw',
+          height: '100vh',
+          objectFit: 'cover',
+          objectPosition: 'center'
         }}
       >
         <source src="/assets/background.mp4" type="video/mp4" />
@@ -120,18 +114,16 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ onVideoEnd }) => {
         Your browser does not support the video tag.
       </video>
 
-      {/* Mobile Fallback - Show on mobile devices */}
-      {isMobile && (
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary-color)] to-[var(--accent-color)] opacity-90 flex items-center justify-center">
-          <div className="flex flex-col items-center justify-center text-center px-4 max-w-sm mx-auto">
-            <h1 className="text-2xl xs:text-3xl font-bold text-white mb-4">Alif View Media</h1>
-            <p className="text-white text-sm xs:text-base mb-6">Innovation meets Excellence</p>
-            <div className="animate-pulse">
-              <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-            </div>
+      {/* Mobile Fallback - Always show on mobile */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary-color)] to-[var(--accent-color)] flex items-center justify-center w-full h-full">
+        <div className="flex flex-col items-center justify-center text-center px-6 w-full max-w-xs sm:max-w-sm mx-auto">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 leading-tight">Alif View Media</h1>
+          <p className="text-white text-sm sm:text-base md:text-lg mb-4 sm:mb-6 leading-relaxed">Innovation meets Excellence</p>
+          <div className="animate-pulse">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   )
 }
