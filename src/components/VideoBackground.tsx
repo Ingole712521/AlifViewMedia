@@ -32,10 +32,8 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ onVideoEnd }) => {
     video.addEventListener('ended', handleEnded)
     video.addEventListener('error', handleError)
 
-    // Auto-play the video
     video.play().catch((error) => {
       console.error('Video autoplay failed:', error)
-      // If autoplay fails, proceed to main content after a short delay
       setTimeout(() => {
         setShowVideo(false)
         onVideoEnd()
@@ -55,7 +53,7 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ onVideoEnd }) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-black">
-      {/* Loading Spinner */}
+      
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black">
           <div className="flex flex-col items-center space-y-4">
@@ -74,7 +72,7 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ onVideoEnd }) => {
         preload="auto"
         autoPlay
       >
-        <source src="/trickle/assets/background.mp4" type="video/mp4" />
+        <source src="/public/assets/background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
