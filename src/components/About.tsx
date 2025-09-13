@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ExternalLink, Users, Lightbulb, Award, Globe, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const About: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isAutoSliding, setIsAutoSliding] = useState(true)
 
 
   const features = [
@@ -34,10 +35,37 @@ const About: React.FC = () => {
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % features.length)
+    setIsAutoSliding(false) // Pause auto-slide when manually navigating
   }
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + features.length) % features.length)
+    setIsAutoSliding(false) // Pause auto-slide when manually navigating
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+    setIsAutoSliding(false) // Pause auto-slide when manually navigating
+  }
+
+  // Auto-slide functionality for mobile
+  useEffect(() => {
+    if (!isAutoSliding) return
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % features.length)
+    }, 3000) // Change slide every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [isAutoSliding, features.length])
+
+  // Pause auto-slide on hover/touch
+  const handleMouseEnter = () => {
+    setIsAutoSliding(false)
+  }
+
+  const handleMouseLeave = () => {
+    setIsAutoSliding(true)
   }
 
   return (
@@ -58,7 +86,13 @@ const About: React.FC = () => {
             {/* Features Carousel - Mobile */}
             <div className="mb-8 sm:mb-12">
               <div className="relative w-full">
-                <div className="overflow-hidden rounded-xl">
+                <div 
+                  className="overflow-hidden rounded-xl"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  onTouchStart={handleMouseEnter}
+                  onTouchEnd={handleMouseLeave}
+                >
                   <div 
                     className="flex transition-transform duration-300 ease-in-out"
                     style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -94,7 +128,7 @@ const About: React.FC = () => {
                     {features.map((_, index) => (
                       <button
                         key={index}
-                        onClick={() => setCurrentSlide(index)}
+                        onClick={() => goToSlide(index)}
                         className={`w-3 h-3 rounded-full transition-colors ${
                           index === currentSlide 
                             ? 'bg-[var(--primary-color)]' 

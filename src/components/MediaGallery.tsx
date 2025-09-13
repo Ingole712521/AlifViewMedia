@@ -83,32 +83,32 @@ const MediaGallery: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
             Our Media Gallery
           </h2>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-sm xs:text-base sm:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 px-2">
             Discover our extensive portfolio showcasing memorable moments, innovative events, 
             and transformative media solutions that define excellence in conference organization.
           </p>
           
           {/* Statistics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">150+</div>
-              <div className="text-white/80 text-sm">Events Organized</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">150+</div>
+              <div className="text-white/80 text-xs sm:text-sm">Events Organized</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">50K+</div>
-              <div className="text-white/80 text-sm">Participants</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">50K+</div>
+              <div className="text-white/80 text-xs sm:text-sm">Participants</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">25+</div>
-              <div className="text-white/80 text-sm">Countries</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">25+</div>
+              <div className="text-white/80 text-xs sm:text-sm">Countries</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">99%</div>
-              <div className="text-white/80 text-sm">Satisfaction Rate</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">99%</div>
+              <div className="text-white/80 text-xs sm:text-sm">Satisfaction Rate</div>
             </div>
           </div>
         </div>
@@ -174,8 +174,8 @@ const MediaGallery: React.FC = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <h3 className="text-2xl font-bold text-white mb-4">Ready to Create Your Own Success Story?</h3>
-          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4">Ready to Create Your Own Success Story?</h3>
+          <p className="text-sm xs:text-base sm:text-lg text-white/90 mb-6 max-w-2xl mx-auto px-2">
             Join thousands of satisfied clients who have transformed their events with our innovative solutions.
           </p>
           <button className="px-8 py-4 bg-white text-red-600 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">

@@ -56,11 +56,11 @@ const Contact: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-6">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6 leading-tight">
             Contact Us
           </h2>
-          <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm xs:text-base sm:text-lg text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed px-2">
             Ready to transform your next event into an extraordinary experience? 
             Let's discuss how we can bring your vision to life.
           </p>
@@ -69,7 +69,7 @@ const Contact: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Contact Form */}
           <div className="card">
-            <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
+            <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4 sm:mb-6">
               Get in Touch
             </h3>
             
@@ -235,7 +235,7 @@ const Contact: React.FC = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div className="card">
-              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
+              <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4 sm:mb-6">
                 Contact Information
               </h3>
               
@@ -279,7 +279,7 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="card">
-              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">
+              <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
                 Why Choose Us?
               </h3>
               <div className="space-y-4">
