@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Play, ArrowRight, X } from 'lucide-react'
+import { ArrowRight, X } from 'lucide-react'
 
 interface MediaItem {
   id: number
@@ -15,67 +15,8 @@ interface MediaItem {
 const MediaGallery: React.FC = () => {
   const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null)
   const [activeFilter, setActiveFilter] = useState<string>('All')
-  
-  const mediaItems: MediaItem[] = [
-    {
-      id: 1,
-      type: 'image',
-      url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      title: 'Modern Conference Hall',
-      category: 'Events',
-      description: 'State-of-the-art conference facilities designed for seamless professional gatherings and networking events.',
-      year: '2024'
-    },
-    {
-      id: 2,
-      type: 'image', 
-      url: 'https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      title: 'Executive Board Meeting',
-      category: 'Corporate',
-      description: 'High-level corporate meetings where innovation strategies and business excellence are discussed.',
-      year: '2024'
-    },
-    {
-      id: 3,
-      type: 'video',
-      url: 'https://www.w3schools.com/html/mov_bbb.mp4',
-      thumbnail: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      title: 'Summit Highlights Reel',
-      category: 'Video',
-      description: 'A comprehensive overview of our most successful technology summits and their groundbreaking outcomes.',
-      year: '2024'
-    },
-    {
-      id: 4,
-      type: 'image',
-      url: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      title: 'Innovation Technology Summit',
-      category: 'Technology',
-      description: 'Cutting-edge technology presentations showcasing the latest innovations in digital transformation.',
-      year: '2024'
-    },
-    {
-      id: 5,
-      type: 'image',
-      url: 'https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      title: 'Networking Excellence',
-      category: 'Events',
-      description: 'Professional networking events that connect industry leaders and foster meaningful business relationships.',
-      year: '2024'
-    },
-    {
-      id: 6,
-      type: 'image',
-      url: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      title: 'Digital Innovation Workshop',
-      category: 'Technology',
-      description: 'Interactive workshops focusing on emerging technologies and digital transformation strategies.',
-      year: '2024'
-    }
-  ]
 
   const filters = ['All', 'Events', 'Corporate', 'Technology', 'Video']
-  const filteredItems = activeFilter === 'All' ? mediaItems : mediaItems.filter(item => item.category === activeFilter)
 
   return (
     <section 
@@ -93,28 +34,28 @@ const MediaGallery: React.FC = () => {
           </p>
           
           {/* Statistics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
             <div className="text-center">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">150+</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">0</div>
               <div className="text-white/80 text-xs sm:text-sm">Events Organized</div>
             </div>
             <div className="text-center">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">50K+</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">0</div>
               <div className="text-white/80 text-xs sm:text-sm">Participants</div>
             </div>
             <div className="text-center">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">25+</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">0</div>
               <div className="text-white/80 text-xs sm:text-sm">Countries</div>
             </div>
-            <div className="text-center">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">99%</div>
+            {/* <div className="text-center">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">0%</div>
               <div className="text-white/80 text-xs sm:text-sm">Satisfaction Rate</div>
-            </div>
+            </div> */}
           </div>
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-6">
           {filters.map((filter) => (
             <button
               key={filter}
@@ -130,46 +71,46 @@ const MediaGallery: React.FC = () => {
           ))}
         </div>
 
-        {/* Media Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-16">
-          {filteredItems.map((item) => (
-            <div 
-              key={item.id}
-              className="group relative overflow-hidden rounded-xl shadow-2xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-3xl"
-              onClick={() => setSelectedMedia(item)}
-            >
-              <div className="aspect-video relative">
-                <img 
-                  src={item.type === 'video' ? item.thumbnail : item.url}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                
-                {/* Video Play Button */}
-                {item.type === 'video' && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                    <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
-                      <Play size={24} className="text-red-600 ml-1" />
-                    </div>
-                  </div>
-                )}
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="inline-block px-3 py-1 bg-red-600 text-white text-sm rounded-full">
-                        {item.category}
-                      </span>
-                      <span className="text-white/80 text-sm">{item.year}</span>
-                    </div>
-                    <h3 className="text-white font-semibold text-lg mb-2">{item.title}</h3>
-                    <p className="text-white/90 text-sm line-clamp-2">{item.description}</p>
-                  </div>
-                </div>
+        {/* Coming Soon Section */}
+        <div className="text-center py-8 sm:py-12 md:py-16 relative overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-white/5 rounded-full animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-white/5 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white/5 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+          </div>
+          
+          <div className="max-w-3xl mx-auto relative z-10">
+            {/* Animated Icon */}
+            <div className="relative mb-4">
+              <div className="w-32 h-32 mx-auto relative">
+                {/* Outer rotating ring */}
+                <div className="absolute inset-0 border-4 border-white/20 rounded-full animate-spin" style={{ animationDuration: '3s' }}></div>
+                {/* Middle pulsing ring */}
+                <div className="absolute inset-4 border-2 border-white/30 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                {/* Inner spinning element */}
+                <div className="absolute inset-8 border-2 border-dashed border-white/40 rounded-full animate-spin" style={{ animationDuration: '2s', animationDirection: 'reverse' }}></div>
+                {/* Center dot */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full animate-bounce"></div>
               </div>
             </div>
-          ))}
+            
+            {/* Main Content */}
+            <div className="space-y-4">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+                <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">
+                  Coming Soon
+                </span>
+              </h3>
+              
+              <p className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
+                We're crafting something extraordinary for you. Our gallery will showcase 
+                <span className="text-white font-semibold"> stunning events</span>, 
+                <span className="text-white font-semibold"> innovative solutions</span>, and 
+                <span className="text-white font-semibold"> memorable moments</span> that define excellence.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Call to Action */}

@@ -150,16 +150,16 @@ const About: React.FC = () => {
 
             {/* Content - Mobile */}
             <div className="space-y-4 sm:space-y-6 text-center">
-              <p className="text-sm xs:text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed px-2">
+              <p className="text-sm xs:text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed px-2 text-justify">
                 AlifView Media is a premier conference organizer. We are dedicated to delivering 
                 exceptional value through landmark summits that provide unique opportunities for 
                 delegates to exchange knowledge and learn about the latest technological and 
                 innovative advancements.
               </p>
               
-              <p className="text-sm xs:text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed px-2">
+              <p className="text-sm xs:text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed px-2 text-justify">
                 A prestigious platform that honors the exceptional contributions and success of 
-                individuals, teams, and organizations who have demonstrated excellence, innovation, 
+                individuals, teams, and organizations who have demonstrated excellence, innovation
                 and impact in their respective domains.
               </p>
 
@@ -178,16 +178,16 @@ const About: React.FC = () => {
           <div className="hidden lg:grid lg:grid-cols-2 gap-8 xl:gap-12 items-center">
             {/* Content */}
             <div className="space-y-6 xl:space-y-8">
-              <p className="text-sm xs:text-base sm:text-lg text-gray/90 max-w-3xl mx-auto leading-relaxed mb-8 px-2">
+              <p className="text-sm xs:text-base sm:text-lg text-gray/90 max-w-3xl mx-auto leading-relaxed mb-8 px-2 text-justify">
                 AlifView Media is a premier conference organizer. We are dedicated to delivering 
                 exceptional value through landmark summits that provide unique opportunities for 
                 delegates to exchange knowledge and learn about the latest technological and 
                 innovative advancements.
               </p>
               
-              <p className="text-sm xs:text-base sm:text-lg text-gray/90 max-w-3xl mx-auto leading-relaxed mb-8 px-2">
+              <p className="text-sm xs:text-base sm:text-lg text-gray/90 max-w-3xl mx-auto leading-relaxed mb-8 px-2 text-justify">
                 A prestigious platform that honors the exceptional contributions and success of 
-                individuals, teams, and organizations who have demonstrated excellence, innovation, 
+                individuals, teams, and organizations who have demonstrated excellence, innovation
                 and impact in their respective domains.
               </p>
 
