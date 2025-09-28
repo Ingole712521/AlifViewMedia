@@ -9,7 +9,7 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
   const [displayText, setDisplayText] = useState('')
   const [isTyping, setIsTyping] = useState(true)
   const [isErasing, setIsErasing] = useState(false)
-  const fullText = "Innovation meets Excellence"
+  const fullText = "Empowering Progress Enabling Futures"
 
   const handleGetInTouch = () => {
     if (onSectionChange) {
