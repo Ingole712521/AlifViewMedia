@@ -75,6 +75,8 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
   return (
     <section 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      role="banner"
+      aria-label="Hero section"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 gradient-bg opacity-10"></div>
@@ -100,9 +102,10 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
               style={{
                 backgroundImage: `linear-gradient(135deg, var(--primary-color), var(--accent-color))`
               }}
+              aria-label="Empowering Progress. Enabling Futures"
             >
               {displayText}
-              {(isTyping || isErasing) && <span className="typing-cursor">|</span>}
+              {(isTyping || isErasing) && <span className="typing-cursor" aria-hidden="true">|</span>}
             </span>
           </div>
         </h1>

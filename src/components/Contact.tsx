@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { CheckCircle, Send, MapPin, Phone, Mail } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+import { EMAILJS_CONFIG } from '../config/emailjs'
 
 interface FormData {
   name: string
@@ -21,6 +23,7 @@ const Contact: React.FC = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [showSuccess, setShowSuccess] = useState<boolean>(false)
+  const [showError, setShowError] = useState<boolean>(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -32,9 +35,27 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setShowError(false)
+    setShowSuccess(false)
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        event_type: formData.eventType,
+        message: formData.message,
+        to_email: EMAILJS_CONFIG.BUSINESS_EMAIL
+      }
+      
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      )
+      
       setIsSubmitting(false)
       setShowSuccess(true)
       setFormData({
@@ -46,7 +67,13 @@ const Contact: React.FC = () => {
         message: ''
       })
       setTimeout(() => setShowSuccess(false), 5000)
-    }, 2000)
+      
+    } catch (error) {
+      console.error('EmailJS Error:', error)
+      setIsSubmitting(false)
+      setShowError(true)
+      setTimeout(() => setShowError(false), 5000)
+    }
   }
 
   return (
@@ -79,6 +106,19 @@ const Contact: React.FC = () => {
                   <CheckCircle size={20} className="text-green-600" />
                   <span className="text-green-800 font-semibold">
                     Thank you! We'll be in touch within 24 hours.
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {showError && (
+              <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg">
+                <div className="flex items-center space-x-2">
+                  <div className="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">!</span>
+                  </div>
+                  <span className="text-red-800 font-semibold">
+                    Sorry, there was an error sending your message. Please try again.
                   </span>
                 </div>
               </div>
