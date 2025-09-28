@@ -16,7 +16,7 @@ const MediaGallery: React.FC = () => {
   const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null)
   const [activeFilter, setActiveFilter] = useState<string>('All')
 
-  const filters = ['All', 'Events', 'Corporate', 'Technology', 'Video']
+  const filters = ['All', 'Events']
 
   return (
     <section 

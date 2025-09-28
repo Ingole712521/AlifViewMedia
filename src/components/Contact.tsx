@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { CheckCircle, Send, MapPin, Phone, Mail } from 'lucide-react'
+import React, { useState, useRef, useEffect } from 'react'
+import { CheckCircle, Send, MapPin, Phone, Mail, ChevronDown } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import { EMAILJS_CONFIG } from '../config/emailjs'
 
@@ -8,7 +8,7 @@ interface FormData {
   email: string
   phone: string
   company: string
-  eventType: string
+  eventType: string[]
   message: string
 }
 
@@ -18,19 +18,74 @@ const Contact: React.FC = () => {
     email: '',
     phone: '',
     company: '',
-    eventType: '',
+    eventType: [],
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [showSuccess, setShowSuccess] = useState<boolean>(false)
   const [showError, setShowError] = useState<boolean>(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+    const { name, value } = e.target
+    
+    if (name === 'eventType') {
+      const selectElement = e.target as HTMLSelectElement
+      const selectedOptions = Array.from(selectElement.selectedOptions, option => option.value)
+      setFormData({
+        ...formData,
+        [name]: selectedOptions
+      })
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value
+      })
+    }
   }
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen)
+  }
+
+  const handleEventTypeChange = (value: string) => {
+    if (formData.eventType.includes(value)) {
+      setFormData({
+        ...formData,
+        eventType: formData.eventType.filter(item => item !== value)
+      })
+    } else {
+      setFormData({
+        ...formData,
+        eventType: [...formData.eventType, value]
+      })
+    }
+  }
+
+  const getDisplayText = () => {
+    if (formData.eventType.length === 0) {
+      return 'Select event types'
+    } else if (formData.eventType.length === 1) {
+      return formData.eventType[0]
+    } else {
+      return `${formData.eventType.length} selected`
+    }
+  }
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -44,7 +99,7 @@ const Contact: React.FC = () => {
         from_email: formData.email,
         phone: formData.phone,
         company: formData.company,
-        event_type: formData.eventType,
+        event_type: formData.eventType.join(', '),
         message: formData.message,
         to_email: EMAILJS_CONFIG.BUSINESS_EMAIL
       }
@@ -63,7 +118,7 @@ const Contact: React.FC = () => {
         email: '',
         phone: '',
         company: '',
-        eventType: '',
+        eventType: [],
         message: ''
       })
       setTimeout(() => setShowSuccess(false), 5000)
@@ -207,27 +262,57 @@ const Contact: React.FC = () => {
 
               <div>
                 <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
-                  Event Type
+                  Event Type (Select multiple)
                 </label>
-                <select
-                  name="eventType"
-                  value={formData.eventType}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-lg border transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
-                  style={{ 
-                    backgroundColor: 'var(--bg-primary)',
-                    borderColor: 'var(--border-color)',
-                    color: 'var(--text-primary)'
-                  }}
-                >
-                  <option value="">Select event type</option>
-                  <option value="conference">Conference</option>
-                  <option value="summit">Technology Summit</option>
-                  <option value="workshop">Workshop</option>
-                  <option value="corporate">Corporate Event</option>
-                  <option value="awards">Awards Ceremony</option>
-                  <option value="other">Other</option>
-                </select>
+                <div className="relative" ref={dropdownRef}>
+                  <button
+                    type="button"
+                    onClick={toggleDropdown}
+                    className="w-full px-4 py-3 rounded-lg border transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] flex items-center justify-between"
+                    style={{ 
+                      backgroundColor: 'var(--bg-primary)',
+                      borderColor: 'var(--border-color)',
+                      color: 'var(--text-primary)'
+                    }}
+                  >
+                    <span className="text-left">{getDisplayText()}</span>
+                    <ChevronDown 
+                      size={20} 
+                      className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  
+                  {isDropdownOpen && (
+                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                      {[
+                       
+                        { value: 'corporate', label: 'Corporate Event' },
+                        { value: 'awards', label: 'Awards Ceremony' },
+                        { value: 'other', label: 'Other' }
+                      ].map((option) => (
+                        <label
+                          key={option.value}
+                          className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
+                        >
+                          <input
+                            type="checkbox"
+                            value={option.value}
+                            checked={formData.eventType.includes(option.value)}
+                            onChange={() => handleEventTypeChange(option.value)}
+                            className="w-4 h-4 rounded border-2 focus:ring-2 focus:ring-[var(--primary-color)]"
+                            style={{
+                              accentColor: 'var(--primary-color)'
+                            }}
+                          />
+                          <span className="text-sm text-gray-700">{option.label}</span>
+                        </label>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] mt-2">
+                  Click to open dropdown and select multiple event types
+                </p>
               </div>
 
               <div>
