@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from 'react'
+import React, { useState } from 'react'
 import { ArrowRight, X } from 'lucide-react'
 
 interface MediaItem {

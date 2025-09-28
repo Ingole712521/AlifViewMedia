@@ -55,7 +55,8 @@ export const measurePerformance = () => {
   // Measure First Input Delay (FID)
   const fidObserver = new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
-      const fid = entry.processingStart - entry.startTime
+      const fidEntry = entry as any
+      const fid = fidEntry.processingStart - fidEntry.startTime
       console.log('FID:', fid)
       if (window.gtag) {
         window.gtag('event', 'timing_complete', {
