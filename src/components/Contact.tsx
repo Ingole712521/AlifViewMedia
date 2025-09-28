@@ -372,9 +372,9 @@ const Contact: React.FC = () => {
                   <div>
                     <h4 className="font-semibold text-[var(--text-primary)] mb-1">Office Address</h4>
                     <p className="text-[var(--text-secondary)] leading-relaxed">
-                      123 Innovation Drive<br/>
-                      Business District, Tech City 12345<br/>
-                      United States
+                      15/4, Jalsa Apartment<br/>
+                      Pakhal Road, Nashik 422011<br/>
+                      Maharashtra, India
                     </p>
                   </div>
                 </div>
@@ -385,7 +385,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[var(--text-primary)] mb-1">Phone</h4>
-                    <p className="text-[var(--text-secondary)]">+1 (555) 123-4567</p>
+                    <p className="text-[var(--text-secondary)]">+91 9270096787</p>
                     <p className="text-sm text-[var(--text-secondary)]">Mon-Fri, 9:00 AM - 6:00 PM</p>
                   </div>
                 </div>
@@ -396,8 +396,8 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[var(--text-primary)] mb-1">Email</h4>
-                    <p className="text-[var(--text-secondary)]">info@alifviewmedia.com</p>
-                    <p className="text-[var(--text-secondary)]">events@alifviewmedia.com</p>
+                    <p className="text-[var(--text-secondary)]">marketing.alifviewmedia@gmail.com</p>
+               
                   </div>
                 </div>
               </div>
