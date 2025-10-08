@@ -69,6 +69,18 @@
     })(window,document,'script','dataLayer','GTM-P844SFDZ');</script>
     <!-- End Google Tag Manager -->
     
+    <!-- GTM Debug Helper -->
+    <script>
+      // Add GTM debug information
+      window.addEventListener('load', function() {
+        if (typeof window.dataLayer !== 'undefined') {
+          console.log('GTM DataLayer initialized:', window.dataLayer);
+        } else {
+          console.warn('GTM DataLayer not found');
+        }
+      });
+    </script>
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZZYFBTBEDC"></script>
     <script>
