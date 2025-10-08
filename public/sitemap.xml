@@ -6,7 +6,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://alifviewmedia.com/</loc>
+    <loc>https://alif-view-media.vercel.app/</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
   
   <!-- About Page -->
   <url>
-    <loc>https://alifviewmedia.com/#about</loc>
+    <loc>https://alif-view-media.vercel.app/#about</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -22,7 +22,7 @@
   
   <!-- Gallery Page -->
   <url>
-    <loc>https://alifviewmedia.com/#gallery</loc>
+    <loc>https://alif-view-media.vercel.app/#gallery</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -30,7 +30,7 @@
   
   <!-- Contact Page -->
   <url>
-    <loc>https://alifviewmedia.com/#contact</loc>
+    <loc>https://alif-view-media.vercel.app/#contact</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
