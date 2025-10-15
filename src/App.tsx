@@ -7,7 +7,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import VideoBackground from './components/VideoBackground'
 import SEO from './components/SEO'
-import { initGA, trackPageView } from './utils/analytics'
+import { trackPageView } from './utils/analytics'
 import { initPerformanceOptimizations } from './utils/performance'
 
 interface ErrorBoundaryState {
@@ -64,8 +64,7 @@ function App() {
     setTheme(savedTheme)
     document.documentElement.setAttribute('data-theme', savedTheme)
     
-    // Initialize analytics and performance optimizations
-    initGA()
+    // Initialize performance optimizations
     initPerformanceOptimizations()
     
     // Track initial page view

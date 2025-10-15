@@ -1,5 +1,5 @@
 // Google Analytics 4 Configuration
-export const GA_TRACKING_ID = 'G-ZZYFBTBEDC' // Your actual GA4 tracking ID
+export const GA_TRACKING_ID = 'G-EN3H39YDBT' // Updated GA4 Measurement ID
 
 // Initialize Google Analytics
 export const initGA = () => {

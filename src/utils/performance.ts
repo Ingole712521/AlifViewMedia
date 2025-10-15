@@ -42,7 +42,7 @@ export const measurePerformance = () => {
         clsValue += (entry as any).value
       }
     }
-    console.log('CLS:', clsValue)
+    // console.log('CLS:', clsValue)
     if (window.gtag) {
       window.gtag('event', 'timing_complete', {
         name: 'cls',
@@ -103,9 +103,9 @@ export const preloadCriticalResources = () => {
   document.head.appendChild(fontPreload)
 
   // Preload critical images
+  // Only preload assets that actually exist in public/ or built assets
   const criticalImages = [
-    '/assets/hero-bg.jpg',
-    '/assets/logo.png'
+    '/images/company-logo.png'
   ]
 
   criticalImages.forEach(src => {
@@ -130,7 +130,7 @@ export const optimizeImages = () => {
     
     // Add proper alt text if missing
     if (!img.alt) {
-      img.alt = 'AlifView Media Group'
+      img.alt = 'Alif View Media'
     }
   })
 }

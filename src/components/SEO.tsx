@@ -10,10 +10,10 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = "AlifView Media Group | Premier Conference Organizer | Corporate Events & Technology Summits",
-  description = "AlifView Media Group is a premier conference organizer delivering exceptional value through landmark summits, corporate conferences, and prestigious awards ceremonies. We craft transformative corporate experiences that inspire, connect, and create lasting impact.",
+  title = "Alif View Media | Premier Conference Organizer | Corporate Events & Technology Summits",
+  description = "Alif View Media is a premier conference organizer delivering exceptional value through landmark summits, corporate conferences, and prestigious awards ceremonies. We craft transformative corporate experiences that inspire, connect, and create lasting impact.",
   keywords = "conference organizer, corporate events, technology summits, awards ceremonies, event management, business conferences, professional networking, innovation events, digital transformation, corporate meetings, executive summits, business awards, event planning, conference management, corporate experiences",
-  image = "/images/company-logo.png",
+  image = "https://www.alifviewmedia.com/images/company-logo.png",
   url = "https://www.alifviewmedia.com",
   type = "website"
 }) => {
@@ -24,6 +24,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="title" content={title} />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
+      <link rel="canonical" href={url} />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
@@ -31,6 +32,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      <meta property="og:site_name" content="Alif View Media" />
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -38,6 +40,37 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+
+      {/* Organization & Website JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'Alif View Media',
+            url,
+            logo: image,
+            sameAs: [
+              'https://www.linkedin.com/company/alifviewmedia',
+              'https://twitter.com/alifviewmedia',
+              'https://www.facebook.com/alifviewmedia',
+              'https://www.instagram.com/alifviewmedia'
+            ]
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Alif View Media',
+            url
+          })
+        }}
+      />
     </>
   )
 }
