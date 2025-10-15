@@ -94,13 +94,19 @@ const Contact: React.FC = () => {
     setShowSuccess(false)
     
     try {
+      const eventTypesText = formData.eventType.length > 0
+        ? formData.eventType.join(', ')
+        : 'Not specified'
+
+      const messageBody = `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'Not provided'}\nCompany: ${formData.company || 'Not provided'}\nEvent Types: ${eventTypesText}\n\nMessage:\n${formData.message}`
+
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone,
         company: formData.company,
-        event_type: formData.eventType.join(', '),
-        message: formData.message,
+        event_type: eventTypesText,
+        message: messageBody,
         to_email: EMAILJS_CONFIG.BUSINESS_EMAIL
       }
       

@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <img
-                src="https://app.trickle.so/storage/public/images/usr_1452d643e0000001/d3044b19-cda1-4ab8-b5bc-1aeb931b233c.png"
+                src="/images/Aliief_white.png"
                 alt="Alif View Media Logo"
                 className="h-10 w-auto object-contain"
                 onError={(e) => {

@@ -69,8 +69,8 @@ const Navigation: React.FC<NavigationProps> = ({
             <img
               src={
                 theme === "dark"
-                  ? "https://app.trickle.so/storage/public/images/usr_1452d643e0000001/d3044b19-cda1-4ab8-b5bc-1aeb931b233c.png"
-                  : "https://app.trickle.so/storage/public/images/usr_1452d643e0000001/e35e791a-3f5e-42cb-aeff-d5c9c40f0821.png"
+                  ? "/images/Aliief_white.png"
+                  : "/images/company-logo.png"
               }
               alt='Alif View Media Logo'
               className='h-10 w-auto object-contain'
@@ -99,7 +99,12 @@ const Navigation: React.FC<NavigationProps> = ({
 
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
 
-            <button className='btn-primary'>Get in Touch</button>
+            <button
+              className='btn-primary'
+              onClick={() => onSectionChange('contact')}
+            >
+              Get in Touch
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -148,7 +153,15 @@ const Navigation: React.FC<NavigationProps> = ({
                 {item.label}
               </button>
             ))}
-            <button className='btn-primary mt-4 w-full mx-4'>Get in Touch</button>
+            <button
+              className='btn-primary mt-4 w-full mx-4'
+              onClick={() => {
+                onSectionChange('contact');
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Get in Touch
+            </button>
           </div>
         )}
       </div>

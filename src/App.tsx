@@ -72,6 +72,23 @@ function App() {
     trackPageView(window.location.pathname)
   }, [])
 
+  // Update favicon on theme change so the tab logo is visible in both modes
+  useEffect(() => {
+    const lightIcon = '/images/company-logo.png'
+    const darkIcon = '/images/Aliief_white.png'
+    const iconHref = theme === 'dark' ? darkIcon : lightIcon
+    const existing = document.querySelector("link[rel='icon']") as HTMLLinkElement | null
+    if (existing) {
+      existing.href = iconHref
+    } else {
+      const link = document.createElement('link')
+      link.rel = 'icon'
+      link.type = 'image/png'
+      link.href = iconHref
+      document.head.appendChild(link)
+    }
+  }, [theme])
+
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
     setTheme(newTheme)

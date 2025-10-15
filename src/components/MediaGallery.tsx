@@ -119,9 +119,12 @@ const MediaGallery: React.FC = () => {
           <p className="text-sm xs:text-base sm:text-lg text-white/90 mb-6 max-w-2xl mx-auto px-2">
             Join thousands of satisfied clients who have transformed their events with our innovative solutions.
           </p>
-          <button className="px-8 py-4 bg-white text-red-600 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <button
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-8 py-4 bg-white text-red-600 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
             <span className="flex items-center space-x-2">
-              <span>Start Your Project</span>
+              <span>Schedule Your Event</span>
               <ArrowRight size={18} />
             </span>
           </button>
