@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://alif-view-media.vercel.app/sitemap.xml
+Sitemap: https://www.alifviewmedia.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1

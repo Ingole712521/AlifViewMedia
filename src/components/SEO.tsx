@@ -14,7 +14,7 @@ const SEO: React.FC<SEOProps> = ({
   description = "AlifView Media Group is a premier conference organizer delivering exceptional value through landmark summits, corporate conferences, and prestigious awards ceremonies. We craft transformative corporate experiences that inspire, connect, and create lasting impact.",
   keywords = "conference organizer, corporate events, technology summits, awards ceremonies, event management, business conferences, professional networking, innovation events, digital transformation, corporate meetings, executive summits, business awards, event planning, conference management, corporate experiences",
   image = "/images/company-logo.png",
-  url = "https://alifviewmedia.com",
+  url = "https://www.alifviewmedia.com",
   type = "website"
 }) => {
   return (

@@ -1,6 +1,9 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Always serve sitemap and robots directly
+  RewriteRule ^(sitemap\.xml|robots\.txt)$ - [L]
+
   # Serve existing files and directories directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
