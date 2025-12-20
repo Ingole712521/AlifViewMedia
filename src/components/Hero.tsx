@@ -94,13 +94,15 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
 
       {/* Content */}
       <div className="relative z-10 text-center w-full max-w-xs xs:max-w-sm sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto section-padding px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16">
-        <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-          <span className="block text-[var(--text-primary)]">Alif View Media</span>
-          <div className="typing-container flex justify-center mt-2">
+        <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold   leading-tight  ">
+          <span className="block text-[var(--text-primary)] pb-1 sm:pb-2">Alif View Media</span>
+          <div className="typing-container flex justify-center mt-2 min-h-[1.2em] sm:min-h-[1.3em] md:min-h-[1.4em] lg:min-h-[1.5em]">
             <span 
-              className="text-transparent bg-clip-text typing-text-line text-center text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
+              className="text-transparent bg-clip-text typing-text-line text-center text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-normal"
               style={{
-                backgroundImage: `linear-gradient(135deg, var(--primary-color), var(--accent-color))`
+                backgroundImage: `linear-gradient(135deg, var(--primary-color), var(--accent-color))`,
+                lineHeight: '1.2',
+                paddingBottom: '0.1em'
               }}
               aria-label="Empowering Progress. Enabling Futures"
             >
@@ -111,9 +113,7 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
         </h1>
         
         <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[var(--text-secondary)] mb-6 sm:mb-8 md:mb-10 max-w-sm sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2 sm:px-4">
-          We specialize in transforming ordinary moments into extraordinary experiences. 
-          AlifView Media aims to be passionate about bringing your vision to life through 
-          innovative and creative media solutions.
+        Alifview is a professional business networking platform specializing in conferences, award ceremonies, and industry-focused forums. We curate high-impact events that bring together key stakeholders, decision-makers, and industry leaders across sectors.
         </p>
 
         {/* CTA Buttons */}
@@ -144,18 +144,65 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-2 xs:bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 xl:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="flex flex-col items-center space-y-0.5 xs:space-y-1 sm:space-y-1.5 md:space-y-2">
-          <span className="text-xs xs:text-sm sm:text-base md:text-lg text-[var(--text-secondary)] hidden xs:block opacity-70">Scroll to explore</span>
-          <ChevronDown size={16} className="text-[var(--text-secondary)] xs:hidden" />
-          <ChevronDown size={18} className="text-[var(--text-secondary)] hidden xs:block sm:hidden" />
-          <ChevronDown size={20} className="text-[var(--text-secondary)] hidden sm:block md:hidden" />
-          <ChevronDown size={22} className="text-[var(--text-secondary)] hidden md:block lg:hidden" />
-          <ChevronDown size={24} className="text-[var(--text-secondary)] hidden lg:block xl:hidden" />
-          <ChevronDown size={26} className="text-[var(--text-secondary)] hidden xl:block 2xl:hidden" />
-          <ChevronDown size={28} className="text-[var(--text-secondary)] hidden 2xl:block" />
-        </div>
+      {/* Scroll Indicator - Extreme Right */}
+      <div className="absolute bottom-2 xs:bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 xl:bottom-10 right-2 xs:right-3 sm:right-4 md:right-6 lg:right-8 xl:right-10 2xl:right-12 z-10">
+        <button
+          onClick={() => {
+            const aboutSection = document.getElementById('about')
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: 'smooth' })
+            }
+          }}
+          className="group flex flex-col items-center space-y-1 rounded-full transition-all duration-300 hover:scale-110 transform"
+          style={{
+            background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(245, 158, 11, 0.1))',
+            backdropFilter: 'blur(10px)',
+            padding: '0.75rem',
+          }}
+          aria-label="Scroll to explore"
+        >
+          {/* <span className="text-xs xs:text-sm sm:text-base md:text-lg font-semibold text-[var(--text-primary)] hidden xs:block opacity-80 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+            Scroll to explore
+          </span> */}
+          <div className="relative">
+            <div 
+              className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-all duration-300 animate-bounce"
+              style={{ 
+                background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+              }}
+            >
+              <ChevronDown 
+                size={20} 
+                className="text-white transform group-hover:translate-y-1 transition-transform duration-300 xs:hidden" 
+              />
+              <ChevronDown 
+                size={22} 
+                className="text-white transform group-hover:translate-y-1 transition-transform duration-300 hidden xs:block sm:hidden" 
+              />
+              <ChevronDown 
+                size={24} 
+                className="text-white transform group-hover:translate-y-1 transition-transform duration-300 hidden sm:block md:hidden" 
+              />
+              <ChevronDown 
+                size={26} 
+                className="text-white transform group-hover:translate-y-1 transition-transform duration-300 hidden md:block lg:hidden" 
+              />
+              <ChevronDown 
+                size={28} 
+                className="text-white transform group-hover:translate-y-1 transition-transform duration-300 hidden lg:block xl:hidden" 
+              />
+              <ChevronDown 
+                size={30} 
+                className="text-white transform group-hover:translate-y-1 transition-transform duration-300 hidden xl:block 2xl:hidden" 
+              />
+              <ChevronDown 
+                size={32} 
+                className="text-white transform group-hover:translate-y-1 transition-transform duration-300 hidden 2xl:block" 
+              />
+            </div>
+            <div className="absolute inset-0 rounded-full animate-ping opacity-30" style={{ backgroundColor: 'var(--primary-color)' }}></div>
+          </div>
+        </button>
       </div>
     </section>
   )

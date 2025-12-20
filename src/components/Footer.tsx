@@ -1,8 +1,22 @@
-import React from 'react'
-import { Mail, Phone, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+import React, { useState, useEffect } from 'react'
+import { Mail, Phone, Facebook, Twitter, Linkedin, Instagram, ArrowUp } from 'lucide-react'
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
+  const [showScrollTop, setShowScrollTop] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <footer
@@ -122,6 +136,24 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+          style={{
+            background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))',
+          }}
+          aria-label="Scroll to top"
+        >
+          <ArrowUp 
+            size={24} 
+            className="text-white transform group-hover:-translate-y-1 transition-transform duration-300" 
+          />
+          <div className="absolute inset-0 rounded-full animate-ping opacity-20" style={{ backgroundColor: 'var(--primary-color)' }}></div>
+        </button>
+      )}
     </footer>
   )
 }

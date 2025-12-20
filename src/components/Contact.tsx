@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { CheckCircle, Send, MapPin, Phone, Mail, ChevronDown } from 'lucide-react'
+import React, { useState } from 'react'
+import { CheckCircle, Send, MapPin, Phone, Mail } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import { EMAILJS_CONFIG } from '../config/emailjs'
 
@@ -8,7 +8,7 @@ interface FormData {
   email: string
   phone: string
   company: string
-  eventType: string[]
+  eventName: string
   message: string
 }
 
@@ -18,74 +18,20 @@ const Contact: React.FC = () => {
     email: '',
     phone: '',
     company: '',
-    eventType: [],
+    eventName: '',
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [showSuccess, setShowSuccess] = useState<boolean>(false)
   const [showError, setShowError] = useState<boolean>(false)
-  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    
-    if (name === 'eventType') {
-      const selectElement = e.target as HTMLSelectElement
-      const selectedOptions = Array.from(selectElement.selectedOptions, option => option.value)
-      setFormData({
-        ...formData,
-        [name]: selectedOptions
-      })
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value
-      })
-    }
+    setFormData({
+      ...formData,
+      [name]: value
+    })
   }
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen)
-  }
-
-  const handleEventTypeChange = (value: string) => {
-    if (formData.eventType.includes(value)) {
-      setFormData({
-        ...formData,
-        eventType: formData.eventType.filter(item => item !== value)
-      })
-    } else {
-      setFormData({
-        ...formData,
-        eventType: [...formData.eventType, value]
-      })
-    }
-  }
-
-  const getDisplayText = () => {
-    if (formData.eventType.length === 0) {
-      return 'Select event types'
-    } else if (formData.eventType.length === 1) {
-      return formData.eventType[0]
-    } else {
-      return `${formData.eventType.length} selected`
-    }
-  }
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -94,18 +40,14 @@ const Contact: React.FC = () => {
     setShowSuccess(false)
     
     try {
-      const eventTypesText = formData.eventType.length > 0
-        ? formData.eventType.join(', ')
-        : 'Not specified'
-
-      const messageBody = `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'Not provided'}\nCompany: ${formData.company || 'Not provided'}\nEvent Types: ${eventTypesText}\n\nMessage:\n${formData.message}`
+      const messageBody = `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'Not provided'}\nCompany: ${formData.company || 'Not provided'}\nEvent Name: ${formData.eventName || 'Not provided'}\n\nMessage:\n${formData.message}`
 
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone,
         company: formData.company,
-        event_type: eventTypesText,
+        event_name: formData.eventName || 'Not provided',
         message: messageBody,
         to_email: EMAILJS_CONFIG.BUSINESS_EMAIL
       }
@@ -124,7 +66,7 @@ const Contact: React.FC = () => {
         email: '',
         phone: '',
         company: '',
-        eventType: [],
+        eventName: '',
         message: ''
       })
       setTimeout(() => setShowSuccess(false), 5000)
@@ -268,57 +210,21 @@ const Contact: React.FC = () => {
 
               <div>
                 <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
-                  Event Type (Select multiple)
+                  Write the name of the event
                 </label>
-                <div className="relative" ref={dropdownRef}>
-                  <button
-                    type="button"
-                    onClick={toggleDropdown}
-                    className="w-full px-4 py-3 rounded-lg border transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] flex items-center justify-between"
-                    style={{ 
-                      backgroundColor: 'var(--bg-primary)',
-                      borderColor: 'var(--border-color)',
-                      color: 'var(--text-primary)'
-                    }}
-                  >
-                    <span className="text-left">{getDisplayText()}</span>
-                    <ChevronDown 
-                      size={20} 
-                      className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                    />
-                  </button>
-                  
-                  {isDropdownOpen && (
-                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-                      {[
-                       
-                        { value: 'corporate', label: 'Corporate Event' },
-                        { value: 'awards', label: 'Awards Ceremony' },
-                        { value: 'other', label: 'Other' }
-                      ].map((option) => (
-                        <label
-                          key={option.value}
-                          className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
-                        >
-                          <input
-                            type="checkbox"
-                            value={option.value}
-                            checked={formData.eventType.includes(option.value)}
-                            onChange={() => handleEventTypeChange(option.value)}
-                            className="w-4 h-4 rounded border-2 focus:ring-2 focus:ring-[var(--primary-color)]"
-                            style={{
-                              accentColor: 'var(--primary-color)'
-                            }}
-                          />
-                          <span className="text-sm text-gray-700">{option.label}</span>
-                        </label>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                <p className="text-xs text-[var(--text-secondary)] mt-2">
-                  Click to open dropdown and select multiple event types
-                </p>
+                <input
+                  type="text"
+                  name="eventName"
+                  value={formData.eventName}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-lg border transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+                  style={{ 
+                    backgroundColor: 'var(--bg-primary)',
+                    borderColor: 'var(--border-color)',
+                    color: 'var(--text-primary)'
+                  }}
+                  placeholder="Enter event name"
+                />
               </div>
 
               <div>
@@ -363,16 +269,44 @@ const Contact: React.FC = () => {
             </form>
           </div>
 
-          {/* Contact Information */}
+          {/* Contact Us */}
           <div className="space-y-8">
             <div className="card">
               <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4 sm:mb-6">
-                Contact Information
+                Contact Us
               </h3>
               
               <div className="space-y-6">
+                <div>
+                  <h4 className="font-semibold text-[var(--text-primary)] mb-4">For Partnership & Speaking Opportunities</h4>
+                  
+                  <div className="space-y-4 mb-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--primary-color)' }}>
+                        <Mail size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h5 className="font-semibold text-[var(--text-primary)] mb-1">Shadab Khan</h5>
+                        <p className="text-[var(--text-secondary)]">director@alifviewmedia.com</p>
+                        <p className="text-[var(--text-secondary)]">91 9270096787</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--secondary-color)' }}>
+                        <Mail size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <h5 className="font-semibold text-[var(--text-primary)] mb-1">Anam Shaikh</h5>
+                        <p className="text-[var(--text-secondary)]">sales@alifviewmedia.com</p>
+                        <p className="text-[var(--text-secondary)]">91 9529518393</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--primary-color)' }}>
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--accent-color)' }}>
                     <MapPin size={20} className="text-white" />
                   </div>
                   <div>
@@ -382,28 +316,6 @@ const Contact: React.FC = () => {
                       Pakhal Road, Nashik 422011<br/>
                       Maharashtra, India
                     </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--secondary-color)' }}>
-                    <Phone size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-[var(--text-primary)] mb-1">Phone</h4>
-                    <p className="text-[var(--text-secondary)]">+91 9270096787</p>
-                    <p className="text-sm text-[var(--text-secondary)]">Mon-Fri, 9:00 AM - 6:00 PM</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--accent-color)' }}>
-                    <Mail size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-[var(--text-primary)] mb-1">Email</h4>
-                    <p className="text-[var(--text-secondary)]">marketing.alifviewmedia@gmail.com</p>
-               
                   </div>
                 </div>
               </div>

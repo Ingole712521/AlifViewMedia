@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import About from './components/About'
+import ObjectivesMission from './components/ObjectivesMission'
+import Events from './components/Events'
 import MediaGallery from './components/MediaGallery'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -130,6 +132,14 @@ function App() {
             
             <section id="about">
               <About />
+            </section>
+            
+            <section id="objectives-mission">
+              <ObjectivesMission />
+            </section>
+            
+            <section id="events">
+              <Events />
             </section>
             
             <section id="gallery">
