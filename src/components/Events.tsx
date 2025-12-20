@@ -1,5 +1,5 @@
 import React from 'react'
-import { Calendar, MapPin, ArrowRight, Award } from 'lucide-react'
+import { Calendar, MapPin, ArrowRight,  } from 'lucide-react'
 
 const Events: React.FC = () => {
   const events = [
@@ -15,7 +15,7 @@ const Events: React.FC = () => {
     }
   ]
 
-  const handleEventClick = (eventId: string) => {
+  const handleEventClick = () => {
     window.open('/event.html', '_blank', 'noopener,noreferrer')
   }
 
@@ -39,7 +39,7 @@ const Events: React.FC = () => {
             <div
               key={event.id}
               className="card group cursor-pointer hover:scale-105 transition-all duration-300 relative overflow-hidden"
-              onClick={() => handleEventClick(event.id)}
+              onClick={handleEventClick}
             >
               {/* Image */}
               <div className="relative h-48 mb-4 rounded-lg overflow-hidden">

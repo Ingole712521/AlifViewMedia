@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CheckCircle, Send, MapPin, Phone, Mail } from 'lucide-react'
+import { CheckCircle, Send, MapPin,  Mail } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import { EMAILJS_CONFIG } from '../config/emailjs'
 

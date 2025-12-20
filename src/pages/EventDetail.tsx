@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Calendar, MapPin, Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home, X } from 'lucide-react'
+import { Calendar, MapPin, Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home } from 'lucide-react'
 
 const EventDetail: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home')
