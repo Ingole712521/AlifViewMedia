@@ -1,7 +1,10 @@
 import React from 'react'
-import { Calendar, MapPin, ArrowRight,  } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { Calendar, MapPin, ArrowRight } from 'lucide-react'
 
 const Events: React.FC = () => {
+  const navigate = useNavigate()
+  
   const events = [
     {
       id: 'realtyview-2026',
@@ -11,12 +14,12 @@ const Events: React.FC = () => {
       date: '18th April, 2026',
       type: 'Virtual Event',
       description: 'A premier platform dedicated to advancing the real estate ecosystem in India\'s Tier-2 and Tier-3 cities. The summit will bring together leading builders, developers, architects, planners, investors, and industry experts.',
-      image: '/images/conference_image.png'
+      image: '/images/realityLogo.png'
     }
   ]
 
-  const handleEventClick = () => {
-    window.open('/event.html', '_blank', 'noopener,noreferrer')
+  const handleEventClick = (eventId: string) => {
+    navigate(`/event/${eventId}`)
   }
 
   return (
@@ -39,21 +42,20 @@ const Events: React.FC = () => {
             <div
               key={event.id}
               className="card group cursor-pointer hover:scale-105 transition-all duration-300 relative overflow-hidden"
-              onClick={handleEventClick}
+              onClick={() => handleEventClick(event.id)}
             >
               {/* Image */}
-              <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+              <div className="relative h-64 mb-4 rounded-lg overflow-hidden flex items-center justify-center" style={{ backgroundColor: '#181935' }}>
                 <img
                   src={event.image}
                   alt={event.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement
                     target.style.display = 'none'
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
+                <div className="absolute bottom-4 left-4 right-4 flex justify-center">
                   <span className="inline-block px-3 py-1 rounded-full text-white text-xs font-semibold bg-[var(--primary-color)]">
                     {event.type}
                   </span>

@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Calendar, MapPin, Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home } from 'lucide-react'
+import ThemeToggle from '../components/ThemeToggle'
 
 const EventDetail: React.FC = () => {
+  const navigate = useNavigate()
   const [activeSection, setActiveSection] = useState('home')
   const [isScrolled, setIsScrolled] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
+  useEffect(() => {
+    const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
+    setTheme(savedTheme)
+    document.documentElement.setAttribute('data-theme', savedTheme)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +22,13 @@ const EventDetail: React.FC = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(newTheme)
+    localStorage.setItem('theme', newTheme)
+    document.documentElement.setAttribute('data-theme', newTheme)
+  }
 
   const awardCategories = [
     {
@@ -95,14 +112,24 @@ const EventDetail: React.FC = () => {
           isScrolled ? 'py-3 shadow-lg' : 'py-4'
         } backdrop-blur-md`}
         style={{ 
-          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.98)',
-          borderBottom: isScrolled ? '1px solid rgba(0, 0, 0, 0.1)' : 'none'
+          backgroundColor: isScrolled 
+            ? theme === 'dark' 
+              ? 'rgba(17, 24, 39, 0.95)' 
+              : 'rgba(255, 255, 255, 0.95)'
+            : theme === 'dark'
+              ? 'rgba(17, 24, 39, 0.98)'
+              : 'rgba(255, 255, 255, 0.98)',
+          borderBottom: isScrolled 
+            ? theme === 'dark'
+              ? '1px solid rgba(55, 65, 81, 0.3)'
+              : '1px solid rgba(0, 0, 0, 0.1)'
+            : 'none'
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img
-              src="/images/company-logo.png"
+              src={theme === 'dark' ? '/images/Aliief_white.png' : '/images/company-logo.png'}
               alt="Alif View Media Logo"
               className="h-10 w-auto object-contain"
               onError={(e) => {
@@ -112,7 +139,7 @@ const EventDetail: React.FC = () => {
             />
           </div>
           
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-3">
             {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
               <button
                 key={section}
@@ -120,7 +147,7 @@ const EventDetail: React.FC = () => {
                 className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ${
                   activeSection === section
                     ? 'text-white shadow-lg'
-                    : 'text-[var(--text-primary)] hover:bg-gray-100'
+                    : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'
                 }`}
                 style={activeSection === section ? {
                   background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
@@ -129,49 +156,75 @@ const EventDetail: React.FC = () => {
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </button>
             ))}
+            
+            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
 
-          <button
-            onClick={() => window.close()}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-white"
-            style={{ 
-              background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
-            }}
-          >
-            <Home size={18} />
-            <span className="hidden sm:inline">Back to Home</span>
-          </button>
+          <div className="flex items-center gap-3">
+            <div className="md:hidden">
+              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            </div>
+            <button
+              onClick={() => navigate('/')}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-white"
+              style={{ 
+                background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+              }}
+            >
+              <Home size={18} />
+              <span className="hidden sm:inline">Back to Home</span>
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <div className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 md:pt-40 md:pb-32 px-4 sm:px-6 lg:px-8" style={{ 
-        background: 'linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color))',
-        backgroundSize: '200% 200%',
-        animation: 'gradientShift 15s ease infinite'
+      <div className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ 
+        backgroundColor: '#181935'
       }}>
-        <div className="absolute inset-0 bg-black/20"></div>
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-10 blur-3xl animate-pulse" style={{ backgroundColor: 'var(--primary-color)' }}></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-10 blur-3xl animate-pulse" style={{ animationDelay: '1s', backgroundColor: 'var(--accent-color)' }}></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <div className="mb-6">
-            <span className="inline-block px-4 py-2 rounded-full text-white text-sm sm:text-base font-semibold mb-4 backdrop-blur-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
+          {/* Logo Section */}
+          <div className="mb-4 sm:mb-6 flex justify-center">
+            <div className="relative w-full max-w-xl mx-auto h-48 sm:h-64 md:h-80 flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
+              <img
+                src="/images/realityLogo.png"
+                alt="RealtyView Leadership Summit & Awards 2026 Logo"
+                className="w-full h-full object-contain p-2 sm:p-4 md:p-6 drop-shadow-2xl"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 rounded-lg"></div>
+            </div>
+          </div>
+          
+          <div className="mb-4">
+            <span className="inline-block px-4 py-2 rounded-full text-white text-xs sm:text-sm font-semibold backdrop-blur-md shadow-lg border border-white/20" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
               REALTYVIEW LEADERSHIP SUMMIT & AWARDS 2026
             </span>
           </div>
-          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-3 sm:mb-5 leading-tight drop-shadow-lg">
             NASHIK
           </h1>
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/95 font-semibold mb-8 sm:mb-12">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/95 font-semibold mb-5 sm:mb-7 drop-shadow-md">
             Driving Leadership & Excellence in Emerging Realty Markets
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8">
-            <div className="flex items-center gap-2 text-white bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              <Calendar size={20} />
-              <span className="text-base sm:text-lg font-medium">18th April, 2026</span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
+            <div className="flex items-center gap-2 text-white bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-lg hover:bg-white/30 transition-all duration-300">
+              <Calendar size={18} />
+              <span className="text-sm sm:text-base font-medium">18th April, 2026</span>
             </div>
-            <div className="flex items-center gap-2 text-white bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              <MapPin size={20} />
-              <span className="text-base sm:text-lg font-medium">Virtual Event</span>
+            <div className="flex items-center gap-2 text-white bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-lg hover:bg-white/30 transition-all duration-300">
+              <MapPin size={18} />
+              <span className="text-sm sm:text-base font-medium">Virtual Event</span>
             </div>
           </div>
 
@@ -181,10 +234,10 @@ const EventDetail: React.FC = () => {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 ${
+                className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${
                   activeSection === section
-                    ? 'bg-white text-[var(--primary-color)] shadow-lg'
-                    : 'bg-white/20 text-white hover:bg-white/30'
+                    ? 'bg-white text-[var(--primary-color)] shadow-lg border-white/30'
+                    : 'bg-white/20 text-white hover:bg-white/30 border-white/20'
                 }`}
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -195,13 +248,21 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Home Section */}
-      <div id="event-home" className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <div id="event-home" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-8 text-center">
-            About the Summit
-          </h2>
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary-color)' }}>
+                <Star size={32} className="text-white" fill="currentColor" />
+              </div>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-6">
+              About the Summit
+            </h2>
+            <div className="w-24 h-1 mx-auto rounded-full" style={{ backgroundColor: 'var(--primary-color)' }}></div>
+          </div>
           
-          <div className="space-y-6 text-[var(--text-secondary)] text-base sm:text-lg leading-relaxed">
+          <div className="space-y-5 text-[var(--text-secondary)] text-base sm:text-lg leading-relaxed">
             <p>
               RealtyView Leadership Summit & Awards 2026 – Nashik is a premier platform dedicated to advancing the real estate ecosystem in India's Tier-2 and Tier-3 cities. The summit will bring together leading builders, developers, architects, planners, investors, and industry experts for high-level discussions on growth opportunities, market trends, innovation, and sustainable development.
             </p>
@@ -216,9 +277,9 @@ const EventDetail: React.FC = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
             <button 
-              className="btn-primary text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-5 flex items-center gap-2 transform hover:scale-105 transition-all duration-300"
+              className="btn-primary text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-5 flex items-center gap-2 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
               onClick={() => {
                 const contactSection = document.getElementById('event-contact')
                 if (contactSection) {
@@ -227,10 +288,10 @@ const EventDetail: React.FC = () => {
               }}
             >
               Register Now
-              <ArrowRight size={20} />
+              <ArrowRight size={20} className="transform group-hover:translate-x-1 transition-transform" />
             </button>
             <button 
-              className="btn-secondary text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-5 flex items-center gap-2 transform hover:scale-105 transition-all duration-300"
+              className="btn-secondary text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-5 flex items-center gap-2 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
               onClick={() => {
                 const awardsSection = document.getElementById('event-awards')
                 if (awardsSection) {
@@ -246,41 +307,49 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Speakers Section */}
-      <div id="event-speakers" className="section-padding" style={{ backgroundColor: 'var(--bg-primary)' }}>
+      <div id="event-speakers" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 flex items-center justify-center gap-3">
-              <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--primary-color)' }}>
-                <Users size={40} className="text-white" />
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary-color)' }}>
+                <Users size={32} className="text-white" />
               </div>
-              <span>Speakers</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
+              Speakers
             </h2>
-            <p className="text-[var(--text-secondary)] text-lg">
+            <p className="text-[var(--text-secondary)] text-lg mb-4">
               Industry leaders and experts sharing insights
             </p>
+            <div className="w-24 h-1 mx-auto rounded-full" style={{ backgroundColor: 'var(--primary-color)' }}></div>
           </div>
           
-          <div className="text-center py-12">
-            <p className="text-[var(--text-secondary)] text-lg">
-              Speaker lineup will be announced soon. Stay tuned!
-            </p>
+          <div className="text-center py-8">
+            <div className="card p-8 max-w-2xl mx-auto">
+              <p className="text-[var(--text-secondary)] text-lg">
+                Speaker lineup will be announced soon. Stay tuned!
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Awards Section */}
-      <div id="event-awards" className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <div id="event-awards" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 flex items-center justify-center gap-3">
-              <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--primary-color)' }}>
-                <Award size={40} className="text-white" />
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary-color)' }}>
+                <Award size={32} className="text-white" />
               </div>
-              <span>Awards Categories</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
+              Awards Categories
             </h2>
-            <p className="text-[var(--text-secondary)] text-lg">
+            <p className="text-[var(--text-secondary)] text-lg mb-4">
               Recognising excellence across the real estate sector
             </p>
+            <div className="w-24 h-1 mx-auto rounded-full" style={{ backgroundColor: 'var(--primary-color)' }}></div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -318,7 +387,7 @@ const EventDetail: React.FC = () => {
           </div>
 
           {/* Nomination Process */}
-          <div className="mt-16 max-w-4xl mx-auto">
+          <div className="mt-12 max-w-4xl mx-auto">
             <div className="card border-2" style={{ 
               borderColor: 'var(--primary-color)',
               background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(245, 158, 11, 0.05))'
@@ -364,9 +433,9 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Partners Section */}
-      <div id="event-partners" className="section-padding" style={{ backgroundColor: 'var(--bg-primary)' }}>
+      <div id="event-partners" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 flex items-center justify-center gap-3">
               <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--primary-color)' }}>
                 <Handshake size={40} className="text-white" />
@@ -378,8 +447,8 @@ const EventDetail: React.FC = () => {
             </p>
           </div>
           
-          <div className="text-center py-12">
-            <p className="text-[var(--text-secondary)] text-lg mb-6">
+          <div className="text-center py-6">
+            <p className="text-[var(--text-secondary)] text-lg mb-4">
               Partnership opportunities available. Contact us for more information.
             </p>
             <button 
@@ -398,9 +467,9 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Contact Section */}
-      <div id="event-contact" className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <div id="event-contact" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4 flex items-center justify-center gap-3">
               <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--primary-color)' }}>
                 <Mail size={40} className="text-white" />
