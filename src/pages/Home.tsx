@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Navigation from '../components/Navigation'
 import Hero from '../components/Hero'
 import About from '../components/About'
@@ -13,11 +14,44 @@ import { trackPageView } from '../utils/analytics'
 import { initPerformanceOptimizations } from '../utils/performance'
 
 function Home() {
+  const location = useLocation()
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [currentSection, setCurrentSection] = useState<string>('home')
-  const [showVideo, setShowVideo] = useState(true)
+  // Initialize showVideo based on sessionStorage to prevent flash
+  const [showVideo, setShowVideo] = useState(() => {
+    const fromEvent = sessionStorage.getItem('fromEventPage')
+    const hasSeenVideo = sessionStorage.getItem('hasSeenVideo')
+    // Don't show video if coming from event page or if already seen
+    return !fromEvent && hasSeenVideo !== 'true'
+  })
 
   useEffect(() => {
+    // Check if coming from event page and skip video
+    const fromEvent = sessionStorage.getItem('fromEventPage')
+    if (fromEvent) {
+      sessionStorage.removeItem('fromEventPage')
+      setShowVideo(false)
+      return
+    }
+    
+    // Check if user has already seen the video in this session
+    const hasSeenVideo = sessionStorage.getItem('hasSeenVideo')
+    if (hasSeenVideo === 'true') {
+      setShowVideo(false)
+    }
+  }, [location])
+
+  useEffect(() => {
+    // Mark video as seen when it ends
+    if (!showVideo) {
+      sessionStorage.setItem('hasSeenVideo', 'true')
+    }
+  }, [showVideo])
+
+  useEffect(() => {
+    // Scroll to top when page loads
+    window.scrollTo(0, 0)
+    
     const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
     setTheme(savedTheme)
     document.documentElement.setAttribute('data-theme', savedTheme)

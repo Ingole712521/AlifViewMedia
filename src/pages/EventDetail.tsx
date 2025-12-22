@@ -10,6 +10,9 @@ const EventDetail: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
+    // Scroll to top when page loads
+    window.scrollTo(0, 0)
+    
     const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
     setTheme(savedTheme)
     document.documentElement.setAttribute('data-theme', savedTheme)
@@ -126,12 +129,12 @@ const EventDetail: React.FC = () => {
             : 'none'
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center space-x-3">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex justify-between items-center">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             <img
               src={theme === 'dark' ? '/images/Aliief_white.png' : '/images/company-logo.png'}
               alt="Alif View Media Logo"
-              className="h-10 w-auto object-contain"
+              className="h-8 sm:h-10 w-auto object-contain"
               onError={(e) => {
                 const target = e.target as HTMLImageElement
                 target.style.display = 'none'
@@ -139,12 +142,12 @@ const EventDetail: React.FC = () => {
             />
           </div>
           
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2 lg:gap-3">
             {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                className={`px-3 lg:px-4 py-2 rounded-lg font-semibold text-xs lg:text-sm transition-all duration-300 ${
                   activeSection === section
                     ? 'text-white shadow-lg'
                     : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'
@@ -160,42 +163,46 @@ const EventDetail: React.FC = () => {
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <div className="md:hidden">
               <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
             </div>
             <button
-              onClick={() => navigate('/')}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-white"
+              onClick={() => {
+                sessionStorage.setItem('fromEventPage', 'true')
+                navigate('/')
+              }}
+              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-300 hover:scale-105 text-white"
               style={{ 
                 background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
               }}
             >
-              <Home size={18} />
-              <span className="hidden sm:inline">Back to Home</span>
+              <Home size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <span className="hidden xs:inline sm:hidden lg:inline">Home</span>
+              <span className="hidden sm:inline lg:hidden">Back</span>
             </button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <div className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ 
+      <div className="relative pt-20 pb-10 sm:pt-24 sm:pb-12 md:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden" style={{ 
         backgroundColor: '#181935'
       }}>
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-10 blur-3xl animate-pulse" style={{ backgroundColor: 'var(--primary-color)' }}></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-10 blur-3xl animate-pulse" style={{ animationDelay: '1s', backgroundColor: 'var(--accent-color)' }}></div>
+          <div className="absolute top-0 left-0 w-64 h-64 sm:w-96 sm:h-96 rounded-full opacity-10 blur-3xl animate-pulse" style={{ backgroundColor: 'var(--primary-color)' }}></div>
+          <div className="absolute bottom-0 right-0 w-64 h-64 sm:w-96 sm:h-96 rounded-full opacity-10 blur-3xl animate-pulse" style={{ animationDelay: '1s', backgroundColor: 'var(--accent-color)' }}></div>
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           {/* Logo Section */}
-          <div className="mb-4 sm:mb-6 flex justify-center">
-            <div className="relative w-full max-w-xl mx-auto h-48 sm:h-64 md:h-80 flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
+          <div className="mb-3 sm:mb-4 md:mb-6 flex justify-center">
+            <div className="relative w-full max-w-xs sm:max-w-md md:max-w-xl mx-auto h-40 xs:h-48 sm:h-56 md:h-64 lg:h-80 flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
               <img
                 src="/images/realityLogo.png"
                 alt="RealtyView Leadership Summit & Awards 2026 Logo"
-                className="w-full h-full object-contain p-2 sm:p-4 md:p-6 drop-shadow-2xl"
+                className="w-full h-full object-contain p-2 sm:p-3 md:p-4 lg:p-6 drop-shadow-2xl"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
@@ -205,26 +212,26 @@ const EventDetail: React.FC = () => {
             </div>
           </div>
           
-          <div className="mb-4">
-            <span className="inline-block px-4 py-2 rounded-full text-white text-xs sm:text-sm font-semibold backdrop-blur-md shadow-lg border border-white/20" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
+          <div className="mb-3 sm:mb-4">
+            <span className="inline-block px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full text-white text-[10px] xs:text-xs sm:text-sm font-semibold backdrop-blur-md shadow-lg border border-white/20" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
               REALTYVIEW LEADERSHIP SUMMIT & AWARDS 2026
             </span>
           </div>
-          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-3 sm:mb-5 leading-tight drop-shadow-lg">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-2 sm:mb-3 md:mb-5 leading-tight drop-shadow-lg px-2">
             NASHIK
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/95 font-semibold mb-5 sm:mb-7 drop-shadow-md">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white/95 font-semibold mb-4 sm:mb-5 md:mb-7 drop-shadow-md px-2">
             Driving Leadership & Excellence in Emerging Realty Markets
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
-            <div className="flex items-center gap-2 text-white bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-lg hover:bg-white/30 transition-all duration-300">
-              <Calendar size={18} />
-              <span className="text-sm sm:text-base font-medium">18th April, 2026</span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-white bg-white/20 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 shadow-lg hover:bg-white/30 transition-all duration-300">
+              <Calendar size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <span className="text-xs sm:text-sm md:text-base font-medium">18th April, 2026</span>
             </div>
-            <div className="flex items-center gap-2 text-white bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-lg hover:bg-white/30 transition-all duration-300">
-              <MapPin size={18} />
-              <span className="text-sm sm:text-base font-medium">Virtual Event</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 text-white bg-white/20 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 shadow-lg hover:bg-white/30 transition-all duration-300">
+              <MapPin size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <span className="text-xs sm:text-sm md:text-base font-medium">Virtual Event</span>
             </div>
           </div>
 
@@ -396,16 +403,16 @@ const EventDetail: React.FC = () => {
                 Process to Nominate
               </h3>
               
-              <div className="grid sm:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 {[1, 2, 3].map((step, index) => (
                   <div key={index} className="text-center">
                     <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-white shadow-lg"
+                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-lg sm:text-xl md:text-2xl font-bold text-white shadow-lg"
                       style={{ backgroundColor: 'var(--primary-color)' }}
                     >
                       {step}
                     </div>
-                    <p className="text-[var(--text-secondary)] font-semibold">
+                    <p className="text-xs sm:text-sm md:text-base text-[var(--text-secondary)] font-semibold px-2">
                       {index === 0 && 'Submit the enquiry form'}
                       {index === 1 && 'Submit the Nomination Form'}
                       {index === 2 && 'Make the Payment'}
@@ -478,31 +485,31 @@ const EventDetail: React.FC = () => {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             <div className="card group hover:scale-105 transition-all duration-300">
-              <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mb-6">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">
                 For Partnership & Speaking Opportunities
               </h3>
               
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div 
-                    className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0"
                     style={{ backgroundColor: 'var(--primary-color)' }}
                   >
-                    <Users size={24} className="text-white" />
+                    <Users size={20} className="sm:w-6 sm:h-6 text-white" />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-[var(--text-primary)] mb-1">Shadab Khan</h4>
-                    <div className="flex items-center gap-2 text-[var(--text-secondary)] mb-1">
-                      <Mail size={18} />
-                      <a href="mailto:director@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-sm sm:text-base text-[var(--text-primary)] mb-1">Shadab Khan</h4>
+                    <div className="flex items-center gap-2 text-[var(--text-secondary)] mb-1 flex-wrap">
+                      <Mail size={16} className="sm:w-[18px] sm:h-[18px] flex-shrink-0" />
+                      <a href="mailto:director@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors text-xs sm:text-sm break-all">
                         director@alifviewmedia.com
                       </a>
                     </div>
-                    <div className="flex items-center gap-2 text-[var(--text-secondary)]">
-                      <Phone size={18} />
-                      <a href="tel:+919270096787" className="hover:text-[var(--primary-color)] transition-colors">
+                    <div className="flex items-center gap-2 text-[var(--text-secondary)] flex-wrap">
+                      <Phone size={16} className="sm:w-[18px] sm:h-[18px] flex-shrink-0" />
+                      <a href="tel:+919270096787" className="hover:text-[var(--primary-color)] transition-colors text-xs sm:text-sm">
                         91 9270096787
                       </a>
                     </div>
@@ -512,29 +519,29 @@ const EventDetail: React.FC = () => {
             </div>
 
             <div className="card group hover:scale-105 transition-all duration-300">
-              <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mb-6">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">
                 For Nominations
               </h3>
               
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div 
-                    className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0"
                     style={{ backgroundColor: 'var(--accent-color)' }}
                   >
-                    <Award size={24} className="text-white" />
+                    <Award size={20} className="sm:w-6 sm:h-6 text-white" />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-[var(--text-primary)] mb-1">Anam Shaikh</h4>
-                    <div className="flex items-center gap-2 text-[var(--text-secondary)] mb-1">
-                      <Mail size={18} />
-                      <a href="mailto:sales@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-sm sm:text-base text-[var(--text-primary)] mb-1">Anam Shaikh</h4>
+                    <div className="flex items-center gap-2 text-[var(--text-secondary)] mb-1 flex-wrap">
+                      <Mail size={16} className="sm:w-[18px] sm:h-[18px] flex-shrink-0" />
+                      <a href="mailto:sales@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors text-xs sm:text-sm break-all">
                         sales@alifviewmedia.com
                       </a>
                     </div>
-                    <div className="flex items-center gap-2 text-[var(--text-secondary)]">
-                      <Phone size={18} />
-                      <a href="tel:+919529518393" className="hover:text-[var(--primary-color)] transition-colors">
+                    <div className="flex items-center gap-2 text-[var(--text-secondary)] flex-wrap">
+                      <Phone size={16} className="sm:w-[18px] sm:h-[18px] flex-shrink-0" />
+                      <a href="tel:+919529518393" className="hover:text-[var(--primary-color)] transition-colors text-xs sm:text-sm">
                         91 9529518393
                       </a>
                     </div>
