@@ -288,7 +288,7 @@ const Contact: React.FC = () => {
                       <div>
                         <h5 className="font-semibold text-[var(--text-primary)] mb-1">Shadab Khan</h5>
                         <p className="text-[var(--text-secondary)]">director@alifviewmedia.com</p>
-                        <p className="text-[var(--text-secondary)]">91 9270096787</p>
+                        <p className="text-[var(--text-secondary)]">+91 9270096787</p>
                       </div>
                     </div>
 
@@ -299,7 +299,7 @@ const Contact: React.FC = () => {
                       <div>
                         <h5 className="font-semibold text-[var(--text-primary)] mb-1">Anam Shaikh</h5>
                         <p className="text-[var(--text-secondary)]">sales@alifviewmedia.com</p>
-                        <p className="text-[var(--text-secondary)]">91 9529518393</p>
+                        <p className="text-[var(--text-secondary)]">+91 9529518393</p>
                       </div>
                     </div>
                   </div>

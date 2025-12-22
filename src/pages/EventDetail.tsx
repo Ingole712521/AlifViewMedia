@@ -510,7 +510,7 @@ const EventDetail: React.FC = () => {
                     <div className="flex items-center gap-2 text-[var(--text-secondary)] flex-wrap">
                       <Phone size={16} className="sm:w-[18px] sm:h-[18px] flex-shrink-0" />
                       <a href="tel:+919270096787" className="hover:text-[var(--primary-color)] transition-colors text-xs sm:text-sm">
-                        91 9270096787
+                        +91 9270096787
                       </a>
                     </div>
                   </div>
@@ -542,7 +542,7 @@ const EventDetail: React.FC = () => {
                     <div className="flex items-center gap-2 text-[var(--text-secondary)] flex-wrap">
                       <Phone size={16} className="sm:w-[18px] sm:h-[18px] flex-shrink-0" />
                       <a href="tel:+919529518393" className="hover:text-[var(--primary-color)] transition-colors text-xs sm:text-sm">
-                        91 9529518393
+                        +91 9529518393
                       </a>
                     </div>
                   </div>
