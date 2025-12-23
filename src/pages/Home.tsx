@@ -63,6 +63,33 @@ function Home() {
     trackPageView(window.location.pathname)
   }, [])
 
+  // Update active section based on scroll position
+  useEffect(() => {
+    if (showVideo) return // Don't track scroll while video is playing
+    
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'objectives-mission', 'events', 'gallery', 'contact']
+      const scrollPosition = window.scrollY + 200 // Offset for navbar
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i]
+        const element = document.getElementById(section)
+        if (element) {
+          const offsetTop = element.offsetTop
+          if (scrollPosition >= offsetTop) {
+            setCurrentSection(section)
+            break
+          }
+        }
+      }
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    // Set initial active section
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [showVideo])
+
   // Update favicon on theme change so the tab logo is visible in both modes
   useEffect(() => {
     const lightIcon = '/images/company-logo.png'
