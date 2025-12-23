@@ -282,24 +282,13 @@ const Contact: React.FC = () => {
                   
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--primary-color)' }}>
-                        <Mail size={20} className="text-white" />
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-[var(--text-primary)] mb-1">Shadab Khan</h5>
-                        <p className="text-[var(--text-secondary)]">director@alifviewmedia.com</p>
-                        <p className="text-[var(--text-secondary)]">+91 9270096787</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--secondary-color)' }}>
                         <Mail size={20} className="text-white" />
                       </div>
                       <div>
                         <h5 className="font-semibold text-[var(--text-primary)] mb-1">Anam Shaikh</h5>
                         <p className="text-[var(--text-secondary)]">sales@alifviewmedia.com</p>
-                        <p className="text-[var(--text-secondary)]">+91 9529518393</p>
+                        <p className="text-[var(--text-secondary)]">+91 9270096787</p>
                       </div>
                     </div>
                   </div>

@@ -581,38 +581,6 @@ const EventDetail: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8 px-2 sm:px-0">
-            {/* <div className="card group hover:scale-105 transition-all duration-300">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">
-                For Partnership & Speaking Opportunities
-              </h3>
-              
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div 
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: 'var(--primary-color)' }}
-                  >
-                    <Users size={20} className="sm:w-6 sm:h-6 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-bold text-sm sm:text-base text-[var(--text-primary)] mb-1">Shadab Khan</h4>
-                    <div className="flex items-center gap-2 text-[var(--text-secondary)] mb-1 flex-wrap">
-                      <Mail size={16} className="sm:w-[18px] sm:h-[18px] flex-shrink-0" />
-                      <a href="mailto:director@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors text-xs sm:text-sm break-all">
-                        director@alifviewmedia.com
-                      </a>
-                    </div>
-                    <div className="flex items-center gap-2 text-[var(--text-secondary)] flex-wrap">
-                      <Phone size={16} className="sm:w-[18px] sm:h-[18px] flex-shrink-0" />
-                      <a href="tel:+919270096787" className="hover:text-[var(--primary-color)] transition-colors text-xs sm:text-sm">
-                        +91 9270096787
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
             <div className="bg-[var(--bg-primary)] rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 group hover:scale-105 transition-all duration-300 shadow-lg sm:shadow-xl hover:shadow-2xl border-2" style={{
               borderColor: 'var(--accent-color)'
             }}>
@@ -641,7 +609,7 @@ const EventDetail: React.FC = () => {
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3 text-[var(--text-secondary)] flex-wrap">
                       <Phone size={18} className="sm:w-5 sm:h-5 flex-shrink-0 text-[var(--primary-color)] mt-0.5 sm:mt-0" />
                       <a href="tel:+919529518393" className="hover:text-[var(--primary-color)] transition-colors text-sm sm:text-base md:text-lg font-medium">
-                        +91 9529518393
+                        +91 9270096787
                       </a>
                     </div>
                   </div>

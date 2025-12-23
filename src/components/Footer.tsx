@@ -77,10 +77,6 @@ const Footer: React.FC = () => {
                 <Mail size={18} className="text-gray-400" />
                 <span className="text-gray-400">marketing.alifviewmedia@gmail.com</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone size={18} className="text-gray-400" />
-                <span className="text-gray-400">+91 9270096787</span>
-              </div>
             </div>
 
             {/* Social Media Icons */}
