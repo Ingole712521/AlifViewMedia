@@ -185,13 +185,19 @@ const EventDetail: React.FC = () => {
 
       {/* Hero Section */}
       <div className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden" style={{
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
-        backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%)'
+        background: theme === 'dark' 
+          ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)'
+          : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%)',
+        backgroundImage: theme === 'dark'
+          ? 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%)'
+          : 'radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%)'
       }}>
         {/* Professional Background Pattern */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ opacity: theme === 'dark' ? 0.2 : 0.1 }}>
           <div className="absolute inset-0" style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px)'
+            backgroundImage: theme === 'dark'
+              ? 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px)'
+              : 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 0, 0, 0.02) 2px, rgba(0, 0, 0, 0.02) 4px)'
           }}></div>
         </div>
 
@@ -216,21 +222,25 @@ const EventDetail: React.FC = () => {
             {/* Content Section - Right Side */}
             <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left px-2 sm:px-4 lg:px-0">
               <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-7">
-                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight tracking-tight">
+                <h1 className={`text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight ${theme === 'dark' ? 'text-white' : 'text-[var(--text-primary)]'}`}>
                   PUNE
                 </h1>
 
-                <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white/95 font-semibold leading-relaxed max-w-2xl mx-auto lg:mx-0 lg:max-w-none">
+                <p className={`text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed max-w-2xl mx-auto lg:mx-0 lg:max-w-none ${theme === 'dark' ? 'text-white/95' : 'text-[var(--text-secondary)]'}`}>
                   Driving Leadership & Excellence in Emerging Realty Markets
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:gap-4 mt-6 sm:mt-8 md:mt-10">
-                <div className="flex items-center gap-2 sm:gap-2.5 text-white bg-white/10 backdrop-blur-md px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl border border-white/20 shadow-lg sm:shadow-xl hover:bg-white/20 hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center">
+                <div className={`flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center ${theme === 'dark' 
+                  ? 'text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20' 
+                  : 'text-[var(--text-primary)] bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'}`}>
                   <Calendar size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
                   <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">18th April, 2026</span>
                 </div>
-                <div className="flex items-center gap-2 sm:gap-2.5 text-white bg-white/10 backdrop-blur-md px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl border border-white/20 shadow-lg sm:shadow-xl hover:bg-white/20 hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center">
+                <div className={`flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center ${theme === 'dark' 
+                  ? 'text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20' 
+                  : 'text-[var(--text-primary)] bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'}`}>
                   <MapPin size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
                   <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">Virtual Event</span>
                 </div>
@@ -243,9 +253,16 @@ const EventDetail: React.FC = () => {
                     key={section}
                     onClick={() => scrollToSection(section)}
                     className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${activeSection === section
-                      ? 'bg-white text-[var(--primary-color)] shadow-lg border-white/30'
-                      : 'bg-white/20 text-white hover:bg-white/30 border-white/20'
+                      ? theme === 'dark'
+                        ? 'bg-white text-[var(--primary-color)] shadow-lg border-white/30'
+                        : 'text-white shadow-lg border-white/30'
+                      : theme === 'dark'
+                        ? 'bg-white/20 text-white hover:bg-white/30 border-white/20'
+                        : 'bg-white/80 text-[var(--text-primary)] hover:bg-white border-[var(--border-color)]'
                       }`}
+                    style={activeSection === section && theme === 'light' ? {
+                      background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                    } : {}}
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
                   </button>
