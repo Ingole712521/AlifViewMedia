@@ -102,7 +102,10 @@ const Navigation: React.FC<NavigationProps> = ({
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
 
             <button
-              className='btn-primary'
+              className='h-10 px-4 py-2 rounded-lg font-semibold text-sm text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center'
+              style={{
+                background: 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))'
+              }}
               onClick={() => onSectionChange('contact')}
             >
               Get in Touch
