@@ -117,7 +117,7 @@ const MediaGallery: React.FC = () => {
         <div className="text-center">
           <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4">Ready to Create Your Own Success Story?</h3>
           <p className="text-sm xs:text-base sm:text-lg text-white/90 mb-6 max-w-2xl mx-auto px-2">
-            Join thousands of satisfied clients who have transformed their events with our 
+            Join thousands of satisfied clients who have transformed their events with our services
           </p>
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
