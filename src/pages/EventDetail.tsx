@@ -287,15 +287,15 @@ const EventDetail: React.FC = () => {
 
           <div className="space-y-5 sm:space-y-6 md:space-y-7 text-[var(--text-secondary)] text-base sm:text-lg md:text-xl leading-relaxed px-2 sm:px-4 md:px-0 max-w-4xl mx-auto">
             <p className="text-justify">
-              <span className="font-bold text-[var(--text-primary)]">RealtyView Leadership Summit & Awards 2026 – Pune</span> is a premier platform dedicated to advancing the real estate ecosystem in India's Tier-2 and Tier-3 cities. The summit will bring together leading builders, developers, architects, planners, investors, and industry experts for high-level discussions on growth opportunities, market trends, innovation, and sustainable development.
+              <span className="font-bold text-[var(--text-primary)]">RealtyView Leadership Summit & Awards 2026 – Pune</span> is a premier platform dedicated to advancing the real estate ecosystem in India's Tier-2 and Tier-3 cities. The summit will bring together leading builders, developers, architects, planners, investors, and industry experts for high-level discussions on growth opportunities, market trends, innovation, and sustainable development
             </p>
 
             <p className="text-justify">
-              The event will feature an engaging leadership conference focused on the evolving dynamics of emerging real estate markets, followed by the <span className="font-semibold text-[var(--text-primary)]">RealtyView Leadership Awards 2026</span>, which will recognise and felicitate Individuals and Organisations for their excellence, leadership, and contribution to the real estate sector.
+              The event will feature an engaging leadership conference focused on the evolving dynamics of emerging real estate markets, followed by the <span className="font-semibold text-[var(--text-primary)]">RealtyView Leadership Awards 2026</span>, which will recognise and felicitate Individuals and Organisations for their excellence, leadership, and contribution to the real estate sector
             </p>
 
             <p className="text-justify">
-              Designed as a high-impact gathering, the RealtyView Leadership Summit & Awards aims to foster collaboration, knowledge exchange, and industry recognition—driving structured and sustainable realty growth in emerging cities like Pune and beyond.
+              Designed as a high-impact gathering, the RealtyView Leadership Summit & Awards aims to foster collaboration, knowledge exchange, and industry recognition—driving structured and sustainable realty growth in emerging cities like Pune and beyond
             </p>
           </div>
 

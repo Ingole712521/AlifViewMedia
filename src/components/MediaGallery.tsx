@@ -30,7 +30,7 @@ const MediaGallery: React.FC = () => {
           </h2>
           <p className="text-sm xs:text-base sm:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 px-2">
             Discover our extensive portfolio showcasing memorable moments, innovative events, 
-            and transformative media solutions that define excellence in conference organization.
+            and transformative media solutions that define excellence in conference organization
           </p>
           
           {/* Statistics */}
@@ -107,7 +107,7 @@ const MediaGallery: React.FC = () => {
                 We're crafting something extraordinary for you. Our gallery will showcase 
                 <span className="text-white font-semibold"> stunning events</span>, 
                 <span className="text-white font-semibold"> innovative solutions</span>, and 
-                <span className="text-white font-semibold"> memorable moments</span> that define excellence.
+                <span className="text-white font-semibold"> memorable moments</span> that define excellence
               </p>
             </div>
           </div>
@@ -117,7 +117,7 @@ const MediaGallery: React.FC = () => {
         <div className="text-center">
           <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4">Ready to Create Your Own Success Story?</h3>
           <p className="text-sm xs:text-base sm:text-lg text-white/90 mb-6 max-w-2xl mx-auto px-2">
-            Join thousands of satisfied clients who have transformed their events with our innovative solutions.
+            Join thousands of satisfied clients who have transformed their events with our 
           </p>
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}

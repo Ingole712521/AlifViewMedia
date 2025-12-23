@@ -113,7 +113,7 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
         </h1>
         
         <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[var(--text-secondary)] mb-6 sm:mb-8 md:mb-10 max-w-sm sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-2 sm:px-4">
-        Alifview is a professional business networking platform specializing in conferences, award ceremonies, and industry-focused forums. We curate high-impact events that bring together key stakeholders, decision-makers, and industry leaders across sectors.
+        Alifview is a professional business networking platform specializing in conferences, award ceremonies, and industry-focused forums. We curate high-impact events that bring together key stakeholders, decision-makers, and industry leaders across sectors
         </p>
 
         {/* CTA Buttons */}

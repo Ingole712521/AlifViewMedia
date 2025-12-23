@@ -90,7 +90,7 @@ const ObjectivesMission: React.FC = () => {
           <div className="max-w-4xl mx-auto text-center">
             <div className="relative inline-block">
               <p className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed px-4 relative z-10">
-                Alifview is a professional business networking platform specializing in conferences, award ceremonies, and industry-focused forums. We curate high-impact events that bring together key stakeholders, decision-makers, and industry leaders across sectors.
+                Alifview is a professional business networking platform specializing in conferences, award ceremonies, and industry-focused forums. We curate high-impact events that bring together key stakeholders, decision-makers, and industry leaders across sectors
               </p>
               <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3/4 h-1 rounded-full opacity-30" style={{ backgroundColor: 'var(--primary-color)' }}></div>
             </div>
@@ -206,7 +206,7 @@ const ObjectivesMission: React.FC = () => {
                     </div>
                   </div>
                   <p className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed text-justify group-hover:text-[var(--text-primary)] transition-colors duration-300">
-                    At AlifView Media, our mission is to acknowledge and celebrate the accomplishments that inspire progress and set new standards of excellence.
+                    At AlifView Media, our mission is to acknowledge and celebrate the accomplishments that inspire progress and set new standards of excellence
                   </p>
                 </div>
                 
@@ -217,7 +217,7 @@ const ObjectivesMission: React.FC = () => {
                     </div>
                   </div>
                   <p className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed text-justify group-hover:text-[var(--text-primary)] transition-colors duration-300">
-                    We aim to shine a spotlight on those who have made significant contributions and to provide a stage where hard work, dedication, and achievements can be recognized and celebrated.
+                    We aim to shine a spotlight on those who have made significant contributions and to provide a stage where hard work, dedication, and achievements can be recognized and celebrated
                   </p>
                 </div>
               </div>

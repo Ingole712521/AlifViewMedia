@@ -92,7 +92,7 @@ const Contact: React.FC = () => {
           </h2>
           <p className="text-sm xs:text-base sm:text-lg text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed px-2">
             Ready to transform your next event into an extraordinary experience? 
-            Let's discuss how we can bring your vision to life.
+            Let's discuss how we can bring your vision to life
           </p>
         </div>
 
