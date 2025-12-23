@@ -280,31 +280,32 @@ const Contact: React.FC = () => {
                 <div>
                   <h4 className="font-semibold text-[var(--text-primary)] mb-4">For Partnership & Speaking Opportunities</h4>
                   
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--secondary-color)' }}>
-                        <Mail size={20} className="text-white" />
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-[var(--text-primary)] mb-1">Anam Shaikh</h5>
-                        <p className="text-[var(--text-secondary)]">sales@alifviewmedia.com</p>
-                        <p className="text-[var(--text-secondary)]">+91 9270096787</p>
-                      </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#dc2626' }}>
+                      <Mail size={20} className="text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="font-semibold text-[var(--text-primary)] mb-1">Anam Shaikh</h5>
+                      <p className="text-[var(--text-secondary)]">sales@alifviewmedia.com</p>
+                      <p className="text-[var(--text-secondary)]">+91 9270096787</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--accent-color)' }}>
-                    <MapPin size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-[var(--text-primary)] mb-1">Office Address</h4>
-                    <p className="text-[var(--text-secondary)] leading-relaxed">
-                      15/4, Jalsa Apartment<br/>
-                      Pakhal Road, Nashik 422011<br/>
-                      Maharashtra, India
-                    </p>
+                <div>
+                  <h4 className="font-semibold text-[var(--text-primary)] mb-4">Office Address</h4>
+                  
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#f59e0b' }}>
+                      <MapPin size={20} className="text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-[var(--text-secondary)] leading-relaxed">
+                        15/4, Jalsa Apartment<br/>
+                        Pakhal Road, Nashik 422011<br/>
+                        Maharashtra, India
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
