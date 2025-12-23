@@ -20,7 +20,12 @@ const MediaGallery: React.FC = () => {
 
   return (
     <section 
-      className="section-padding red-gradient-bg"
+      className="section-padding"
+      style={{
+        background: 'linear-gradient(135deg, #dc2626, #ef4444, #b91c1c)',
+        backgroundSize: '300% 300%',
+        animation: 'gradientShift 12s ease infinite'
+      }}
     >
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
