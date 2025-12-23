@@ -131,7 +131,7 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
           </button>
           
           <button 
-            className="btn-secondary hover:bg-[var(--primary-color)] hover:text-white w-full xs:w-full sm:w-auto min-w-[180px] xs:min-w-[200px] sm:min-w-[220px] md:min-w-[240px] text-xs xs:text-sm sm:text-base md:text-lg px-3 xs:px-4 sm:px-6 md:px-8 py-2 xs:py-3 sm:py-4"
+            className="btn-secondary hover:bg-[#dc2626] hover:text-white w-full xs:w-full sm:w-auto min-w-[180px] xs:min-w-[200px] sm:min-w-[220px] md:min-w-[240px] text-xs xs:text-sm sm:text-base md:text-lg px-3 xs:px-4 sm:px-6 md:px-8 py-2 xs:py-3 sm:py-4"
             onClick={handleGetInTouch}
           >
             <span className="flex items-center justify-center space-x-1 xs:space-x-2">

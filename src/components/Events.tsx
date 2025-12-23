@@ -56,7 +56,7 @@ const Events: React.FC = () => {
                   }}
                 />
                 <div className="absolute bottom-4 left-4 right-4 flex justify-center">
-                  <span className="inline-block px-3 py-1 rounded-full text-white text-xs font-semibold bg-[var(--primary-color)]">
+                  <span className="inline-block px-3 py-1 rounded-full text-white text-xs font-semibold" style={{ backgroundColor: '#dc2626' }}>
                     {event.type}
                   </span>
                 </div>
@@ -91,11 +91,14 @@ const Events: React.FC = () => {
                   {event.description}
                 </p>
 
-                <button className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold text-white transition-all duration-300 transform group-hover:scale-105"
-                  style={{ background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))' }}
+                <button className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold text-white transition-all duration-300 transform group-hover:scale-105 relative overflow-hidden"
+                  style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
                 >
-                  View Details
-                  <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
+                  <span className="relative z-10 flex items-center gap-2">
+                    View Details
+                    <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#b91c1c] to-[#f59e0b] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
               </div>
             </div>

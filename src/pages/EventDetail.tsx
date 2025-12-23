@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Calendar, MapPin, Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home } from 'lucide-react'
+import { Calendar, MapPin, Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home, Menu, X } from 'lucide-react'
 import ThemeToggle from '../components/ThemeToggle'
 
 const EventDetail: React.FC = () => {
   const navigate = useNavigate()
   const [activeSection, setActiveSection] = useState('home')
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
@@ -111,95 +112,189 @@ const EventDetail: React.FC = () => {
     <div className="min-h-screen w-full" style={{ backgroundColor: 'var(--bg-primary)' }}>
       {/* Fixed Navigation Bar */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 shadow-lg' : 'py-4'
-          } backdrop-blur-md`}
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          isScrolled 
+            ? "py-4 shadow-lg backdrop-blur-md" 
+            : "py-6"
+        }`}
         style={{
-          backgroundColor: isScrolled
-            ? theme === 'dark'
-              ? 'rgba(17, 24, 39, 0.95)'
-              : 'rgba(255, 255, 255, 0.95)'
-            : theme === 'dark'
-              ? 'rgba(17, 24, 39, 0.98)'
-              : 'rgba(255, 255, 255, 0.98)',
-          borderBottom: isScrolled
-            ? theme === 'dark'
-              ? '1px solid rgba(55, 65, 81, 0.3)'
-              : '1px solid rgba(0, 0, 0, 0.1)'
-            : 'none'
+          backgroundColor: isScrolled 
+            ? theme === 'dark' 
+              ? "rgba(17, 24, 39, 0.95)"
+              : "rgba(255, 255, 255, 0.95)"
+            : "transparent",
+          backdropFilter: isScrolled ? "blur(10px)" : "none",
+          borderBottom: isScrolled 
+            ? theme === 'dark' 
+              ? "1px solid rgba(55, 65, 81, 0.3)" 
+              : "1px solid rgba(229, 231, 235, 0.3)"
+            : "none",
+          boxShadow: isScrolled 
+            ? theme === 'dark' 
+              ? "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)"
+              : "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+            : "none"
         }}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center space-x-2 sm:space-x-3">
-            <img
-              src={theme === 'dark' ? '/images/Aliief_white.png' : '/images/company-logo.png'}
-              alt="Alif View Media Logo"
-              className="h-8 sm:h-10 w-auto object-contain"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement
-                target.style.display = 'none'
-              }}
-            />
-          </div>
-
-          <div className="hidden md:flex items-center gap-2 lg:gap-3">
-            {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
-              <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className={`px-3 lg:px-4 py-2 rounded-lg font-semibold text-xs lg:text-sm transition-all duration-300 ${activeSection === section
-                  ? 'text-white shadow-lg'
-                  : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'
-                  }`}
-                style={activeSection === section ? {
-                  background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
-                } : {}}
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </button>
-            ))}
-
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="md:hidden">
-              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+          <div className='flex justify-between items-center'>
+            {/* Logo */}
+            <div className='flex items-center space-x-3'>
+              <img
+                src={
+                  theme === "dark"
+                    ? "/images/Aliief_white.png"
+                    : "/images/company-logo.png"
+                }
+                alt='Alif View Media Logo'
+                className='h-10 w-auto object-contain'
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = "none";
+                }}
+              />
             </div>
-            <button
-              onClick={() => {
-                sessionStorage.setItem('fromEventPage', 'true')
-                navigate('/')
-              }}
-              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-300 hover:scale-105 text-white"
-              style={{
-                background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+
+            {/* Desktop Navigation */}
+            <div className='hidden md:flex items-center space-x-8'>
+              {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`nav-link ${
+                    activeSection === section
+                      ? "text-[var(--primary-color)]"
+                      : ""
+                  }`}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              ))}
+
+              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+
+              <button
+                className='h-10 px-4 py-2 rounded-lg font-semibold text-sm text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center'
+                style={{
+                  background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+                }}
+                onClick={() => {
+                  sessionStorage.setItem('fromEventPage', 'true')
+                  navigate('/')
+                }}
+              >
+                <Home size={16} className="mr-2" />
+                Home
+              </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className='md:hidden flex items-center space-x-4'>
+              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`text-[var(--text-primary)] hover:opacity-70 transition-opacity duration-200 ${
+                  theme === 'dark' 
+                    ? 'hover:text-white' 
+                    : 'hover:text-gray-800'
+                }`}
+              >
+                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div
+              className='md:hidden mt-4 py-4 border-t backdrop-blur-md rounded-lg'
+              style={{ 
+                borderColor: theme === 'dark' 
+                  ? "rgba(55, 65, 81, 0.5)" 
+                  : "rgba(229, 231, 235, 0.5)",
+                backgroundColor: theme === 'dark' 
+                  ? "rgba(17, 24, 39, 0.9)" 
+                  : "rgba(255, 255, 255, 0.9)",
+                backdropFilter: "blur(10px)"
               }}
             >
-              <Home size={16} className="sm:w-[18px] sm:h-[18px]" />
-              <span className="hidden xs:inline sm:hidden lg:inline">Home</span>
-              <span className="hidden sm:inline lg:hidden">Back</span>
-            </button>
-          </div>
+              {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => {
+                    scrollToSection(section);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`block w-full text-left py-3 px-4 nav-link rounded-md transition-colors duration-200 ${
+                    theme === 'dark' 
+                      ? 'hover:bg-white/10' 
+                      : 'hover:bg-black/5'
+                  }`}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              ))}
+              <button
+                className='mt-4 w-full mx-4 px-8 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center'
+                style={{
+                  background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+                }}
+                onClick={() => {
+                  sessionStorage.setItem('fromEventPage', 'true')
+                  navigate('/')
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                <Home size={16} className="mr-2" />
+                Home
+              </button>
+            </div>
+          )}
         </div>
       </nav>
 
       {/* Hero Section */}
       <div className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden" style={{
-        background: theme === 'dark' 
+        backgroundColor: theme === 'dark' 
+          ? '#0f172a'
+          : 'var(--bg-primary)',
+        background: theme === 'dark'
           ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)'
-          : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%)',
-        backgroundImage: theme === 'dark'
-          ? 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%)'
-          : 'radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%)'
+          : 'none'
       }}>
-        {/* Professional Background Pattern */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ opacity: theme === 'dark' ? 0.2 : 0.1 }}>
-          <div className="absolute inset-0" style={{
-            backgroundImage: theme === 'dark'
-              ? 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px)'
-              : 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 0, 0, 0.02) 2px, rgba(0, 0, 0, 0.02) 4px)'
-          }}></div>
-        </div>
+        {/* Animated Background - Same as main page */}
+        {theme === 'light' && (
+          <div className="absolute inset-0 gradient-bg opacity-10"></div>
+        )}
+        
+        {/* Floating Elements - Same as main page */}
+        {theme === 'light' && (
+          <>
+            <div className="absolute top-12 sm:top-16 md:top-20 lg:top-24 left-2 sm:left-4 md:left-6 lg:left-8 floating-animation">
+              <div className="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full opacity-20" style={{ backgroundColor: 'var(--primary-color)' }}></div>
+            </div>
+            <div className="absolute bottom-12 sm:bottom-16 md:bottom-20 lg:bottom-24 right-2 sm:right-4 md:right-6 lg:right-8 floating-animation" style={{ animationDelay: '2s' }}>
+              <div className="w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full opacity-20" style={{ backgroundColor: 'var(--accent-color)' }}></div>
+            </div>
+            <div className="absolute top-1/2 left-4 sm:left-8 md:left-12 lg:left-16 floating-animation" style={{ animationDelay: '4s' }}>
+              <div className="w-4 h-4 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full opacity-20" style={{ backgroundColor: 'var(--secondary-color)' }}></div>
+            </div>
+          </>
+        )}
+        
+        {/* Professional Background Pattern - Dark mode only */}
+        {theme === 'dark' && (
+          <>
+            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+              <div className="absolute inset-0" style={{
+                backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px)'
+              }}></div>
+            </div>
+            <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{
+              backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%)'
+            }}></div>
+          </>
+        )}
 
         <div className="max-w-7xl mx-auto relative z-10 pt-8 sm:pt-10 md:pt-12">
           <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 xl:gap-16">
@@ -222,7 +317,7 @@ const EventDetail: React.FC = () => {
             {/* Content Section - Right Side */}
             <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left px-2 sm:px-4 lg:px-0">
               <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-7">
-                <h1 className={`text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight ${theme === 'dark' ? 'text-white' : 'text-[var(--text-primary)]'}`}>
+                <h1 className={`text-3xl xs:text-4xl sm:text-5xl md:text-4xl lg:text-4xl xl:text-6xl font-bold leading-tight tracking-tight ${theme === 'dark' ? 'text-white' : 'text-[var(--text-primary)]'}`}>
                   PUNE
                 </h1>
 
@@ -246,7 +341,7 @@ const EventDetail: React.FC = () => {
                 </div>
               </div>
 
-              {/* Mobile Navigation */}
+              {/* Mobile Navigation */}                                                     
               <div className="lg:hidden flex flex-wrap items-center justify-center gap-2 pt-6">
                 {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
                   <button
@@ -261,7 +356,7 @@ const EventDetail: React.FC = () => {
                         : 'bg-white/80 text-[var(--text-primary)] hover:bg-white border-[var(--border-color)]'
                       }`}
                     style={activeSection === section && theme === 'light' ? {
-                      background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                      background: 'linear-gradient(135deg, #dc2626, #f59e0b)'
                     } : {}}
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -274,22 +369,39 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Home Section */}
-      <div id="event-home" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 opacity-5" style={{
-          background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
-          transform: 'translate(30%, -30%)'
-        }}></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 opacity-5" style={{
-          background: 'radial-gradient(circle, var(--accent-color) 0%, transparent 70%)',
-          transform: 'translate(-30%, 30%)'
-        }}></div>
+      <div id="event-home" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+        backgroundColor: theme === 'dark' ? 'var(--bg-secondary)' : '#f8fafc',
+        background: theme === 'light' 
+          ? 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%), radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.02) 0%, transparent 50%)'
+          : 'none'
+      }}>
+        {/* Professional Background Pattern - Light mode */}
+        {theme === 'light' && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.015) 1px, transparent 1px)',
+              backgroundSize: '40px 40px'
+            }}></div>
+          </div>
+        )}
+        {theme === 'dark' && (
+          <>
+            <div className="absolute top-0 right-0 w-96 h-96 opacity-5" style={{
+              background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
+              transform: 'translate(30%, -30%)'
+            }}></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 opacity-5" style={{
+              background: 'radial-gradient(circle, var(--accent-color) 0%, transparent 70%)',
+              transform: 'translate(-30%, 30%)'
+            }}></div>
+          </>
+        )}
 
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
             <div className="inline-flex items-center justify-center mb-4 sm:mb-6">
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{ 
-                background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}>
                 <Star size={32} className="sm:w-10 sm:h-10 text-white" fill="currentColor" />
               </div>
@@ -298,21 +410,21 @@ const EventDetail: React.FC = () => {
               About the Summit
             </h2>
             <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{ 
-              background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
+              background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
             }}></div>
           </div>
 
           <div className="space-y-5 sm:space-y-6 md:space-y-7 text-[var(--text-secondary)] text-base sm:text-lg md:text-xl leading-relaxed px-2 sm:px-4 md:px-0 max-w-4xl mx-auto">
             <p className="text-justify">
-              <span className="font-bold text-[var(--text-primary)]">RealtyView Leadership Summit & Awards 2026 – Pune</span> is a premier platform dedicated to advancing the real estate ecosystem in India's Tier-2 and Tier-3 cities. The summit will bring together leading builders, developers, architects, planners, investors, and industry experts for high-level discussions on growth opportunities, market trends, innovation, and sustainable development
+              <span className="font-bold text-[var(--text-primary)]">RealtyView Leadership Summit & Awards 2026 – Pune</span> is a premier platform dedicated to advancing the real estate ecosystem in India's Tier-2 and Tier-3 cities. The summit will bring together leading builders, developers, architects, planners, investors, and industry experts for high-level discussions on growth opportunities, market trends, innovation, and sustainable development.
             </p>
 
             <p className="text-justify">
-              The event will feature an engaging leadership conference focused on the evolving dynamics of emerging real estate markets, followed by the <span className="font-semibold text-[var(--text-primary)]">RealtyView Leadership Awards 2026</span>, which will recognise and felicitate Individuals and Organisations for their excellence, leadership, and contribution to the real estate sector
+              The event will feature an engaging leadership conference focused on the evolving dynamics of emerging real estate markets, followed by the <span className="font-semibold text-[var(--text-primary)]">RealtyView Leadership Awards 2026</span>, which will recognise and felicitate Individuals and Organisations for their excellence, leadership, and contribution to the real estate sector.
             </p>
 
             <p className="text-justify">
-              Designed as a high-impact gathering, the RealtyView Leadership Summit & Awards aims to foster collaboration, knowledge exchange, and industry recognition—driving structured and sustainable realty growth in emerging cities like Pune and beyond
+              Designed as a high-impact gathering, the RealtyView Leadership Summit & Awards aims to foster collaboration, knowledge exchange, and industry recognition—driving structured and sustainable realty growth in emerging cities like Pune and beyond.
             </p>
           </div>
 
@@ -321,7 +433,7 @@ const EventDetail: React.FC = () => {
             <button
               className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
               style={{
-                background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)  '
               }}
               onClick={() => {
                 const contactSection = document.getElementById('event-contact')
@@ -337,7 +449,7 @@ const EventDetail: React.FC = () => {
             <button
               className="group w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-[var(--text-primary)] rounded-lg sm:rounded-xl border-2 transform hover:scale-105 transition-all duration-300 shadow-lg sm:shadow-xl hover:shadow-2xl"
               style={{
-                borderColor: 'var(--primary-color)',
+                borderColor: '#dc2626',
                 backgroundColor: 'transparent'
               }}
               onClick={() => {
@@ -355,18 +467,33 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Speakers Section */}
-      <div id="event-speakers" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)' }}>
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 opacity-5" style={{
-          background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
-          transform: 'translate(30%, -30%)'
-        }}></div>
+      <div id="event-speakers" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+        backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
+        background: theme === 'light' 
+          ? 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%), radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.03) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.02) 0%, transparent 50%)'
+          : 'none'
+      }}>
+        {/* Professional Background Pattern - Light mode */}
+        {theme === 'light' && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.015) 1px, transparent 1px)',
+              backgroundSize: '40px 40px'
+            }}></div>
+          </div>
+        )}
+        {theme === 'dark' && (
+          <div className="absolute top-0 right-0 w-96 h-96 opacity-5" style={{
+            background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
+            transform: 'translate(30%, -30%)'
+          }}></div>
+        )}
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
             <div className="inline-flex items-center justify-center mb-4 sm:mb-6">
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{ 
-                background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}>
                 <Users size={32} className="sm:w-10 sm:h-10 text-white" />
               </div>
@@ -395,22 +522,39 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Awards Section */}
-      <div id="event-awards" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 opacity-5" style={{
-          background: 'radial-gradient(circle, var(--accent-color) 0%, transparent 70%)',
-          transform: 'translate(-30%, -30%)'
-        }}></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 opacity-5" style={{
-          background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
-          transform: 'translate(30%, 30%)'
-        }}></div>
+      <div id="event-awards" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+        backgroundColor: theme === 'dark' ? 'var(--bg-secondary)' : '#f1f5f9',
+        background: theme === 'light' 
+          ? 'linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%), radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.04) 0%, transparent 60%), radial-gradient(circle at 10% 10%, rgba(245, 158, 11, 0.03) 0%, transparent 50%)'
+          : 'none'
+      }}>
+        {/* Professional Background Pattern - Light mode */}
+        {theme === 'light' && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.02) 1px, transparent 1px)',
+              backgroundSize: '40px 40px'
+            }}></div>
+          </div>
+        )}
+        {theme === 'dark' && (
+          <>
+            <div className="absolute top-0 left-0 w-96 h-96 opacity-5" style={{
+              background: 'radial-gradient(circle, var(--accent-color) 0%, transparent 70%)',
+              transform: 'translate(-30%, -30%)'
+            }}></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 opacity-5" style={{
+              background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
+              transform: 'translate(30%, 30%)'
+            }}></div>
+          </>
+        )}
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
             <div className="inline-flex items-center justify-center mb-4 sm:mb-6">
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{ 
-                background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}>
                 <Award size={32} className="sm:w-10 sm:h-10 text-white" />
               </div>
@@ -433,12 +577,12 @@ const EventDetail: React.FC = () => {
                 className="group relative bg-[var(--bg-primary)] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border-2 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden"
                 style={{
                   borderColor: 'transparent',
-                  background: 'linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box, linear-gradient(135deg, var(--primary-color), var(--accent-color)) border-box'
+                  background: 'linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box, linear-gradient(135deg, #dc2626, #f59e0b) border-box'
                 }}
               >
                 {/* Hover Effect Background */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300" style={{
-                  background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                  background: 'linear-gradient(135deg, #dc2626, #f59e0b)'
                 }}></div>
                 
                 <div className="relative z-10">
@@ -446,7 +590,7 @@ const EventDetail: React.FC = () => {
                     <div
                       className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg transform group-hover:rotate-12 transition-transform duration-300"
                       style={{ 
-                        background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                        background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
                       }}
                     >
                       <Star size={24} className="sm:w-7 sm:h-7 text-white" fill="currentColor" />
@@ -485,7 +629,7 @@ const EventDetail: React.FC = () => {
                     <div
                       className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white shadow-lg sm:shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
                       style={{ 
-                        background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                        background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
                       }}
                     >
                       {step}
@@ -518,18 +662,33 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Partners Section */}
-      <div id="event-partners" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)' }}>
-        {/* Decorative Background Elements */}
-        <div className="absolute bottom-0 left-0 w-96 h-96 opacity-5" style={{
-          background: 'radial-gradient(circle, var(--accent-color) 0%, transparent 70%)',
-          transform: 'translate(-30%, 30%)'
-        }}></div>
+      <div id="event-partners" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+        backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
+        background: theme === 'light' 
+          ? 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%), radial-gradient(circle at 70% 30%, rgba(220, 38, 38, 0.03) 0%, transparent 50%), radial-gradient(circle at 30% 70%, rgba(245, 158, 11, 0.02) 0%, transparent 50%)'
+          : 'none'
+      }}>
+        {/* Professional Background Pattern - Light mode */}
+        {theme === 'light' && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.015) 1px, transparent 1px)',
+              backgroundSize: '40px 40px'
+            }}></div>
+          </div>
+        )}
+        {theme === 'dark' && (
+          <div className="absolute bottom-0 left-0 w-96 h-96 opacity-5" style={{
+            background: 'radial-gradient(circle, var(--accent-color) 0%, transparent 70%)',
+            transform: 'translate(-30%, 30%)'
+          }}></div>
+        )}
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
             <div className="inline-flex items-center justify-center mb-4 sm:mb-6 gap-4">
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{ 
-                background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}>
                 <Handshake size={32} className="sm:w-10 sm:h-10 text-white" />
               </div>
@@ -555,7 +714,7 @@ const EventDetail: React.FC = () => {
               <button
                 className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
                 style={{
-                  background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                  background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
                 }}
                 onClick={() => {
                   const contactSection = document.getElementById('event-contact')
@@ -573,18 +732,33 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Contact Section */}
-      <div id="event-contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 opacity-5" style={{
-          background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
-          transform: 'translate(30%, -30%)'
-        }}></div>
+      <div id="event-contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+        backgroundColor: theme === 'dark' ? 'var(--bg-secondary)' : '#f1f5f9',
+        background: theme === 'light' 
+          ? 'linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%), radial-gradient(circle at 30% 70%, rgba(220, 38, 38, 0.04) 0%, transparent 60%), radial-gradient(circle at 90% 20%, rgba(245, 158, 11, 0.03) 0%, transparent 50%)'
+          : 'none'
+      }}>
+        {/* Professional Background Pattern - Light mode */}
+        {theme === 'light' && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.02) 1px, transparent 1px)',
+              backgroundSize: '40px 40px'
+            }}></div>
+          </div>
+        )}
+        {theme === 'dark' && (
+          <div className="absolute top-0 right-0 w-96 h-96 opacity-5" style={{
+            background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
+            transform: 'translate(30%, -30%)'
+          }}></div>
+        )}
 
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
             <div className="inline-flex items-center justify-center mb-4 sm:mb-6">
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{ 
-                background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))'
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}>
                 <Mail size={32} className="sm:w-10 sm:h-10 text-white" />
               </div>
@@ -599,7 +773,7 @@ const EventDetail: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8 px-2 sm:px-0">
             <div className="bg-[var(--bg-primary)] rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 group hover:scale-105 transition-all duration-300 shadow-lg sm:shadow-xl hover:shadow-2xl border-2" style={{
-              borderColor: 'var(--accent-color)'
+              borderColor: '#dc2626'
             }}>
               <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6 md:mb-8">
                 For Nominations
@@ -610,7 +784,7 @@ const EventDetail: React.FC = () => {
                   <div
                     className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg transform group-hover:rotate-12 transition-transform duration-300"
                     style={{ 
-                      background: 'linear-gradient(135deg, var(--accent-color), var(--primary-color))'
+                      background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
                     }}
                   >
                     <Award size={24} className="sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />

@@ -104,7 +104,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <button
               className='h-10 px-4 py-2 rounded-lg font-semibold text-sm text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center'
               style={{
-                background: 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))'
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}
               onClick={() => onSectionChange('contact')}
             >
@@ -159,7 +159,10 @@ const Navigation: React.FC<NavigationProps> = ({
               </button>
             ))}
             <button
-              className='btn-primary mt-4 w-full mx-4'
+              className='mt-4 w-full mx-4 px-8 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg'
+              style={{
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+              }}
               onClick={() => {
                 onSectionChange('contact');
                 setIsMobileMenuOpen(false);

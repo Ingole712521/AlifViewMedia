@@ -75,7 +75,7 @@ const ObjectivesMission: React.FC = () => {
               <div className="absolute inset-0 rounded-full animate-ping opacity-20" style={{ backgroundColor: 'var(--primary-color)' }}></div>
             </div>
           </div>
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--text-primary)] mb-6 sm:mb-8 leading-tight bg-gradient-to-r from-[var(--primary-color)] to-[var(--accent-color)] bg-clip-text text-transparent">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--text-primary)] mb-6 sm:mb-8 leading-normal bg-gradient-to-r from-[var(--primary-color)] to-[var(--accent-color)] bg-clip-text text-transparent pb-2">
             Our Objectives & Mission
           </h2>
           <div className="flex items-center justify-center gap-4 mb-4">
@@ -250,7 +250,10 @@ const ObjectivesMission: React.FC = () => {
         <div className={`mt-16 sm:mt-20 text-center transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="inline-block relative group">
             <button 
-              className="btn-primary text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-5 relative overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
+              className="text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-5 rounded-lg font-semibold text-white relative overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
+              style={{
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+              }}
               onClick={() => {
                 const contactSection = document.getElementById('contact')
                 if (contactSection) {
@@ -262,7 +265,7 @@ const ObjectivesMission: React.FC = () => {
                 Get in Touch
                 <ArrowRight size={20} className="transform group-hover:translate-x-1 transition-transform duration-300" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[var(--secondary-color)] to-[var(--accent-color)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#b91c1c] to-[#f59e0b] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </div>
         </div>
