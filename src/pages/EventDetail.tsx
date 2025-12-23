@@ -184,71 +184,74 @@ const EventDetail: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative pt-20 pb-10 sm:pt-24 sm:pb-12 md:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden" style={{
-        backgroundColor: '#181935'
+      <div className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden" style={{
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+        backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%)'
       }}>
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-0 w-64 h-64 sm:w-96 sm:h-96 rounded-full opacity-10 blur-3xl animate-pulse" style={{ backgroundColor: 'var(--primary-color)' }}></div>
-          <div className="absolute bottom-0 right-0 w-64 h-64 sm:w-96 sm:h-96 rounded-full opacity-10 blur-3xl animate-pulse" style={{ animationDelay: '1s', backgroundColor: 'var(--accent-color)' }}></div>
+        {/* Professional Background Pattern */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px)'
+          }}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 text-center pt-10">
-          {/* Logo Section */}
-          <div className="mb-3 sm:mb-4 md:mb-6 flex justify-center">
-            <div className="relative w-full max-w-xs sm:max-w-md md:max-w-xl mx-auto h-40 xs:h-48 sm:h-56 md:h-64 lg:h-80 flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
-              <img
-                src="/images/realityLogo.png"
-                alt="RealtyView Leadership Summit & Awards 2026 Logo"
-                className="w-full h-full object-contain p-2 sm:p-3 md:p-4 lg:p-6 drop-shadow-2xl"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement
-                  target.style.display = 'none'
-                }}
-              />
-              {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 rounded-lg"></div> */}
+        <div className="max-w-7xl mx-auto relative z-10 pt-8 sm:pt-10 md:pt-12">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 xl:gap-16">
+            {/* Logo Section - Left Side */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+              <div className="relative w-full max-w-lg lg:max-w-2xl xl:max-w-3xl h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem] flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl blur-xl"></div>
+                <img
+                  src="/images/realityLogo.png"
+                  alt="RealtyView Leadership Summit & Awards 2026 Logo"
+                  className="relative w-full h-full object-contain p-2 sm:p-4 lg:p-6 drop-shadow-2xl"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                  }}
+                />
+              </div>
             </div>
-          </div>
 
-          {/* <div className="mb-3 sm:mb-4">
-            <span className="inline-block px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-full text-white text-[10px] xs:text-xs sm:text-sm font-semibold backdrop-blur-md shadow-lg border border-white/20" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
-              REALTYVIEW LEADERSHIP SUMMIT & AWARDS 2026
-            </span>
-          </div> */}
-          <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-2 sm:mb-3 md:mb-5 leading-tight drop-shadow-lg px-2">
-            PUNE
-          </h1>
+            {/* Content Section - Right Side */}
+            <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
+              <div className="space-y-4 sm:space-y-5 md:space-y-6">
+                <h1 className="text-xs sm:text-xs md:text-xs lg:text-xs xl:text-4xl font-bold text-white leading-tight">
+                  PUNE
+                </h1>
 
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white/95 font-semibold mb-4 sm:mb-5 md:mb-7 drop-shadow-md px-2">
-            Driving Leadership & Excellence in Emerging Realty Markets
-          </p>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 font-semibold leading-relaxed max-w-2xl lg:max-w-none uppercase">
+                  Driving Leadership & Excellence in Emerging Realty Markets
+                </p>
+              </div>
 
+              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:gap-4 mt-6 sm:mt-8">
+                <div className="flex items-center gap-2.5 text-white bg-white/10 backdrop-blur-md px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300">
+                  <Calendar size={18} className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                  <span className="text-sm sm:text-base font-medium whitespace-nowrap">18th April, 2026</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-white bg-white/10 backdrop-blur-md px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300">
+                  <MapPin size={18} className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                  <span className="text-sm sm:text-base font-medium whitespace-nowrap">Virtual Event</span>
+                </div>
+              </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
-            <div className="flex items-center gap-1.5 sm:gap-2 text-white bg-white/20 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 shadow-lg hover:bg-white/30 transition-all duration-300">
-              <Calendar size={16} className="sm:w-[18px] sm:h-[18px]" />
-              <span className="text-xs sm:text-sm md:text-base font-medium">18th April, 2026</span>
+              {/* Mobile Navigation */}
+              <div className="lg:hidden flex flex-wrap items-center justify-center gap-2 pt-6">
+                {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
+                  <button
+                    key={section}
+                    onClick={() => scrollToSection(section)}
+                    className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${activeSection === section
+                      ? 'bg-white text-[var(--primary-color)] shadow-lg border-white/30'
+                      : 'bg-white/20 text-white hover:bg-white/30 border-white/20'
+                      }`}
+                  >
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-2 text-white bg-white/20 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 shadow-lg hover:bg-white/30 transition-all duration-300">
-              <MapPin size={16} className="sm:w-[18px] sm:h-[18px]" />
-              <span className="text-xs sm:text-sm md:text-base font-medium">Virtual Event</span>
-            </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          <div className="md:hidden flex flex-wrap items-center justify-center gap-2 mb-4">
-            {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
-              <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${activeSection === section
-                  ? 'bg-white text-[var(--primary-color)] shadow-lg border-white/30'
-                  : 'bg-white/20 text-white hover:bg-white/30 border-white/20'
-                  }`}
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </button>
-            ))}
           </div>
         </div>
       </div>
