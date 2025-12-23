@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Mail, Phone, Facebook, Twitter, Linkedin, Instagram, ArrowUp } from 'lucide-react'
+import { Mail,  Facebook, Twitter, Linkedin, Instagram, ArrowUp } from 'lucide-react'
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
