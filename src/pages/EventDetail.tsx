@@ -407,7 +407,7 @@ const EventDetail: React.FC = () => {
               </div>
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6 px-2">
-              About the Summit
+              About the Event
             </h2>
             <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{ 
               background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
