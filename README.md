@@ -1,5 +1,6 @@
 # Alif View Media - Vite TypeScript Project
-
+Remincder 
+Data will be add by 2nd Janauray and a Client form structure needed
 This project has been successfully converted from a vanilla JavaScript React project to a modern Vite TypeScript project.
 
 ## 🚀 Project Structure
