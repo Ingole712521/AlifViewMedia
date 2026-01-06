@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Calendar, MapPin, Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home, Menu, X } from 'lucide-react'
 import ThemeToggle from '../components/ThemeToggle'
+import NominationProcess from '../components/NominationProcess'
 
 const EventDetail: React.FC = () => {
   const navigate = useNavigate()
@@ -614,50 +615,7 @@ const EventDetail: React.FC = () => {
           </div>
 
           {/* Nomination Process */}
-          <div className="mt-12 sm:mt-16 md:mt-20 max-w-5xl mx-auto px-2 sm:px-0">
-            <div className="bg-[var(--bg-primary)] rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 border-2 shadow-xl sm:shadow-2xl" style={{
-              borderColor: 'var(--primary-color)',
-              background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.03), rgba(245, 158, 11, 0.03)), var(--bg-primary)'
-            }}>
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-6 sm:mb-8 md:mb-10 text-center px-2">
-                Process to Nominate
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-10">
-                {[1, 2, 3].map((step, index) => (
-                  <div key={index} className="text-center group">
-                    <div
-                      className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white shadow-lg sm:shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
-                      style={{ 
-                        background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
-                      }}
-                    >
-                      {step}
-                    </div>
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-[var(--text-secondary)] font-semibold px-2">
-                      {index === 0 && 'Submit the enquiry form'}
-                      {index === 1 && 'Submit the Nomination Form'}
-                      {index === 2 && 'Make the Payment'}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-gradient-to-r from-[var(--bg-secondary)] to-[var(--bg-primary)] p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border-l-4 shadow-lg" style={{ borderLeftColor: 'var(--primary-color)' }}>
-                <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">Nomination Fees:</h4>
-                <ul className="space-y-2 sm:space-y-3 md:space-y-4 text-[var(--text-secondary)] text-base sm:text-lg md:text-xl">
-                  <li className="flex items-start sm:items-center gap-2 sm:gap-3">
-                    <CheckCircle2 size={20} className="sm:w-6 sm:h-6 text-[var(--primary-color)] flex-shrink-0 mt-0.5 sm:mt-0" />
-                    <span><strong className="text-[var(--text-primary)]">Rs. 20,000 + GST</strong> (Per nomination)</span>
-                  </li>
-                  <li className="flex items-start sm:items-center gap-2 sm:gap-3">
-                    <CheckCircle2 size={20} className="sm:w-6 sm:h-6 text-[var(--primary-color)] flex-shrink-0 mt-0.5 sm:mt-0" />
-                    <span>For <strong className="text-[var(--text-primary)]">2 & above nominations</strong>: <strong className="text-[var(--text-primary)]">Rs. 15,000 + GST</strong></span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <NominationProcess theme={theme} />
         </div>
       </div>
 
