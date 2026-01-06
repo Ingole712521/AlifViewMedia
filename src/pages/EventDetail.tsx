@@ -749,6 +749,37 @@ const EventDetail: React.FC = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-base sm:text-lg md:text-xl text-[var(--text-primary)] mb-2 sm:mb-3">Anam Shaikh</h4>
+                    <div className="flex items-start sm:items-center gap-2 sm:gap-3 text-[var(--text-secondary)] flex-wrap">
+                      <Mail size={18} className="sm:w-5 sm:h-5 flex-shrink-0 text-[var(--primary-color)] mt-0.5 sm:mt-0" />
+                      <a href="mailto:sales@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors text-sm sm:text-base md:text-lg whitespace-nowrap font-medium">
+                        sales@alifviewmedia.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[var(--bg-primary)] rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 group hover:scale-105 transition-all duration-300 shadow-lg sm:shadow-xl hover:shadow-2xl border-2" style={{
+              borderColor: '#dc2626'
+            }}>
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6 md:mb-8">
+                For Queries
+              </h3>
+
+              <div className="space-y-3 sm:space-y-4 md:space-y-5">
+                <div className="flex items-start gap-3 sm:gap-4 md:gap-5">
+                  <div
+                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg transform group-hover:rotate-12 transition-transform duration-300"
+                    style={{ 
+                      background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+                    }}
+                  >
+                    <Mail size={24} className="sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-base sm:text-lg md:text-xl text-[var(--text-primary)] mb-1 sm:mb-2">Anam Shaikh</h4>
+                    <p className="text-sm sm:text-base md:text-lg text-[var(--text-secondary)] mb-2 sm:mb-3">Manager - Events</p>
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3 text-[var(--text-secondary)] mb-2 sm:mb-3 flex-wrap">
                       <Mail size={18} className="sm:w-5 sm:h-5 flex-shrink-0 text-[var(--primary-color)] mt-0.5 sm:mt-0" />
                       <a href="mailto:sales@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors text-sm sm:text-base md:text-lg break-all font-medium">
@@ -757,8 +788,9 @@ const EventDetail: React.FC = () => {
                     </div>
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3 text-[var(--text-secondary)] flex-wrap">
                       <Phone size={18} className="sm:w-5 sm:h-5 flex-shrink-0 text-[var(--primary-color)] mt-0.5 sm:mt-0" />
-                      <a href="tel:+919529518393" className="hover:text-[var(--primary-color)] transition-colors text-sm sm:text-base md:text-lg font-medium">
-                        +91 9270096787
+                      <span className="text-sm sm:text-base md:text-lg font-medium mr-1">Contact:</span>
+                      <a href="tel:9270096787" className="hover:text-[var(--primary-color)] transition-colors text-sm sm:text-base md:text-lg font-medium">
+                        9270096787
                       </a>
                     </div>
                   </div>

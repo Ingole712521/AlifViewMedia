@@ -51,26 +51,9 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
         "Supporting documents: Project images, Brochures, Client testimonials, Media coverage"
       ]
     },
+    
     {
       id: 3,
-      title: "Nomination Fee",
-      icon: <IndianRupee size={24} />,
-      content: [
-        "A processing fee is applicable only upon confirmation of winning.",
-        "Rs. 20,000 + GST (per nomination)",
-        "For 3 & above nominations: Rs. 15,000 + GST"
-      ]
-    },
-    {
-      id: 4,
-      title: "Submission Deadlines",
-      icon: <CalendarClock size={24} />,
-      content: [
-        "All nominations must be submitted on or before March 30, 2026"
-      ]
-    },
-    {
-      id: 5,
       title: "Jury & Confidentiality",
       icon: <Scale size={24} />,
       content: [
@@ -80,7 +63,7 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
       ]
     },
     {
-      id: 6,
+      id: 4,
       title: "Award Presentation",
       icon: <Trophy size={24} />,
       content: [
@@ -90,7 +73,7 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
       ]
     },
     {
-      id: 7,
+      id: 5,
       title: "Rights of the Organizer",
       icon: <ShieldCheck size={24} />,
       content: [
@@ -314,91 +297,95 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
 
             {/* Contact Card */}
             <div 
-              className={`rounded-xl xs:rounded-2xl p-4 xs:p-5 sm:p-6 md:p-8 shadow-lg border relative overflow-hidden ${
+              className={`rounded-xl xs:rounded-2xl p-5 xs:p-6 sm:p-7 md:p-8 shadow-xl border relative overflow-hidden ${
                 isDark 
-                  ? 'bg-[var(--bg-primary)] border-white/10' 
-                  : 'bg-[var(--bg-primary)] border-red-100'
+                  ? 'bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700/50' 
+                  : 'bg-gradient-to-br from-slate-50 to-white border-slate-200'
               }`}
             >
-              <div 
-                className="absolute top-0 right-0 w-24 h-24 xs:w-32 xs:h-32 rounded-full -mr-12 -mt-12 xs:-mr-16 xs:-mt-16 blur-2xl"
-                style={{
-                  background: isDark 
-                    ? 'rgba(245, 158, 11, 0.1)' 
-                    : 'rgba(254, 243, 199, 0.6)'
-                }}
-              ></div>
-              <h3 className={`text-base xs:text-lg sm:text-xl font-bold mb-3 xs:mb-4 sm:mb-6 relative z-10 flex items-center gap-2 ${
-                isDark ? 'text-white' : 'text-[var(--text-primary)]'
-              }`}>
-                <MessageCircle size={18} className="xs:w-5 xs:h-5 text-[var(--secondary-color)]" />
-                Contact for Queries
-              </h3>
-              <div className="space-y-3 xs:space-y-4 sm:space-y-6 relative z-10">
+              {/* Title Section */}
+              <div className="flex items-center gap-3 xs:gap-4 mb-5 xs:mb-6 sm:mb-7 relative z-10">
+                <div 
+                  className="w-10 h-10 xs:w-12 xs:h-12 rounded-lg xs:rounded-xl flex items-center justify-center shrink-0 shadow-md"
+                  style={{
+                    background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+                  }}
+                >
+                  <MessageCircle size={18} className="xs:w-5 xs:h-5 text-white" />
+                </div>
+                <h3 className={`text-base xs:text-lg sm:text-xl font-bold ${
+                  isDark ? 'text-white' : 'text-[var(--text-primary)]'
+                }`}>
+                  Contact for Queries
+                </h3>
+              </div>
+
+              {/* Contact Person Info */}
+              <div className="mb-5 xs:mb-6 sm:mb-7 relative z-10">
+                <h4 className={`text-base xs:text-lg sm:text-xl font-bold mb-1 xs:mb-2 ${
+                  isDark ? 'text-white' : 'text-[var(--text-primary)]'
+                }`}>
+                  Anam Shaikh
+                </h4>
+                <p className={`text-sm xs:text-base ${
+                  isDark ? 'text-gray-400' : 'text-[var(--text-secondary)]'
+                }`}>
+                  Manager - Events
+                </p>
+              </div>
+
+              {/* Contact Details */}
+              <div className="space-y-4 xs:space-y-5 relative z-10">
+                {/* Email Section */}
                 <a 
                   href="mailto:sales@alifviewmedia.com" 
-                  className={`flex items-start gap-2 xs:gap-3 sm:gap-4 group p-2 xs:p-3 rounded-lg transition-colors ${
-                    isDark ? 'hover:bg-white/10' : 'hover:bg-slate-50'
+                  className={`flex items-center gap-3 xs:gap-4 group transition-all duration-200 ${
+                    isDark ? 'hover:bg-white/5' : 'hover:bg-slate-50'
                   }`}
                 >
-                  <div className={`w-9 h-9 xs:w-10 xs:h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                    isDark ? 'bg-blue-500/20 group-hover:bg-blue-500/30' : 'bg-blue-50 group-hover:bg-blue-100'
+                  <div className="w-11 h-11 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-lg xs:rounded-xl flex items-center justify-center shrink-0 shadow-md transition-transform group-hover:scale-105"
+                    style={{
+                      background: 'linear-gradient(135deg, #3b82f6, #2563eb)'
+                    }}
+                  >
+                    <Mail size={18} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-white" />
+                  </div>
+                  <span className={`text-sm xs:text-base font-semibold whitespace-nowrap transition-colors ${
+                    isDark 
+                      ? 'text-gray-200 group-hover:text-blue-400' 
+                      : 'text-[var(--text-primary)] group-hover:text-blue-700'
                   }`}>
-                    <Mail size={16} className="xs:w-[18px] xs:h-[18px] text-blue-600" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className={`text-[10px] xs:text-xs font-bold uppercase mb-0.5 ${
-                      isDark ? 'text-gray-400' : 'text-[var(--text-secondary)]'
-                    }`}>
-                      Email Support
-                    </p>
-                    <span className={`text-xs xs:text-sm font-semibold break-all transition-colors ${
-                      isDark 
-                        ? 'text-gray-300 group-hover:text-blue-400' 
-                        : 'text-[var(--text-primary)] group-hover:text-blue-700'
-                    }`}>
-                      sales@alifviewmedia.com
-                    </span>
-                  </div>
+                    sales@alifviewmedia.com
+                  </span>
                 </a>
-                
-                <div className={`flex items-start gap-2 xs:gap-3 sm:gap-4 p-2 xs:p-3 rounded-lg transition-colors ${
-                  isDark ? 'hover:bg-white/10' : 'hover:bg-slate-50'
+
+                {/* Phone Section */}
+                <div className={`flex items-start gap-3 xs:gap-4 transition-all duration-200 ${
+                  isDark ? 'hover:bg-white/5' : 'hover:bg-slate-50'
                 }`}>
-                  <div className={`w-9 h-9 xs:w-10 xs:h-10 rounded-lg flex items-center justify-center shrink-0 ${
-                    isDark ? 'bg-green-500/20' : 'bg-green-50'
-                  }`}>
-                    <Phone size={16} className="xs:w-[18px] xs:h-[18px] text-green-600" />
+                  <div className="w-11 h-11 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-lg xs:rounded-xl flex items-center justify-center shrink-0 shadow-md"
+                    style={{
+                      background: 'linear-gradient(135deg, #10b981, #059669)'
+                    }}
+                  >
+                    <Phone size={18} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className={`text-[10px] xs:text-xs font-bold uppercase mb-0.5 ${
+                    <p className={`text-[10px] xs:text-xs font-bold uppercase tracking-wider mb-1 xs:mb-1.5 ${
                       isDark ? 'text-gray-400' : 'text-[var(--text-secondary)]'
                     }`}>
-                      Helpline
+                      CONTACT
                     </p>
-                    <div className="flex flex-col gap-1">
-                      <a 
-                        href="tel:9270096787" 
-                        className={`text-xs xs:text-sm font-semibold transition-colors ${
-                          isDark 
-                            ? 'text-gray-300 hover:text-green-400' 
-                            : 'text-[var(--text-primary)] hover:text-green-700'
-                        }`}
-                      >
-                        9270096787
-                      </a>
-                      <div className={`h-px w-full ${isDark ? 'bg-white/10' : 'bg-[var(--border-color)]'}`}></div>
-                      <a 
-                        href="tel:9529518393" 
-                        className={`text-xs xs:text-sm font-semibold transition-colors ${
-                          isDark 
-                            ? 'text-gray-300 hover:text-green-400' 
-                            : 'text-[var(--text-primary)] hover:text-green-700'
-                        }`}
-                      >
-                        9529518393
-                      </a>
-                    </div>
+                    <a 
+                      href="tel:9270096787" 
+                      className={`text-sm xs:text-base sm:text-lg font-semibold transition-colors block ${
+                        isDark 
+                          ? 'text-gray-200 hover:text-green-400' 
+                          : 'text-[var(--text-primary)] hover:text-green-700'
+                      }`}
+                    >
+                      9270096787
+                    </a>
                   </div>
                 </div>
               </div>
