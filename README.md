@@ -7,7 +7,7 @@ This project has been successfully converted from a vanilla JavaScript React pro
 
 ```
 ├── src/
-│   ├── components/          # React TypeScript components
+│   ├── components/ 
 │   │   ├── About.tsx
 │   │   ├── Contact.tsx
 │   │   ├── Footer.tsx
