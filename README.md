@@ -99,5 +99,4 @@ The project is ready for deployment to any static hosting service:
 
 ## 📄 License
 
-© 2024 Alif View Media. All rights reserved.
-# AlifViewMedia
+© 2026 Alif View Media. All rights reserved.
