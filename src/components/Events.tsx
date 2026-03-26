@@ -10,10 +10,10 @@ const Events: React.FC = () => {
       id: 'realtyview-2026',
       title: 'REALTYVIEW LEADERSHIP SUMMIT & AWARDS 2026',
       location: 'Maharashtra',
-      subtitle: 'Driving Leadership & Excellence in Emerging Realty Markets',
-      date: '18th April, 2026',
-      type: 'Virtual Event',
-      description: 'A premier platform dedicated to advancing the real estate ecosystem in India\'s Tier-2 and Tier-3 cities. The summit will bring together leading builders, developers, architects, planners, investors, and industry experts.',
+      subtitle: 'Convene. Connect. Celebrate Excellence',
+      date: '23rd May 2026',
+      type: 'TBA',
+      description: 'RealtyView Leadership Summit & Awards 2026 – Maharashtra is a distinguished platform celebrating excellence and driving strategic dialogue across one of India’s most dynamic real estate markets. Bringing together an elite gathering of leading developers, architects, urban planners, investors, policymakers, and industry visionaries from across Maharashtra, the summit fosters high-impact conversations around market evolution, investment opportunities, innovation, and sustainable urban development.',
       image: '/images/realityLogo.png'
     }
   ]
