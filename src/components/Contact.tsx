@@ -285,7 +285,7 @@ const Contact: React.FC = () => {
                       <Mail size={20} className="text-white" />
                     </div>
                     <div className="flex-1">
-                      <h5 className="font-semibold text-[var(--text-primary)] mb-1">Anam Shaikh</h5>
+                      <h5 className="font-semibold text-[var(--text-primary)] mb-1"> Almas Khan</h5>
                       <p className="text-[var(--text-secondary)]">sales@alifviewmedia.com</p>
                       <p className="text-[var(--text-secondary)]">+91 9270096787</p>
                     </div>

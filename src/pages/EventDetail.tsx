@@ -56,7 +56,8 @@ const EventDetail: React.FC = () => {
         "Best Mixed-Use Development Project",
         "Best Smart City Project",
         "Best Township Project",
-        "Iconic Landmark Project of the Year"
+        "Iconic Landmark Project of the Year",
+        "Redevelopment Project of the Year"
       ]
     },
     {
@@ -319,11 +320,11 @@ const EventDetail: React.FC = () => {
             <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left px-2 sm:px-4 lg:px-0">
               <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-7">
                 <h1 className={`text-3xl xs:text-4xl sm:text-5xl md:text-4xl lg:text-4xl xl:text-6xl font-bold leading-tight tracking-tight ${theme === 'dark' ? 'text-white' : 'text-[var(--text-primary)]'}`}>
-                  PUNE
+                Maharashtra
                 </h1>
 
                 <p className={`text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed max-w-2xl mx-auto lg:mx-0 lg:max-w-none ${theme === 'dark' ? 'text-white/95' : 'text-[var(--text-secondary)]'}`}>
-                  Driving Leadership & Excellence in Emerging Realty Markets
+                Convene. Connect. Celebrate Excellence
                 </p>
               </div>
 
@@ -332,13 +333,13 @@ const EventDetail: React.FC = () => {
                   ? 'text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20' 
                   : 'text-[var(--text-primary)] bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'}`}>
                   <Calendar size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
-                  <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">18th April, 2026</span>
+                  <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">23 May 2026</span>
                 </div>
                 <div className={`flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center ${theme === 'dark' 
                   ? 'text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20' 
                   : 'text-[var(--text-primary)] bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'}`}>
                   <MapPin size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
-                  <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">Virtual Event</span>
+                  <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">Venue : TBA</span>
                 </div>
               </div>
 
@@ -417,11 +418,11 @@ const EventDetail: React.FC = () => {
 
           <div className="space-y-5 sm:space-y-6 md:space-y-7 text-[var(--text-secondary)] text-base sm:text-lg md:text-xl leading-relaxed px-2 sm:px-4 md:px-0 max-w-4xl mx-auto">
             <p className="text-justify">
-              <span className="font-bold text-[var(--text-primary)]">RealtyView Leadership Summit & Awards 2026 – Pune</span> is a premier platform dedicated to advancing the real estate ecosystem in India's Tier-2 and Tier-3 cities. The summit will bring together leading builders, developers, architects, planners, investors, and industry experts for high-level discussions on growth opportunities, market trends, innovation, and sustainable development.
+              <span className="font-bold text-[var(--text-primary)]">RealtyView Leadership Summit & Awards 2026 – Maharashtra</span> is a distinguished platform celebrating excellence and driving strategic dialogue across one of India’s most dynamic real estate markets. Bringing together an elite gathering of leading developers, architects, urban planners, investors, policymakers, and industry visionaries from across Maharashtra, the summit fosters high-impact conversations around market evolution, investment opportunities, innovation, and sustainable urban development.
             </p>
 
             <p className="text-justify">
-              The event will feature an engaging leadership conference focused on the evolving dynamics of emerging real estate markets, followed by the <span className="font-semibold text-[var(--text-primary)]">RealtyView Leadership Awards 2026</span>, which will recognise and felicitate Individuals and Organisations for their excellence, leadership, and contribution to the real estate sector.
+            Positioned at the intersection of thought leadership and industry recognition, the platform not only facilitates meaningful exchange of ideas but also honours outstanding achievements that are shaping the future of Maharashtra’s real estate landscape.
             </p>
 
             <p className="text-justify">
@@ -748,7 +749,7 @@ const EventDetail: React.FC = () => {
                     <Award size={24} className="sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="font-bold text-base sm:text-lg md:text-xl text-[var(--text-primary)] mb-2 sm:mb-3">Anam Shaikh</h4>
+                    <h4 className="font-bold text-base sm:text-lg md:text-xl text-[var(--text-primary)] mb-2 sm:mb-3">Almas Khan</h4>
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3 text-[var(--text-secondary)] flex-wrap">
                       <Mail size={18} className="sm:w-5 sm:h-5 flex-shrink-0 text-[var(--primary-color)] mt-0.5 sm:mt-0" />
                       <a href="mailto:sales@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors text-sm sm:text-base md:text-lg whitespace-nowrap font-medium">

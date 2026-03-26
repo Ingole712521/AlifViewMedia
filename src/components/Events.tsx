@@ -9,7 +9,7 @@ const Events: React.FC = () => {
     {
       id: 'realtyview-2026',
       title: 'REALTYVIEW LEADERSHIP SUMMIT & AWARDS 2026',
-      location: 'PUNE',
+      location: 'Maharashtra',
       subtitle: 'Driving Leadership & Excellence in Emerging Realty Markets',
       date: '18th April, 2026',
       type: 'Virtual Event',
