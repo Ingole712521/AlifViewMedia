@@ -14,7 +14,7 @@ const Events: React.FC = () => {
       date: '23rd May 2026',
       type: 'TBA',
       description: 'RealtyView Leadership Summit & Awards 2026 – Maharashtra is a distinguished platform celebrating excellence and driving strategic dialogue across one of India’s most dynamic real estate markets. Bringing together an elite gathering of leading developers, architects, urban planners, investors, policymakers, and industry visionaries from across Maharashtra, the summit fosters high-impact conversations around market evolution, investment opportunities, innovation, and sustainable urban development.',
-      image: '/images/realityLogo.png'
+      image: '/poster/EventLogo.png'
     }
   ]
 
@@ -45,7 +45,7 @@ const Events: React.FC = () => {
               onClick={() => handleEventClick(event.id)}
             >
               {/* Image */}
-              <div className="relative h-64 mb-4 rounded-lg overflow-hidden flex items-center justify-center" style={{ backgroundColor: '#181935' }}>
+              <div className="relative h-64 mb-4 rounded-lg overflow-hidden flex items-center justify-center" style={{ backgroundColor: '#050505' }}>
                 <img
                   src={event.image}
                   alt={event.title}

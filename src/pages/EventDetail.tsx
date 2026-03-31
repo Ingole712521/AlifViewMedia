@@ -305,7 +305,7 @@ const EventDetail: React.FC = () => {
               <div className="relative w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl h-56 xs:h-64 sm:h-72 md:h-80 lg:h-[28rem] xl:h-[32rem] flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl blur-xl"></div>
                 <img
-                  src="/images/realityLogo.png"
+                  src="/poster/EventLogo.png"
                   alt="RealtyView Leadership Summit & Awards 2026 Logo"
                   className="relative w-full h-full object-contain p-2 sm:p-3 md:p-4 lg:p-6 drop-shadow-2xl"
                   onError={(e) => {
