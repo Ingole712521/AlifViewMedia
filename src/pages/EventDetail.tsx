@@ -299,72 +299,59 @@ const EventDetail: React.FC = () => {
         )}
 
         <div className="max-w-7xl mx-auto relative z-10 pt-8 sm:pt-10 md:pt-12">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 xl:gap-16">
-            {/* Logo Section - Left Side */}
-            <div className="w-full lg:w-1/2 flex justify-center lg:justify-start px-2 sm:px-0">
-              <div className="relative w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl h-56 xs:h-64 sm:h-72 md:h-80 lg:h-[28rem] xl:h-[32rem] flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl blur-xl"></div>
-                <img
-                  src="/poster/EventLogo.png"
-                  alt="RealtyView Leadership Summit & Awards 2026 Logo"
-                  className="relative w-full h-full object-contain p-2 sm:p-3 md:p-4 lg:p-6 drop-shadow-2xl"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement
-                    target.style.display = 'none'
-                  }}
-                />
+          <div className="flex flex-col items-center text-center gap-6 sm:gap-8 md:gap-10 px-2 sm:px-4">
+            <div className="relative w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl h-56 xs:h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem] 2xl:h-[32rem] flex items-center justify-center mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl blur-xl" />
+              <img
+                src="/poster/transparentlogo.png"
+                alt="RealtyView Leadership Summit & Awards 2026 Logo"
+                className="relative w-full h-full object-contain p-1 sm:p-2 md:p-3 lg:p-4 drop-shadow-2xl"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                }}
+              />
+            </div>
+
+            <p className={`text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed max-w-3xl mx-auto ${theme === 'dark' ? 'text-white/95' : 'text-[var(--text-secondary)]'}`}>
+              Convene. Connect. Celebrate Excellence
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-xl sm:max-w-none mx-auto">
+              <div className={`flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center ${theme === 'dark'
+                ? 'text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20'
+                : 'text-[var(--text-primary)] bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'}`}>
+                <Calendar size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
+                <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">23 May 2026</span>
+              </div>
+              <div className={`flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center ${theme === 'dark'
+                ? 'text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20'
+                : 'text-[var(--text-primary)] bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'}`}>
+                <MapPin size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
+                <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">Venue : TBA</span>
               </div>
             </div>
 
-            {/* Content Section - Right Side */}
-            <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left px-2 sm:px-4 lg:px-0">
-              <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-7">
-                <h1 className={`text-3xl xs:text-4xl sm:text-5xl md:text-4xl lg:text-4xl xl:text-6xl font-bold leading-tight tracking-tight ${theme === 'dark' ? 'text-white' : 'text-[var(--text-primary)]'}`}>
-                Maharashtra
-                </h1>
-
-                <p className={`text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed max-w-2xl mx-auto lg:mx-0 lg:max-w-none ${theme === 'dark' ? 'text-white/95' : 'text-[var(--text-secondary)]'}`}>
-                Convene. Connect. Celebrate Excellence
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:gap-4 mt-6 sm:mt-8 md:mt-10">
-                <div className={`flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center ${theme === 'dark' 
-                  ? 'text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20' 
-                  : 'text-[var(--text-primary)] bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'}`}>
-                  <Calendar size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
-                  <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">23 May 2026</span>
-                </div>
-                <div className={`flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center ${theme === 'dark' 
-                  ? 'text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20' 
-                  : 'text-[var(--text-primary)] bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'}`}>
-                  <MapPin size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
-                  <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">Venue : TBA</span>
-                </div>
-              </div>
-
-              {/* Mobile Navigation */}                                                     
-              <div className="lg:hidden flex flex-wrap items-center justify-center gap-2 pt-6">
-                {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
-                  <button
-                    key={section}
-                    onClick={() => scrollToSection(section)}
-                    className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${activeSection === section
-                      ? theme === 'dark'
-                        ? 'bg-white text-[var(--primary-color)] shadow-lg border-white/30'
-                        : 'text-white shadow-lg border-white/30'
-                      : theme === 'dark'
-                        ? 'bg-white/20 text-white hover:bg-white/30 border-white/20'
-                        : 'bg-white/80 text-[var(--text-primary)] hover:bg-white border-[var(--border-color)]'
-                      }`}
-                    style={activeSection === section && theme === 'light' ? {
-                      background: 'linear-gradient(135deg, #dc2626, #f59e0b)'
-                    } : {}}
-                  >
-                    {section.charAt(0).toUpperCase() + section.slice(1)}
-                  </button>
-                ))}
-              </div>
+            <div className="lg:hidden flex flex-wrap items-center justify-center gap-2 pt-2">
+              {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${activeSection === section
+                    ? theme === 'dark'
+                      ? 'bg-white text-[var(--primary-color)] shadow-lg border-white/30'
+                      : 'text-white shadow-lg border-white/30'
+                    : theme === 'dark'
+                      ? 'bg-white/20 text-white hover:bg-white/30 border-white/20'
+                      : 'bg-white/80 text-[var(--text-primary)] hover:bg-white border-[var(--border-color)]'
+                    }`}
+                  style={activeSection === section && theme === 'light' ? {
+                    background: 'linear-gradient(135deg, #dc2626, #f59e0b)'
+                  } : {}}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              ))}
             </div>
           </div>
         </div>
