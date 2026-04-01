@@ -301,11 +301,49 @@ const EventDetail: React.FC = () => {
         <div className="max-w-7xl mx-auto relative z-10 pt-8 sm:pt-10 md:pt-12">
           <div className="flex flex-col items-center text-center gap-6 sm:gap-8 md:gap-10 px-2 sm:px-4">
             <div className="relative w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl h-56 xs:h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem] 2xl:h-[32rem] flex items-center justify-center mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl blur-xl" />
+              {theme === 'light' && (
+                <div
+                  className="absolute inset-0 rounded-2xl sm:rounded-3xl"
+                  style={{
+                    backgroundColor: '#ffe4e6',
+                    backgroundImage: `
+                    linear-gradient(
+                      180deg,
+                      rgba(244,63,94,0.35) 0%,
+                      rgba(244,63,94,0.25) 50%,
+                      rgba(244,63,94,0.15) 100%
+                    ),
+                    radial-gradient(
+                      circle at 50% 22%,
+                      rgba(244,63,94,0.35) 0%,
+                      rgba(244,63,94,0.18) 30%,
+                      transparent 65%
+                    ),
+                    radial-gradient(
+                      circle at 78% 72%,
+                      rgba(236,72,153,0.25) 0%,
+                      rgba(236,72,153,0.12) 35%,
+                      transparent 65%
+                    )
+                  `,
+                    backgroundBlendMode: 'normal',
+                    border: '1px solid rgba(15, 23, 42, 0.10)',
+                    boxShadow:
+                      'inset 0 1px 0 rgba(255,255,255,0.45), 0 22px 50px -30px rgba(0,0,0,0.18), 0 8px 18px -12px rgba(0,0,0,0.14)',
+                  }}
+                />
+              )}
+              {theme === 'dark' && (
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl blur-xl" />
+              )}
               <img
                 src="/poster/transparentlogo.png"
                 alt="RealtyView Leadership Summit & Awards 2026 Logo"
-                className="relative w-full h-full object-contain p-1 sm:p-2 md:p-3 lg:p-4 drop-shadow-2xl"
+                className="relative z-10 w-full h-full object-contain p-2 sm:p-3 md:p-4 lg:p-5"
+                style={{
+                  filter:
+                    'drop-shadow(0 18px 22px rgba(0,0,0,0.12)) drop-shadow(0 6px 10px rgba(0,0,0,0.10))',
+                }}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
