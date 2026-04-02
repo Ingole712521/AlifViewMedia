@@ -290,7 +290,7 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
                     background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
                   }}
                 >
-                  March 30, 2026
+                  May 05, 2026
                 </div>
               </div>
             </div>

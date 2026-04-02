@@ -110,6 +110,11 @@ const EventDetail: React.FC = () => {
     }
   }
 
+  // Navbar sits over the hero background at the top; when it's not scrolled yet,
+  // swap the visible light/dark styling ("vice versa") as requested.
+  const topNavTheme: 'light' | 'dark' = isScrolled ? theme : theme === 'dark' ? 'light' : 'dark'
+  const navOnImage = !isScrolled
+
   return (
     <div className="min-h-screen w-full" style={{ backgroundColor: 'var(--bg-primary)' }}>
       {/* Fixed Navigation Bar */}
@@ -120,15 +125,15 @@ const EventDetail: React.FC = () => {
             : "py-6"
         }`}
         style={{
-          backgroundColor: isScrolled 
-            ? theme === 'dark' 
+          backgroundColor: isScrolled
+            ? theme === 'dark'
               ? "rgba(17, 24, 39, 0.95)"
               : "rgba(255, 255, 255, 0.95)"
             : "transparent",
           backdropFilter: isScrolled ? "blur(10px)" : "none",
           borderBottom: isScrolled 
-            ? theme === 'dark' 
-              ? "1px solid rgba(55, 65, 81, 0.3)" 
+            ? theme === 'dark'
+              ? "1px solid rgba(55, 65, 81, 0.3)"
               : "1px solid rgba(229, 231, 235, 0.3)"
             : "none",
           boxShadow: isScrolled 
@@ -144,9 +149,11 @@ const EventDetail: React.FC = () => {
             <div className='flex items-center space-x-3'>
               <img
                 src={
-                  theme === "dark"
+                  navOnImage
                     ? "/images/Aliief_white.png"
-                    : "/images/company-logo.png"
+                    : theme === "dark"
+                      ? "/images/Aliief_white.png"
+                      : "/images/company-logo.png"
                 }
                 alt='Alif View Media Logo'
                 className='h-10 w-auto object-contain'
@@ -164,9 +171,11 @@ const EventDetail: React.FC = () => {
                   key={section}
                   onClick={() => scrollToSection(section)}
                   className={`nav-link ${
-                    activeSection === section
-                      ? "text-[var(--primary-color)]"
-                      : ""
+                    navOnImage
+                      ? '!text-white hover:!text-white'
+                      : activeSection === section
+                        ? 'text-[var(--primary-color)]'
+                        : ''
                   }`}
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -195,10 +204,8 @@ const EventDetail: React.FC = () => {
               <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`text-[var(--text-primary)] hover:opacity-70 transition-opacity duration-200 ${
-                  theme === 'dark' 
-                    ? 'hover:text-white' 
-                    : 'hover:text-gray-800'
+                className={`hover:opacity-70 transition-opacity duration-200 ${
+                  navOnImage ? 'text-white hover:text-white' : (topNavTheme === 'dark' ? 'text-white hover:text-white' : 'text-[#1f2937] hover:text-gray-800')
                 }`}
               >
                 {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -211,11 +218,11 @@ const EventDetail: React.FC = () => {
             <div
               className='md:hidden mt-4 py-4 border-t backdrop-blur-md rounded-lg'
               style={{ 
-                borderColor: theme === 'dark' 
-                  ? "rgba(55, 65, 81, 0.5)" 
+                borderColor: theme === 'dark'
+                  ? "rgba(55, 65, 81, 0.5)"
                   : "rgba(229, 231, 235, 0.5)",
-                backgroundColor: theme === 'dark' 
-                  ? "rgba(17, 24, 39, 0.9)" 
+                backgroundColor: theme === 'dark'
+                  ? "rgba(17, 24, 39, 0.9)"
                   : "rgba(255, 255, 255, 0.9)",
                 backdropFilter: "blur(10px)"
               }}
@@ -228,9 +235,7 @@ const EventDetail: React.FC = () => {
                     setIsMobileMenuOpen(false);
                   }}
                   className={`block w-full text-left py-3 px-4 nav-link rounded-md transition-colors duration-200 ${
-                    theme === 'dark' 
-                      ? 'hover:bg-white/10' 
-                      : 'hover:bg-black/5'
+                    navOnImage ? '!text-white hover:!text-white' : ''
                   }`}
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -260,10 +265,6 @@ const EventDetail: React.FC = () => {
         <div
           className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat"
           style={{ backgroundImage: "url('/images/background.jpg')" }}
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-black/50 via-black/35 to-black/60"
           aria-hidden
         />
 
@@ -687,7 +688,7 @@ const EventDetail: React.FC = () => {
               borderColor: '#dc2626'
             }}>
               <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6 md:mb-8">
-                For Nominations
+              For Speaking Opportunity ,  Partnerships & Booths 
               </h3>
 
               <div className="space-y-3 sm:space-y-4 md:space-y-5">
@@ -704,8 +705,15 @@ const EventDetail: React.FC = () => {
                     <h4 className="font-bold text-base sm:text-lg md:text-xl text-[var(--text-primary)] mb-2 sm:mb-3">Almas Khan</h4>
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3 text-[var(--text-secondary)] flex-wrap">
                       <Mail size={18} className="sm:w-5 sm:h-5 flex-shrink-0 text-[var(--primary-color)] mt-0.5 sm:mt-0" />
-                      <a href="mailto:sales@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors text-sm sm:text-base md:text-lg whitespace-nowrap font-medium">
-                        sales@alifviewmedia.com
+                      <a href="mailto:almas@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors text-sm sm:text-base md:text-lg whitespace-nowrap font-medium">
+                       almas@alifviewmedia.com
+                      </a>
+                    </div>
+                    <div className="flex items-start sm:items-center gap-2 sm:gap-3 text-[var(--text-secondary)] flex-wrap mt-2 sm:mt-3">
+                      <Phone size={18} className="sm:w-5 sm:h-5 flex-shrink-0 text-[var(--primary-color)] mt-0.5 sm:mt-0" />
+                      <span className="text-sm sm:text-base md:text-lg font-medium mr-1">Contact:</span>
+                      <a href="tel:8329357983" className="hover:text-[var(--primary-color)] transition-colors text-sm sm:text-base md:text-lg font-medium">
+                        8329357983
                       </a>
                     </div>
                   </div>
@@ -717,7 +725,7 @@ const EventDetail: React.FC = () => {
               borderColor: '#dc2626'
             }}>
               <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6 md:mb-8">
-                For Queries
+                For Nominations
               </h3>
 
               <div className="space-y-3 sm:space-y-4 md:space-y-5">
