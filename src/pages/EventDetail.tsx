@@ -256,7 +256,7 @@ const EventDetail: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden bg-black">
+      <div className="relative min-h-screen pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden bg-black">
         <div
           className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat"
           style={{ backgroundImage: "url('/images/background.jpg')" }}
