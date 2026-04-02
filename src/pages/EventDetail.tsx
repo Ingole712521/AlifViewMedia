@@ -256,87 +256,21 @@ const EventDetail: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden" style={{
-        backgroundColor: theme === 'dark' 
-          ? '#0f172a'
-          : 'var(--bg-primary)',
-        background: theme === 'dark'
-          ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)'
-          : 'none'
-      }}>
-        {/* Animated Background - Same as main page */}
-        {theme === 'light' && (
-          <div className="absolute inset-0 gradient-bg opacity-10"></div>
-        )}
-        
-        {/* Floating Elements - Same as main page */}
-        {theme === 'light' && (
-          <>
-            <div className="absolute top-12 sm:top-16 md:top-20 lg:top-24 left-2 sm:left-4 md:left-6 lg:left-8 floating-animation">
-              <div className="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full opacity-20" style={{ backgroundColor: 'var(--primary-color)' }}></div>
-            </div>
-            <div className="absolute bottom-12 sm:bottom-16 md:bottom-20 lg:bottom-24 right-2 sm:right-4 md:right-6 lg:right-8 floating-animation" style={{ animationDelay: '2s' }}>
-              <div className="w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full opacity-20" style={{ backgroundColor: 'var(--accent-color)' }}></div>
-            </div>
-            <div className="absolute top-1/2 left-4 sm:left-8 md:left-12 lg:left-16 floating-animation" style={{ animationDelay: '4s' }}>
-              <div className="w-4 h-4 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full opacity-20" style={{ backgroundColor: 'var(--secondary-color)' }}></div>
-            </div>
-          </>
-        )}
-        
-        {/* Professional Background Pattern - Dark mode only */}
-        {theme === 'dark' && (
-          <>
-            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-              <div className="absolute inset-0" style={{
-                backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px)'
-              }}></div>
-            </div>
-            <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{
-              backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%)'
-            }}></div>
-          </>
-        )}
+      <div className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden bg-black">
+        <div
+          className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat"
+          style={{ backgroundImage: "url('/images/background.jpg')" }}
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-black/50 via-black/35 to-black/60"
+          aria-hidden
+        />
 
         <div className="max-w-7xl mx-auto relative z-10 pt-8 sm:pt-10 md:pt-12">
           <div className="flex flex-col items-center text-center gap-6 sm:gap-8 md:gap-10 px-2 sm:px-4">
             <div className="relative w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl h-56 xs:h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem] 2xl:h-[32rem] flex items-center justify-center mx-auto">
-              {theme === 'light' && (
-                <div
-                  className="absolute inset-0 rounded-2xl sm:rounded-3xl"
-                  style={{
-                    backgroundColor: '#ffe4e6',
-                    backgroundImage: `
-                    linear-gradient(
-                      180deg,
-                      rgba(244,63,94,0.35) 0%,
-                      rgba(244,63,94,0.25) 50%,
-                      rgba(244,63,94,0.15) 100%
-                    ),
-                    radial-gradient(
-                      circle at 50% 22%,
-                      rgba(244,63,94,0.35) 0%,
-                      rgba(244,63,94,0.18) 30%,
-                      transparent 65%
-                    ),
-                    radial-gradient(
-                      circle at 78% 72%,
-                      rgba(236,72,153,0.25) 0%,
-                      rgba(236,72,153,0.12) 35%,
-                      transparent 65%
-                    )
-                  `,
-                    backgroundBlendMode: 'normal',
-                    border: '1px solid rgba(15, 23, 42, 0.10)',
-                    boxShadow:
-                      'inset 0 1px 0 rgba(255,255,255,0.45), 0 22px 50px -30px rgba(0,0,0,0.18), 0 8px 18px -12px rgba(0,0,0,0.14)',
-                  }}
-                />
-              )}
-              {theme === 'dark' && (
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl blur-xl" />
-              )}
-              <img
+              {/* <img
                 src="/poster/transparentlogo.png"
                 alt="RealtyView Leadership Summit & Awards 2026 Logo"
                 className="relative z-10 w-full h-full object-contain p-2 sm:p-3 md:p-4 lg:p-5"
@@ -348,23 +282,19 @@ const EventDetail: React.FC = () => {
                   const target = e.target as HTMLImageElement
                   target.style.display = 'none'
                 }}
-              />
+              /> */}
             </div>
 
-            <p className={`text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed max-w-3xl mx-auto ${theme === 'dark' ? 'text-white/95' : 'text-[var(--text-secondary)]'}`}>
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed max-w-3xl mx-auto text-white/95 drop-shadow-sm">
               Convene. Connect. Celebrate Excellence
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-xl sm:max-w-none mx-auto">
-              <div className={`flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center ${theme === 'dark'
-                ? 'text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20'
-                : 'text-[var(--text-primary)] bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'}`}>
+              <div className="flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20">
                 <Calendar size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
                 <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">23 May 2026</span>
               </div>
-              <div className={`flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center ${theme === 'dark'
-                ? 'text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20'
-                : 'text-[var(--text-primary)] bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)]'}`}>
+              <div className="flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20">
                 <MapPin size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
                 <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">Venue : TBA</span>
               </div>
@@ -376,16 +306,9 @@ const EventDetail: React.FC = () => {
                   key={section}
                   onClick={() => scrollToSection(section)}
                   className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${activeSection === section
-                    ? theme === 'dark'
-                      ? 'bg-white text-[var(--primary-color)] shadow-lg border-white/30'
-                      : 'text-white shadow-lg border-white/30'
-                    : theme === 'dark'
-                      ? 'bg-white/20 text-white hover:bg-white/30 border-white/20'
-                      : 'bg-white/80 text-[var(--text-primary)] hover:bg-white border-[var(--border-color)]'
+                    ? 'text-white shadow-lg border-white/40 bg-gradient-to-br from-amber-600/90 to-amber-800/90'
+                    : 'bg-white/15 text-white hover:bg-white/25 border-white/25'
                     }`}
-                  style={activeSection === section && theme === 'light' ? {
-                    background: 'linear-gradient(135deg, #dc2626, #f59e0b)'
-                  } : {}}
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
                 </button>
