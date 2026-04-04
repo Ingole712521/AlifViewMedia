@@ -35,6 +35,7 @@ const EventDetail: React.FC = () => {
     document.documentElement.setAttribute('data-theme', newTheme)
   }
 
+  /* Previous award categories
   const awardCategories = [
     {
       title: "Developer Excellence",
@@ -98,6 +99,127 @@ const EventDetail: React.FC = () => {
         "Best Real Estate Investment Firm",
         "Best REIT / Fractional Investment Platform",
         "Most Innovative Real Estate Financing Model"
+      ]
+    }
+  ]
+  */
+
+  const awardCategories = [
+    {
+      title: "Developer Excellence",
+      awards: [
+        "Developer of the Year (Residential) – Metro / Tier 2 / Tier 3",
+        "Developer of the Year (Commercial) – Metro / Tier 2 / Tier 3",
+        "Developer of the Year (Retail) – Metro / Tier 2 / Tier 3",
+        "Developer of the Year (Luxury)",
+        "Developer of the Year (Signature Luxury)",
+        "Developer of the Year (Hospitality)",
+        "Developer of the Year (Villa)",
+        "Emerging Developer of the Year",
+        "Sustainable Developer of the Year",
+        "Most Trusted Real Estate Brand of the Year",
+        "Fastest Growing Real Estate Company",
+        "Integrated Township Developer of the Year",
+        "Excellence in Customer Service",
+        "CSR Excellence Awards"
+      ]
+    },
+    {
+      title: "Project Excellence",
+      awards: [
+        "Best Residential Project of the Year (Luxury / Mid-segment / Affordable/Signature Luxury)",
+        "Best Commercial Project of the Year (Office / IT Parks)",
+        "Best Retail Project / Mall of the Year",
+        "Best Villa Project of the Year",
+        "Best Hospitality Project of the Year",
+        "Best Mixed-Use Development Project of the Year",
+        "Best Smart City Project of the Year",
+        "Best Budget Housing Project of the Year",
+        "Best Themed Project of the Year",
+        "Best Selling Project of the Year",
+        "Best Integrated Township Project of the Year",
+        "Best Iconic Landmark Project of the Year",
+        "Redevelopment Project of the Year",
+        "Best Green/Sustainable Project of the Year",
+        "Best Design & Architecture Project of the Year"
+      ]
+    },
+    {
+      title: "Individual Leadership Awards",
+      awards: [
+        "Real Estate Leader of the Year",
+        "CEO of the Year",
+        "CFO of the Year",
+        "Women Leader in Real Estate",
+        "Young Achiever in Real Estate",
+        "Visionary Leader of the Year",
+        "Emerging Entrepreneur of the Year"
+      ]
+    },
+    {
+      title: "Architecture, Design & Construction",
+      awards: [
+        "Architect of the Year",
+        "Design & Architectural Firm of the Year (Residential/Commercial/Retail/Hospitality/Institutional/Villa)",
+        "Emerging Architectural Firm of the Year",
+        "Interior Design Company of the Year (Residential/Commercial/Retail/Villa)",
+        "Interior Designer of the Year",
+        "Construction Company of the Year",
+        "Project Management Company of the Year",
+        "Excellence in Engineering & Design",
+        "Innovative Construction Technology",
+        "Best Architectural Design"
+      ]
+    },
+    {
+      title: "Real Estate Consultant Awards",
+      awards: [
+        "Real Estate Consultant of the Year",
+        "Housing Finance Company of the Year",
+        "Real Estate Advisory Firm of the Year",
+        "Commercial Advisory Firm of the Year",
+        "Retail/Leasing Advisory Firm of the Year",
+        "Investment Advisory Firm of the Year",
+        "Corporate Real Estate Consultant of the Year",
+        "Channel Partner of the Year",
+        "Top Performing Channel Partner – Residential",
+        "Top Performing Channel Partner – Commercial",
+        "Emerging Channel Partner of the Year",
+        "Luxury Property Consultant of the Year",
+        "NRI Investment Consultant of the Year",
+        "Land & Industrial Consultant of the Year",
+        "PropTech-Enabled Consultant of the Year",
+        "Young Consultant of the Year",
+        "Woman Consultant Leader of the Year",
+        "Top Sales Performer – Real Estate",
+        "Rising Star in Real Estate Consulting"
+      ]
+    },
+    {
+      title: "Branding & Marketing Leadership Awards",
+      awards: [
+        "Best Real Estate Marketing Campaign of the Year",
+        "Best Integrated Marketing Campaign of the Year",
+        "Best Project Launch Campaign of the Year",
+        "Best Print Campaign of the Year",
+        "Best Social Media Campaign of the Year",
+        "Best Use of Video Marketing in Real Estate",
+        "Best High-Impact Brand Campaign of the Year",
+        "Best Brand Transformation / Rebranding Award",
+        "Best Creative Campaign (Real Estate)",
+        "Best Brochure / Collateral Design",
+        "Best Real Estate Website / Digital Experience",
+        "Best Use of Technology in Marketing (AR/VR/AI)",
+        "Excellence in Digital Marketing in Real Estate",
+        "Performance Marketing Campaign of the Year",
+        "Influencer Marketing Campaign of the Year",
+        "Excellence in Visual Design & Communication",
+        "PropTech Marketing Excellence Award",
+        "CRM Excellence in Real Estate",
+        "Customer Engagement Campaign of the Year",
+        "Lead Generation Campaign of the Year",
+        "Advertising Agency of the Year",
+        "Digital Marketing Agency of the Year"
       ]
     }
   ]
@@ -286,11 +408,11 @@ const EventDetail: React.FC = () => {
               /> */}
             </div>
 
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed max-w-3xl mx-auto text-white/95 drop-shadow-sm">
+            {/* <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed max-w-3xl mx-auto text-white/95 drop-shadow-sm">
               Convene. Connect. Celebrate Excellence
-            </p>
+            </p> */}
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-xl sm:max-w-none mx-auto">
+            {/* <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-xl sm:max-w-none mx-auto">
               <div className="flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20">
                 <Calendar size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
                 <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">23 May 2026</span>
@@ -299,7 +421,7 @@ const EventDetail: React.FC = () => {
                 <MapPin size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
                 <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">Venue : TBA</span>
               </div>
-            </div>
+            </div> */}
 
             <div className="lg:hidden flex flex-wrap items-center justify-center gap-2 pt-2">
               {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
@@ -384,23 +506,33 @@ const EventDetail: React.FC = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center items-center mt-10 sm:mt-12 md:mt-16 px-4 sm:px-0">
-            <button
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5 justify-center items-center mt-10 sm:mt-12 md:mt-16 px-4 sm:px-0">
+            <a
+              href="https://forms.gle/vJ2XCvY9paVfM7qM7"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
               style={{
                 background: 'linear-gradient(135deg, #dc2626, #b91c1c)  '
               }}
-              onClick={() => {
-                const contactSection = document.getElementById('event-contact')
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' })
-                }
-              }}
             >
-              <span className="relative z-10">Register Now</span>
+              <span className="relative z-10">Delegate Registration</span>
               <ArrowRight size={20} className="sm:w-6 sm:h-6 relative z-10 transform group-hover:translate-x-2 transition-transform" />
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </button>
+            </a>
+            {/* <a
+              href="https://forms.gle/AhqWy3fmkGDL6atd9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
+              style={{
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)  '
+              }}
+            >
+              <span className="relative z-10">Award Registration</span>
+              <ArrowRight size={20} className="sm:w-6 sm:h-6 relative z-10 transform group-hover:translate-x-2 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </a> */}
             <button
               className="group w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-[var(--text-primary)] rounded-lg sm:rounded-xl border-2 transform hover:scale-105 transition-all duration-300 shadow-lg sm:shadow-xl hover:shadow-2xl"
               style={{
@@ -523,6 +655,22 @@ const EventDetail: React.FC = () => {
             <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{ 
               background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
             }}></div>
+
+            <div className="flex justify-center mt-8 sm:mt-10 md:mt-12">
+              <a
+                href="https://forms.gle/AhqWy3fmkGDL6atd9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
+                style={{
+                  background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+                }}
+              >
+                <span className="relative z-10">Award Registration</span>
+                <ArrowRight size={20} className="sm:w-6 sm:h-6 relative z-10 transform group-hover:translate-x-2 transition-transform" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-0">

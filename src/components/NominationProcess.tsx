@@ -168,12 +168,13 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
           ))}
         </div>
 
-        {/* Highlighted Info Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 xs:gap-5 sm:gap-6 md:gap-8 px-2 sm:px-0">
+        {/* Highlighted Info Section — centered pair */}
+        <div className="flex justify-center px-2 sm:px-0 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 xs:gap-5 sm:gap-6 md:gap-8 w-full max-w-5xl mx-auto">
           
           {/* Fee Card */}
           <div 
-            className="lg:col-span-5 rounded-xl xs:rounded-2xl p-4 xs:p-5 sm:p-6 md:p-8 lg:p-10 shadow-xl relative overflow-hidden"
+            className="rounded-xl xs:rounded-2xl p-4 xs:p-5 sm:p-6 md:p-8 lg:p-10 shadow-xl relative overflow-hidden w-full"
             style={{
               background: isDark
                 ? 'linear-gradient(135deg, rgba(31, 41, 55, 0.95), rgba(17, 24, 39, 0.95))'
@@ -245,11 +246,9 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
             </div>
           </div>
 
-          {/* Deadline & Contact Split */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
             {/* Deadline Card */}
             <div 
-              className={`rounded-xl xs:rounded-2xl p-4 xs:p-5 sm:p-6 md:p-8 shadow-lg border flex flex-col justify-center items-center text-center relative overflow-hidden group ${
+              className={`rounded-xl xs:rounded-2xl p-4 xs:p-5 sm:p-6 md:p-8 shadow-lg border flex flex-col justify-center items-center text-center relative overflow-hidden group w-full ${
                 isDark 
                   ? 'bg-[var(--bg-primary)] border-white/10' 
                   : 'bg-[var(--bg-primary)] border-red-100'
@@ -296,15 +295,15 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
             </div>
 
             {/* Contact Card */}
-            <div 
+            {/* <div 
               className={`rounded-xl xs:rounded-2xl p-5 xs:p-6 sm:p-7 md:p-8 shadow-xl border relative overflow-hidden ${
                 isDark 
                   ? 'bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700/50' 
                   : 'bg-gradient-to-br from-slate-50 to-white border-slate-200'
               }`}
-            >
+            > */}
               {/* Title Section */}
-              <div className="flex items-center gap-3 xs:gap-4 mb-5 xs:mb-6 sm:mb-7 relative z-10">
+              {/* <div className="flex items-center gap-3 xs:gap-4 mb-5 xs:mb-6 sm:mb-7 relative z-10">
                 <div 
                   className="w-10 h-10 xs:w-12 xs:h-12 rounded-lg xs:rounded-xl flex items-center justify-center shrink-0 shadow-md"
                   style={{
@@ -318,10 +317,10 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
                 }`}>
                   Contact for Queries
                 </h3>
-              </div>
+              </div> */}
 
               {/* Contact Person Info */}
-              <div className="mb-5 xs:mb-6 sm:mb-7 relative z-10">
+              {/* <div className="mb-5 xs:mb-6 sm:mb-7 relative z-10">
                 <h4 className={`text-base xs:text-lg sm:text-xl font-bold mb-1 xs:mb-2 ${
                   isDark ? 'text-white' : 'text-[var(--text-primary)]'
                 }`}>
@@ -332,12 +331,12 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
                 }`}>
                   Manager - Events
                 </p>
-              </div>
+              </div> */}
 
               {/* Contact Details */}
-              <div className="space-y-4 xs:space-y-5 relative z-10">
+              {/* <div className="space-y-4 xs:space-y-5 relative z-10"> */}
                 {/* Email Section */}
-                <a 
+                {/* <a 
                   href="mailto:sales@alifviewmedia.com" 
                   className={`flex items-center gap-3 xs:gap-4 group transition-all duration-200 ${
                     isDark ? 'hover:bg-white/5' : 'hover:bg-slate-50'
@@ -357,10 +356,10 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
                   }`}>
                     sales@alifviewmedia.com
                   </span>
-                </a>
+                </a> */}
 
                 {/* Phone Section */}
-                <div className={`flex items-start gap-3 xs:gap-4 transition-all duration-200 ${
+                {/* <div className={`flex items-start gap-3 xs:gap-4 transition-all duration-200 ${
                   isDark ? 'hover:bg-white/5' : 'hover:bg-slate-50'
                 }`}>
                   <div className="w-11 h-11 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-lg xs:rounded-xl flex items-center justify-center shrink-0 shadow-md"
@@ -388,8 +387,8 @@ const NominationProcess: React.FC<NominationProcessProps> = ({ theme = 'light' }
                     </a>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
           </div>
         </div>
       </div>
