@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Calendar, MapPin, Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home, Menu, X } from 'lucide-react'
+import { Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home, Menu, X } from 'lucide-react'
 import ThemeToggle from '../components/ThemeToggle'
 import NominationProcess from '../components/NominationProcess'
 

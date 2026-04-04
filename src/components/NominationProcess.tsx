@@ -8,9 +8,6 @@ import {
   Award, 
   IndianRupee, 
   CalendarClock, 
-  MessageCircle, 
-  Mail, 
-  Phone, 
   CheckCircle2,
   ArrowRight
 } from 'lucide-react'
