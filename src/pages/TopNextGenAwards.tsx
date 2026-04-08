@@ -24,10 +24,11 @@ const TopNextGenAwards: React.FC = () => {
   return (
     <div className="min-h-screen w-full" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <nav
-        className="sticky top-0 w-full z-50 h-16 backdrop-blur-md"
+        className="fixed top-0 w-full z-50 h-16"
         style={{
           backgroundColor: 'transparent',
-          borderBottom: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(0, 0, 0, 0.08)'
+          borderBottom: 'none',
+          boxShadow: 'none'
         }}
       >
         <div className="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
@@ -36,6 +37,12 @@ const TopNextGenAwards: React.FC = () => {
               src={theme === 'dark' ? '/images/Aliief_white.png' : '/images/company-logo.png'}
               alt="Alif View Media Logo"
               className="h-10 w-auto object-contain"
+              style={{
+                filter:
+                  theme === 'dark'
+                    ? 'drop-shadow(0 8px 14px rgba(0,0,0,0.55))'
+                    : 'drop-shadow(0 8px 14px rgba(0,0,0,0.18))'
+              }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement
                 target.style.display = 'none'
@@ -58,7 +65,7 @@ const TopNextGenAwards: React.FC = () => {
       </nav>
 
       {/* Hero */}
-      <div className="relative overflow-hidden bg-black min-h-[calc(100svh-4rem)] flex items-center">
+      <div className="relative overflow-hidden bg-black min-h-[100svh] flex items-center">
         {/* Base */}
         <div className="absolute inset-0" style={{ backgroundColor: theme === 'dark' ? '#020617' : '#ffffff' }} />
 
@@ -100,7 +107,7 @@ const TopNextGenAwards: React.FC = () => {
           />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-6 sm:pb-8">
           <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
             <div
               className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shadow-2xl"
