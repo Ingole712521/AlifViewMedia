@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ArrowRight, Award, Calendar, Download, Home, ReceiptIndianRupee } from 'lucide-react'
+import { ArrowRight, Award, Calendar,  Home, ReceiptIndianRupee } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import ThemeToggle from '../components/ThemeToggle'
 
@@ -79,9 +79,14 @@ const TopNextGenAwards: React.FC = () => {
                 <span>Maharashtra Edition</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-                Top Next-Gen Real Estate Entrepreneurs Awards
-              </h1>
+              <div className="flex justify-center">
+                <img
+                  src="/assets/next-genposter.jpeg"
+                  alt="Top Next-Gen Real Estate Entrepreneurs Awards"
+                  className="w-full max-w-4xl h-auto object-contain"
+                  loading="eager"
+                />
+              </div>
               <p className="mt-4 text-white/85 text-base sm:text-lg md:text-xl max-w-3xl mx-auto">
                 Nominate today and be part of an exclusive recognition platform celebrating emerging leaders in real estate.
               </p>

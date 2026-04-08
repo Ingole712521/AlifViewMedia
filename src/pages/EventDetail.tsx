@@ -232,6 +232,18 @@ const EventDetail: React.FC = () => {
     }
   }
 
+  const navItems: Array<
+    | { kind: 'scroll'; id: string; label: string }
+    | { kind: 'route'; to: string; label: string }
+  > = [
+    { kind: 'scroll', id: 'home', label: 'Home' },
+    { kind: 'scroll', id: 'speakers', label: 'Speakers' },
+    { kind: 'scroll', id: 'awards', label: 'Awards' },
+    { kind: 'scroll', id: 'partners', label: 'Partners' },
+    { kind: 'route', to: '/top-next-gen-awards', label: 'Top Next-Gen Real Estate Entrepreneurs Awards' },
+    { kind: 'scroll', id: 'contact', label: 'Contact' }
+  ]
+
   // Navbar sits over the hero background at the top; when it's not scrolled yet,
   // swap the visible light/dark styling ("vice versa") as requested.
   const topNavTheme: 'light' | 'dark' = isScrolled ? theme : theme === 'dark' ? 'light' : 'dark'
@@ -288,19 +300,22 @@ const EventDetail: React.FC = () => {
 
             {/* Desktop Navigation */}
             <div className='hidden md:flex items-center space-x-8'>
-              {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
+              {navItems.map((item) => (
                 <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
+                  key={item.kind === 'scroll' ? item.id : item.to}
+                  onClick={() => {
+                    if (item.kind === 'scroll') scrollToSection(item.id)
+                    else navigate(item.to)
+                  }}
                   className={`nav-link ${
                     navOnImage
                       ? '!text-white hover:!text-white'
-                      : activeSection === section
+                      : item.kind === 'scroll' && activeSection === item.id
                         ? 'text-[var(--primary-color)]'
                         : ''
                   }`}
                 >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                  {item.label}
                 </button>
               ))}
 
@@ -349,18 +364,19 @@ const EventDetail: React.FC = () => {
                 backdropFilter: "blur(10px)"
               }}
             >
-              {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
+              {navItems.map((item) => (
                 <button
-                  key={section}
+                  key={item.kind === 'scroll' ? item.id : item.to}
                   onClick={() => {
-                    scrollToSection(section);
+                    if (item.kind === 'scroll') scrollToSection(item.id)
+                    else navigate(item.to)
                     setIsMobileMenuOpen(false);
                   }}
                   className={`block w-full text-left py-3 px-4 nav-link rounded-md transition-colors duration-200 ${
                     navOnImage ? '!text-white hover:!text-white' : ''
                   }`}
                 >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                  {item.label}
                 </button>
               ))}
               <button
@@ -424,16 +440,20 @@ const EventDetail: React.FC = () => {
             </div> */}
 
             <div className="lg:hidden flex flex-wrap items-center justify-center gap-2 pt-2">
-              {['home', 'speakers', 'awards', 'partners', 'contact'].map((section) => (
+              {navItems.map((item) => (
                 <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
-                  className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${activeSection === section
-                    ? 'text-white shadow-lg border-white/40 bg-gradient-to-br from-amber-600/90 to-amber-800/90'
-                    : 'bg-white/15 text-white hover:bg-white/25 border-white/25'
-                    }`}
+                  key={item.kind === 'scroll' ? item.id : item.to}
+                  onClick={() => {
+                    if (item.kind === 'scroll') scrollToSection(item.id)
+                    else navigate(item.to)
+                  }}
+                  className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${
+                    item.kind === 'scroll' && activeSection === item.id
+                      ? 'text-white shadow-lg border-white/40 bg-gradient-to-br from-amber-600/90 to-amber-800/90'
+                      : 'bg-white/15 text-white hover:bg-white/25 border-white/25'
+                  }`}
                 >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                  <span className="text-center leading-tight block">{item.label}</span>
                 </button>
               ))}
             </div>
@@ -718,22 +738,6 @@ const EventDetail: React.FC = () => {
 
           {/* Nomination Process */}
           <NominationProcess theme={theme} />
-
-          {/* Button between Awards and Partners */}
-          <div className="flex justify-center mt-10 sm:mt-12 md:mt-14 px-2 sm:px-0">
-            <button
-              className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
-              style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
-              onClick={() => navigate('/top-next-gen-awards')}
-            >
-              <span className="relative z-10">Top Next-Gen Real Estate Entrepreneurs Awards</span>
-              <ArrowRight
-                size={20}
-                className="sm:w-6 sm:h-6 relative z-10 transform group-hover:translate-x-2 transition-transform"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </button>
-          </div>
         </div>
       </div>
 
@@ -804,6 +808,21 @@ const EventDetail: React.FC = () => {
               </button>
             </div>
           </div>
+
+          {/* <div className="flex justify-center mt-6 sm:mt-8 md:mt-10 px-2 sm:px-0">
+            <button
+              className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
+              style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
+              onClick={() => navigate('/top-next-gen-awards')}
+            >
+              <span className="relative z-10">Top Next-Gen Real Estate Entrepreneurs Awards</span>
+              <ArrowRight
+                size={20}
+                className="sm:w-6 sm:h-6 relative z-10 transform group-hover:translate-x-2 transition-transform"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </button>
+          </div> */}
         </div>
       </div>
 
