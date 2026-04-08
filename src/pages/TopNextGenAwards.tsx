@@ -64,6 +64,26 @@ const TopNextGenAwards: React.FC = () => {
         </div>
       </nav>
 
+      {/* Sticky CTA (viewport-fixed) */}
+      <div
+        className="fixed z-[9999]"
+        style={{
+          left: 40,
+          bottom: 36
+        }}
+      >
+        <a
+          href="https://forms.gle/4QD3ggrwkHuyPRpz6"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-3.5 flex items-center justify-center gap-2 font-bold text-white rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-2xl"
+          style={{ backgroundColor: '#dc2626' }}
+        >
+          <span className="relative z-10">Submit your Nominations</span>
+          <ArrowRight size={20} className="relative z-10 transform group-hover:translate-x-2 transition-transform" />
+        </a>
+      </div>
+
       {/* Hero */}
       <div className="relative overflow-hidden bg-black min-h-[100svh] flex items-center">
         {/* Base */}
@@ -96,20 +116,6 @@ const TopNextGenAwards: React.FC = () => {
             className="w-24 h-24 sm:w-32 sm:h-32 rounded-full"
             style={{ backgroundColor: theme === 'dark' ? 'rgba(245, 158, 11, 0.18)' : 'rgba(245, 158, 11, 0.14)' }}
           />
-        </div>
-
-        {/* CTA: bottom-left extreme */}
-        <div className="absolute left-10 bottom-9 sm:left-10 sm:bottom-9 lg:left-36 lg:bottom-48 z-60">
-          <a
-            href="https://forms.gle/4QD3ggrwkHuyPRpz6"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-3.5 flex items-center justify-center gap-2 font-bold text-white rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-2xl"
-            style={{ backgroundColor: '#dc2626' }}
-          >
-            <span className="relative z-10">Submit your Nominations</span>
-            <ArrowRight size={20} className="relative z-10 transform group-hover:translate-x-2 transition-transform" />
-          </a>
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-6 sm:pb-8">
