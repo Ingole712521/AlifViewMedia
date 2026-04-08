@@ -718,6 +718,22 @@ const EventDetail: React.FC = () => {
 
           {/* Nomination Process */}
           <NominationProcess theme={theme} />
+
+          {/* Button between Awards and Partners */}
+          <div className="flex justify-center mt-10 sm:mt-12 md:mt-14 px-2 sm:px-0">
+            <button
+              className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
+              style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
+              onClick={() => navigate('/top-next-gen-awards')}
+            >
+              <span className="relative z-10">Top Next-Gen Real Estate Entrepreneurs Awards</span>
+              <ArrowRight
+                size={20}
+                className="sm:w-6 sm:h-6 relative z-10 transform group-hover:translate-x-2 transition-transform"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </button>
+          </div>
         </div>
       </div>
 
