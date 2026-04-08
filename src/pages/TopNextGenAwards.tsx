@@ -27,7 +27,7 @@ const TopNextGenAwards: React.FC = () => {
         className="sticky top-0 w-full z-50 h-16 backdrop-blur-md"
         style={{
           backgroundColor: 'transparent',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.12)'
+          borderBottom: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(0, 0, 0, 0.08)'
         }}
       >
         <div className="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
@@ -59,7 +59,46 @@ const TopNextGenAwards: React.FC = () => {
 
       {/* Hero */}
       <div className="relative overflow-hidden bg-black min-h-[calc(100svh-4rem)] flex items-center">
-        <div className="absolute inset-0 bg-black" />
+        {/* Base */}
+        <div className="absolute inset-0" style={{ backgroundColor: theme === 'dark' ? '#020617' : '#ffffff' }} />
+
+        {/* Animated brand gradient (uses theme CSS variables) */}
+        <div className="absolute inset-0 gradient-bg" style={{ opacity: theme === 'dark' ? 0.18 : 0.12 }} />
+
+        {/* Soft vignette + contrast control */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              theme === 'dark'
+                ? [
+                    'radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.08) 0%, transparent 46%)',
+                    'radial-gradient(circle at 50% 115%, rgba(0, 0, 0, 0.9) 0%, transparent 62%)',
+                    'linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 35%, rgba(0, 0, 0, 0.55) 100%)'
+                  ].join(', ')
+                : [
+                    'radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.55) 42%, transparent 72%)',
+                    'linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.25) 35%, rgba(255, 255, 255, 0.70) 100%)'
+                  ].join(', ')
+          }}
+        />
+
+        {/* Elegant floating accents */}
+        <div className="absolute top-10 left-6 sm:top-12 sm:left-10 floating-animation pointer-events-none">
+          <div
+            className="w-20 h-20 sm:w-28 sm:h-28 rounded-full blur-2xl"
+            style={{ backgroundColor: theme === 'dark' ? 'rgba(220, 38, 38, 0.22)' : 'rgba(220, 38, 38, 0.16)' }}
+          />
+        </div>
+        <div
+          className="absolute bottom-10 right-6 sm:bottom-12 sm:right-10 floating-animation pointer-events-none"
+          style={{ animationDelay: '2s' }}
+        >
+          <div
+            className="w-24 h-24 sm:w-32 sm:h-32 rounded-full blur-2xl"
+            style={{ backgroundColor: theme === 'dark' ? 'rgba(245, 158, 11, 0.18)' : 'rgba(245, 158, 11, 0.14)' }}
+          />
+        </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
@@ -71,7 +110,14 @@ const TopNextGenAwards: React.FC = () => {
             </div>
 
             <div className="max-w-4xl">
-              <div className="inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border border-white/25 bg-white/10 backdrop-blur-md text-white/90 text-xs sm:text-sm font-semibold mb-3">
+              <div
+                className={[
+                  'inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border backdrop-blur-md text-xs sm:text-sm font-semibold mb-3',
+                  theme === 'dark'
+                    ? 'border-white/25 bg-white/10 text-white/90'
+                    : 'border-black/10 bg-white/70 text-slate-900'
+                ].join(' ')}
+              >
                 <span>Call for Nominations</span>
                 <span className="opacity-50">•</span>
                 <span>Maharashtra Edition</span>
@@ -81,11 +127,16 @@ const TopNextGenAwards: React.FC = () => {
                 <img
                   src="/assets/next-genposter.jpeg"
                   alt="Top Next-Gen Real Estate Entrepreneurs Awards"
-                  className="w-full max-w-4xl max-h-[28vh] sm:max-h-[34vh] md:max-h-[38vh] h-auto object-contain"
+                  className="w-full max-w-4xl max-h-[28vh] sm:max-h-[34vh] md:max-h-[38vh] h-auto object-contain drop-shadow-2xl"
                   loading="eager"
                 />
               </div>
-              <p className="mt-2 text-white/85 text-sm sm:text-base md:text-lg max-w-3xl mx-auto">
+              <p
+                className={[
+                  'mt-2 text-sm sm:text-base md:text-lg max-w-3xl mx-auto',
+                  theme === 'dark' ? 'text-white/85' : 'text-slate-700'
+                ].join(' ')}
+              >
                 Nominate today and be part of an exclusive recognition platform celebrating emerging leaders in real estate.
               </p>
             </div>
