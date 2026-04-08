@@ -100,7 +100,7 @@ const TopNextGenAwards: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-white/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
 
-              <a
+              {/* <a
                 href="/images/next_gen.png"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -108,7 +108,7 @@ const TopNextGenAwards: React.FC = () => {
               >
                 <Download size={18} />
                 <span>View Poster</span>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
