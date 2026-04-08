@@ -24,14 +24,13 @@ const TopNextGenAwards: React.FC = () => {
   return (
     <div className="min-h-screen w-full" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <nav
-        className="sticky top-0 w-full z-50 py-4 shadow-lg backdrop-blur-md"
+        className="sticky top-0 w-full z-50 h-16 backdrop-blur-md"
         style={{
-          backgroundColor: theme === 'dark' ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-          borderBottom:
-            theme === 'dark' ? '1px solid rgba(55, 65, 81, 0.3)' : '1px solid rgba(229, 231, 235, 0.3)'
+          backgroundColor: 'transparent',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.12)'
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <img
               src={theme === 'dark' ? '/images/Aliief_white.png' : '/images/company-logo.png'}
@@ -59,21 +58,20 @@ const TopNextGenAwards: React.FC = () => {
       </nav>
 
       {/* Hero */}
-      <div className="relative overflow-hidden bg-black">
-        <div className="absolute inset-0" style={{ backgroundImage: "url('/images/background.jpg')" }} />
-        <div className="absolute inset-0 bg-black/60" />
+      <div className="relative overflow-hidden bg-black min-h-[calc(100svh-4rem)] flex items-center">
+        <div className="absolute inset-0 bg-black" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 md:py-20">
-          <div className="flex flex-col items-center text-center gap-6">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
             <div
-              className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shadow-2xl"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shadow-2xl"
               style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
             >
-              <Award size={34} className="text-white" />
+              <Award size={26} className="text-white" />
             </div>
 
             <div className="max-w-4xl">
-              <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-md text-white/90 text-xs sm:text-sm font-semibold mb-4">
+              <div className="inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border border-white/25 bg-white/10 backdrop-blur-md text-white/90 text-xs sm:text-sm font-semibold mb-3">
                 <span>Call for Nominations</span>
                 <span className="opacity-50">•</span>
                 <span>Maharashtra Edition</span>
@@ -83,11 +81,11 @@ const TopNextGenAwards: React.FC = () => {
                 <img
                   src="/assets/next-genposter.jpeg"
                   alt="Top Next-Gen Real Estate Entrepreneurs Awards"
-                  className="w-full max-w-4xl h-auto object-contain"
+                  className="w-full max-w-4xl max-h-[28vh] sm:max-h-[34vh] md:max-h-[38vh] h-auto object-contain"
                   loading="eager"
                 />
               </div>
-              <p className="mt-4 text-white/85 text-base sm:text-lg md:text-xl max-w-3xl mx-auto">
+              <p className="mt-2 text-white/85 text-sm sm:text-base md:text-lg max-w-3xl mx-auto">
                 Nominate today and be part of an exclusive recognition platform celebrating emerging leaders in real estate.
               </p>
             </div>
@@ -97,7 +95,7 @@ const TopNextGenAwards: React.FC = () => {
                 href="https://forms.gle/4QD3ggrwkHuyPRpz6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 flex items-center justify-center gap-2 font-bold text-white rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-2xl"
+                className="group relative w-full sm:w-auto text-sm sm:text-base md:text-lg px-7 sm:px-9 py-3 sm:py-3.5 flex items-center justify-center gap-2 font-bold text-white rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-2xl"
                 style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
               >
                 <span className="relative z-10">Submit your Nominations</span>
