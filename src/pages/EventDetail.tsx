@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home, Menu, X } from 'lucide-react'
+import { Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home, Menu, X, Scale } from 'lucide-react'
 import ThemeToggle from '../components/ThemeToggle'
 import NominationProcess from '../components/NominationProcess'
 
@@ -232,11 +232,36 @@ const EventDetail: React.FC = () => {
     }
   }
 
+  const speakers = [
+    {
+      name: 'Dr. Nitin Athavle',
+      role: 'Asst. Vice President – Purchase',
+      company: 'Kohinoor Group',
+      image: '/member/WhatsApp%20Image%202026-04-13%20at%201.07.37%20PM.jpeg'
+    }
+  ]
+
+  const juryMembers = [
+    {
+      name: 'Hardeep Sachdeva',
+      role: 'Sr. Partner',
+      company: 'AZB & Partners',
+      image: '/member/WhatsApp%20Image%202026-04-13%20at%201.05.31%20PM.jpeg'
+    },
+    {
+      name: 'Ar. Vishwas Kulkarni',
+      role: 'Founder and Partner',
+      company: 'VK:a architecture',
+      image: '/member/WhatsApp%20Image%202026-04-13%20at%201.06.14%20PM.jpeg'
+    }
+  ]
+
   const navItems: Array<
     | { kind: 'scroll'; id: string; label: string }
     | { kind: 'route'; to: string; label: string }
   > = [
     { kind: 'scroll', id: 'home', label: 'Home' },
+    { kind: 'scroll', id: 'jury', label: 'JURY' },
     { kind: 'scroll', id: 'speakers', label: 'Speakers' },
     { kind: 'scroll', id: 'awards', label: 'Awards' },
     { kind: 'scroll', id: 'partners', label: 'Partners' },
@@ -573,6 +598,80 @@ const EventDetail: React.FC = () => {
         </div>
       </div>
 
+      {/* Jury Section */}
+      <div id="event-jury" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
+        backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
+        background: theme === 'light'
+          ? 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%), radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.03) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.02) 0%, transparent 50%)'
+          : 'none'
+      }}>
+        {theme === 'light' && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.015) 1px, transparent 1px)',
+              backgroundSize: '40px 40px'
+            }}></div>
+          </div>
+        )}
+        {theme === 'dark' && (
+          <div className="absolute top-0 right-0 w-96 h-96 opacity-5" style={{
+            background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
+            transform: 'translate(30%, -30%)'
+          }}></div>
+        )}
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
+            <div className="inline-flex items-center justify-center mb-4 sm:mb-6">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{
+                background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+              }}>
+                <Scale size={32} className="sm:w-10 sm:h-10 text-white" />
+              </div>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">
+              Jury
+            </h2>
+            <p className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 font-medium px-2">
+              Distinguished evaluators for the awards
+            </p>
+            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
+              background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
+            }}></div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto px-2 sm:px-0">
+            {juryMembers.map((member) => (
+              <div
+                key={member.name}
+                className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300"
+                style={{ borderColor: 'var(--primary-color)' }}
+              >
+                <div className="aspect-[4/5] sm:aspect-square overflow-hidden bg-[var(--bg-primary)]">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5 sm:p-6 text-center">
+                  <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-sm sm:text-base text-[var(--text-secondary)] font-medium">
+                    {member.role}
+                  </p>
+                  <p className="text-sm sm:text-base text-[var(--primary-color)] font-semibold mt-2">
+                    {member.company}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Speakers Section */}
       <div id="event-speakers" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
         backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
@@ -616,14 +715,34 @@ const EventDetail: React.FC = () => {
             }}></div>
           </div>
 
-          <div className="text-center py-8 sm:py-12 px-2 sm:px-0">
-            <div className="bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 max-w-3xl mx-auto shadow-xl sm:shadow-2xl border-2" style={{
-              borderColor: 'var(--primary-color)'
-            }}>
-              <p className="text-[var(--text-secondary)] text-base sm:text-lg md:text-xl lg:text-2xl font-medium">
-                Speaker lineup will be announced soon. Stay tuned!
-              </p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-2 sm:px-0">
+            {speakers.map((speaker) => (
+              <div
+                key={speaker.name}
+                className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300"
+                style={{ borderColor: 'var(--primary-color)' }}
+              >
+                <div className="aspect-[4/5] sm:aspect-square overflow-hidden bg-[var(--bg-primary)]">
+                  <img
+                    src={speaker.image}
+                    alt={speaker.name}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5 sm:p-6 text-center">
+                  <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1">
+                    {speaker.name}
+                  </h3>
+                  <p className="text-sm sm:text-base text-[var(--text-secondary)] font-medium">
+                    {speaker.role}
+                  </p>
+                  <p className="text-sm sm:text-base text-[var(--primary-color)] font-semibold mt-2">
+                    {speaker.company}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -822,7 +941,7 @@ const EventDetail: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </button>
-          </div> */}
+          </div> */} 
         </div>
       </div>
 
