@@ -640,18 +640,18 @@ const EventDetail: React.FC = () => {
             }}></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto px-2 sm:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto px-2 sm:px-0">
             {juryMembers.map((member) => (
               <div
                 key={member.name}
-                className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300"
+                className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300 max-w-xs mx-auto w-full"
                 style={{ borderColor: 'var(--primary-color)' }}
               >
-                <div className="aspect-[4/5] sm:aspect-square overflow-hidden bg-[var(--bg-primary)]">
+                <div className="h-56 sm:h-64 overflow-hidden bg-[var(--bg-primary)]">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
