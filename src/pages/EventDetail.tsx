@@ -253,6 +253,12 @@ const EventDetail: React.FC = () => {
       role: 'Founder and Partner',
       company: 'VK:a architecture',
       image: '/member/WhatsApp%20Image%202026-04-13%20at%201.06.14%20PM.jpeg'
+    },
+    {
+      name: 'Shabbir Kanchwala',
+      role: 'Principal',
+      company: 'Global Network for Zero',
+      image: '/member/shabbir.jpeg'
     }
   ]
 
@@ -651,7 +657,7 @@ const EventDetail: React.FC = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
