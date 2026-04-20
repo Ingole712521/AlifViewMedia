@@ -259,6 +259,12 @@ const EventDetail: React.FC = () => {
       role: 'Principal',
       company: 'Global Network for Zero',
       image: '/member/shabbir.jpeg'
+    },
+    {
+      name: 'Nirmal Mangal',
+      role: 'Director - Architecture',
+      company: 'M Moser Associates',
+      image: '/member/nirmalMangal.jpeg'
     }
   ]
 
