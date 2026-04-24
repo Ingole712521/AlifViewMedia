@@ -265,6 +265,12 @@ const EventDetail: React.FC = () => {
       role: 'Director - Architecture',
       company: 'M Moser Associates',
       image: '/member/nirmalMangal.jpeg'
+    },
+    {
+      name: 'Dr. Mala Singh',
+      role: 'Chairperson IGBC (CII), Mumbai Chapter',
+      company: 'Chairperson & MD PEC Greening India',
+      image: '/member/malaSingh.jpeg'
     }
   ]
 
