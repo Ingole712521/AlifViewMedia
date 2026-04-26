@@ -944,6 +944,22 @@ const EventDetail: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </button>
             </div>
+
+            <div className="max-w-3xl mx-auto">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
+                Magazine Partner
+              </h3>
+              <div className="bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border-2 inline-flex items-center justify-center" style={{
+                borderColor: 'var(--primary-color)'
+              }}>
+                <img
+                  src="/partner/TBF-new-logo-PNG.png"
+                  alt="The Business Fame Magazine Partner"
+                  className="h-14 sm:h-16 md:h-20 w-auto object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
 
           {/* <div className="flex justify-center mt-6 sm:mt-8 md:mt-10 px-2 sm:px-0">
