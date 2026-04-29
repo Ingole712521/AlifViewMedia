@@ -268,9 +268,21 @@ const EventDetail: React.FC = () => {
     },
     {
       name: 'Dr. Mala Singh',
-      role: 'Chairperson IGBC (CII), Mumbai Chapter',
-      company: 'Chairperson & MD PEC Greening India',
+      role: 'Chairperson & MD',
+      company: 'PEC Greening India',
       image: '/member/malaSingh.jpeg'
+    },
+    {
+      name: 'Jerry Kingsley',
+      role: 'Head of Research, India and City Lead for Capital Markets, Chennai',
+      company: 'JLL',
+      image: '/member/jerry.jpg'
+    },
+    {
+      name: 'Jayesh Kariya',
+      role: 'Partner and Leader',
+      company: 'BSC Advisors Pvt Ltd',
+      image: '/member/jayesh.jpg'
     }
   ]
 
