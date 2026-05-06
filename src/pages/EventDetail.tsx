@@ -241,6 +241,13 @@ const EventDetail: React.FC = () => {
     }
   ]
 
+  const guestOfHonour = {
+    name: 'NIlesh Laddad',
+    role: 'Director - Engineering, Kohinoor Group',
+    company: 'Managing Director, Planedge Consultants Pvt. Ltd',
+    image: '/member/NIlesh.jpeg'
+  }
+
   const juryMembers = [
     {
       name: 'Hardeep Sachdeva',
@@ -698,6 +705,67 @@ const EventDetail: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Guest of Honour Section */}
+      <div className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
+        backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
+        background: theme === 'light'
+          ? 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%), radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.03) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.02) 0%, transparent 50%)'
+          : 'none'
+      }}>
+        {theme === 'light' && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.015) 1px, transparent 1px)',
+              backgroundSize: '40px 40px'
+            }}></div>
+          </div>
+        )}
+        {theme === 'dark' && (
+          <div className="absolute top-0 right-0 w-96 h-96 opacity-5" style={{
+            background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
+            transform: 'translate(30%, -30%)'
+          }}></div>
+        )}
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">
+              Guest of Honour
+            </h2>
+            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
+              background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
+            }}></div>
+          </div>
+
+          <div className="max-w-sm mx-auto px-2 sm:px-0">
+            <div
+              className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300"
+              style={{ borderColor: 'var(--primary-color)' }}
+            >
+              <div className="h-56 sm:h-64 overflow-hidden bg-[var(--bg-primary)]">
+                <img
+                  src={guestOfHonour.image}
+                  alt={guestOfHonour.name}
+                  className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-5 sm:p-6 text-center">
+                <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1">
+                  {guestOfHonour.name}
+                </h3>
+                <p className="text-sm sm:text-base text-[var(--text-secondary)] font-medium">
+                  {guestOfHonour.role}
+                </p>
+                <p className="text-sm sm:text-base text-[var(--primary-color)] font-semibold mt-2">
+                  {guestOfHonour.company}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
