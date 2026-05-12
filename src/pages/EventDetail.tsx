@@ -302,7 +302,7 @@ const EventDetail: React.FC = () => {
     { kind: 'scroll', id: 'speakers', label: 'Speakers' },
     { kind: 'scroll', id: 'awards', label: 'Awards' },
     { kind: 'scroll', id: 'partners', label: 'Partners' },
-    { kind: 'route', to: '/top-next-gen-awards', label: 'Top Next-Gen Real Estate Entrepreneurs Awards' },
+    { kind: 'route', to: '/top-next-gen-awards', label: 'Top Next-Gen Real Estate Leaders Awards' },
     { kind: 'scroll', id: 'contact', label: 'Contact' }
   ]
 
