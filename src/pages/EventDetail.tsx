@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home, Menu, X, Scale } from 'lucide-react'
+import { Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home, Menu, X, Scale, ChevronDown } from 'lucide-react'
 import ThemeToggle from '../components/ThemeToggle'
 import NominationProcess from '../components/NominationProcess'
 
@@ -9,6 +9,7 @@ const EventDetail: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home')
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [topLeaderMobileOpen, setTopLeaderMobileOpen] = useState(false)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
@@ -296,15 +297,24 @@ const EventDetail: React.FC = () => {
   const navItems: Array<
     | { kind: 'scroll'; id: string; label: string }
     | { kind: 'route'; to: string; label: string }
+    | { kind: 'dropdown'; id: string; label: string; items: { label: string; to: string }[] }
   > = [
-    { kind: 'scroll', id: 'home', label: 'Home' },
-    { kind: 'scroll', id: 'jury', label: 'JURY' },
-    { kind: 'scroll', id: 'speakers', label: 'Speakers' },
-    { kind: 'scroll', id: 'awards', label: 'Awards' },
-    { kind: 'scroll', id: 'partners', label: 'Partners' },
-    { kind: 'route', to: '/top-next-gen-awards', label: 'Top Next-Gen Real Estate Leaders Awards' },
-    { kind: 'scroll', id: 'contact', label: 'Contact' }
-  ]
+      { kind: 'scroll', id: 'home', label: 'Home' },
+      { kind: 'scroll', id: 'jury', label: 'JURY' },
+      { kind: 'scroll', id: 'speakers', label: 'Speakers' },
+      { kind: 'scroll', id: 'awards', label: 'Awards' },
+      { kind: 'scroll', id: 'partners', label: 'Partners' },
+      {
+        kind: 'dropdown',
+        id: 'top-leader',
+        label: 'Top Leader',
+        items: [
+          { label: 'Top Generation', to: '/top-next-gen-awards' },
+          { label: 'Grand Masters of Real Estate 2026', to: '/grand-masters-real-estate-2026' },
+        ],
+      },
+      { kind: 'scroll', id: 'contact', label: 'Contact' }
+    ]
 
   // Navbar sits over the hero background at the top; when it's not scrolled yet,
   // swap the visible light/dark styling ("vice versa") as requested.
@@ -315,11 +325,10 @@ const EventDetail: React.FC = () => {
     <div className="min-h-screen w-full" style={{ backgroundColor: 'var(--bg-primary)' }}>
       {/* Fixed Navigation Bar */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled 
-            ? "py-4 shadow-lg backdrop-blur-md" 
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+            ? "py-4 shadow-lg backdrop-blur-md"
             : "py-6"
-        }`}
+          }`}
         style={{
           backgroundColor: isScrolled
             ? theme === 'dark'
@@ -327,13 +336,13 @@ const EventDetail: React.FC = () => {
               : "rgba(255, 255, 255, 0.95)"
             : "transparent",
           backdropFilter: isScrolled ? "blur(10px)" : "none",
-          borderBottom: isScrolled 
+          borderBottom: isScrolled
             ? theme === 'dark'
               ? "1px solid rgba(55, 65, 81, 0.3)"
               : "1px solid rgba(229, 231, 235, 0.3)"
             : "none",
-          boxShadow: isScrolled 
-            ? theme === 'dark' 
+          boxShadow: isScrolled
+            ? theme === 'dark'
               ? "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)"
               : "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
             : "none"
@@ -362,24 +371,76 @@ const EventDetail: React.FC = () => {
 
             {/* Desktop Navigation */}
             <div className='hidden md:flex items-center space-x-8'>
-              {navItems.map((item) => (
-                <button
-                  key={item.kind === 'scroll' ? item.id : item.to}
-                  onClick={() => {
-                    if (item.kind === 'scroll') scrollToSection(item.id)
-                    else navigate(item.to)
-                  }}
-                  className={`nav-link ${
-                    navOnImage
-                      ? '!text-white hover:!text-white'
-                      : item.kind === 'scroll' && activeSection === item.id
-                        ? 'text-[var(--primary-color)]'
-                        : ''
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                if (item.kind === 'dropdown') {
+                  return (
+                    <div key={item.id} className="relative group">
+                      <button
+                        type="button"
+                        className={`nav-link flex items-center gap-1 ${navOnImage
+                            ? '!text-white hover:!text-white'
+                            : ''
+                          }`}
+                      >
+                        {item.label}
+                        <ChevronDown className="w-4 h-4 shrink-0 opacity-80" aria-hidden />
+                      </button>
+                      <div
+                        className="absolute left-0 top-full z-[60] pt-1 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-150"
+                        role="menu"
+                        aria-label={item.label}
+                      >
+                        <div
+                          className="rounded-lg shadow-xl border py-1 min-w-[16rem] max-w-[min(90vw,20rem)]"
+                          style={{
+                            backgroundColor: navOnImage
+                              ? 'rgba(17, 24, 39, 0.96)'
+                              : theme === 'dark'
+                                ? 'rgba(17, 24, 39, 0.98)'
+                                : 'rgba(255, 255, 255, 0.98)',
+                            borderColor: theme === 'dark' ? 'rgba(55, 65, 81, 0.55)' : 'rgba(229, 231, 235, 0.95)',
+                            backdropFilter: 'blur(12px)',
+                          }}
+                        >
+                          {item.items.map((sub) => (
+                            <button
+                              key={sub.to}
+                              type="button"
+                              role="menuitem"
+                              onClick={() => navigate(sub.to)}
+                              className={`block w-full text-left px-4 py-2.5 text-sm font-medium transition-colors ${navOnImage
+                                  ? 'text-white/95 hover:bg-white/10'
+                                  : theme === 'dark'
+                                    ? 'text-gray-100 hover:bg-white/10'
+                                    : 'text-gray-800 hover:bg-black/5'
+                                }`}
+                            >
+                              {sub.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }
+                return (
+                  <button
+                    key={item.kind === 'scroll' ? item.id : item.to}
+                    onClick={() => {
+                      if (item.kind === 'scroll') scrollToSection(item.id)
+                      else navigate(item.to)
+                    }}
+                    className={`nav-link ${navOnImage
+                        ? '!text-white hover:!text-white'
+                        : item.kind === 'scroll' && activeSection === item.id
+                          ? 'text-[var(--primary-color)]'
+                          : ''
+                      }`}
+                  >
+                    {item.label}
+                  </button>
+                )
+              })}
 
               <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
 
@@ -403,9 +464,8 @@ const EventDetail: React.FC = () => {
               <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`hover:opacity-70 transition-opacity duration-200 ${
-                  navOnImage ? 'text-white hover:text-white' : (topNavTheme === 'dark' ? 'text-white hover:text-white' : 'text-[#1f2937] hover:text-gray-800')
-                }`}
+                className={`hover:opacity-70 transition-opacity duration-200 ${navOnImage ? 'text-white hover:text-white' : (topNavTheme === 'dark' ? 'text-white hover:text-white' : 'text-[#1f2937] hover:text-gray-800')
+                  }`}
               >
                 {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
@@ -416,7 +476,7 @@ const EventDetail: React.FC = () => {
           {isMobileMenuOpen && (
             <div
               className='md:hidden mt-4 py-4 border-t backdrop-blur-md rounded-lg'
-              style={{ 
+              style={{
                 borderColor: theme === 'dark'
                   ? "rgba(55, 65, 81, 0.5)"
                   : "rgba(229, 231, 235, 0.5)",
@@ -426,21 +486,57 @@ const EventDetail: React.FC = () => {
                 backdropFilter: "blur(10px)"
               }}
             >
-              {navItems.map((item) => (
-                <button
-                  key={item.kind === 'scroll' ? item.id : item.to}
-                  onClick={() => {
-                    if (item.kind === 'scroll') scrollToSection(item.id)
-                    else navigate(item.to)
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className={`block w-full text-left py-3 px-4 nav-link rounded-md transition-colors duration-200 ${
-                    navOnImage ? '!text-white hover:!text-white' : ''
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                if (item.kind === 'dropdown') {
+                  return (
+                    <div key={item.id} className="w-full">
+                      <button
+                        type="button"
+                        onClick={() => setTopLeaderMobileOpen((o) => !o)}
+                        className={`flex w-full items-center justify-between py-3 px-4 nav-link rounded-md transition-colors duration-200 ${navOnImage ? '!text-white hover:!text-white' : ''
+                          } ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5'
+                          }`}
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown className={`w-4 h-4 shrink-0 transition-transform ${topLeaderMobileOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      {topLeaderMobileOpen && (
+                        <div className="pl-2 pb-2 space-y-1">
+                          {item.items.map((sub) => (
+                            <button
+                              key={sub.to}
+                              type="button"
+                              onClick={() => {
+                                navigate(sub.to)
+                                setIsMobileMenuOpen(false)
+                                setTopLeaderMobileOpen(false)
+                              }}
+                              className={`block w-full text-left py-2.5 px-4 text-sm rounded-md nav-link transition-colors ${navOnImage ? '!text-white/95 hover:!text-white' : ''
+                                } ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5'}`}
+                            >
+                              {sub.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )
+                }
+                return (
+                  <button
+                    key={item.kind === 'scroll' ? item.id : item.to}
+                    onClick={() => {
+                      if (item.kind === 'scroll') scrollToSection(item.id)
+                      else navigate(item.to)
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`block w-full text-left py-3 px-4 nav-link rounded-md transition-colors duration-200 ${navOnImage ? '!text-white hover:!text-white' : ''
+                      } ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5'}`}
+                  >
+                    {item.label}
+                  </button>
+                )
+              })}
               <button
                 className='mt-4 w-full mx-4 px-8 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center'
                 style={{
@@ -502,31 +598,45 @@ const EventDetail: React.FC = () => {
             </div> */}
 
             <div className="lg:hidden flex flex-wrap items-center justify-center gap-2 pt-2">
-              {navItems.map((item) => (
-                <button
-                  key={item.kind === 'scroll' ? item.id : item.to}
-                  onClick={() => {
-                    if (item.kind === 'scroll') scrollToSection(item.id)
-                    else navigate(item.to)
-                  }}
-                  className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${
-                    item.kind === 'scroll' && activeSection === item.id
-                      ? 'text-white shadow-lg border-white/40 bg-gradient-to-br from-amber-600/90 to-amber-800/90'
-                      : 'bg-white/15 text-white hover:bg-white/25 border-white/25'
-                  }`}
-                >
-                  <span className="text-center leading-tight block">{item.label}</span>
-                </button>
-              ))}
+              {navItems.flatMap((item) => {
+                if (item.kind === 'dropdown') {
+                  return item.items.map((sub) => (
+                    <button
+                      key={sub.to}
+                      type="button"
+                      onClick={() => navigate(sub.to)}
+                      className="px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border bg-white/15 text-white hover:bg-white/25 border-white/25"
+                    >
+                      <span className="text-center leading-tight block">{sub.label}</span>
+                    </button>
+                  ))
+                }
+                return [
+                  <button
+                    key={item.kind === 'scroll' ? item.id : item.to}
+                    type="button"
+                    onClick={() => {
+                      if (item.kind === 'scroll') scrollToSection(item.id)
+                      else navigate(item.to)
+                    }}
+                    className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all duration-300 backdrop-blur-md border ${item.kind === 'scroll' && activeSection === item.id
+                        ? 'text-white shadow-lg border-white/40 bg-gradient-to-br from-amber-600/90 to-amber-800/90'
+                        : 'bg-white/15 text-white hover:bg-white/25 border-white/25'
+                      }`}
+                  >
+                    <span className="text-center leading-tight block">{item.label}</span>
+                  </button>
+                ]
+              })}
             </div>
           </div>
         </div>
       </div>
 
       {/* Home Section */}
-      <div id="event-home" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+      <div id="event-home" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
         backgroundColor: theme === 'dark' ? 'var(--bg-secondary)' : '#f8fafc',
-        background: theme === 'light' 
+        background: theme === 'light'
           ? 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%), radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.02) 0%, transparent 50%)'
           : 'none'
       }}>
@@ -555,7 +665,7 @@ const EventDetail: React.FC = () => {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
             <div className="inline-flex items-center justify-center mb-4 sm:mb-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{ 
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{
                 background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}>
                 <Star size={32} className="sm:w-10 sm:h-10 text-white" fill="currentColor" />
@@ -564,7 +674,7 @@ const EventDetail: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6 px-2">
               About the Event
             </h2>
-            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{ 
+            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
               background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
             }}></div>
           </div>
@@ -771,9 +881,9 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Speakers Section */}
-      <div id="event-speakers" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+      <div id="event-speakers" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
         backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
-        background: theme === 'light' 
+        background: theme === 'light'
           ? 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%), radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.03) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.02) 0%, transparent 50%)'
           : 'none'
       }}>
@@ -796,7 +906,7 @@ const EventDetail: React.FC = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
             <div className="inline-flex items-center justify-center mb-4 sm:mb-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{ 
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{
                 background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}>
                 <Users size={32} className="sm:w-10 sm:h-10 text-white" />
@@ -808,7 +918,7 @@ const EventDetail: React.FC = () => {
             <p className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 font-medium px-2">
               Industry leaders and experts sharing insights
             </p>
-            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{ 
+            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
               background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
             }}></div>
           </div>
@@ -846,9 +956,9 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Awards Section */}
-      <div id="event-awards" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+      <div id="event-awards" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
         backgroundColor: theme === 'dark' ? 'var(--bg-secondary)' : '#f1f5f9',
-        background: theme === 'light' 
+        background: theme === 'light'
           ? 'linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%), radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.04) 0%, transparent 60%), radial-gradient(circle at 10% 10%, rgba(245, 158, 11, 0.03) 0%, transparent 50%)'
           : 'none'
       }}>
@@ -877,7 +987,7 @@ const EventDetail: React.FC = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
             <div className="inline-flex items-center justify-center mb-4 sm:mb-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{ 
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{
                 background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}>
                 <Award size={32} className="sm:w-10 sm:h-10 text-white" />
@@ -889,7 +999,7 @@ const EventDetail: React.FC = () => {
             <p className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 font-medium px-2">
               Recognising excellence across the real estate sector
             </p>
-            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{ 
+            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
               background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
             }}></div>
 
@@ -924,12 +1034,12 @@ const EventDetail: React.FC = () => {
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300" style={{
                   background: 'linear-gradient(135deg, #dc2626, #f59e0b)'
                 }}></div>
-                
+
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <div
                       className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg transform group-hover:rotate-12 transition-transform duration-300"
-                      style={{ 
+                      style={{
                         background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
                       }}
                     >
@@ -959,9 +1069,9 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Partners Section */}
-      <div id="event-partners" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+      <div id="event-partners" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
         backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
-        background: theme === 'light' 
+        background: theme === 'light'
           ? 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%), radial-gradient(circle at 70% 30%, rgba(220, 38, 38, 0.03) 0%, transparent 50%), radial-gradient(circle at 30% 70%, rgba(245, 158, 11, 0.02) 0%, transparent 50%)'
           : 'none'
       }}>
@@ -984,7 +1094,7 @@ const EventDetail: React.FC = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
             <div className="inline-flex items-center justify-center mb-4 sm:mb-6 gap-4">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{ 
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{
                 background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}>
                 <Handshake size={32} className="sm:w-10 sm:h-10 text-white" />
@@ -996,7 +1106,7 @@ const EventDetail: React.FC = () => {
             <p className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 font-medium px-2">
               Join us as a partner
             </p>
-            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{ 
+            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
               background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
             }}></div>
           </div>
@@ -1055,14 +1165,14 @@ const EventDetail: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </button>
-          </div> */} 
+          </div> */}
         </div>
       </div>
 
       {/* Contact Section */}
-      <div id="event-contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+      <div id="event-contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
         backgroundColor: theme === 'dark' ? 'var(--bg-secondary)' : '#f1f5f9',
-        background: theme === 'light' 
+        background: theme === 'light'
           ? 'linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%), radial-gradient(circle at 30% 70%, rgba(220, 38, 38, 0.04) 0%, transparent 60%), radial-gradient(circle at 90% 20%, rgba(245, 158, 11, 0.03) 0%, transparent 50%)'
           : 'none'
       }}>
@@ -1085,7 +1195,7 @@ const EventDetail: React.FC = () => {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
             <div className="inline-flex items-center justify-center mb-4 sm:mb-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{ 
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl transform hover:scale-110 transition-transform duration-300" style={{
                 background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
               }}>
                 <Mail size={32} className="sm:w-10 sm:h-10 text-white" />
@@ -1094,7 +1204,7 @@ const EventDetail: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6 px-2">
               Contact Us
             </h2>
-            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{ 
+            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
               background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
             }}></div>
           </div>
@@ -1104,14 +1214,14 @@ const EventDetail: React.FC = () => {
               borderColor: '#dc2626'
             }}>
               <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6 md:mb-8">
-              For Speaking Opportunity ,  Partnerships & Booths 
+                For Speaking Opportunity ,  Partnerships & Booths
               </h3>
 
               <div className="space-y-3 sm:space-y-4 md:space-y-5">
                 <div className="flex items-start gap-3 sm:gap-4 md:gap-5">
                   <div
                     className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg transform group-hover:rotate-12 transition-transform duration-300"
-                    style={{ 
+                    style={{
                       background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
                     }}
                   >
@@ -1122,7 +1232,7 @@ const EventDetail: React.FC = () => {
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3 text-[var(--text-secondary)] flex-wrap">
                       <Mail size={18} className="sm:w-5 sm:h-5 flex-shrink-0 text-[var(--primary-color)] mt-0.5 sm:mt-0" />
                       <a href="mailto:almas@alifviewmedia.com" className="hover:text-[var(--primary-color)] transition-colors text-sm sm:text-base md:text-lg whitespace-nowrap font-medium">
-                       almas@alifviewmedia.com
+                        almas@alifviewmedia.com
                       </a>
                     </div>
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3 text-[var(--text-secondary)] flex-wrap mt-2 sm:mt-3">
@@ -1148,7 +1258,7 @@ const EventDetail: React.FC = () => {
                 <div className="flex items-start gap-3 sm:gap-4 md:gap-5">
                   <div
                     className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg transform group-hover:rotate-12 transition-transform duration-300"
-                    style={{ 
+                    style={{
                       background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
                     }}
                   >
