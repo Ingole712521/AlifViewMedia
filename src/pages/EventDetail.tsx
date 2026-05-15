@@ -307,9 +307,9 @@ const EventDetail: React.FC = () => {
       {
         kind: 'dropdown',
         id: 'top-leader',
-        label: 'Top Leader',
+        label: 'Leadership Awards',
         items: [
-          { label: 'Top Generation', to: '/top-next-gen-awards' },
+          { label: 'Top Next-Gen Real Estate Leader', to: '/top-next-gen-awards' },
           { label: 'Grand Masters of Real Estate 2026', to: '/grand-masters-real-estate-2026' },
         ],
       },
