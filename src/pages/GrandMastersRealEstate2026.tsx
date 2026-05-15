@@ -4,7 +4,7 @@ import {
   Calendar,
   CheckCircle2,
   Home,
-  ListOrdered,
+
   Mail,
   Phone,
   ReceiptIndianRupee,
@@ -208,92 +208,8 @@ const GrandMastersRealEstate2026: React.FC = () => {
             </div>
           </div>
 
-          {/* Process + deadline row */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-stretch">
-            <div className="lg:col-span-3 space-y-6">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">
-                How nominations work
-              </h2>
-              <p className="text-[var(--text-secondary)] text-base leading-relaxed">
-                Upload everything to a single Google Drive folder, then email the share link to{' '}
-                <a href={mailtoNominate} className="text-red-600 dark:text-amber-400 font-semibold underline break-all">
-                  {NOMINATION_EMAIL}
-                </a>
-                . We&apos;ll guide you through the rest.
-              </p>
-              <div className="space-y-3">
-                {[
-                  "Nominee's profile",
-                  'Leadership achievements',
-                  'Industry contribution & impact',
-                  'LinkedIn profile link',
-                  'High-resolution picture of the nominee (JPEG/PNG)',
-                  'Any other information you would like to add'
-                ].map((step, i) => (
-                  <div
-                    key={step}
-                    className="flex gap-4 p-4 sm:p-5 rounded-2xl border transition-shadow hover:shadow-lg"
-                    style={{
-                      backgroundColor: theme === 'dark' ? 'rgba(30, 41, 59, 0.6)' : 'rgba(255, 255, 255, 0.92)',
-                      borderColor: theme === 'dark' ? 'rgba(51, 65, 85, 0.6)' : 'rgba(226, 232, 240, 1)'
-                    }}
-                  >
-                    <div
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-extrabold text-white shadow-lg"
-                      style={{ background: 'linear-gradient(145deg, #ef4444, #b91c1c)' }}
-                    >
-                      {i + 1}
-                    </div>
-                    <div className="flex items-center min-w-0 pt-0.5">
-                      <p className="text-sm sm:text-base font-medium text-[var(--text-primary)] leading-snug">{step}</p>
-                    </div>
-                    <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-500 opacity-80 hidden sm:block mt-0.5" />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="lg:col-span-2 flex w-full min-h-0 self-stretch h-full">
-              <div
-                className="flex-1 w-full min-h-0 flex flex-col justify-center rounded-3xl px-5 py-6 sm:px-6 sm:py-8 text-center relative overflow-hidden border-2 shadow-2xl min-h-[240px]"
-                style={{
-                  borderColor: theme === 'dark' ? 'rgba(251, 191, 36, 0.35)' : 'rgba(220, 38, 38, 0.35)',
-                  background:
-                    theme === 'dark'
-                      ? 'linear-gradient(160deg, rgba(127,29,29,0.5) 0%, rgba(15,23,42,0.95) 55%, rgba(15,23,42,1) 100%)'
-                      : 'linear-gradient(160deg, #fff1f2 0%, #ffffff 40%, #fff7ed 100%)'
-                }}
-              >
-                <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-red-500/20 blur-2xl pointer-events-none" />
-                <div className="relative z-10 flex flex-col items-center justify-center gap-3 sm:gap-4 w-full max-w-xs mx-auto">
-                  <Calendar
-                    className="w-10 h-10 sm:w-12 sm:h-12 text-red-600 dark:text-amber-400 drop-shadow-sm shrink-0"
-                    strokeWidth={1.5}
-                  />
-                  <p className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-red-700 dark:text-amber-200 uppercase">
-                    Nominations close
-                  </p>
-                  <p className="text-2xl sm:text-3xl md:text-4xl font-black text-[var(--text-primary)] tracking-tight leading-none">
-                    30 May 2026
-                  </p>
-                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed px-1">
-                    Secure your place on the shortlist — incomplete dossiers may delay review.
-                  </p>
-                  <a
-                    href={mailtoNominate}
-                    className="mt-1 w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-white text-sm sm:text-base shadow-xl transition-transform hover:scale-[1.02]"
-                    style={{ background: 'linear-gradient(90deg, #dc2626, #991b1b)' }}
-                  >
-                    Email your Drive link
-                    <ArrowRight className="w-4 h-4 shrink-0" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Poster + nomination sidebar — same grid as Top Next-Gen; categories list + details */}
-          <div className="pt-4 sm:pt-6">
+          {/* Award categories + nomination details */}
+          <div>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
               <div className="lg:col-span-7">
                 <div
@@ -432,6 +348,92 @@ const GrandMastersRealEstate2026: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* How to nominate — process + deadline */}
+          <div className="pt-4 sm:pt-6">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-stretch">
+            <div className="lg:col-span-3 space-y-6">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">
+                How nominations work
+              </h2>
+              <p className="text-[var(--text-secondary)] text-base leading-relaxed">
+                Upload everything to a single Google Drive folder, then email the share link to{' '}
+                <a href={mailtoNominate} className="text-red-600 dark:text-amber-400 font-semibold underline break-all">
+                  {NOMINATION_EMAIL}
+                </a>
+                . We&apos;ll guide you through the rest.
+              </p>
+              <div className="space-y-3">
+                {[
+                  "Nominee's profile",
+                  'Leadership achievements',
+                  'Industry contribution & impact',
+                  'LinkedIn profile link',
+                  'High-resolution picture of the nominee (JPEG/PNG)',
+                  'Any other information you would like to add'
+                ].map((step, i) => (
+                  <div
+                    key={step}
+                    className="flex gap-4 p-4 sm:p-5 rounded-2xl border transition-shadow hover:shadow-lg"
+                    style={{
+                      backgroundColor: theme === 'dark' ? 'rgba(30, 41, 59, 0.6)' : 'rgba(255, 255, 255, 0.92)',
+                      borderColor: theme === 'dark' ? 'rgba(51, 65, 85, 0.6)' : 'rgba(226, 232, 240, 1)'
+                    }}
+                  >
+                    <div
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-extrabold text-white shadow-lg"
+                      style={{ background: 'linear-gradient(145deg, #ef4444, #b91c1c)' }}
+                    >
+                      {i + 1}
+                    </div>
+                    <div className="flex items-center min-w-0 pt-0.5">
+                      <p className="text-sm sm:text-base font-medium text-[var(--text-primary)] leading-snug">{step}</p>
+                    </div>
+                    <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-500 opacity-80 hidden sm:block mt-0.5" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-2 flex w-full min-h-0 self-stretch h-full">
+              <div
+                className="flex-1 w-full min-h-0 flex flex-col justify-center rounded-3xl px-5 py-6 sm:px-6 sm:py-8 text-center relative overflow-hidden border-2 shadow-2xl min-h-[240px]"
+                style={{
+                  borderColor: theme === 'dark' ? 'rgba(251, 191, 36, 0.35)' : 'rgba(220, 38, 38, 0.35)',
+                  background:
+                    theme === 'dark'
+                      ? 'linear-gradient(160deg, rgba(127,29,29,0.5) 0%, rgba(15,23,42,0.95) 55%, rgba(15,23,42,1) 100%)'
+                      : 'linear-gradient(160deg, #fff1f2 0%, #ffffff 40%, #fff7ed 100%)'
+                }}
+              >
+                <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-red-500/20 blur-2xl pointer-events-none" />
+                <div className="relative z-10 flex flex-col items-center justify-center gap-3 sm:gap-4 w-full max-w-xs mx-auto">
+                  <Calendar
+                    className="w-10 h-10 sm:w-12 sm:h-12 text-red-600 dark:text-amber-400 drop-shadow-sm shrink-0"
+                    strokeWidth={1.5}
+                  />
+                  <p className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-red-700 dark:text-amber-200 uppercase">
+                    Nominations close
+                  </p>
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-black text-[var(--text-primary)] tracking-tight leading-none">
+                    30 May 2026
+                  </p>
+                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed px-1">
+                    Secure your place on the shortlist — incomplete dossiers may delay review.
+                  </p>
+                  <a
+                    href={mailtoNominate}
+                    className="mt-1 w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-white text-sm sm:text-base shadow-xl transition-transform hover:scale-[1.02]"
+                    style={{ background: 'linear-gradient(90deg, #dc2626, #991b1b)' }}
+                  >
+                    Email your Drive link
+                    <ArrowRight className="w-4 h-4 shrink-0" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
 
           {/* Contact */}
