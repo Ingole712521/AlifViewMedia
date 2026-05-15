@@ -593,7 +593,7 @@ const EventDetail: React.FC = () => {
               </div>
               <div className="flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20">
                 <MapPin size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
-                <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">Venue : TBA</span>
+                <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">Venue : Sayaji Hotel, Pune</span>
               </div>
             </div> */}
 

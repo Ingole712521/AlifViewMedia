@@ -11,8 +11,8 @@ const Events: React.FC = () => {
       title: 'REALTYVIEW LEADERSHIP SUMMIT & AWARDS 2026',
       location: 'Maharashtra',
       subtitle: 'Convene. Connect. Celebrate Excellence',
-      date: '6th June 2026',
-      type: 'TBA',
+      date: '27th June 2026',
+      type: 'Sayaji Hotel, Pune',
       description: 'RealtyView Leadership Summit & Awards 2026 – Maharashtra is a distinguished platform celebrating excellence and driving strategic dialogue across one of India’s most dynamic real estate markets. Bringing together an elite gathering of leading developers, architects, urban planners, investors, policymakers, and industry visionaries from across Maharashtra, the summit fosters high-impact conversations around market evolution, investment opportunities, innovation, and sustainable urban development.',
       image: '/poster/EventLogo.png'
     }

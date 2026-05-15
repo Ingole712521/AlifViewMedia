@@ -227,9 +227,9 @@ const GrandMastersRealEstate2026: React.FC = () => {
                   >
                     <div>
                       <h2 className="text-lg sm:text-xl font-extrabold text-[var(--text-primary)]">Award categories</h2>
-                      <p className="mt-0.5 text-xs sm:text-sm text-[var(--text-secondary)]">
+                      {/* <p className="mt-0.5 text-xs sm:text-sm text-[var(--text-secondary)]">
                         {categories.length} tracks — nominate for the category that best fits your nominee.
-                      </p>
+                      </p> */}
                     </div>
                    
                   </div>
@@ -355,14 +355,13 @@ const GrandMastersRealEstate2026: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-stretch">
             <div className="lg:col-span-3 space-y-6">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">
-                How nominations work
+                Nomination Process
               </h2>
               <p className="text-[var(--text-secondary)] text-base leading-relaxed">
-                Upload everything to a single Google Drive folder, then email the share link to{' '}
+                Upload the below on a google drive link and email the link to{' '}
                 <a href={mailtoNominate} className="text-red-600 dark:text-amber-400 font-semibold underline break-all">
                   {NOMINATION_EMAIL}
                 </a>
-                . We&apos;ll guide you through the rest.
               </p>
               <div className="space-y-3">
                 {[
