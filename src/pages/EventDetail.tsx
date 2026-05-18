@@ -239,6 +239,12 @@ const EventDetail: React.FC = () => {
       role: 'Asst. Vice President – Purchase',
       company: 'Kohinoor Group',
       image: '/member/WhatsApp%20Image%202026-04-13%20at%201.07.37%20PM.jpeg'
+    },
+    {
+      name: 'Dr. Adv. Harshul Savla',
+      role: 'Developer, Best Selling Author',
+      company: 'World Record Holder, TEDx Speaker',
+      image: '/member/Harshul.png'
     }
   ]
 
