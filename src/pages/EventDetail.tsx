@@ -1141,37 +1141,40 @@ const EventDetail: React.FC = () => {
               </button>
             </div>
 
-            <div className="max-w-3xl mx-auto space-y-8 sm:space-y-10">
-              <div className="py-6 sm:py-8 md:py-10">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
-                  Supporting Logo
-                </h3>
-                <div
-                  className="rounded-xl sm:rounded-2xl px-6 sm:px-8 py-8 sm:py-10 md:py-12 shadow-lg border-2 inline-flex items-center justify-center bg-[var(--bg-secondary)]"
-                  style={{ borderColor: 'var(--primary-color)' }}
-                >
-                  <img
-                    src="/poster/AESA.png"
-                    alt="Architects, Engineers & Surveyors' Association (AESA)"
-                    className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto object-contain"
-                    loading="lazy"
-                  />
+            <div className="max-w-6xl mx-auto py-6 sm:py-8 md:py-10">
+              <div className="flex flex-row items-stretch justify-center gap-4 sm:gap-8 md:gap-10">
+                <div className="flex-1 flex flex-col items-center text-center min-w-0">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
+                    Supporting Partner
+                  </h3>
+                  <div
+                    className="w-full flex-1 rounded-xl sm:rounded-2xl px-6 sm:px-8 py-8 sm:py-10 md:py-12 shadow-lg border-2 flex items-center justify-center bg-[var(--bg-secondary)]"
+                    style={{ borderColor: 'var(--primary-color)' }}
+                  >
+                    <img
+                      src="/poster/AESA.png"
+                      alt="Architects, Engineers & Surveyors' Association (AESA)"
+                      className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
-                  Magazine Partner
-                </h3>
-                <div className="bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border-2 inline-flex items-center justify-center" style={{
-                  borderColor: 'var(--primary-color)'
-                }}>
-                  <img
-                    src="/partner/TBF-new-logo-PNG.png"
-                    alt="The Business Fame Magazine Partner"
-                    className="h-14 sm:h-16 md:h-20 w-auto object-contain"
-                    loading="lazy"
-                  />
+                <div className="flex-1 flex flex-col items-center text-center min-w-0">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
+                    Magazine Partner
+                  </h3>
+                  <div
+                    className="w-full flex-1 rounded-xl sm:rounded-2xl px-6 sm:px-8 py-8 sm:py-10 md:py-12 shadow-lg border-2 flex items-center justify-center bg-[var(--bg-secondary)]"
+                    style={{ borderColor: 'var(--primary-color)' }}
+                  >
+                    <img
+                      src="/partner/TBF-new-logo-PNG.png"
+                      alt="The Business Fame Magazine Partner"
+                      className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
