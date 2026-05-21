@@ -1075,7 +1075,7 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Partners Section */}
-      <div id="event-partners" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
+      <div id="event-partners" className="pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
         backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
         background: theme === 'light'
           ? 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%), radial-gradient(circle at 70% 30%, rgba(220, 38, 38, 0.03) 0%, transparent 50%), radial-gradient(circle at 30% 70%, rgba(245, 158, 11, 0.02) 0%, transparent 50%)'
@@ -1141,46 +1141,46 @@ const EventDetail: React.FC = () => {
               </button>
             </div>
 
-            <div className="max-w-3xl mx-auto py-6 sm:py-8 md:py-10 flex flex-col items-center gap-10 sm:gap-12 md:gap-14">
-              <div className="flex flex-col items-center text-center w-full">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
+            <div className="max-w-3xl mx-auto pt-4 sm:pt-6 flex flex-col items-center gap-0">
+              <div className="flex flex-col items-center text-center w-full py-5 sm:py-6">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 sm:mb-5">
                   Supporting Partner
                 </h3>
                 <img
                   src="/poster/AESA.png"
                   alt="Architects, Engineers & Surveyors' Association (AESA)"
-                  className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-full object-contain"
+                  className="h-14 sm:h-16 md:h-20 w-auto max-w-full object-contain"
                   loading="lazy"
                 />
               </div>
 
-              <div className="flex flex-col items-center text-center w-full">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
+              <div className="flex flex-col items-center text-center w-full py-5 sm:py-6">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 sm:mb-5">
                   Magazine Partner
                 </h3>
                 <img
                   src="/partner/TBF-new-logo-PNG.png"
                   alt="The Business Fame Magazine Partner"
-                  className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-full object-contain"
+                  className="h-14 sm:h-16 md:h-20 w-auto max-w-full object-contain"
                   loading="lazy"
                 />
               </div>
 
-              <div className="flex flex-col items-center text-center w-full">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
+              <div className="flex flex-col items-center text-center w-full py-5 sm:py-6 pb-2">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 sm:mb-5">
                   Media Partner
                 </h3>
-                <div className="flex flex-row flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12">
+                <div className="flex flex-row flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8">
                   <img
                     src="/logo/MM Logo Final 1-1.png"
                     alt="Media Mohalla"
-                    className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-[48%] sm:max-w-none object-contain"
+                    className="h-14 sm:h-16 md:h-20 w-auto max-w-[48%] sm:max-w-none object-contain"
                     loading="lazy"
                   />
                   <img
                     src="/logo/MM Logo Final 2-1.png"
                     alt="Media Mohalla"
-                    className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-[48%] sm:max-w-none object-contain"
+                    className="h-14 sm:h-16 md:h-20 w-auto max-w-[48%] sm:max-w-none object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -1206,7 +1206,7 @@ const EventDetail: React.FC = () => {
       </div>
 
       {/* Contact Section */}
-      <div id="event-contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
+      <div id="event-contact" className="pt-10 sm:pt-12 md:pt-14 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
         backgroundColor: theme === 'dark' ? 'var(--bg-secondary)' : '#f1f5f9',
         background: theme === 'light'
           ? 'linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%), radial-gradient(circle at 30% 70%, rgba(220, 38, 38, 0.04) 0%, transparent 60%), radial-gradient(circle at 90% 20%, rgba(245, 158, 11, 0.03) 0%, transparent 50%)'
