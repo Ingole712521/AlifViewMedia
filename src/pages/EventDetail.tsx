@@ -1141,40 +1141,48 @@ const EventDetail: React.FC = () => {
               </button>
             </div>
 
-            <div className="max-w-6xl mx-auto py-6 sm:py-8 md:py-10">
-              <div className="flex flex-row items-stretch justify-center gap-4 sm:gap-8 md:gap-10">
-                <div className="flex-1 flex flex-col items-center text-center min-w-0">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
-                    Supporting Partner
-                  </h3>
-                  <div
-                    className="w-full flex-1 rounded-xl sm:rounded-2xl px-6 sm:px-8 py-8 sm:py-10 md:py-12 shadow-lg border-2 flex items-center justify-center bg-[var(--bg-secondary)]"
-                    style={{ borderColor: 'var(--primary-color)' }}
-                  >
-                    <img
-                      src="/poster/AESA.png"
-                      alt="Architects, Engineers & Surveyors' Association (AESA)"
-                      className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
+            <div className="max-w-3xl mx-auto py-6 sm:py-8 md:py-10 flex flex-col items-center gap-10 sm:gap-12 md:gap-14">
+              <div className="flex flex-col items-center text-center w-full">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
+                  Supporting Partner
+                </h3>
+                <img
+                  src="/poster/AESA.png"
+                  alt="Architects, Engineers & Surveyors' Association (AESA)"
+                  className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
 
-                <div className="flex-1 flex flex-col items-center text-center min-w-0">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
-                    Magazine Partner
-                  </h3>
-                  <div
-                    className="w-full flex-1 rounded-xl sm:rounded-2xl px-6 sm:px-8 py-8 sm:py-10 md:py-12 shadow-lg border-2 flex items-center justify-center bg-[var(--bg-secondary)]"
-                    style={{ borderColor: 'var(--primary-color)' }}
-                  >
-                    <img
-                      src="/partner/TBF-new-logo-PNG.png"
-                      alt="The Business Fame Magazine Partner"
-                      className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
+              <div className="flex flex-col items-center text-center w-full">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
+                  Magazine Partner
+                </h3>
+                <img
+                  src="/partner/TBF-new-logo-PNG.png"
+                  alt="The Business Fame Magazine Partner"
+                  className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="flex flex-col items-center text-center w-full">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-5 sm:mb-6">
+                  Media Partner
+                </h3>
+                <div className="flex flex-row flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12">
+                  <img
+                    src="/logo/MM Logo Final 1-1.png"
+                    alt="Media Mohalla"
+                    className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-[48%] sm:max-w-none object-contain"
+                    loading="lazy"
+                  />
+                  <img
+                    src="/logo/MM Logo Final 2-1.png"
+                    alt="Media Mohalla"
+                    className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto max-w-[48%] sm:max-w-none object-contain"
+                    loading="lazy"
+                  />
                 </div>
               </div>
             </div>
