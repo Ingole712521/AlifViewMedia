@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, Home, Menu, X, Scale, ChevronDown } from 'lucide-react'
 import ThemeToggle from '../components/ThemeToggle'
 import NominationProcess from '../components/NominationProcess'
+import EventTimeline from '../components/EventTimeline'
 
 const EventDetail: React.FC = () => {
   const navigate = useNavigate()
@@ -750,6 +751,8 @@ const EventDetail: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <EventTimeline theme={theme} />
 
       {/* Jury Section */}
       <div id="event-jury" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{

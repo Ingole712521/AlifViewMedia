@@ -552,4 +552,218 @@
       height: 100%;
     }
   }
+
+  /* Summit event timeline — vertical alternating layout */
+  .summit-timeline {
+    position: relative;
+    padding: 0;
+    --summit-axis-width: 44px;
+  }
+
+  .summit-timeline-track {
+    position: absolute;
+    left: 50%;
+    top: 14px;
+    bottom: 14px;
+    width: 3px;
+    margin-left: -1.5px;
+    background: linear-gradient(180deg, #f59e0b 0%, #eab308 50%, #f59e0b 100%);
+    border-radius: 2px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .summit-timeline-marker-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--summit-axis-width) minmax(0, 1fr);
+    position: relative;
+    z-index: 2;
+  }
+
+  .summit-timeline-marker-row .summit-timeline-terminal,
+  .summit-timeline-node-wrap {
+    grid-column: 2;
+    justify-self: center;
+  }
+
+  .summit-timeline-terminal {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #94a3b8;
+    z-index: 2;
+  }
+
+  .summit-timeline-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--summit-axis-width) minmax(0, 1fr);
+    column-gap: 1.25rem;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .summit-timeline-row:last-of-type {
+    margin-bottom: 2.5rem;
+  }
+
+  .summit-timeline-node-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    position: relative;
+    z-index: 3;
+  }
+
+  .summit-timeline-node {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+  }
+
+  .summit-timeline-time-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    align-self: center;
+    line-height: 1;
+  }
+
+  .summit-timeline-time-label--right {
+    grid-column: 3;
+    justify-self: start;
+    padding-left: 0.25rem;
+  }
+
+  .summit-timeline-time-label--left {
+    grid-column: 1;
+    justify-self: end;
+    padding-right: 0.25rem;
+  }
+
+  .summit-timeline-card {
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .summit-timeline-card--left {
+    grid-column: 1;
+    padding-right: 0.5rem;
+  }
+
+  .summit-timeline-card--right {
+    grid-column: 3;
+    padding-left: 0.5rem;
+  }
+
+  .summit-timeline-card-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.85rem;
+    line-height: 1.35;
+  }
+
+  .summit-timeline-card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .summit-timeline-card-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .summit-timeline-entry-time {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    font-weight: 500;
+  }
+
+  .summit-timeline-entry-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .summit-timeline-entry-desc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-top: 0.15rem;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .summit-timeline-entry-bullets {
+    list-style: none;
+    margin: 0.35rem 0 0;
+    padding: 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 0.25rem;
+  }
+
+  .summit-timeline-entry-bullets li::before {
+    content: '• ';
+  }
+
+  @media (max-width: 767px) {
+    .summit-timeline {
+      --summit-axis-width: 40px;
+      padding-left: 0.25rem;
+    }
+
+    .summit-timeline-track {
+      left: calc(var(--summit-axis-width) / 2 + 0.25rem);
+      margin-left: -1.5px;
+    }
+
+    .summit-timeline-marker-row,
+    .summit-timeline-row {
+      grid-template-columns: var(--summit-axis-width) minmax(0, 1fr);
+      column-gap: 1rem;
+    }
+
+    .summit-timeline-marker-row .summit-timeline-terminal,
+    .summit-timeline-node-wrap {
+      grid-column: 1;
+    }
+
+    .summit-timeline-time-label {
+      display: none;
+    }
+
+    .summit-timeline-card,
+    .summit-timeline-card--left,
+    .summit-timeline-card--right {
+      grid-column: 2;
+      grid-row: 1;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }
