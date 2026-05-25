@@ -297,7 +297,7 @@ const GrandMastersRealEstate2026: React.FC = () => {
                         <div className="text-sm sm:text-base font-semibold text-[var(--text-primary)]">
                           Last date for nominations
                         </div>
-                        <div className="text-sm sm:text-base text-[var(--text-secondary)]">30th May, 2026</div>
+                        <div className="text-sm sm:text-base text-[var(--text-secondary)]">12th June, 2026</div>
                       </div>
                     </div>
 

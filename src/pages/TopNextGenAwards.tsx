@@ -232,7 +232,7 @@ const TopNextGenAwards: React.FC = () => {
                         Nominations Deadline
                       </div>
                       <div className="text-sm sm:text-base text-[var(--text-secondary)]">
-                        April 30, 2026
+                        12th June, 2026
                       </div>
                     </div>
                   </div>
