@@ -1144,42 +1144,88 @@ const EventDetail: React.FC = () => {
               </button>
             </div>
 
-            <div className="max-w-4xl mx-auto pt-4 sm:pt-6 flex flex-col items-center gap-0">
-              <div className="flex flex-col items-center text-center w-full py-5 sm:py-6">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 sm:mb-5">
-                  Supporting Partner
-                </h3>
-                <img
-                  src="/poster/AESA.png"
-                  alt="Architects, Engineers & Surveyors' Association (AESA)"
-                  className="h-20 sm:h-24 md:h-28 w-auto max-w-full object-contain"
-                  loading="lazy"
-                />
-              </div>
+            <div className="max-w-5xl mx-auto pt-4 sm:pt-6">
+              <div
+                className="rounded-3xl border shadow-lg overflow-hidden"
+                style={{
+                  borderColor: theme === 'dark' ? 'rgba(71, 85, 105, 0.55)' : 'rgba(226, 232, 240, 1)',
+                  backgroundColor: theme === 'dark' ? 'rgba(15, 23, 42, 0.55)' : 'rgba(255, 255, 255, 0.9)'
+                }}
+              >
+                <div className="h-1 w-full bg-gradient-to-r from-red-600 via-amber-500 to-red-600" />
+                <div className="p-6 sm:p-8 md:p-10">
+                  <div className="space-y-8 sm:space-y-10">
+                    {/* Supporting + Magazine (side-by-side) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-center">
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[var(--text-primary)]">
+                            Supporting Partner
+                          </h3>
+                        </div>
+                        <div className="flex items-center justify-center">
+                          <div className="w-full rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow flex items-center justify-center p-6 min-h-[120px]">
+                            <img
+                              src="/poster/AESA.png"
+                              alt="Architects, Engineers & Surveyors' Association (AESA)"
+                              className="h-16 sm:h-18 w-auto max-w-full object-contain"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      </div>
 
-              <div className="flex flex-col sm:flex-row w-full items-stretch justify-center gap-6 sm:gap-8 md:gap-12">
-                <div className="flex flex-col items-center text-center flex-1 py-5 sm:py-6 min-w-0">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 sm:mb-5">
-                    Magazine Partner
-                  </h3>
-                  <img
-                    src="/partner/TBF-new-logo-PNG.png"
-                    alt="The Business Fame Magazine Partner"
-                    className="h-10 sm:h-12 md:h-14 w-auto max-w-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-center">
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[var(--text-primary)]">
+                            Magazine Partner
+                          </h3>
+                        </div>
+                        <div className="flex items-center justify-center">
+                          <div className="w-full rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow flex items-center justify-center p-6 min-h-[120px] overflow-hidden">
+                            <img
+                              src="/partner/TBF-new-logo-PNG.png"
+                              alt="The Business Fame"
+                              className="h-14 sm:h-16 w-full max-w-full object-contain"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-                <div className="flex flex-col items-center text-center flex-1 py-5 sm:py-6 pb-2 min-w-0">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 sm:mb-5">
-                    Media Partner
-                  </h3>
-                  <img
-                    src="/logo/MM Logo Final 1-1.png"
-                    alt="Media Mohalla"
-                    className="h-14 sm:h-16 md:h-20 w-auto max-w-full object-contain"
-                    loading="lazy"
-                  />
+                    <div
+                      className="h-px w-full"
+                      style={{ backgroundColor: theme === 'dark' ? 'rgba(148, 163, 184, 0.22)' : 'rgba(226, 232, 240, 1)' }}
+                    />
+
+                    {/* 3) Media Partners */}
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-center">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[var(--text-primary)]">
+                          Media Partners
+                        </h3>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto">
+                        <div className="rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow flex items-center justify-center p-6 min-h-[120px]">
+                          <img
+                            src="/logo/MM Logo Final 1-1.png"
+                            alt="Media Mohalla"
+                            className="h-14 sm:h-16 w-auto max-w-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow flex items-center justify-center p-6 min-h-[120px] overflow-hidden">
+                          <img
+                            src="/partner/siliconindia%20logo.png"
+                            alt="SiliconIndia"
+                            className="h-14 sm:h-16 w-full max-w-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
