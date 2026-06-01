@@ -246,6 +246,12 @@ const EventDetail: React.FC = () => {
       role: 'Developer, Best Selling Author',
       company: 'World Record Holder, TEDx Speaker',
       image: '/member/Harshul.png'
+    },
+    {
+      name: 'Chintan Vasani',
+      role: 'Partner, Wisebiz Developers',
+      company: 'Joint Treasurer, NAREDCO NextGen National',
+      image: '/member/Chintan%20Vasani%20pic.jpeg'
     }
   ]
 
