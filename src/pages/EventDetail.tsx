@@ -252,6 +252,18 @@ const EventDetail: React.FC = () => {
       role: 'Partner, Wisebiz Developers',
       company: 'Joint Treasurer, NAREDCO NextGen National',
       image: '/member/Chintan%20Vasani%20pic.jpeg'
+    },
+    {
+      name: 'Amit Baid',
+      role: 'Founder & Creative Director',
+      company: 'A B See Brand Advisory',
+      image: '/member/amir.jpeg'
+    },
+    {
+      name: 'Yash Paleja',
+      role: 'Founder',
+      company: "BlindSpot Podcast & India's Leading Real Estate Strategist",
+      image: '/member/Yash.jpeg'
     }
   ]
 
