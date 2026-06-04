@@ -3,9 +3,10 @@ import { Home } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import ThemeToggle from '../components/ThemeToggle'
 
-const BHARAT_DESKTOP_POSTER = '/images/bharatBackroundImage.png'
-const BHARAT_MOBILE_POSTER = '/images/mobileview.png'
-/** Tailwind `md` — portrait poster below this width */
+const BHARAT_DESKTOP_WEBP = '/images/bharatBackroundImage.webp'
+const BHARAT_DESKTOP_JPG = '/images/bharatBackroundImage.jpg'
+const BHARAT_MOBILE_WEBP = '/images/mobileview.webp'
+const BHARAT_MOBILE_JPG = '/images/mobileview.jpg'
 const MOBILE_POSTER_MEDIA = '(max-width: 767px)'
 
 const posterImgClass =
@@ -26,9 +27,18 @@ const BharatViewSummit2026: React.FC = () => {
     document.body.style.overflow = 'hidden'
     document.documentElement.style.overflow = 'hidden'
 
+    const isMobile = window.matchMedia(MOBILE_POSTER_MEDIA).matches
+    const preload = document.createElement('link')
+    preload.rel = 'preload'
+    preload.as = 'image'
+    preload.type = 'image/webp'
+    preload.href = isMobile ? BHARAT_MOBILE_WEBP : BHARAT_DESKTOP_WEBP
+    document.head.appendChild(preload)
+
     return () => {
       document.body.style.overflow = prevBodyOverflow
       document.documentElement.style.overflow = prevHtmlOverflow
+      preload.remove()
     }
   }, [])
 
@@ -44,21 +54,20 @@ const BharatViewSummit2026: React.FC = () => {
       className="fixed inset-0 w-full h-[100dvh] max-h-[100dvh] overflow-hidden"
       style={{ backgroundColor: '#f8f6f1' }}
     >
-      {/* Poster — desktop landscape / mobile portrait (nav floats on top) */}
       <div className="fixed inset-0 z-0 overflow-hidden">
         <picture className="absolute inset-0 block h-full w-full">
-          <source media={MOBILE_POSTER_MEDIA} srcSet={BHARAT_MOBILE_POSTER} />
+          <source media={MOBILE_POSTER_MEDIA} srcSet={BHARAT_MOBILE_WEBP} type="image/webp" />
+          <source media={MOBILE_POSTER_MEDIA} srcSet={BHARAT_MOBILE_JPG} type="image/jpeg" />
+          <source srcSet={BHARAT_DESKTOP_WEBP} type="image/webp" />
           <img
-            src={BHARAT_DESKTOP_POSTER}
+            src={BHARAT_DESKTOP_JPG}
             alt="Bharat View Summit & Excellence Awards 2026"
+            width={1536}
+            height={1024}
             draggable={false}
+            fetchPriority="high"
+            decoding="async"
             className={posterImgClass}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center center'
-            }}
           />
         </picture>
       </div>
@@ -76,6 +85,8 @@ const BharatViewSummit2026: React.FC = () => {
             <img
               src={theme === 'dark' ? '/images/Aliief_white.png' : '/images/company-logo.png'}
               alt="Alif View Media Logo"
+              width={140}
+              height={40}
               className="h-8 sm:h-10 w-auto object-contain max-w-[120px] sm:max-w-none"
               style={{
                 filter:
