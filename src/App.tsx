@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import EventDetail from './pages/EventDetail'
 import TopNextGenAwards from './pages/TopNextGenAwards'
 import GrandMastersRealEstate2026 from './pages/GrandMastersRealEstate2026'
+import BharatViewSummit2026 from './pages/BharatViewSummit2026'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/event" element={<EventDetail />} />
       <Route path="/top-next-gen-awards" element={<TopNextGenAwards />} />
       <Route path="/grand-masters-real-estate-2026" element={<GrandMastersRealEstate2026 />} />
+      <Route path="/bharatview-summit-2026" element={<BharatViewSummit2026 />} />
     </Routes>
   )
 }

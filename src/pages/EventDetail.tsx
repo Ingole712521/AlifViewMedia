@@ -336,6 +336,7 @@ const EventDetail: React.FC = () => {
         items: [
           { label: 'Top Next-Gen Real Estate Leader', to: '/top-next-gen-awards' },
           { label: 'Grand Masters of Real Estate 2026', to: '/grand-masters-real-estate-2026' },
+          { label: 'Bharat View Summit & Excellence Awards 2026', to: '/bharatview-summit-2026' },
         ],
       },
       { kind: 'scroll', id: 'contact', label: 'Contact' }
