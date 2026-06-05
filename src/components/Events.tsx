@@ -5,35 +5,78 @@ import { warmImageCache } from '../utils/preloadImage'
 
 const EVENT_HERO_WEBP = '/images/background.webp'
 const EVENT_HERO_JPG = '/images/background.jpg'
+const BHARAT_LOGO = '/logo/Bharat%20View%20Logo%20Final.png'
+
 const preloadEventHero = () => warmImageCache(EVENT_HERO_WEBP, EVENT_HERO_JPG)
+const preloadBharatHero = () =>
+  warmImageCache(
+    '/images/bharatBackroundImage.webp',
+    '/images/bharatBackroundImage.jpg',
+    '/images/mobileview.webp'
+  )
+
+type EventItem = {
+  id: string
+  title: string
+  location: string
+  subtitle: string
+  date: string
+  venue: string
+  description: string
+  image: string
+  imageBg?: string
+  imageLayout?: 'default' | 'bharat'
+  to: string
+  onHoverPreload?: () => void
+}
 
 const Events: React.FC = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
     preloadEventHero()
+    preloadBharatHero()
   }, [])
 
-  const events = [
+  const events: EventItem[] = [
     {
       id: 'realtyview-2026',
       title: 'REALTYVIEW LEADERSHIP SUMMIT & AWARDS 2026',
       location: 'Maharashtra',
       subtitle: 'Convene. Connect. Celebrate Excellence',
       date: '27th June 2026',
-      type: 'Sayaji Hotel, Pune',
-      description: 'RealtyView Leadership Summit & Awards 2026 – Maharashtra is a distinguished platform celebrating excellence and driving strategic dialogue across one of India’s most dynamic real estate markets. Bringing together an elite gathering of leading developers, architects, urban planners, investors, policymakers, and industry visionaries from across Maharashtra, the summit fosters high-impact conversations around market evolution, investment opportunities, innovation, and sustainable urban development.',
-      image: '/poster/EventLogo.png'
+      venue: 'Sayaji Hotel, Pune',
+      description:
+        'RealtyView Leadership Summit & Awards 2026 – Maharashtra is a distinguished platform celebrating excellence and driving strategic dialogue across one of India’s most dynamic real estate markets. Bringing together an elite gathering of leading developers, architects, urban planners, investors, policymakers, and industry visionaries from across Maharashtra, the summit fosters high-impact conversations around market evolution, investment opportunities, innovation, and sustainable urban development.',
+      image: '/poster/EventLogo.png',
+      imageBg: '#050505',
+      to: '/event/realtyview-2026',
+      onHoverPreload: preloadEventHero
+    },
+    {
+      id: 'bharatview-2026',
+      title: 'BHARAT VIEW SUMMIT & EXCELLENCE AWARDS 2026',
+      location: 'Mumbai',
+      subtitle: 'Recognizing Excellence. Inspiring Leadership',
+      date: 'October, 2026',
+      venue: 'Mumbai (TBA)',
+      description:
+        'Bharat View Summit & Excellence Awards 2026 is a prestigious platform celebrating excellence, leadership, and transformative contributions — convening visionaries, innovators, and changemakers from across India.',
+      image: BHARAT_LOGO,
+      imageBg: '#000000',
+      imageLayout: 'bharat',
+      to: '/bharatview-summit-2026',
+      onHoverPreload: preloadBharatHero
     }
   ]
 
-  const handleEventClick = (eventId: string) => {
+  const handleEventClick = (event: EventItem) => {
     document.body.style.overflow = ''
     document.body.style.backgroundColor = ''
     document.documentElement.style.overflow = ''
     document.documentElement.style.backgroundColor = ''
-    preloadEventHero()
-    navigate(`/event/${eventId}`)
+    event.onHoverPreload?.()
+    navigate(event.to)
   }
 
   return (
@@ -44,79 +87,128 @@ const Events: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6 leading-tight">
-            Our Events
+            UpComing Events
           </h2>
           <p className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             Join us for transformative industry events and award ceremonies
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
           {events.map((event) => (
-            <div
+            <article
               key={event.id}
-              className="card group cursor-pointer hover:scale-105 transition-all duration-300 relative overflow-hidden"
-              onClick={() => handleEventClick(event.id)}
-              onMouseEnter={preloadEventHero}
+              className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl p-6 sm:p-8 shadow-lg hover:-translate-y-2 hover:shadow-2xl transition-[transform,box-shadow] duration-500 ease-out"
+              style={{
+                border: '2px solid transparent',
+                background:
+                  'linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box, linear-gradient(135deg, var(--primary-color), var(--accent-color)) border-box'
+              }}
+              onClick={() => handleEventClick(event)}
+              onMouseEnter={event.onHoverPreload}
             >
-              {/* Image */}
-              <div className="relative h-64 mb-4 rounded-lg overflow-hidden flex items-center justify-center" style={{ backgroundColor: '#050505' }}>
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement
-                    target.style.display = 'none'
-                  }}
-                />
-                <div className="absolute bottom-4 left-4 right-4 flex justify-center">
-                  <span className="inline-block px-3 py-1 rounded-full text-white text-xs font-semibold" style={{ backgroundColor: '#dc2626' }}>
-                    {event.type}
+              <div
+                className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-0 blur-3xl transition-[opacity,width,height] duration-700 ease-out group-hover:h-64 group-hover:w-64 group-hover:opacity-20"
+                style={{ backgroundColor: 'var(--primary-color)' }}
+              />
+              <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/0 to-white/10 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
+
+              <div className="relative z-10 flex flex-1 flex-col">
+                {event.imageLayout === 'bharat' ? (
+                  <div
+                    className="relative mb-6 h-64 overflow-hidden rounded-xl ring-1 ring-white/10"
+                    style={{ backgroundColor: event.imageBg ?? '#000000' }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                    <div className="relative flex h-full flex-col">
+                      <div className="flex min-h-0 flex-1 items-center justify-center px-6 pt-6 pb-3">
+                        <img
+                          src={event.image}
+                          alt={event.title}
+                          className="max-h-full max-w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement
+                            target.style.display = 'none'
+                          }}
+                        />
+                      </div>
+                      <div className="relative z-10 flex shrink-0 justify-center pb-4">
+                        <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-sm">
+                          {event.venue}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className="relative mb-6 h-64 overflow-hidden rounded-xl ring-1 ring-white/10"
+                    style={{ backgroundColor: event.imageBg ?? '#050505' }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className="relative z-0 h-full w-full object-contain p-6 transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                      }}
+                    />
+                    <div className="absolute bottom-4 left-4 right-4 z-10 flex justify-center">
+                      <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-sm">
+                        {event.venue}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                <div className="mb-4 flex items-center gap-2">
+                  <span
+                    className="inline-block h-1 w-10 rounded-full transition-[width] duration-500 ease-out group-hover:w-16"
+                    style={{ backgroundColor: 'var(--primary-color)' }}
+                  />
+                  <span className="text-xs font-semibold uppercase tracking-widest text-[var(--primary-color)]">
+                    {event.location}
                   </span>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="space-y-3">
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mb-2 group-hover:text-[var(--primary-color)] transition-colors">
-                    {event.title}
-                  </h3>
-                  <p className="text-lg font-semibold text-[var(--primary-color)] mb-2">
-                    {event.location}
-                  </p>
-                  <p className="text-sm text-[var(--text-secondary)] line-clamp-2">
-                    {event.subtitle}
-                  </p>
-                </div>
+                <h3 className="mb-2 text-xl font-bold leading-snug text-[var(--text-primary)] transition-colors duration-300 ease-out group-hover:text-[var(--primary-color)] sm:text-2xl">
+                  {event.title}
+                </h3>
+                <p className="mb-5 text-sm italic text-[var(--text-secondary)] line-clamp-2">
+                  {event.subtitle}
+                </p>
 
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-[var(--text-secondary)] text-sm">
-                    <Calendar size={16} className="text-[var(--primary-color)]" />
+                <div className="mb-5 space-y-2.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)]/50 px-4 py-3">
+                  <div className="flex items-center gap-2.5 text-sm text-[var(--text-secondary)]">
+                    <Calendar size={16} className="shrink-0 text-[var(--primary-color)]" />
                     <span>{event.date}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[var(--text-secondary)] text-sm">
-                    <MapPin size={16} className="text-[var(--primary-color)]" />
-                    <span>{event.type}</span>
+                  <div className="flex items-center gap-2.5 text-sm text-[var(--text-secondary)]">
+                    <MapPin size={16} className="shrink-0 text-[var(--primary-color)]" />
+                    <span>{event.venue}</span>
                   </div>
                 </div>
 
-                <p className="text-sm text-[var(--text-secondary)] line-clamp-3">
+                <p className="mb-6 flex-1 text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-3">
                   {event.description}
                 </p>
 
-                <button className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold text-white transition-all duration-300 transform group-hover:scale-105 relative overflow-hidden"
+                <div
+                  className="relative mt-auto flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl px-4 py-3 font-semibold text-white shadow-md"
                   style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     View Details
-                    <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight
+                      size={18}
+                      className="transition-transform duration-300 ease-out group-hover:translate-x-1.5"
+                    />
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#b91c1c] to-[#f59e0b] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </button>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#b91c1c] to-[#f59e0b] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
+                </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
