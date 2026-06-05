@@ -285,8 +285,7 @@ const EventDetail: React.FC = () => {
       { kind: 'scroll', id: 'contact', label: 'Contact' }
     ]
 
-  // Navbar sits over the hero background at the top; when it's not scrolled yet,
-  // swap the visible light/dark styling ("vice versa") as requested.
+ 
   const topNavTheme: 'light' | 'dark' = isScrolled ? theme : theme === 'dark' ? 'light' : 'dark'
   const navOnImage = !isScrolled
 
