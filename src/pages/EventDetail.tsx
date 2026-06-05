@@ -4,11 +4,12 @@ import { Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, H
 import ThemeToggle from '../components/ThemeToggle'
 import NominationProcess from '../components/NominationProcess'
 import EventTimeline from '../components/EventTimeline'
-import { preloadImage } from '../utils/preloadImage'
+import { warmImageCache } from '../utils/preloadImage'
 
 const EVENT_HERO_WEBP = '/images/background.webp'
 const EVENT_HERO_JPG = '/images/background.jpg'
-const EVENT_HERO_FALLBACK = '#2a1810'
+const BHARAT_HERO_WEBP = '/images/bharatBackroundImage.webp'
+const BHARAT_MOBILE_WEBP = '/images/mobileview.webp'
 
 const EventDetail: React.FC = () => {
   const navigate = useNavigate()
@@ -17,11 +18,9 @@ const EventDetail: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [topLeaderMobileOpen, setTopLeaderMobileOpen] = useState(false)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
-  const [heroReady, setHeroReady] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    setHeroReady(false)
 
     document.body.style.overflow = ''
     document.body.style.backgroundColor = ''
@@ -32,7 +31,7 @@ const EventDetail: React.FC = () => {
     setTheme(savedTheme)
     document.documentElement.setAttribute('data-theme', savedTheme)
 
-    return preloadImage(EVENT_HERO_WEBP)
+    warmImageCache(EVENT_HERO_WEBP, EVENT_HERO_JPG, BHARAT_HERO_WEBP, BHARAT_MOBILE_WEBP)
   }, [])
 
   useEffect(() => {
@@ -527,10 +526,7 @@ const EventDetail: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <div
-        className="relative min-h-screen pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden"
-        style={{ backgroundColor: EVENT_HERO_FALLBACK }}
-      >
+      <div className="relative min-h-screen pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden bg-[#2a1810]">
         <picture className="absolute inset-0 z-0 block h-full w-full" aria-hidden>
           <source srcSet={EVENT_HERO_WEBP} type="image/webp" />
           <img
@@ -539,13 +535,8 @@ const EventDetail: React.FC = () => {
             role="presentation"
             draggable={false}
             fetchPriority="high"
-            decoding="async"
-            onLoad={() => setHeroReady(true)}
-            ref={(el) => {
-              if (el?.complete) setHeroReady(true)
-            }}
+            decoding="sync"
             className="absolute inset-0 h-full w-full object-cover object-center !transition-none"
-            style={{ opacity: heroReady ? 1 : 0 }}
           />
         </picture>
 

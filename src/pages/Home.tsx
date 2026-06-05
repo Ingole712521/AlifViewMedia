@@ -12,7 +12,7 @@ import VideoBackground from '../components/VideoBackground'
 import SEO from '../components/SEO'
 import { trackPageView } from '../utils/analytics'
 import { initPerformanceOptimizations } from '../utils/performance'
-import { preloadImage } from '../utils/preloadImage'
+import { warmImageCache } from '../utils/preloadImage'
 
 function Home() {
   const location = useLocation()
@@ -68,7 +68,12 @@ function Home() {
     // Track initial page view
     trackPageView(window.location.pathname)
 
-    return preloadImage('/images/background.webp')
+    warmImageCache(
+      '/images/background.webp',
+      '/images/background.jpg',
+      '/images/bharatBackroundImage.webp',
+      '/images/mobileview.webp'
+    )
   }, [])
 
   // Update active section based on scroll position

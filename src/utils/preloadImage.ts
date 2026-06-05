@@ -12,3 +12,12 @@ export const preloadImage = (href: string, type = 'image/webp') => {
 
   return () => link.remove()
 }
+
+/** Decode into browser cache so route change paints instantly */
+export const warmImageCache = (...sources: string[]) => {
+  sources.forEach((src) => {
+    preloadImage(src)
+    const img = new Image()
+    img.src = src
+  })
+}

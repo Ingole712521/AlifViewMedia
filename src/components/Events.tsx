@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Calendar, MapPin, ArrowRight } from 'lucide-react'
-import { preloadImage } from '../utils/preloadImage'
+import { warmImageCache } from '../utils/preloadImage'
 
 const EVENT_HERO_WEBP = '/images/background.webp'
-const preloadEventHero = () => preloadImage(EVENT_HERO_WEBP)
+const EVENT_HERO_JPG = '/images/background.jpg'
+const preloadEventHero = () => warmImageCache(EVENT_HERO_WEBP, EVENT_HERO_JPG)
 
 const Events: React.FC = () => {
   const navigate = useNavigate()
