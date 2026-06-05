@@ -138,25 +138,7 @@ const GrandMastersRealEstate2026: React.FC = () => {
           />
         </div>
 
-        {/* <div
-          className="absolute z-[9999] left-4 bottom-4 sm:left-10 sm:bottom-9 lg:left-[120px] lg:bottom-[180px]"
-        >
-          <a
-            href={mailtoNominate}
-            className="group relative text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-3.5 flex items-center justify-center gap-2 font-bold text-white rounded-xl overflow-hidden transition-all duration-300 shadow-2xl hover:shadow-2xl"
-            style={{ backgroundColor: '#dc2626' }}
-          >
-            <span className="relative z-10">Nominate via Email</span>
-            <ArrowRight size={20} className="relative z-10" />
-          </a>
-        </div> */}
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-6 sm:pb-8">
-          <div className="flex flex-col items-center text-center gap-4 sm:gap-5">
-
-          
-          </div>
-        </div>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-6 sm:pb-8" />
       </div>
 
       {/* Awards story, categories, process — premium layout */}
@@ -227,9 +209,6 @@ const GrandMastersRealEstate2026: React.FC = () => {
                   >
                     <div>
                       <h2 className="text-lg sm:text-xl font-extrabold text-[var(--text-primary)]">Award categories</h2>
-                      {/* <p className="mt-0.5 text-xs sm:text-sm text-[var(--text-secondary)]">
-                        {categories.length} tracks — nominate for the category that best fits your nominee.
-                      </p> */}
                     </div>
                    
                   </div>

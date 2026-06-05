@@ -3,8 +3,7 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import EventDetail from './pages/EventDetail'
-import BharatViewSummit2026 from './pages/BharatViewSummit2026'
-import BharatViewComingSoon from './pages/BharatViewComingSoon'
+import { BharatViewSummit2026, BharatViewComingSoon } from './pages/BharatViewPages'
 
 const TopNextGenAwards = lazy(() => import('./pages/TopNextGenAwards'))
 const GrandMastersRealEstate2026 = lazy(() => import('./pages/GrandMastersRealEstate2026'))

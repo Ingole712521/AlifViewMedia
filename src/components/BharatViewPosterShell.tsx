@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import BharatViewNav from './BharatViewNav'
+import { preloadImage } from '../utils/preloadImage'
 
 interface PosterSources {
   webp: string
@@ -51,21 +52,14 @@ const BharatViewPosterShell: React.FC<BharatViewPosterShellProps> = ({
 
     const isMobile = window.matchMedia(MOBILE_POSTER_MEDIA).matches
     const mobileWebp = poster.mobileWebp ?? poster.webp
-    const href = isMobile ? mobileWebp : (preloadWebp ?? poster.webp)
-
-    const preload = document.createElement('link')
-    preload.rel = 'preload'
-    preload.as = 'image'
-    preload.type = 'image/webp'
-    preload.href = href
-    document.head.appendChild(preload)
+    const removePreload = preloadImage(isMobile ? mobileWebp : (preloadWebp ?? poster.webp))
 
     return () => {
       document.body.style.overflow = prevBodyOverflow
       document.documentElement.style.overflow = prevHtmlOverflow
       document.body.style.backgroundColor = prevBodyBg
       document.documentElement.style.backgroundColor = prevHtmlBg
-      preload.remove()
+      removePreload()
     }
   }, [poster.mobileWebp, poster.webp, preloadWebp])
 

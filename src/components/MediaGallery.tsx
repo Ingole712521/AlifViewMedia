@@ -52,10 +52,6 @@ const MediaGallery: React.FC = () => {
               <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">0</div>
               <div className="text-white/80 text-xs sm:text-sm">Countries</div>
             </div>
-            {/* <div className="text-center">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">0%</div>
-              <div className="text-white/80 text-xs sm:text-sm">Satisfaction Rate</div>
-            </div> */}
           </div>
         </div>
 

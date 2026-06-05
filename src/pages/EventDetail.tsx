@@ -4,6 +4,11 @@ import { Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, H
 import ThemeToggle from '../components/ThemeToggle'
 import NominationProcess from '../components/NominationProcess'
 import EventTimeline from '../components/EventTimeline'
+import { preloadImage } from '../utils/preloadImage'
+
+const EVENT_HERO_WEBP = '/images/background.webp'
+const EVENT_HERO_JPG = '/images/background.jpg'
+const EVENT_HERO_FALLBACK = '#2a1810'
 
 const EventDetail: React.FC = () => {
   const navigate = useNavigate()
@@ -12,14 +17,22 @@ const EventDetail: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [topLeaderMobileOpen, setTopLeaderMobileOpen] = useState(false)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const [heroReady, setHeroReady] = useState(false)
 
   useEffect(() => {
-    // Scroll to top when page loads
     window.scrollTo(0, 0)
+    setHeroReady(false)
+
+    document.body.style.overflow = ''
+    document.body.style.backgroundColor = ''
+    document.documentElement.style.overflow = ''
+    document.documentElement.style.backgroundColor = ''
 
     const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
     setTheme(savedTheme)
     document.documentElement.setAttribute('data-theme', savedTheme)
+
+    return preloadImage(EVENT_HERO_WEBP)
   }, [])
 
   useEffect(() => {
@@ -36,75 +49,6 @@ const EventDetail: React.FC = () => {
     localStorage.setItem('theme', newTheme)
     document.documentElement.setAttribute('data-theme', newTheme)
   }
-
-  /* Previous award categories
-  const awardCategories = [
-    {
-      title: "Developer Excellence",
-      awards: [
-        "Developer of the Year – Residential",
-        "Developer of the Year – Commercial",
-        "Emerging Developer of the Year",
-        "Luxury Real Estate Developer of the Year",
-        "Affordable Housing Developer of the Year",
-        "Integrated Township Developer of the Year"
-      ]
-    },
-    {
-      title: "Project Excellence",
-      awards: [
-        "Best Residential Project (Luxury / Mid-segment / Affordable)",
-        "Best Commercial Project (Office / IT Parks)",
-        "Best Retail Project / Mall of the Year",
-        "Best Mixed-Use Development Project",
-        "Best Smart City Project",
-        "Best Township Project",
-        "Iconic Landmark Project of the Year",
-        "Redevelopment Project of the Year"
-      ]
-    },
-    {
-      title: "Design & Innovation",
-      awards: [
-        "Best Architectural Design",
-        "Best Interior Design in Real Estate",
-        "Innovation in Construction Technology",
-        "Best Green Building / Sustainable Project",
-        "Best Use of Smart Technology in Real Estate"
-      ]
-    },
-    {
-      title: "Sustainability & ESG",
-      awards: [
-        "Sustainable Developer of the Year",
-        "Best Eco-Friendly Residential Project",
-        "Best Green Commercial Project",
-        "ESG Excellence in Real Estate"
-      ]
-    },
-    {
-      title: "Leadership & Professionals",
-      awards: [
-        "Real Estate Personality of the Year",
-        "CEO of the Year",
-        "CFO of the Year",
-        "Woman Leader in Real Estate",
-        "Young Achiever in Real Estate",
-        "Best Real Estate Marketing Campaign",
-        "Best Real Estate Consultant / Broker / Channel Partner",
-        "Best Facility Management Company"
-      ]
-    },
-    {
-      title: "Investment & Finance",
-      awards: [
-        "Best Real Estate Investment Firm",
-        "Best REIT / Fractional Investment Platform",
-        "Most Innovative Real Estate Financing Model"
-      ]
-    }
-  ]
-  */
 
   const awardCategories = [
     {
@@ -583,46 +527,30 @@ const EventDetail: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative min-h-screen pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden bg-black">
-        <div
-          className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat"
-          style={{ backgroundImage: "url('/images/background.jpg')" }}
-          aria-hidden
-        />
+      <div
+        className="relative min-h-screen pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden"
+        style={{ backgroundColor: EVENT_HERO_FALLBACK }}
+      >
+        <picture className="absolute inset-0 z-0 block h-full w-full" aria-hidden>
+          <source srcSet={EVENT_HERO_WEBP} type="image/webp" />
+          <img
+            src={EVENT_HERO_JPG}
+            alt=""
+            role="presentation"
+            draggable={false}
+            fetchPriority="high"
+            decoding="async"
+            onLoad={() => setHeroReady(true)}
+            ref={(el) => {
+              if (el?.complete) setHeroReady(true)
+            }}
+            className="absolute inset-0 h-full w-full object-cover object-center !transition-none"
+            style={{ opacity: heroReady ? 1 : 0 }}
+          />
+        </picture>
 
         <div className="max-w-7xl mx-auto relative z-10 pt-8 sm:pt-10 md:pt-12">
           <div className="flex flex-col items-center text-center gap-6 sm:gap-8 md:gap-10 px-2 sm:px-4">
-            <div className="relative w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl h-56 xs:h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem] 2xl:h-[32rem] flex items-center justify-center mx-auto">
-              {/* <img
-                src="/poster/transparentlogo.png"
-                alt="RealtyView Leadership Summit & Awards 2026 Logo"
-                className="relative z-10 w-full h-full object-contain p-2 sm:p-3 md:p-4 lg:p-5"
-                style={{
-                  filter:
-                    'drop-shadow(0 18px 22px rgba(0,0,0,0.12)) drop-shadow(0 6px 10px rgba(0,0,0,0.10))',
-                }}
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement
-                  target.style.display = 'none'
-                }}
-              /> */}
-            </div>
-
-            {/* <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold leading-relaxed max-w-3xl mx-auto text-white/95 drop-shadow-sm">
-              Convene. Connect. Celebrate Excellence
-            </p> */}
-
-            {/* <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-xl sm:max-w-none mx-auto">
-              <div className="flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20">
-                <Calendar size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
-                <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">23 May 2026</span>
-              </div>
-              <div className="flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20">
-                <MapPin size={18} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" />
-                <span className="text-sm sm:text-base md:text-lg font-semibold whitespace-nowrap">Venue : Sayaji Hotel, Pune</span>
-              </div>
-            </div> */}
-
             <div className="lg:hidden flex flex-wrap items-center justify-center gap-2 pt-2">
               {navItems.flatMap((item) => {
                 if (item.kind === 'dropdown') {
@@ -738,19 +666,6 @@ const EventDetail: React.FC = () => {
               <ArrowRight size={20} className="sm:w-6 sm:h-6 relative z-10 transform group-hover:translate-x-2 transition-transform" />
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </a>
-            {/* <a
-              href="https://forms.gle/AhqWy3fmkGDL6atd9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
-              style={{
-                background: 'linear-gradient(135deg, #dc2626, #b91c1c)  '
-              }}
-            >
-              <span className="relative z-10">Award Registration</span>
-              <ArrowRight size={20} className="sm:w-6 sm:h-6 relative z-10 transform group-hover:translate-x-2 transition-transform" />
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </a> */}
             <button
               className="group w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-[var(--text-primary)] rounded-lg sm:rounded-xl border-2 transform hover:scale-105 transition-all duration-300 shadow-lg sm:shadow-xl hover:shadow-2xl"
               style={{
@@ -1250,20 +1165,6 @@ const EventDetail: React.FC = () => {
             </div>
           </div>
 
-          {/* <div className="flex justify-center mt-6 sm:mt-8 md:mt-10 px-2 sm:px-0">
-            <button
-              className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 flex items-center justify-center gap-2 sm:gap-3 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
-              style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
-              onClick={() => navigate('/top-next-gen-awards')}
-            >
-              <span className="relative z-10">Top Next-Gen Real Estate Entrepreneurs Awards</span>
-              <ArrowRight
-                size={20}
-                className="sm:w-6 sm:h-6 relative z-10 transform group-hover:translate-x-2 transition-transform"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </button>
-          </div> */}
         </div>
       </div>
 

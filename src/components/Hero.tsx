@@ -161,9 +161,6 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange = () => {} }) => {
           }}
           aria-label="Scroll to explore"
         >
-          {/* <span className="text-xs xs:text-sm sm:text-base md:text-lg font-semibold text-[var(--text-primary)] hidden xs:block opacity-80 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-            Scroll to explore
-          </span> */}
           <div className="relative">
             <div 
               className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-all duration-300 animate-bounce"

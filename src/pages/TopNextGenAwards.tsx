@@ -114,50 +114,7 @@ const TopNextGenAwards: React.FC = () => {
           </a>
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-6 sm:pb-8">
-          <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-            {/* <div
-              className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shadow-2xl"
-              style={{ backgroundColor: '#dc2626' }}
-            >
-              <Award size={26} className="text-white" />
-            </div> */}
-
-            {/* <div className="max-w-4xl">
-              <div
-                className={[
-                  'inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border text-xs sm:text-sm font-semibold mb-3',
-                  theme === 'dark'
-                    ? 'border-white/25 bg-white/10 text-white/90'
-                    : 'border-black/10 bg-white/70 text-slate-900'
-                ].join(' ')}
-              >
-                <span>Call for Nominations</span>
-                <span className="opacity-50">•</span>
-                <span>Maharashtra Edition</span>
-              </div>
-
-              <p
-                className={[
-                  'mt-3 text-sm sm:text-base md:text-lg max-w-3xl mx-auto',
-                  theme === 'dark' ? 'text-white/85' : 'text-slate-700'
-                ].join(' ')}
-              >
-                Nominate today and be part of an exclusive recognition platform celebrating emerging leaders in real estate.
-              </p>
-            </div> */}
-
-            {/* <a
-                href="/images/next_gen.png"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 flex items-center justify-center gap-2 font-bold text-white rounded-xl border border-white/30 bg-white/10 hover:bg-white/15 transition-all duration-300 shadow-xl"
-              >
-                <Download size={18} />
-                <span>View Poster</span>
-              </a> */}
-          </div>
-        </div>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-6 sm:pb-8" />
       </div>
 
       {/* Content */}

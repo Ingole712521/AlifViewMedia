@@ -12,6 +12,7 @@ import VideoBackground from '../components/VideoBackground'
 import SEO from '../components/SEO'
 import { trackPageView } from '../utils/analytics'
 import { initPerformanceOptimizations } from '../utils/performance'
+import { preloadImage } from '../utils/preloadImage'
 
 function Home() {
   const location = useLocation()
@@ -51,6 +52,11 @@ function Home() {
   useEffect(() => {
     // Scroll to top when page loads
     window.scrollTo(0, 0)
+
+    document.body.style.overflow = ''
+    document.body.style.backgroundColor = ''
+    document.documentElement.style.overflow = ''
+    document.documentElement.style.backgroundColor = ''
     
     const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
     setTheme(savedTheme)
@@ -61,6 +67,8 @@ function Home() {
     
     // Track initial page view
     trackPageView(window.location.pathname)
+
+    return preloadImage('/images/background.webp')
   }, [])
 
   // Update active section based on scroll position

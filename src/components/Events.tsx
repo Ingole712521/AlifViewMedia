@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Calendar, MapPin, ArrowRight } from 'lucide-react'
+import { preloadImage } from '../utils/preloadImage'
+
+const EVENT_HERO_WEBP = '/images/background.webp'
+const preloadEventHero = () => preloadImage(EVENT_HERO_WEBP)
 
 const Events: React.FC = () => {
   const navigate = useNavigate()
+
+  useEffect(() => {
+    preloadEventHero()
+  }, [])
 
   const events = [
     {
@@ -19,6 +27,11 @@ const Events: React.FC = () => {
   ]
 
   const handleEventClick = (eventId: string) => {
+    document.body.style.overflow = ''
+    document.body.style.backgroundColor = ''
+    document.documentElement.style.overflow = ''
+    document.documentElement.style.backgroundColor = ''
+    preloadEventHero()
     navigate(`/event/${eventId}`)
   }
 
@@ -43,6 +56,7 @@ const Events: React.FC = () => {
               key={event.id}
               className="card group cursor-pointer hover:scale-105 transition-all duration-300 relative overflow-hidden"
               onClick={() => handleEventClick(event.id)}
+              onMouseEnter={preloadEventHero}
             >
               {/* Image */}
               <div className="relative h-64 mb-4 rounded-lg overflow-hidden flex items-center justify-center" style={{ backgroundColor: '#050505' }}>
