@@ -71,8 +71,7 @@ function Home() {
     warmImageCache(
       '/images/background.webp',
       '/images/background.jpg',
-      '/images/bharatBackroundImage.webp',
-      '/images/mobileview.webp'
+      '/images/finalBharat.png'
     )
   }, [])
 

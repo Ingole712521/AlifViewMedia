@@ -8,8 +8,7 @@ import { warmImageCache } from '../utils/preloadImage'
 
 const EVENT_HERO_WEBP = '/images/background.webp'
 const EVENT_HERO_JPG = '/images/background.jpg'
-const BHARAT_HERO_WEBP = '/images/bharatBackroundImage.webp'
-const BHARAT_MOBILE_WEBP = '/images/mobileview.webp'
+const BHARAT_POSTER = '/images/finalBharat.png'
 
 const EventDetail: React.FC = () => {
   const navigate = useNavigate()
@@ -31,7 +30,7 @@ const EventDetail: React.FC = () => {
     setTheme(savedTheme)
     document.documentElement.setAttribute('data-theme', savedTheme)
 
-    warmImageCache(EVENT_HERO_WEBP, EVENT_HERO_JPG, BHARAT_HERO_WEBP, BHARAT_MOBILE_WEBP)
+    warmImageCache(EVENT_HERO_WEBP, EVENT_HERO_JPG, BHARAT_POSTER)
   }, [])
 
   useEffect(() => {

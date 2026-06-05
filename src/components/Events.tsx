@@ -55,15 +55,15 @@ const Events: React.FC = () => {
     },
     {
       id: 'bharatview-2026',
-      title: 'BHARAT VIEW SUMMIT & EXCELLENCE AWARDS 2026',
+      title: 'BharatView Business Summit & Awards 2026',
       location: 'Mumbai',
       subtitle: 'Recognizing Excellence. Inspiring Leadership',
       date: 'October, 2026',
       venue: 'Mumbai (TBA)',
       description:
-        'Bharat View Summit & Excellence Awards 2026 is a prestigious platform celebrating excellence, leadership, and transformative contributions — convening visionaries, innovators, and changemakers from across India.',
+        'BharatView Business Summit & Awards 2026 is a prestigious platform celebrating excellence, leadership, and transformative contributions — convening visionaries, innovators, and changemakers from across India.',
       image: BHARAT_LOGO,
-      imageBg: '#000000',
+      imageBg: '#ffffff',
       imageLayout: 'bharat',
       to: '/bharatview-summit-2026',
       onHoverPreload: preloadBharatHero
@@ -116,10 +116,9 @@ const Events: React.FC = () => {
               <div className="relative z-10 flex flex-1 flex-col">
                 {event.imageLayout === 'bharat' ? (
                   <div
-                    className="relative mb-6 h-64 overflow-hidden rounded-xl ring-1 ring-white/10"
-                    style={{ backgroundColor: event.imageBg ?? '#000000' }}
+                    className="relative mb-6 h-64 overflow-hidden rounded-xl ring-1 ring-black/10"
+                    style={{ backgroundColor: event.imageBg ?? '#ffffff' }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
                     <div className="relative flex h-full flex-col">
                       <div className="flex min-h-0 flex-1 items-center justify-center px-6 pt-6 pb-3">
                         <img
@@ -133,7 +132,7 @@ const Events: React.FC = () => {
                         />
                       </div>
                       <div className="relative z-10 flex shrink-0 justify-center pb-4">
-                        <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-sm">
+                        <span className="inline-flex items-center rounded-full border border-gray-300/80 bg-white/90 px-4 py-1.5 text-xs font-semibold text-gray-900 shadow-sm">
                           {event.venue}
                         </span>
                       </div>
