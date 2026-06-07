@@ -45,7 +45,7 @@ const timelinePhases: TimelinePhase[] = [
         title:
           'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead',
         bullets: [
-          'Dr. Adv. Nitin Athavle, AVP, Kohinoor Group',
+          'Dr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants',
           'Dr. Adv. Harshul Savla, Managing Partner, M Realty (Suvidha Lifespaces), Best Selling Author, World Record Holder, TEDx Speaker',
           '... more to join'
         ]

@@ -179,8 +179,8 @@ const EventDetail: React.FC = () => {
   const speakers = [
     {
       name: 'Dr. Nitin Athavle',
-      role: 'Asst. Vice President – Purchase',
-      company: 'Kohinoor Group',
+      role: 'AVP',
+      company: 'Kohinoor Group & Planedge Consultants',
       image: '/member/WhatsApp%20Image%202026-04-13%20at%201.07.37%20PM.jpeg'
     },
     {
