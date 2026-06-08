@@ -206,6 +206,12 @@ const EventDetail: React.FC = () => {
       role: 'Founder',
       company: "BlindSpot Podcast & India's Leading Real Estate Strategist",
       image: '/member/Yash.jpeg'
+    },
+    {
+      name: 'Dipika Badhe',
+      role: 'Deputy Vice President, Cluster Head (Luxury Segment)',
+      company: 'Ruparel Realty',
+      image: '/member/Dipika.jpeg'
     }
   ]
 
