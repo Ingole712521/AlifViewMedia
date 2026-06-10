@@ -235,22 +235,19 @@ const EventDetail: React.FC = () => {
     label?: string
   }
 
-  const guestsOfHonor : PersonCard[] = [
-    {
-      name: 'NIlesh Laddad',
-      role: 'Director - Engineering, Kohinoor Group',
-      company: 'Managing Director, Planedge Consultants Pvt. Ltd',
-      image: '/member/NIlesh.jpeg'
-    },
-    {
-      label: 'KEYNOTE SPEAKER',
-      name: 'Naushad Panjwani',
-      role: 'Chairman - Mandarus Partners',
-      company: 'Co-Chairman - NAREDCO Marketing & Technology Committees',
-      image: '/member/Naushad%20.jpeg'
-    }
-  
-  ]
+  const guestOfHonor: PersonCard = {
+    name: 'NIlesh Laddad',
+    role: 'Director - Engineering, Kohinoor Group',
+    company: 'Managing Director, Planedge Consultants Pvt. Ltd',
+    image: '/member/NIlesh.jpeg'
+  }
+
+  const keynoteSpeaker: PersonCard = {
+    name: 'Naushad Panjwani',
+    role: 'Chairman - Mandarus Partners',
+    company: 'Co-Chairman - NAREDCO Marketing & Technology Committees',
+    image: '/member/Naushad%20.jpeg'
+  }
 
   const juryMembers: PersonCard[] = [
     {
@@ -817,47 +814,44 @@ const EventDetail: React.FC = () => {
         )}
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">
-              Guest of Honor 
-            </h2>
-            <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
-              background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
-            }}></div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto px-2 sm:px-0">
-            {guestsOfHonor .map((guest) => (
-              <div
-                key={guest.name}
-                className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300 max-w-xs mx-auto w-full"
-                style={{ borderColor: 'var(--primary-color)' }}
-              >
-                <div className="h-56 sm:h-64 overflow-hidden bg-[var(--bg-primary)]">
-                  <img
-                    src={guest.image}
-                    alt={guest.name}
-                    className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 max-w-5xl mx-auto px-2 sm:px-0">
+            {[
+              { title: 'Guest of Honor', person: guestOfHonor },
+              { title: 'Keynote Speaker', person: keynoteSpeaker }
+            ].map(({ title, person }) => (
+              <div key={title}>
+                <div className="text-center mb-8 sm:mb-10">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">
+                    {title}
+                  </h2>
+                  <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
+                    background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
+                  }}></div>
                 </div>
-                <div className="p-5 sm:p-6 text-center">
-                  {guest.label && (
-                    <span className="inline-block text-xs sm:text-sm font-bold tracking-wider uppercase text-white px-3 py-1 rounded-full mb-3" style={{
-                      background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
-                    }}>
-                      {guest.label}
-                    </span>
-                  )}
-                  <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1">
-                    {guest.name}
-                  </h3>
-                  <p className="text-sm sm:text-base text-[var(--text-secondary)] font-medium">
-                    {guest.role}
-                  </p>
-                  <p className="text-sm sm:text-base text-[var(--primary-color)] font-semibold mt-2">
-                    {guest.company}
-                  </p>
+
+                <div
+                  className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300 max-w-xs mx-auto w-full"
+                  style={{ borderColor: 'var(--primary-color)' }}
+                >
+                  <div className="h-56 sm:h-64 overflow-hidden bg-[var(--bg-primary)]">
+                    <img
+                      src={person.image}
+                      alt={person.name}
+                      className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-5 sm:p-6 text-center">
+                    <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1">
+                      {person.name}
+                    </h3>
+                    <p className="text-sm sm:text-base text-[var(--text-secondary)] font-medium">
+                      {person.role}
+                    </p>
+                    <p className="text-sm sm:text-base text-[var(--primary-color)] font-semibold mt-2">
+                      {person.company}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
