@@ -208,6 +208,12 @@ const EventDetail: React.FC = () => {
       image: '/member/Yash.jpeg'
     },
     {
+      name: 'Sagar Visawadia',
+      role: 'Founder',
+      company: "Dream Properties & Asia's No.1 Real Estate Influencer",
+      image: '/member/Sagar.jpeg'
+    },
+    {
       name: 'Dipika Badhe',
       role: 'Deputy Vice President, Cluster Head (Luxury Segment)',
       company: 'Ruparel Realty',
@@ -215,14 +221,32 @@ const EventDetail: React.FC = () => {
     }
   ]
 
-  const guestOfHonour = {
-    name: 'NIlesh Laddad',
-    role: 'Director - Engineering, Kohinoor Group',
-    company: 'Managing Director, Planedge Consultants Pvt. Ltd',
-    image: '/member/NIlesh.jpeg'
+  type PersonCard = {
+    name: string
+    role: string
+    company: string
+    image: string
+    label?: string
   }
 
-  const juryMembers = [
+  const guestsOfHonour: PersonCard[] = [
+    {
+      name: 'NIlesh Laddad',
+      role: 'Director - Engineering, Kohinoor Group',
+      company: 'Managing Director, Planedge Consultants Pvt. Ltd',
+      image: '/member/NIlesh.jpeg'
+    },
+    {
+      label: 'KEYNOTE SPEAKER',
+      name: 'Naushad Panjwani',
+      role: 'Chairman - Mandarus Partners',
+      company: 'Co-Chairman - NAREDCO Marketing & Technology Committees',
+      image: '/member/Naushad%20.jpeg'
+    }
+  
+  ]
+
+  const juryMembers: PersonCard[] = [
     {
       name: 'Hardeep Sachdeva',
       role: 'Sr. Partner',
@@ -741,6 +765,13 @@ const EventDetail: React.FC = () => {
                   />
                 </div>
                 <div className="p-5 sm:p-6 text-center">
+                  {member.label && (
+                    <span className="inline-block text-xs sm:text-sm font-bold tracking-wider uppercase text-white px-3 py-1 rounded-full mb-3" style={{
+                      background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+                    }}>
+                      {member.label}
+                    </span>
+                  )}
                   <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1">
                     {member.name}
                   </h3>
@@ -789,31 +820,41 @@ const EventDetail: React.FC = () => {
             }}></div>
           </div>
 
-          <div className="max-w-sm mx-auto px-2 sm:px-0">
-            <div
-              className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300"
-              style={{ borderColor: 'var(--primary-color)' }}
-            >
-              <div className="h-56 sm:h-64 overflow-hidden bg-[var(--bg-primary)]">
-                <img
-                  src={guestOfHonour.image}
-                  alt={guestOfHonour.name}
-                  className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto px-2 sm:px-0">
+            {guestsOfHonour.map((guest) => (
+              <div
+                key={guest.name}
+                className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300 max-w-xs mx-auto w-full"
+                style={{ borderColor: 'var(--primary-color)' }}
+              >
+                <div className="h-56 sm:h-64 overflow-hidden bg-[var(--bg-primary)]">
+                  <img
+                    src={guest.image}
+                    alt={guest.name}
+                    className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5 sm:p-6 text-center">
+                  {guest.label && (
+                    <span className="inline-block text-xs sm:text-sm font-bold tracking-wider uppercase text-white px-3 py-1 rounded-full mb-3" style={{
+                      background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+                    }}>
+                      {guest.label}
+                    </span>
+                  )}
+                  <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1">
+                    {guest.name}
+                  </h3>
+                  <p className="text-sm sm:text-base text-[var(--text-secondary)] font-medium">
+                    {guest.role}
+                  </p>
+                  <p className="text-sm sm:text-base text-[var(--primary-color)] font-semibold mt-2">
+                    {guest.company}
+                  </p>
+                </div>
               </div>
-              <div className="p-5 sm:p-6 text-center">
-                <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1">
-                  {guestOfHonour.name}
-                </h3>
-                <p className="text-sm sm:text-base text-[var(--text-secondary)] font-medium">
-                  {guestOfHonour.role}
-                </p>
-                <p className="text-sm sm:text-base text-[var(--primary-color)] font-semibold mt-2">
-                  {guestOfHonour.company}
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
