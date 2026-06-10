@@ -218,6 +218,12 @@ const EventDetail: React.FC = () => {
       role: 'Deputy Vice President, Cluster Head (Luxury Segment)',
       company: 'Ruparel Realty',
       image: '/member/Dipika.jpeg'
+    },
+    {
+      name: 'Girish Chhalwani',
+      role: 'Co-Founder, Lords of the Lands',
+      company: 'Chief Executive Officer, The Edge',
+      image: '/member/Girish.jpeg'
     }
   ]
 
