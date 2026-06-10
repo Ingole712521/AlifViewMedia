@@ -25,11 +25,11 @@ const timelinePhases: TimelinePhase[] = [
   },
   {
     timeLabel: '11:15 AM',
-    heading: 'Guest of Honour & Keynote',
+    heading: 'Guest of Honor  & Keynote',
     entries: [
       {
         time: '11:15 AM – 11:30 AM',
-        title: 'GUEST OF HONOUR',
+        title: 'GUEST OF Honor ',
         description:
           'Nilesh Laddad, Director, Kohinoor Group | Managing Director, Planedge Consultants Pvt. Ltd.'
       },

@@ -177,14 +177,14 @@ const GrandMastersRealEstate2026: React.FC = () => {
             <div className="relative p-8 sm:p-10 md:p-12 pl-8 sm:pl-12">
              
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--text-primary)] leading-tight text-balance">
-                Honouring the Titans of the Real&nbsp;Estate Industry
+                Honor ing the Titans of the Real&nbsp;Estate Industry
               </h2>
               <p className="mt-5 text-[var(--text-primary)] text-base sm:text-lg leading-relaxed opacity-95">
                 The RealtyView Grandmasters of Real Estate Awards 2026 celebrates the pioneers, innovators, business leaders, and
                 changemakers who are redefining the future of the real estate industry.
               </p>
               <p className="mt-4 text-[var(--text-secondary)] text-base sm:text-lg leading-relaxed">
-                Join us as we honour excellence across leadership, development, innovation, design, strategy, marketing, and
+                Join us as we Honor  excellence across leadership, development, innovation, design, strategy, marketing, and
                 transformative contributions to the real estate ecosystem.
               </p>
             </div>

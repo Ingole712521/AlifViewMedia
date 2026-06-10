@@ -235,7 +235,7 @@ const EventDetail: React.FC = () => {
     label?: string
   }
 
-  const guestsOfHonour: PersonCard[] = [
+  const guestsOfHonor : PersonCard[] = [
     {
       name: 'NIlesh Laddad',
       role: 'Director - Engineering, Kohinoor Group',
@@ -664,7 +664,7 @@ const EventDetail: React.FC = () => {
             </p>
 
             <p className="text-justify">
-              Positioned at the intersection of thought leadership and industry recognition, the platform not only facilitates meaningful exchange of ideas but also honours outstanding achievements that are shaping the future of Maharashtra’s real estate landscape.
+              Positioned at the intersection of thought leadership and industry recognition, the platform not only facilitates meaningful exchange of ideas but also Honor s outstanding achievements that are shaping the future of Maharashtra’s real estate landscape.
             </p>
 
             <p className="text-justify">
@@ -794,7 +794,7 @@ const EventDetail: React.FC = () => {
         </div>
       </div>
 
-      {/* Guest of Honour Section */}
+      {/* Guest of Honor  Section */}
       <div className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
         backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
         background: theme === 'light'
@@ -819,7 +819,7 @@ const EventDetail: React.FC = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">
-              Guest of Honour
+              Guest of Honor 
             </h2>
             <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
               background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
@@ -827,7 +827,7 @@ const EventDetail: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto px-2 sm:px-0">
-            {guestsOfHonour.map((guest) => (
+            {guestsOfHonor .map((guest) => (
               <div
                 key={guest.name}
                 className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300 max-w-xs mx-auto w-full"
