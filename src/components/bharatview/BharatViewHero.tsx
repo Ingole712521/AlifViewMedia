@@ -42,7 +42,7 @@ const BharatViewHero: React.FC = () => {
           draggable={false}
           fetchPriority="high"
           decoding="sync"
-          className="bharat-hero-poster absolute inset-0 block h-full w-full object-contain object-center select-none !transition-none"
+          className="bharat-hero-poster absolute inset-0 block h-full w-full object-cover select-none !transition-none"
         />
       </div>
     </section>

@@ -33,7 +33,7 @@ const BharatViewNav: React.FC = () => {
   const linkClass = (active: boolean) => {
     if (isPoster) {
       return [
-        'bharat-nav-link px-2 lg:px-2.5 py-2 text-xs lg:text-sm font-medium transition-colors whitespace-nowrap relative shrink-0',
+        'bharat-nav-link px-1.5 md:px-2 lg:px-2.5 py-1.5 text-[11px] md:text-xs lg:text-sm font-medium transition-colors whitespace-nowrap relative shrink-0',
         active
           ? 'text-[var(--bharat-secondary)] font-semibold after:absolute after:bottom-0 after:left-2 after:right-2 after:h-0.5 after:rounded-full after:bg-[var(--bharat-secondary)]'
           : 'text-[var(--bharat-primary)]/90 hover:text-[var(--bharat-primary)]'
@@ -72,17 +72,17 @@ const BharatViewNav: React.FC = () => {
       <button
         type="button"
         onClick={() => navigate(BHARAT_ROUTES.home)}
-        className="flex items-center shrink-0 rounded-lg p-1 -ml-1 hover:opacity-85 transition-opacity"
+        className="flex items-center shrink-0 rounded-lg p-1.5 hover:opacity-85 transition-opacity"
         aria-label="BharatView home"
       >
         <img
           src={ALIF_LOGO_DARK}
           alt="Alif View Media Logo"
-          className="h-8 sm:h-9 w-auto object-contain"
+          className={`w-auto object-contain ${isPoster ? 'h-9 sm:h-10' : 'h-8 sm:h-9'}`}
         />
       </button>
 
-      <nav className="hidden md:flex items-center gap-0.5 lg:gap-1 flex-1 justify-center min-w-0 overflow-x-auto bharat-nav-scroll px-1">
+      <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center min-w-0 overflow-x-auto bharat-nav-scroll px-1">
         {BHARAT_NAV_PAGES.map((item) => (
           <button
             key={item.to}
@@ -99,7 +99,7 @@ const BharatViewNav: React.FC = () => {
 
       <Button
         type="text"
-        className={`md:!hidden !flex !items-center !justify-center !w-10 !h-10 shrink-0 ${
+        className={`lg:!hidden !flex !items-center !justify-center !w-9 !h-9 shrink-0 ${
           isPoster
             ? '!text-[var(--bharat-primary)] hover:!bg-[var(--bharat-primary)]/5'
             : '!text-slate-700 hover:!bg-slate-100'
@@ -113,7 +113,7 @@ const BharatViewNav: React.FC = () => {
 
   const mobileMenu = mobileOpen && (
     <div
-      className={`md:hidden mt-2 rounded-xl px-3 pb-3 pt-2 flex flex-col gap-1 max-h-[70vh] overflow-y-auto ${
+      className={`lg:hidden mt-2 rounded-xl px-3 pb-3 pt-2 flex flex-col gap-1 max-h-[70vh] overflow-y-auto ${
         isPoster
           ? 'bg-white/92 backdrop-blur-md border border-[var(--bharat-primary)]/10 shadow-lg'
           : 'border-t border-black/5'
@@ -150,9 +150,9 @@ const BharatViewNav: React.FC = () => {
 
   if (isPoster) {
     return (
-      <header className="bharat-nav bharat-nav--poster fixed top-0 left-0 right-0 z-50 bg-transparent px-4 sm:px-8 lg:px-10 xl:px-14 pt-4 sm:pt-5">
+      <header className="bharat-nav bharat-nav--poster fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 lg:px-8 xl:px-10 py-2">
         <div className="max-w-[100rem] mx-auto">
-          <div className="flex items-center justify-between gap-2">{navRow}</div>
+          <div className="flex items-center justify-between gap-1.5 sm:gap-2 min-h-[2.75rem]">{navRow}</div>
           {mobileMenu}
         </div>
       </header>

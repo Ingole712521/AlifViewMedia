@@ -770,10 +770,15 @@
   }
 }
 
-/* BharatView navbar */
+/* BharatView navbar — transparent overlay on poster */
 .bharat-nav--poster {
   background: transparent;
   box-shadow: none;
+  pointer-events: none;
+}
+
+.bharat-nav--poster > * {
+  pointer-events: auto;
 }
 
 .bharat-nav-scroll {
@@ -866,10 +871,21 @@
   @apply text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 font-semibold;
 }
 
-/* Hero poster — fit full artwork inside viewport (no top/bottom clipping) */
+/* Hero poster — full bleed under nav; focal point keeps logo + date/venue in frame */
 .bharat-hero-poster {
-  object-fit: contain;
-  object-position: center center;
+  object-position: center 36%;
+}
+
+@media (max-aspect-ratio: 3/2) {
+  .bharat-hero-poster {
+    object-position: center 32%;
+  }
+}
+
+@media (max-width: 767px) {
+  .bharat-hero-poster {
+    object-position: center 30%;
+  }
 }
 
 .bharatview-site .bharat-infinite-carousel-track {
