@@ -74,7 +74,7 @@ const BharatViewNav: React.FC = () => {
             type="button"
             className="h-9 w-9 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center justify-center shrink-0"
             style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
-            onClick={() => navigate('/event')}
+            onClick={() => navigate('/')}
             aria-label="Back to Event"
           >
             <Home size={16} />
@@ -113,7 +113,7 @@ const BharatViewNav: React.FC = () => {
             className="mt-2 w-full px-6 py-2.5 rounded-lg font-semibold text-sm text-white transition-all duration-300 flex items-center justify-center gap-2"
             style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
             onClick={() => {
-              navigate('/event')
+              navigate('/')
               setMobileOpen(false)
             }}
           >

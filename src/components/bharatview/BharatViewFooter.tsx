@@ -2,6 +2,7 @@ import React from 'react'
 import { Facebook, Linkedin, Twitter } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { BHARAT_LOGO, BHARAT_ROUTES } from './constants'
+import BharatViewContact from './BharatViewContact'
 
 const BharatViewFooter: React.FC = () => {
   const navigate = useNavigate()
@@ -48,14 +49,7 @@ const BharatViewFooter: React.FC = () => {
 
           <div>
             <h4 className="bharat-heading text-xl font-bold mb-6">Contact Us</h4>
-            <div className="space-y-4">
-              <p className="text-gray-400">
-                info@bharatview.com
-                <br />
-                (Coming Soon)
-              </p>
-              <p className="text-gray-400">+91 XXX XXX XXXX</p>
-            </div>
+            <BharatViewContact variant="compact" />
           </div>
         </div>
 
