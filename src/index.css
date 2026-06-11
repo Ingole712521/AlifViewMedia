@@ -778,36 +778,15 @@
   -webkit-backdrop-filter: blur(16px);
 }
 
-.bharat-nav-shell--home {
-  background: rgba(15, 23, 42, 0.55);
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
-}
-
 .bharat-nav-shell--light {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(226, 232, 240, 0.95);
 }
 
 .bharat-nav-shell--solid {
   background: rgba(255, 255, 255, 0.97);
   border-color: rgba(226, 232, 240, 1);
   box-shadow: 0 8px 28px rgba(15, 23, 42, 0.1);
-}
-
-.bharat-nav-link--home {
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.bharat-nav-link--home:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.bharat-nav-link--home-active {
-  color: #fbbf24;
-  background: rgba(255, 255, 255, 0.12);
-  font-weight: 600;
 }
 
 .bharat-nav-link--default {
@@ -871,6 +850,23 @@
 
 .bharatview-site .bharat-btn-sm {
   @apply text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 font-semibold;
+}
+
+/* Hero poster — keep date/venue visible; buttons sit in bottom band */
+.bharat-hero-poster {
+  object-position: center center;
+}
+
+@media (min-width: 768px) and (max-height: 920px) {
+  .bharat-hero-poster {
+    object-position: center bottom;
+  }
+}
+
+@media (min-aspect-ratio: 16/10) and (min-width: 1024px) {
+  .bharat-hero-poster {
+    object-position: center bottom;
+  }
 }
 
 .bharatview-site .bharat-infinite-carousel-track {

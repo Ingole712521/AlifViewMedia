@@ -1,18 +1,12 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { BHARAT_POSTER, BHARAT_ROUTES } from './constants'
+import { BHARAT_POSTER } from './constants'
 import { warmImageCache } from '../../utils/preloadImage'
 
 const POSTER_BG = '#ebe4d4'
 const POSTER_WIDTH = 1536
 const POSTER_HEIGHT = 1024
 
-const posterImgClass =
-  'absolute inset-0 block h-full w-full min-h-full min-w-full object-cover object-center select-none !transition-none'
-
 const BharatViewHero: React.FC = () => {
-  const navigate = useNavigate()
-
   useEffect(() => {
     warmImageCache(BHARAT_POSTER)
 
@@ -48,25 +42,8 @@ const BharatViewHero: React.FC = () => {
           draggable={false}
           fetchPriority="high"
           decoding="sync"
-          className={posterImgClass}
+          className="bharat-hero-poster absolute inset-0 block h-full w-full min-h-full min-w-full object-cover select-none !transition-none"
         />
-      </div>
-
-      <div className="absolute bottom-[5%] sm:bottom-[6%] left-0 right-0 z-10 flex justify-center items-center gap-2 sm:gap-2.5 px-4">
-        <button
-          type="button"
-          onClick={() => navigate(BHARAT_ROUTES.event)}
-          className="bharat-btn-secondary bharat-btn-sm shadow-md hover:shadow-lg"
-        >
-          Discover More
-        </button>
-        <button
-          type="button"
-          onClick={() => navigate(BHARAT_ROUTES.event)}
-          className="bharat-btn-primary bharat-btn-sm bg-white text-[var(--bharat-primary)] hover:bg-gray-50 shadow-md hover:shadow-lg"
-        >
-          View Awards
-        </button>
       </div>
     </section>
   )

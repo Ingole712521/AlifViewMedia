@@ -1,14 +1,14 @@
 import React from 'react'
 import { Facebook, Linkedin, Twitter } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { BHARAT_LOGO, BHARAT_ROUTES } from './constants'
+import { ALIF_LOGO_WHITE, BHARAT_ROUTES } from './constants'
 import BharatViewContact from './BharatViewContact'
 
 const BharatViewFooter: React.FC = () => {
   const navigate = useNavigate()
 
   const quickLinks = [
-    { label: 'Home', to: BHARAT_ROUTES.home },
+    { label: 'Overview', to: BHARAT_ROUTES.home },
     { label: 'Event', to: BHARAT_ROUTES.event },
     { label: 'Jury Member', to: BHARAT_ROUTES.jury },
     { label: 'Registration', to: BHARAT_ROUTES.registration }
@@ -20,9 +20,9 @@ const BharatViewFooter: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
             <img
-              src={BHARAT_LOGO}
-              alt="BharatView Logo"
-              className="h-12 object-contain bg-white/10 p-2 rounded mb-6"
+              src={ALIF_LOGO_WHITE}
+              alt="Alif View Media Logo"
+              className="h-12 object-contain mb-6"
             />
             <p className="text-gray-400 leading-relaxed mb-6">
               India&apos;s most influential cross-industry platform inspiring innovation, recognizing
