@@ -35,7 +35,6 @@ export const BharatViewOverviewPage: React.FC = () => (
       <BharatViewOverview />
       <BharatViewHighlights />
       <BharatViewWhoShouldAttend />
-      <BharatViewAwards />
     </div>
   </BharatViewLayout>
 )
@@ -53,7 +52,11 @@ export const BharatViewSpeakersPage: React.FC = () => (
 )
 
 export const BharatViewAwardsPage: React.FC = () => (
-  <SoonPageLayout {...BHARAT_NAV_PAGES[4]} />
+  <BharatViewLayout>
+    <div className="pt-20">
+      <BharatViewAwards />
+    </div>
+  </BharatViewLayout>
 )
 
 export const BharatViewLeadershipAwardsPage: React.FC = () => (

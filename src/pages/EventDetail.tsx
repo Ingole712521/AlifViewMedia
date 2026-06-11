@@ -1090,12 +1090,12 @@ const EventDetail: React.FC = () => {
                           Associate Partner
                         </h3>
                       </div>
-                      <div className="flex items-center justify-center max-w-md mx-auto">
-                        <div className="w-full rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow flex items-center justify-center p-6 min-h-[120px]">
+                      <div className="flex items-center justify-center max-w-2xl mx-auto">
+                        <div className="w-full rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow flex items-center justify-center p-4 sm:p-6 min-h-[200px] sm:min-h-[240px]">
                           <img
                             src="/logo/Plotrix.png"
                             alt="Plotrix"
-                            className="h-14 sm:h-16 w-auto max-w-full object-contain"
+                            className="h-32 sm:h-40 md:h-48 w-auto max-w-[90%] object-contain scale-110 sm:scale-125"
                             loading="lazy"
                           />
                         </div>
