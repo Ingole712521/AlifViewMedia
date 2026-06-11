@@ -31,7 +31,7 @@ const BharatViewWhoShouldAttend: React.FC = () => {
             </p>
             <button
               type="button"
-              onClick={() => navigate(BHARAT_ROUTES.registration)}
+              onClick={() => navigate(BHARAT_ROUTES.contact)}
               className="bharat-btn-secondary hidden md:inline-flex"
             >
               Reserve Your Seat
@@ -52,7 +52,7 @@ const BharatViewWhoShouldAttend: React.FC = () => {
             <div className="mt-8 text-center md:hidden">
               <button
                 type="button"
-                onClick={() => navigate(BHARAT_ROUTES.registration)}
+                onClick={() => navigate(BHARAT_ROUTES.contact)}
                 className="bharat-btn-secondary w-full"
               >
                 Reserve Your Seat

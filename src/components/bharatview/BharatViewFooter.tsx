@@ -1,20 +1,11 @@
 import React from 'react'
 import { Facebook, Linkedin, Twitter } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { ALIF_LOGO_WHITE, BHARAT_ROUTES } from './constants'
-import BharatViewContact from './BharatViewContact'
+import { ALIF_LOGO_WHITE } from './constants'
+import { BHARAT_NAV_PAGES } from './bharatPageConfig'
 
 const BharatViewFooter: React.FC = () => {
   const navigate = useNavigate()
-
-  const quickLinks = [
-    { label: 'Overview', to: BHARAT_ROUTES.home },
-    { label: 'Event', to: BHARAT_ROUTES.event },
-    { label: 'Advisory Board', to: BHARAT_ROUTES.advisoryBoard },
-    { label: 'Partners', to: BHARAT_ROUTES.partners },
-    { label: 'Jury Member', to: BHARAT_ROUTES.jury },
-    { label: 'Registration', to: BHARAT_ROUTES.registration }
-  ]
 
   return (
     <footer className="bg-[#0a1120] text-white pt-16 pb-8 border-t-4 border-[var(--bharat-secondary)]">
@@ -35,12 +26,12 @@ const BharatViewFooter: React.FC = () => {
           <div>
             <h4 className="bharat-heading text-xl font-bold mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
+              {BHARAT_NAV_PAGES.map((link) => (
                 <li key={link.to}>
                   <button
                     type="button"
                     onClick={() => navigate(link.to)}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors text-left"
                   >
                     {link.label}
                   </button>
@@ -51,7 +42,9 @@ const BharatViewFooter: React.FC = () => {
 
           <div>
             <h4 className="bharat-heading text-xl font-bold mb-6">Contact Us</h4>
-            <BharatViewContact variant="compact" />
+            <p className="text-gray-400 text-sm leading-relaxed">
+              For enquiries, visit the Contact Us page or reach Alif View Media for event support.
+            </p>
           </div>
         </div>
 

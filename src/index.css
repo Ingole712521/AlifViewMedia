@@ -776,6 +776,15 @@
   box-shadow: none;
 }
 
+.bharat-nav-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.bharat-nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .bharat-nav-shell {
   border: 1px solid transparent;
   box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);

@@ -1,14 +1,27 @@
 import React from 'react'
 import BharatViewLayout from '../components/bharatview/BharatViewLayout'
 import BharatViewHero from '../components/bharatview/BharatViewHero'
+import BharatViewSoonPage from '../components/bharatview/BharatViewSoonPage'
 import BharatViewOverview from '../components/bharatview/BharatViewOverview'
 import BharatViewHighlights from '../components/bharatview/BharatViewHighlights'
 import BharatViewWhoShouldAttend from '../components/bharatview/BharatViewWhoShouldAttend'
 import BharatViewAwards from '../components/bharatview/BharatViewAwards'
-import BharatViewComingSoon from '../components/bharatview/BharatViewComingSoon'
-import BharatViewAdvisoryBoard from '../components/bharatview/BharatViewAdvisoryBoard'
-import BharatViewPartners from '../components/bharatview/BharatViewPartners'
-import BharatViewRegistration from '../components/bharatview/BharatViewRegistration'
+import BharatViewContact from '../components/bharatview/BharatViewContact'
+import { BHARAT_NAV_PAGES } from '../components/bharatview/bharatPageConfig'
+import { BHARAT_ROUTES } from '../components/bharatview/constants'
+
+const SoonPageLayout: React.FC<(typeof BHARAT_NAV_PAGES)[number]> = ({
+  title,
+  subtitle,
+  description,
+  icon
+}) => (
+  <BharatViewLayout>
+    <div className="pt-20">
+      <BharatViewSoonPage title={title} subtitle={subtitle} description={description} icon={icon} />
+    </div>
+  </BharatViewLayout>
+)
 
 export const BharatViewSummit2026: React.FC = () => (
   <BharatViewLayout showFooter={false}>
@@ -16,7 +29,7 @@ export const BharatViewSummit2026: React.FC = () => (
   </BharatViewLayout>
 )
 
-export const BharatViewEvent: React.FC = () => (
+export const BharatViewOverviewPage: React.FC = () => (
   <BharatViewLayout>
     <div className="pt-20">
       <BharatViewOverview />
@@ -28,33 +41,35 @@ export const BharatViewEvent: React.FC = () => (
 )
 
 export const BharatViewAdvisoryBoardPage: React.FC = () => (
-  <BharatViewLayout>
-    <div className="pt-20">
-      <BharatViewAdvisoryBoard />
-    </div>
-  </BharatViewLayout>
+  <SoonPageLayout {...BHARAT_NAV_PAGES[1]} />
+)
+
+export const BharatViewJuryMembersPage: React.FC = () => (
+  <SoonPageLayout {...BHARAT_NAV_PAGES[2]} />
+)
+
+export const BharatViewSpeakersPage: React.FC = () => (
+  <SoonPageLayout {...BHARAT_NAV_PAGES[3]} />
+)
+
+export const BharatViewAwardsPage: React.FC = () => (
+  <SoonPageLayout {...BHARAT_NAV_PAGES[4]} />
+)
+
+export const BharatViewLeadershipAwardsPage: React.FC = () => (
+  <SoonPageLayout {...BHARAT_NAV_PAGES[5]} />
 )
 
 export const BharatViewPartnersPage: React.FC = () => (
+  <SoonPageLayout {...BHARAT_NAV_PAGES[6]} />
+)
+
+export const BharatViewContactPage: React.FC = () => (
   <BharatViewLayout>
     <div className="pt-20">
-      <BharatViewPartners />
+      <BharatViewContact />
     </div>
   </BharatViewLayout>
 )
 
-export const BharatViewJury: React.FC = () => (
-  <BharatViewLayout>
-    <div className="pt-20">
-      <BharatViewComingSoon />
-    </div>
-  </BharatViewLayout>
-)
-
-export const BharatViewRegistrationPage: React.FC = () => (
-  <BharatViewLayout>
-    <div className="pt-20">
-      <BharatViewRegistration />
-    </div>
-  </BharatViewLayout>
-)
+export { BHARAT_ROUTES }

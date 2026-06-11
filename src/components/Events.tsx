@@ -2,18 +2,13 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Calendar, MapPin, ArrowRight } from 'lucide-react'
 import { warmImageCache } from '../utils/preloadImage'
+import { BHARAT_POSTER } from './bharatview/constants'
 
 const EVENT_HERO_WEBP = '/images/background.webp'
 const EVENT_HERO_JPG = '/images/background.jpg'
-const BHARAT_LOGO = '/logo/Bharat%20View%20Logo%20Final.png'
 
 const preloadEventHero = () => warmImageCache(EVENT_HERO_WEBP, EVENT_HERO_JPG)
-const preloadBharatHero = () =>
-  warmImageCache(
-    '/images/bharatBackroundImage.webp',
-    '/images/bharatBackroundImage.jpg',
-    '/images/mobileview.webp'
-  )
+const preloadBharatHero = () => warmImageCache(BHARAT_POSTER)
 
 type EventItem = {
   id: string
@@ -62,8 +57,7 @@ const Events: React.FC = () => {
       venue: 'Mumbai (TBA)',
       description:
         'BharatView Business Summit & Awards 2026 is a prestigious platform celebrating excellence, leadership, and transformative contributions — convening visionaries, innovators, and changemakers from across India.',
-      image: BHARAT_LOGO,
-      imageBg: '#ffffff',
+      image: BHARAT_POSTER,
       imageLayout: 'bharat',
       to: '/bharatview-summit-2026',
       onHoverPreload: preloadBharatHero
@@ -115,28 +109,16 @@ const Events: React.FC = () => {
 
               <div className="relative z-10 flex flex-1 flex-col">
                 {event.imageLayout === 'bharat' ? (
-                  <div
-                    className="relative mb-6 h-64 overflow-hidden rounded-xl ring-1 ring-black/10"
-                    style={{ backgroundColor: event.imageBg ?? '#ffffff' }}
-                  >
-                    <div className="relative flex h-full flex-col">
-                      <div className="flex min-h-0 flex-1 items-center justify-center px-6 pt-6 pb-3">
-                        <img
-                          src={event.image}
-                          alt={event.title}
-                          className="max-h-full max-w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement
-                            target.style.display = 'none'
-                          }}
-                        />
-                      </div>
-                      <div className="relative z-10 flex shrink-0 justify-center pb-4">
-                        <span className="inline-flex items-center rounded-full border border-gray-300/80 bg-white/90 px-4 py-1.5 text-xs font-semibold text-gray-900 shadow-sm">
-                          {event.venue}
-                        </span>
-                      </div>
-                    </div>
+                  <div className="relative mb-6 h-64 overflow-hidden rounded-xl ring-1 ring-black/10">
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                      }}
+                    />
                   </div>
                 ) : (
                   <div
