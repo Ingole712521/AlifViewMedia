@@ -224,6 +224,12 @@ const EventDetail: React.FC = () => {
       role: 'Co-Founder, Lords of the Lands',
       company: 'Chief Executive Officer, The Edge',
       image: '/member/Girish.jpeg'
+    },
+    {
+      name: 'Kaushall Prakash',
+      role: 'Managing Director & CEO - Veenaa Group',
+      company: 'Founder - Plotrix Pvt. Ltd.',
+      image: '/member/Kaushal%20Prakash.PNG'
     }
   ]
 
@@ -791,74 +797,6 @@ const EventDetail: React.FC = () => {
         </div>
       </div>
 
-      {/* Guest of Honor  Section */}
-      <div className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
-        backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
-        background: theme === 'light'
-          ? 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%), radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.03) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.02) 0%, transparent 50%)'
-          : 'none'
-      }}>
-        {theme === 'light' && (
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.015) 1px, transparent 1px)',
-              backgroundSize: '40px 40px'
-            }}></div>
-          </div>
-        )}
-        {theme === 'dark' && (
-          <div className="absolute top-0 right-0 w-96 h-96 opacity-5" style={{
-            background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
-            transform: 'translate(30%, -30%)'
-          }}></div>
-        )}
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 max-w-5xl mx-auto px-2 sm:px-0">
-            {[
-              { title: 'Guest of Honor', person: guestOfHonor },
-              { title: 'Keynote Speaker', person: keynoteSpeaker }
-            ].map(({ title, person }) => (
-              <div key={title}>
-                <div className="text-center mb-8 sm:mb-10">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">
-                    {title}
-                  </h2>
-                  <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
-                    background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
-                  }}></div>
-                </div>
-
-                <div
-                  className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300 max-w-xs mx-auto w-full"
-                  style={{ borderColor: 'var(--primary-color)' }}
-                >
-                  <div className="h-56 sm:h-64 overflow-hidden bg-[var(--bg-primary)]">
-                    <img
-                      src={person.image}
-                      alt={person.name}
-                      className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-5 sm:p-6 text-center">
-                    <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1">
-                      {person.name}
-                    </h3>
-                    <p className="text-sm sm:text-base text-[var(--text-secondary)] font-medium">
-                      {person.role}
-                    </p>
-                    <p className="text-sm sm:text-base text-[var(--primary-color)] font-semibold mt-2">
-                      {person.company}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Speakers Section */}
       <div id="event-speakers" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
         backgroundColor: theme === 'dark' ? 'var(--bg-primary)' : '#ffffff',
@@ -900,6 +838,49 @@ const EventDetail: React.FC = () => {
             <div className="w-24 sm:w-32 h-1 sm:h-1.5 mx-auto rounded-full" style={{
               background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
             }}></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 max-w-5xl mx-auto px-2 sm:px-0 mb-12 sm:mb-16 md:mb-20">
+            {[
+              { title: 'Guest of Honor', person: guestOfHonor },
+              { title: 'Keynote Speaker', person: keynoteSpeaker }
+            ].map(({ title, person }) => (
+              <div key={title}>
+                <div className="text-center mb-8 sm:mb-10">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6">
+                    {title}
+                  </h3>
+                  <div className="w-20 sm:w-24 h-1 sm:h-1.5 mx-auto rounded-full" style={{
+                    background: 'linear-gradient(90deg, transparent, var(--primary-color), transparent)'
+                  }}></div>
+                </div>
+
+                <div
+                  className="group bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border-2 hover:scale-[1.02] transition-all duration-300 max-w-xs mx-auto w-full"
+                  style={{ borderColor: 'var(--primary-color)' }}
+                >
+                  <div className="h-56 sm:h-64 overflow-hidden bg-[var(--bg-primary)]">
+                    <img
+                      src={person.image}
+                      alt={person.name}
+                      className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-5 sm:p-6 text-center">
+                    <h4 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-1">
+                      {person.name}
+                    </h4>
+                    <p className="text-sm sm:text-base text-[var(--text-secondary)] font-medium">
+                      {person.role}
+                    </p>
+                    <p className="text-sm sm:text-base text-[var(--primary-color)] font-semibold mt-2">
+                      {person.company}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-2 sm:px-0">
