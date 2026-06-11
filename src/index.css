@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -766,4 +768,52 @@
       padding-right: 0;
     }
   }
+}
+
+/* BharatView Summit site */
+.bharatview-site {
+  --bharat-primary: #1e3a8a;
+  --bharat-secondary: #d97706;
+  --bharat-bg: #f8fafc;
+  --bharat-text-main: #0f172a;
+  --bharat-text-muted: #475569;
+  color: var(--bharat-text-main);
+}
+
+.bharatview-site .bharat-heading {
+  font-family: 'Playfair Display', serif;
+}
+
+.bharatview-site .bharat-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.bharatview-site .bharat-section {
+  @apply py-16 md:py-24;
+}
+
+.bharatview-site .bharat-card {
+  @apply bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 overflow-hidden;
+}
+
+.bharatview-site .bharat-btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white transition-colors duration-300;
+  background-color: var(--bharat-primary);
+}
+
+.bharatview-site .bharat-btn-primary:hover {
+  background-color: #1e40af;
+}
+
+.bharatview-site .bharat-btn-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white transition-colors duration-300;
+  background-color: var(--bharat-secondary);
+}
+
+.bharatview-site .bharat-btn-secondary:hover {
+  background-color: #b45309;
+}
+
+.bharatview-site .bharat-btn-sm {
+  @apply text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 font-semibold;
 }

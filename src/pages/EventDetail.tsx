@@ -1072,29 +1072,6 @@ const EventDetail: React.FC = () => {
           </div>
 
           <div className="text-center py-6 sm:py-8 px-2 sm:px-0">
-            <div className="bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 max-w-3xl mx-auto shadow-lg sm:shadow-xl border-2 mb-6 sm:mb-8" style={{
-              borderColor: 'var(--primary-color)'
-            }}>
-              <p className="text-[var(--text-secondary)] text-base sm:text-lg md:text-xl mb-5 sm:mb-6 font-medium">
-                Partnership opportunities available. Contact us for more information.
-              </p>
-              <button
-                className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
-                style={{
-                  background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
-                }}
-                onClick={() => {
-                  const contactSection = document.getElementById('event-contact')
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' })
-                  }
-                }}
-              >
-                <span className="relative z-10">Become a Partner</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </button>
-            </div>
-
             <div className="max-w-5xl mx-auto pt-4 sm:pt-6">
               <div
                 className="rounded-3xl border shadow-lg overflow-hidden"
@@ -1106,6 +1083,30 @@ const EventDetail: React.FC = () => {
                 <div className="h-1 w-full bg-gradient-to-r from-red-600 via-amber-500 to-red-600" />
                 <div className="p-6 sm:p-8 md:p-10">
                   <div className="space-y-8 sm:space-y-10">
+                    {/* Associate Partner */}
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-center">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[var(--text-primary)]">
+                          Associate Partner
+                        </h3>
+                      </div>
+                      <div className="flex items-center justify-center max-w-md mx-auto">
+                        <div className="w-full rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow flex items-center justify-center p-6 min-h-[120px]">
+                          <img
+                            src="/logo/Plotrix.png"
+                            alt="Plotrix"
+                            className="h-14 sm:h-16 w-auto max-w-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className="h-px w-full"
+                      style={{ backgroundColor: theme === 'dark' ? 'rgba(148, 163, 184, 0.22)' : 'rgba(226, 232, 240, 1)' }}
+                    />
+
                     {/* Supporting + Magazine (side-by-side) */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                       <div className="space-y-4">
@@ -1175,6 +1176,29 @@ const EventDetail: React.FC = () => {
                           />
                         </div>
                       </div>
+                    </div>
+
+                    <div className="bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 max-w-3xl mx-auto shadow-lg sm:shadow-xl border-2" style={{
+                      borderColor: 'var(--primary-color)'
+                    }}>
+                      <p className="text-[var(--text-secondary)] text-base sm:text-lg md:text-xl mb-5 sm:mb-6 font-medium">
+                        Partnership opportunities available. Contact us for more information.
+                      </p>
+                      <button
+                        className="group relative w-full sm:w-auto text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-14 py-3.5 sm:py-4 md:py-5 font-bold text-white rounded-lg sm:rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-xl sm:shadow-2xl hover:shadow-3xl"
+                        style={{
+                          background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
+                        }}
+                        onClick={() => {
+                          const contactSection = document.getElementById('event-contact')
+                          if (contactSection) {
+                            contactSection.scrollIntoView({ behavior: 'smooth' })
+                          }
+                        }}
+                      >
+                        <span className="relative z-10">Become a Partner</span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      </button>
                     </div>
                   </div>
                 </div>

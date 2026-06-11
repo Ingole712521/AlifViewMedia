@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BharatView Business Summit & Awards 2026</title>
+    <meta name="description" content="The premier leadership platform bringing together entrepreneurs, business leaders, innovators, policymakers, and industry experts.">
+    <meta name="keywords" content="BharatView, Business Summit, Awards 2026, Leadership, India, Entrepreneurship">
+
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style type="text/tailwindcss">
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer base {
+        :root {
+            --primary: #1e3a8a; /* Deep Blue */
+            --secondary: #d97706; /* Golden Amber */
+            --bg-color: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+    }
+
+    @layer components {
+        .section-padding {
+            @apply py-16 md:py-24;
+        }
+        .container-custom {
+            @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+        }
+        .btn-primary {
+            @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[var(--primary)] hover:bg-blue-900 transition-colors duration-300;
+        }
+        .btn-secondary {
+            @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[var(--secondary)] hover:bg-amber-700 transition-colors duration-300;
+        }
+        .card {
+            @apply bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 overflow-hidden;
+        }
+    }
+    </style>
+</head>
+<body class="antialiased">
+    <div id="root"></div>
+    <script type="text/babel" src="components/Header.js"></script>
+    <script type="text/babel" src="components/Hero.js"></script>
+    <script type="text/babel" src="components/Overview.js"></script>
+    <script type="text/babel" src="components/Highlights.js"></script>
+    <script type="text/babel" src="components/WhoShouldAttend.js"></script>
+    <script type="text/babel" src="components/Awards.js"></script>
+    <script type="text/babel" src="components/ComingSoon.js"></script>
+    <script type="text/babel" src="components/Footer.js"></script>
+    <script type="text/babel" src="app.js"></script>
+</body>
+</html>

@@ -1,44 +1,42 @@
 import React from 'react'
-import BharatViewPosterShell from '../components/BharatViewPosterShell'
-import { useTheme } from '../hooks/useTheme'
+import BharatViewLayout from '../components/bharatview/BharatViewLayout'
+import BharatViewHero from '../components/bharatview/BharatViewHero'
+import BharatViewOverview from '../components/bharatview/BharatViewOverview'
+import BharatViewHighlights from '../components/bharatview/BharatViewHighlights'
+import BharatViewWhoShouldAttend from '../components/bharatview/BharatViewWhoShouldAttend'
+import BharatViewAwards from '../components/bharatview/BharatViewAwards'
+import BharatViewComingSoon from '../components/bharatview/BharatViewComingSoon'
+import BharatViewRegistration from '../components/bharatview/BharatViewRegistration'
 
-const BHARAT_HOME_POSTER = {
-  webp: '/images/finalBharat.png',
-  jpg: '/images/finalBharat.png',
-  alt: 'BharatView Business Summit & Awards 2026',
-  width: 1536,
-  height: 1024
-} as const
+export const BharatViewSummit2026: React.FC = () => (
+  <BharatViewLayout showFooter={false}>
+    <BharatViewHero />
+  </BharatViewLayout>
+)
 
-const BHARAT_COMING_SOON_POSTER = {
-  webp: '/images/commingSoon.webp',
-  jpg: '/images/commingSoon.jpg',
-  alt: 'Bharat View Summit & Excellence Awards 2026 — Coming Soon',
-  width: 1536,
-  height: 1024
-} as const
+export const BharatViewEvent: React.FC = () => (
+  <BharatViewLayout>
+    <div className="pt-20">
+      <BharatViewOverview />
+      <BharatViewHighlights />
+      <BharatViewWhoShouldAttend />
+      <BharatViewAwards />
+    </div>
+  </BharatViewLayout>
+)
 
-export const BharatViewSummit2026: React.FC = () => {
-  const { theme, toggleTheme } = useTheme()
+export const BharatViewJury: React.FC = () => (
+  <BharatViewLayout>
+    <div className="pt-20">
+      <BharatViewComingSoon />
+    </div>
+  </BharatViewLayout>
+)
 
-  return (
-    <BharatViewPosterShell
-      theme={theme}
-      toggleTheme={toggleTheme}
-      poster={BHARAT_HOME_POSTER}
-    />
-  )
-}
-
-export const BharatViewComingSoon: React.FC = () => {
-  const { theme, toggleTheme } = useTheme()
-
-  return (
-    <BharatViewPosterShell
-      theme={theme}
-      toggleTheme={toggleTheme}
-      poster={BHARAT_COMING_SOON_POSTER}
-    />
-  )
-}
-
+export const BharatViewRegistrationPage: React.FC = () => (
+  <BharatViewLayout>
+    <div className="pt-20">
+      <BharatViewRegistration />
+    </div>
+  </BharatViewLayout>
+)

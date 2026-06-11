@@ -13,8 +13,6 @@ interface PosterSources {
 }
 
 interface BharatViewPosterShellProps {
-  theme: 'light' | 'dark'
-  toggleTheme: () => void
   poster: PosterSources
 }
 
@@ -24,11 +22,7 @@ const SHELL_BG = '#2a1810'
 const posterImgClass =
   'absolute inset-0 block h-full w-full min-h-full min-w-full object-cover object-center select-none !transition-none'
 
-const BharatViewPosterShell: React.FC<BharatViewPosterShellProps> = ({
-  theme,
-  toggleTheme,
-  poster
-}) => {
+const BharatViewPosterShell: React.FC<BharatViewPosterShellProps> = ({ poster }) => {
   useEffect(() => {
     window.scrollTo(0, 0)
 
@@ -80,7 +74,7 @@ const BharatViewPosterShell: React.FC<BharatViewPosterShellProps> = ({
         </picture>
       </div>
 
-      <BharatViewNav theme={theme} toggleTheme={toggleTheme} />
+      <BharatViewNav />
     </div>
   )
 }

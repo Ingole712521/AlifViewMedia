@@ -1,139 +1,128 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Home, Menu, X } from 'lucide-react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import ThemeToggle from './ThemeToggle'
+import { BHARAT_LOGO, BHARAT_ROUTES } from './bharatview/constants'
 
 export const BHARAT_NAV_ITEMS = [
-  { label: 'Home', to: '/bharatview-summit-2026' },
-  { label: 'Event', to: '/bharatview-summit-2026/event' },
-  { label: 'Jury Member', to: '/bharatview-summit-2026/jury' },
-  { label: 'Registration', to: '/bharatview-summit-2026/registration' }
+  { label: 'Home', to: BHARAT_ROUTES.home },
+  { label: 'Event', to: BHARAT_ROUTES.event },
+  { label: 'Jury Member', to: BHARAT_ROUTES.jury },
+  { label: 'Registration', to: BHARAT_ROUTES.registration }
 ] as const
 
-interface BharatViewNavProps {
-  theme: 'light' | 'dark'
-  toggleTheme: () => void
-}
-
-const BharatViewNav: React.FC<BharatViewNavProps> = ({ theme, toggleTheme }) => {
+const BharatViewNav: React.FC = () => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const isHome = pathname === BHARAT_ROUTES.home
+
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [pathname])
 
   const isActive = (to: string) => pathname === to
 
   const desktopLinkClass = (active: boolean) =>
     [
-      'nav-link',
-      active ? '!text-[var(--primary-color)]' : '!text-white hover:!text-white'
+      'text-sm font-medium transition-colors',
+      isHome
+        ? active
+          ? 'text-[var(--bharat-secondary)]'
+          : 'text-white/90 hover:text-white drop-shadow-sm'
+        : active
+          ? 'text-[var(--bharat-primary)]'
+          : 'text-[var(--bharat-text-muted)] hover:text-[var(--bharat-primary)]'
     ].join(' ')
 
   const mobileLinkClass = (active: boolean) =>
     [
-      'block w-full text-left py-3 px-4 nav-link rounded-md transition-colors duration-200',
-      active ? '!text-[var(--primary-color)]' : '!text-white hover:!text-white',
-      theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5'
+      'block w-full text-left py-3 px-4 rounded-lg font-medium transition-colors duration-200',
+      active
+        ? 'text-[var(--bharat-primary)] bg-[var(--bharat-primary)]/5'
+        : 'text-[var(--bharat-text-muted)] hover:text-[var(--bharat-primary)] hover:bg-gray-50'
     ].join(' ')
 
   return (
-    <nav
-      className="fixed top-0 w-full z-50 transition-all duration-300 py-6"
-      style={{
-        backgroundColor: 'transparent',
-        backdropFilter: 'none',
-        borderBottom: 'none',
-        boxShadow: 'none'
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-3">
-            <img
-              src="/images/Aliief_white.png"
-              alt="Alif View Media Logo"
-              className="h-10 w-auto object-contain"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement
-                target.style.display = 'none'
-              }}
-            />
-          </div>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent px-6 sm:px-10 lg:px-14 xl:px-20 py-4 sm:py-5">
+      <div className="max-w-7xl mx-auto flex justify-between items-center gap-4">
+        <button
+          type="button"
+          onClick={() => navigate(BHARAT_ROUTES.home)}
+          className="flex items-center shrink-0"
+        >
+          <img
+            src={BHARAT_LOGO}
+            alt="BharatView Logo"
+            className={`h-9 sm:h-10 md:h-11 object-contain ${isHome ? 'drop-shadow-md' : ''}`}
+          />
+        </button>
 
-          <div className="hidden md:flex items-center space-x-8">
-            {BHARAT_NAV_ITEMS.map((item) => (
-              <button
-                key={item.to}
-                type="button"
-                onClick={() => navigate(item.to)}
-                className={desktopLinkClass(isActive(item.to))}
-              >
-                {item.label}
-              </button>
-            ))}
-
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {BHARAT_NAV_ITEMS.map((item) => (
             <button
+              key={item.to}
               type="button"
-              className="h-10 px-4 py-2 rounded-lg font-semibold text-sm text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
-              onClick={() => navigate('/event')}
+              onClick={() => navigate(item.to)}
+              className={desktopLinkClass(isActive(item.to))}
             >
-              <Home size={16} className="mr-2" />
-              Back to Event
+              {item.label}
             </button>
-          </div>
+          ))}
 
-          <div className="md:hidden flex items-center space-x-4">
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-            <button
-              type="button"
-              onClick={() => setMobileOpen((o) => !o)}
-              className="text-white hover:text-white hover:opacity-70 transition-opacity duration-200"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
-
-        {mobileOpen && (
-          <div
-            className="md:hidden mt-4 py-4 border-t backdrop-blur-md rounded-lg"
-            style={{
-              borderColor: 'rgba(55, 65, 81, 0.5)',
-              backgroundColor: 'rgba(17, 24, 39, 0.9)',
-              backdropFilter: 'blur(10px)'
-            }}
+          <button
+            type="button"
+            className="h-9 w-9 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center justify-center shrink-0"
+            style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
+            onClick={() => navigate('/event')}
+            aria-label="Back to Event"
           >
-            {BHARAT_NAV_ITEMS.map((item) => (
-              <button
-                key={item.to}
-                type="button"
-                onClick={() => {
-                  navigate(item.to)
-                  setMobileOpen(false)
-                }}
-                className={mobileLinkClass(isActive(item.to))}
-              >
-                {item.label}
-              </button>
-            ))}
+            <Home size={16} />
+          </button>
+        </nav>
+
+        <div className="lg:hidden flex items-center">
+          <button
+            type="button"
+            onClick={() => setMobileOpen((o) => !o)}
+            className={isHome ? 'text-white drop-shadow-sm' : 'text-[var(--bharat-text-main)]'}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </div>
+
+      {mobileOpen && (
+        <div className="lg:hidden mt-3 mx-0 rounded-xl bg-white/95 backdrop-blur-xl border border-gray-100 shadow-lg py-3 px-3 flex flex-col gap-1 max-w-7xl mx-auto">
+          {BHARAT_NAV_ITEMS.map((item) => (
             <button
+              key={item.to}
               type="button"
-              className="mt-4 w-[calc(100%-2rem)] mx-4 px-8 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
               onClick={() => {
-                navigate('/event')
+                navigate(item.to)
                 setMobileOpen(false)
               }}
+              className={mobileLinkClass(isActive(item.to))}
             >
-              <Home size={16} className="mr-2" />
-              Back to Event
+              {item.label}
             </button>
-          </div>
-        )}
-      </div>
-    </nav>
+          ))}
+          <button
+            type="button"
+            className="mt-2 w-full px-6 py-2.5 rounded-lg font-semibold text-sm text-white transition-all duration-300 flex items-center justify-center gap-2"
+            style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
+            onClick={() => {
+              navigate('/event')
+              setMobileOpen(false)
+            }}
+          >
+            <Home size={16} />
+            Back to Event
+          </button>
+        </div>
+      )}
+    </header>
   )
 }
 

@@ -4,7 +4,12 @@ import Home from './pages/Home'
 import EventDetail from './pages/EventDetail'
 import TopNextGenAwards from './pages/TopNextGenAwards'
 import GrandMastersRealEstate2026 from './pages/GrandMastersRealEstate2026'
-import { BharatViewSummit2026, BharatViewComingSoon } from './pages/BharatViewPages'
+import {
+  BharatViewSummit2026,
+  BharatViewEvent,
+  BharatViewJury,
+  BharatViewRegistrationPage
+} from './pages/BharatViewPages'
 
 function App() {
   return (
@@ -15,9 +20,9 @@ function App() {
       <Route path="/top-next-gen-awards" element={<TopNextGenAwards />} />
       <Route path="/grand-masters-real-estate-2026" element={<GrandMastersRealEstate2026 />} />
       <Route path="/bharatview-summit-2026" element={<BharatViewSummit2026 />} />
-      <Route path="/bharatview-summit-2026/event" element={<BharatViewComingSoon />} />
-      <Route path="/bharatview-summit-2026/jury" element={<BharatViewComingSoon />} />
-      <Route path="/bharatview-summit-2026/registration" element={<BharatViewComingSoon />} />
+      <Route path="/bharatview-summit-2026/event" element={<BharatViewEvent />} />
+      <Route path="/bharatview-summit-2026/jury" element={<BharatViewJury />} />
+      <Route path="/bharatview-summit-2026/registration" element={<BharatViewRegistrationPage />} />
     </Routes>
   )
 }
