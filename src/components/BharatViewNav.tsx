@@ -138,12 +138,12 @@ const BharatViewNav: React.FC = () => {
         block
         icon={<HomeOutlined />}
         onClick={() => {
-          navigate('/event')
+          navigate('/')
           setMobileOpen(false)
         }}
         className="!mt-2 !font-semibold"
       >
-        Back to Event
+        Home
       </Button>
     </div>
   )
