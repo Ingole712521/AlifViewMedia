@@ -7,6 +7,8 @@ import GrandMastersRealEstate2026 from './pages/GrandMastersRealEstate2026'
 import {
   BharatViewSummit2026,
   BharatViewEvent,
+  BharatViewAdvisoryBoardPage,
+  BharatViewPartnersPage,
   BharatViewJury,
   BharatViewRegistrationPage
 } from './pages/BharatViewPages'
@@ -21,6 +23,8 @@ function App() {
       <Route path="/grand-masters-real-estate-2026" element={<GrandMastersRealEstate2026 />} />
       <Route path="/bharatview-summit-2026" element={<BharatViewSummit2026 />} />
       <Route path="/bharatview-summit-2026/event" element={<BharatViewEvent />} />
+      <Route path="/bharatview-summit-2026/advisory-board" element={<BharatViewAdvisoryBoardPage />} />
+      <Route path="/bharatview-summit-2026/partners" element={<BharatViewPartnersPage />} />
       <Route path="/bharatview-summit-2026/jury" element={<BharatViewJury />} />
       <Route path="/bharatview-summit-2026/registration" element={<BharatViewRegistrationPage />} />
     </Routes>

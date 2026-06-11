@@ -7,6 +7,8 @@ import { ALIF_LOGO_DARK, BHARAT_ROUTES } from './bharatview/constants'
 export const BHARAT_NAV_ITEMS = [
   { label: 'Overview', to: BHARAT_ROUTES.home },
   { label: 'Event', to: BHARAT_ROUTES.event },
+  { label: 'Advisory Board', to: BHARAT_ROUTES.advisoryBoard },
+  { label: 'Partners', to: BHARAT_ROUTES.partners },
   { label: 'Jury Member', to: BHARAT_ROUTES.jury },
   { label: 'Registration', to: BHARAT_ROUTES.registration }
 ] as const

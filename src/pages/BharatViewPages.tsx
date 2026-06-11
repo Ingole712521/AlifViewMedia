@@ -6,6 +6,8 @@ import BharatViewHighlights from '../components/bharatview/BharatViewHighlights'
 import BharatViewWhoShouldAttend from '../components/bharatview/BharatViewWhoShouldAttend'
 import BharatViewAwards from '../components/bharatview/BharatViewAwards'
 import BharatViewComingSoon from '../components/bharatview/BharatViewComingSoon'
+import BharatViewAdvisoryBoard from '../components/bharatview/BharatViewAdvisoryBoard'
+import BharatViewPartners from '../components/bharatview/BharatViewPartners'
 import BharatViewRegistration from '../components/bharatview/BharatViewRegistration'
 
 export const BharatViewSummit2026: React.FC = () => (
@@ -21,6 +23,22 @@ export const BharatViewEvent: React.FC = () => (
       <BharatViewHighlights />
       <BharatViewWhoShouldAttend />
       <BharatViewAwards />
+    </div>
+  </BharatViewLayout>
+)
+
+export const BharatViewAdvisoryBoardPage: React.FC = () => (
+  <BharatViewLayout>
+    <div className="pt-20">
+      <BharatViewAdvisoryBoard />
+    </div>
+  </BharatViewLayout>
+)
+
+export const BharatViewPartnersPage: React.FC = () => (
+  <BharatViewLayout>
+    <div className="pt-20">
+      <BharatViewPartners />
     </div>
   </BharatViewLayout>
 )

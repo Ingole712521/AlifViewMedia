@@ -3,8 +3,6 @@ import { Card, Tag, Typography } from 'antd'
 import {
   AudioOutlined,
   AuditOutlined,
-  TeamOutlined,
-  UsergroupAddOutlined,
   TrophyOutlined
 } from '@ant-design/icons'
 import type { ReactNode } from 'react'
@@ -12,10 +10,8 @@ import type { ReactNode } from 'react'
 const { Title, Text } = Typography
 
 const sections: { id: string; title: string; icon: ReactNode }[] = [
-  { id: 'advisory', title: 'Advisory Board', icon: <TeamOutlined className="bharat-ant-icon bharat-icon-float" /> },
   { id: 'jury', title: 'Jury', icon: <AuditOutlined className="bharat-ant-icon bharat-icon-float" /> },
   { id: 'speakers', title: 'Speakers', icon: <AudioOutlined className="bharat-ant-icon bharat-icon-float" /> },
-  { id: 'partners', title: 'Partners', icon: <UsergroupAddOutlined className="bharat-ant-icon bharat-icon-float" /> },
   { id: 'leadership', title: 'Leadership Awards', icon: <TrophyOutlined className="bharat-ant-icon bharat-icon-float" /> }
 ]
 
@@ -61,7 +57,7 @@ const BharatViewComingSoon: React.FC = () => {
             Jury & Speakers
           </Title>
           <Text className="!text-[var(--bharat-text-muted)] text-lg block max-w-2xl mx-auto">
-            Advisory board, jury members, speakers, and partners will be announced soon.
+            Jury members and speakers will be announced soon.
           </Text>
         </div>
 
