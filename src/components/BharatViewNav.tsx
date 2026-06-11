@@ -48,7 +48,7 @@ const BharatViewNav: React.FC = () => {
   const backButton = isPoster ? (
     <button
       type="button"
-      onClick={() => navigate('/event')}
+      onClick={() => navigate('/')}
       className="hidden lg:inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[var(--bharat-primary)]/35 text-[var(--bharat-primary)] bg-white/25 hover:bg-[var(--bharat-primary)] hover:text-white hover:border-[var(--bharat-primary)] transition-all duration-200 shrink-0"
       aria-label="Back to Event"
     >
@@ -60,7 +60,7 @@ const BharatViewNav: React.FC = () => {
       danger
       size="large"
       icon={<HomeOutlined />}
-      onClick={() => navigate('/event')}
+      onClick={() => navigate('/')}
       className="!font-semibold !shadow-sm shrink-0"
     >
       {/* <span className="hidden xl:inline">Back to Event</span> */}
