@@ -770,6 +770,61 @@
   }
 }
 
+/* BharatView navbar */
+.bharat-nav-shell {
+  border: 1px solid transparent;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.bharat-nav-shell--home {
+  background: rgba(15, 23, 42, 0.55);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+}
+
+.bharat-nav-shell--light {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(226, 232, 240, 0.9);
+}
+
+.bharat-nav-shell--solid {
+  background: rgba(255, 255, 255, 0.97);
+  border-color: rgba(226, 232, 240, 1);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.1);
+}
+
+.bharat-nav-link--home {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.bharat-nav-link--home:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bharat-nav-link--home-active {
+  color: #fbbf24;
+  background: rgba(255, 255, 255, 0.12);
+  font-weight: 600;
+}
+
+.bharat-nav-link--default {
+  color: #475569;
+}
+
+.bharat-nav-link--default:hover {
+  color: #1e3a8a;
+  background: #f1f5f9;
+}
+
+.bharat-nav-link--active {
+  color: #1e3a8a;
+  background: #eff6ff;
+  font-weight: 600;
+}
+
 /* BharatView Summit site */
 .bharatview-site {
   --bharat-primary: #1e3a8a;
@@ -849,5 +904,50 @@
     max-width: 72rem;
     margin-inline: auto;
     gap: 1.5rem;
+  }
+
+  .bharatview-site .bharat-icon-float .bharat-ant-icon,
+  .bharatview-site .bharat-ant-icon-wrap:hover .bharat-ant-icon {
+    animation: none;
+  }
+}
+
+/* Ant Design BharatView icon animations */
+.bharatview-site .bharat-ant-card {
+  border-color: rgba(30, 58, 138, 0.15) !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.bharatview-site .bharat-ant-card:hover {
+  box-shadow: 0 10px 24px rgba(30, 58, 138, 0.12);
+}
+
+.bharatview-site .bharat-ant-icon {
+  transition: transform 0.35s ease;
+}
+
+.bharatview-site .bharat-icon-float .bharat-ant-icon {
+  animation: bharat-icon-float 3s ease-in-out infinite;
+}
+
+.bharatview-site .bharat-ant-icon-wrap:hover .bharat-ant-icon {
+  transform: scale(1.12) rotate(12deg);
+}
+
+.bharatview-site .bharat-coming-soon-card:nth-child(odd) .bharat-icon-float .bharat-ant-icon {
+  animation-delay: 0.4s;
+}
+
+.bharatview-site .bharat-coming-soon-card:nth-child(3n) .bharat-icon-float .bharat-ant-icon {
+  animation-delay: 0.8s;
+}
+
+@keyframes bharat-icon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
   }
 }

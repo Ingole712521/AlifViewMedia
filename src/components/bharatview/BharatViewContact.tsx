@@ -1,47 +1,61 @@
 import React from 'react'
-import { Award, Mail, Phone } from 'lucide-react'
+import { Avatar, Card, Col, Row, Space, Typography } from 'antd'
+import {
+  MailOutlined,
+  PhoneOutlined,
+  TrophyOutlined
+} from '@ant-design/icons'
+
+const { Title, Text, Link } = Typography
 
 interface BharatViewContactProps {
   variant?: 'full' | 'compact'
 }
 
+const iconGradient = { background: 'linear-gradient(135deg, #1e3a8a, #1e40af)' }
+
+const contacts = [
+  {
+    key: 'partnerships',
+    title: 'For Speaking Opportunity, Partnerships & Booths',
+    name: 'Almas Khan',
+    role: null as string | null,
+    email: 'almas@alifviewmedia.com',
+    phone: '8329357983',
+    icon: <TrophyOutlined className="bharat-ant-icon" />
+  },
+  {
+    key: 'nominations',
+    title: 'For Nominations',
+    name: 'Anam Shaikh',
+    role: 'Manager - Events',
+    email: 'sales@alifviewmedia.com',
+    phone: '9270096787',
+    icon: <MailOutlined className="bharat-ant-icon" />
+  }
+] as const
+
 const BharatViewContact: React.FC<BharatViewContactProps> = ({ variant = 'full' }) => {
   if (variant === 'compact') {
     return (
-      <div className="space-y-5">
-        <div>
-          <p className="text-white font-semibold text-sm mb-1">Almas Khan</p>
-          <p className="text-gray-400 text-xs mb-2">Speaking, Partnerships & Booths</p>
-          <a
-            href="mailto:almas@alifviewmedia.com"
-            className="text-gray-400 hover:text-white transition-colors text-sm block"
-          >
-            almas@alifviewmedia.com
-          </a>
-          <a
-            href="tel:8329357983"
-            className="text-gray-400 hover:text-white transition-colors text-sm block mt-1"
-          >
-            8329357983
-          </a>
-        </div>
-        <div>
-          <p className="text-white font-semibold text-sm mb-1">Anam Shaikh</p>
-          <p className="text-gray-400 text-xs mb-2">Manager - Events (Nominations)</p>
-          <a
-            href="mailto:sales@alifviewmedia.com"
-            className="text-gray-400 hover:text-white transition-colors text-sm block"
-          >
-            sales@alifviewmedia.com
-          </a>
-          <a
-            href="tel:9270096787"
-            className="text-gray-400 hover:text-white transition-colors text-sm block mt-1"
-          >
-            9270096787
-          </a>
-        </div>
-      </div>
+      <Space direction="vertical" size="middle" className="w-full">
+        {contacts.map((contact) => (
+          <div key={contact.key}>
+            <Text strong className="!text-white block">
+              {contact.name}
+            </Text>
+            <Text className="!text-gray-400 text-xs block mb-1">
+              {contact.role ?? contact.title.replace('For ', '')}
+            </Text>
+            <Link href={`mailto:${contact.email}`} className="!text-gray-400 hover:!text-white text-sm block">
+              {contact.email}
+            </Link>
+            <Link href={`tel:${contact.phone}`} className="!text-gray-400 hover:!text-white text-sm block mt-1">
+              {contact.phone}
+            </Link>
+          </div>
+        ))}
+      </Space>
     )
   }
 
@@ -49,100 +63,62 @@ const BharatViewContact: React.FC<BharatViewContactProps> = ({ variant = 'full' 
     <section className="bharat-section bg-[var(--bharat-bg)]">
       <div className="bharat-container max-w-6xl">
         <div className="text-center mb-10 sm:mb-12">
-          <div className="inline-flex items-center justify-center mb-4">
-            <div
-              className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center shadow-lg"
-              style={{ background: 'linear-gradient(135deg, #1e3a8a, #1e40af)' }}
-            >
-              <Mail size={28} className="text-white" />
-            </div>
-          </div>
-          <h2 className="bharat-heading text-3xl md:text-4xl font-bold text-[var(--bharat-primary)] mb-4">
+          <Avatar
+            size={64}
+            icon={<MailOutlined className="bharat-ant-icon bharat-icon-float" />}
+            className="bharat-ant-icon-wrap mb-4"
+            style={iconGradient}
+          />
+          <Title level={2} className="bharat-heading !text-[var(--bharat-primary)] !mb-4">
             Contact Us
-          </h2>
+          </Title>
           <div className="w-20 h-1 bg-[var(--bharat-secondary)] mx-auto rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          <div className="bharat-card p-6 md:p-8 border-2 border-[var(--bharat-primary)]/20 hover:shadow-lg transition-shadow">
-            <h3 className="text-lg sm:text-xl font-bold text-[var(--bharat-primary)] mb-6">
-              For Speaking Opportunity, Partnerships & Booths
-            </h3>
-            <div className="flex items-start gap-4">
-              <div
-                className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md"
-                style={{ background: 'linear-gradient(135deg, #1e3a8a, #1e40af)' }}
+        <Row gutter={[24, 24]}>
+          {contacts.map((contact) => (
+            <Col key={contact.key} xs={24} md={12}>
+              <Card
+                hoverable
+                className="bharat-ant-card h-full"
+                styles={{ body: { padding: '1.5rem' } }}
               >
-                <Award size={22} className="text-white" />
-              </div>
-              <div className="min-w-0">
-                <h4 className="font-bold text-base sm:text-lg text-[var(--bharat-text-main)] mb-2">
-                  Almas Khan
-                </h4>
-                <div className="flex items-center gap-2 text-[var(--bharat-text-muted)] mb-2">
-                  <Mail size={16} className="text-[var(--bharat-primary)] flex-shrink-0" />
-                  <a
-                    href="mailto:almas@alifviewmedia.com"
-                    className="hover:text-[var(--bharat-primary)] transition-colors text-sm sm:text-base"
-                  >
-                    almas@alifviewmedia.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-2 text-[var(--bharat-text-muted)]">
-                  <Phone size={16} className="text-[var(--bharat-primary)] flex-shrink-0" />
-                  <span className="text-sm sm:text-base font-medium">Contact:</span>
-                  <a
-                    href="tel:8329357983"
-                    className="hover:text-[var(--bharat-primary)] transition-colors text-sm sm:text-base font-medium"
-                  >
-                    8329357983
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bharat-card p-6 md:p-8 border-2 border-[var(--bharat-primary)]/20 hover:shadow-lg transition-shadow">
-            <h3 className="text-lg sm:text-xl font-bold text-[var(--bharat-primary)] mb-6">
-              For Nominations
-            </h3>
-            <div className="flex items-start gap-4">
-              <div
-                className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md"
-                style={{ background: 'linear-gradient(135deg, #1e3a8a, #1e40af)' }}
-              >
-                <Mail size={22} className="text-white" />
-              </div>
-              <div className="min-w-0">
-                <h4 className="font-bold text-base sm:text-lg text-[var(--bharat-text-main)] mb-1">
-                  Anam Shaikh
-                </h4>
-                <p className="text-sm sm:text-base text-[var(--bharat-text-muted)] mb-2">
-                  Manager - Events
-                </p>
-                <div className="flex items-center gap-2 text-[var(--bharat-text-muted)] mb-2">
-                  <Mail size={16} className="text-[var(--bharat-primary)] flex-shrink-0" />
-                  <a
-                    href="mailto:sales@alifviewmedia.com"
-                    className="hover:text-[var(--bharat-primary)] transition-colors text-sm sm:text-base break-all"
-                  >
-                    sales@alifviewmedia.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-2 text-[var(--bharat-text-muted)]">
-                  <Phone size={16} className="text-[var(--bharat-primary)] flex-shrink-0" />
-                  <span className="text-sm sm:text-base font-medium">Contact:</span>
-                  <a
-                    href="tel:9270096787"
-                    className="hover:text-[var(--bharat-primary)] transition-colors text-sm sm:text-base font-medium"
-                  >
-                    9270096787
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                <Title level={4} className="!text-[var(--bharat-primary)] !mb-6 !text-lg sm:!text-xl">
+                  {contact.title}
+                </Title>
+                <Space align="start" size="middle">
+                  <Avatar
+                    size={48}
+                    icon={contact.icon}
+                    className="bharat-ant-icon-wrap flex-shrink-0"
+                    style={iconGradient}
+                  />
+                  <Space direction="vertical" size={4} className="min-w-0">
+                    <Text strong className="!text-base sm:!text-lg !text-[var(--bharat-text-main)]">
+                      {contact.name}
+                    </Text>
+                    {contact.role && (
+                      <Text className="!text-[var(--bharat-text-muted)]">{contact.role}</Text>
+                    )}
+                    <Space size={8} wrap>
+                      <MailOutlined className="!text-[var(--bharat-primary)] bharat-ant-icon" />
+                      <Link href={`mailto:${contact.email}`} className="!text-[var(--bharat-text-muted)]">
+                        {contact.email}
+                      </Link>
+                    </Space>
+                    <Space size={8} wrap>
+                      <PhoneOutlined className="!text-[var(--bharat-primary)] bharat-ant-icon" />
+                      <Text className="!text-[var(--bharat-text-muted)]">Contact:</Text>
+                      <Link href={`tel:${contact.phone}`} className="!text-[var(--bharat-text-muted)]">
+                        {contact.phone}
+                      </Link>
+                    </Space>
+                  </Space>
+                </Space>
+              </Card>
+            </Col>
+          ))}
+        </Row>
       </div>
     </section>
   )

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Home, Menu, X } from 'lucide-react'
+import { Button } from 'antd'
+import { HomeOutlined, MenuOutlined, CloseOutlined } from '@ant-design/icons'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { BHARAT_LOGO, BHARAT_ROUTES } from './bharatview/constants'
 
@@ -14,6 +15,7 @@ const BharatViewNav: React.FC = () => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   const isHome = pathname === BHARAT_ROUTES.home
 
@@ -21,107 +23,124 @@ const BharatViewNav: React.FC = () => {
     setMobileOpen(false)
   }, [pathname])
 
+  useEffect(() => {
+    if (isHome) {
+      setScrolled(false)
+      return
+    }
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [isHome, pathname])
+
   const isActive = (to: string) => pathname === to
 
-  const desktopLinkClass = (active: boolean) =>
+  const shellClass = [
+    'bharat-nav-shell max-w-7xl mx-auto rounded-2xl transition-all duration-300',
+    isHome
+      ? 'bharat-nav-shell--home'
+      : scrolled
+        ? 'bharat-nav-shell--solid'
+        : 'bharat-nav-shell--light'
+  ].join(' ')
+
+  const linkClass = (active: boolean) =>
     [
-      'text-sm font-medium transition-colors',
+      'bharat-nav-link px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200',
       isHome
         ? active
-          ? 'text-[var(--bharat-secondary)]'
-          : 'text-white/90 hover:text-white drop-shadow-sm'
+          ? 'bharat-nav-link--home-active'
+          : 'bharat-nav-link--home'
         : active
-          ? 'text-[var(--bharat-primary)]'
-          : 'text-[var(--bharat-text-muted)] hover:text-[var(--bharat-primary)]'
-    ].join(' ')
-
-  const mobileLinkClass = (active: boolean) =>
-    [
-      'block w-full text-left py-3 px-4 rounded-lg font-medium transition-colors duration-200',
-      active
-        ? 'text-[var(--bharat-primary)] bg-[var(--bharat-primary)]/5'
-        : 'text-[var(--bharat-text-muted)] hover:text-[var(--bharat-primary)] hover:bg-gray-50'
+          ? 'bharat-nav-link--active'
+          : 'bharat-nav-link--default'
     ].join(' ')
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent px-6 sm:px-10 lg:px-14 xl:px-20 py-4 sm:py-5">
-      <div className="max-w-7xl mx-auto flex justify-between items-center gap-4">
-        <button
-          type="button"
-          onClick={() => navigate(BHARAT_ROUTES.home)}
-          className="flex items-center shrink-0"
-        >
-          <img
-            src={BHARAT_LOGO}
-            alt="BharatView Logo"
-            className={`h-9 sm:h-10 md:h-11 object-contain ${isHome ? 'drop-shadow-md' : ''}`}
-          />
-        </button>
+    <header className="bharat-nav fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 lg:px-12 xl:px-16 pt-4 sm:pt-5">
+      <div className={shellClass}>
+        <div className="flex items-center justify-between gap-3 px-3 sm:px-5 py-2.5 sm:py-3">
+          <button
+            type="button"
+            onClick={() => navigate(BHARAT_ROUTES.home)}
+            className="flex items-center shrink-0 rounded-lg p-1 -ml-1 hover:opacity-90 transition-opacity"
+          >
+            <img
+              src={BHARAT_LOGO}
+              alt="BharatView Logo"
+              className="h-8 sm:h-9 md:h-10 object-contain"
+            />
+          </button>
 
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-          {BHARAT_NAV_ITEMS.map((item) => (
-            <button
-              key={item.to}
-              type="button"
-              onClick={() => navigate(item.to)}
-              className={desktopLinkClass(isActive(item.to))}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 flex-1 justify-center">
+            {BHARAT_NAV_ITEMS.map((item) => (
+              <button
+                key={item.to}
+                type="button"
+                onClick={() => navigate(item.to)}
+                className={linkClass(isActive(item.to))}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          <div className="hidden lg:flex items-center shrink-0">
+            <Button
+              type="primary"
+              danger
+              size="large"
+              icon={<HomeOutlined />}
+              onClick={() => navigate('/event')}
+              className="!font-semibold !shadow-sm"
             >
-              {item.label}
-            </button>
-          ))}
+              
+            </Button>
+          </div>
 
-          <button
-            type="button"
-            className="h-9 w-9 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center justify-center shrink-0"
-            style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
-            onClick={() => navigate('/')}
-            aria-label="Back to Event"
-          >
-            <Home size={16} />
-          </button>
-        </nav>
-
-        <div className="lg:hidden flex items-center">
-          <button
-            type="button"
+          <Button
+            type="text"
+            className={`lg:!hidden !flex !items-center !justify-center !w-10 !h-10 ${
+              isHome ? '!text-white hover:!bg-white/10' : '!text-slate-700 hover:!bg-slate-100'
+            }`}
+            icon={mobileOpen ? <CloseOutlined /> : <MenuOutlined />}
             onClick={() => setMobileOpen((o) => !o)}
-            className={isHome ? 'text-white drop-shadow-sm' : 'text-[var(--bharat-text-main)]'}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          />
         </div>
-      </div>
 
-      {mobileOpen && (
-        <div className="lg:hidden mt-3 mx-0 rounded-xl bg-white/95 backdrop-blur-xl border border-gray-100 shadow-lg py-3 px-3 flex flex-col gap-1 max-w-7xl mx-auto">
-          {BHARAT_NAV_ITEMS.map((item) => (
-            <button
-              key={item.to}
-              type="button"
+        {mobileOpen && (
+          <div className="lg:hidden border-t border-black/5 px-3 pb-3 pt-2 flex flex-col gap-1">
+            {BHARAT_NAV_ITEMS.map((item) => (
+              <button
+                key={item.to}
+                type="button"
+                onClick={() => {
+                  navigate(item.to)
+                  setMobileOpen(false)
+                }}
+                className={linkClass(isActive(item.to)) + ' w-full text-left'}
+              >
+                {item.label}
+              </button>
+            ))}
+            <Button
+              type="primary"
+              danger
+              block
+              icon={<HomeOutlined />}
               onClick={() => {
-                navigate(item.to)
+                navigate('/event')
                 setMobileOpen(false)
               }}
-              className={mobileLinkClass(isActive(item.to))}
+              className="!mt-2 !font-semibold"
             >
-              {item.label}
-            </button>
-          ))}
-          <button
-            type="button"
-            className="mt-2 w-full px-6 py-2.5 rounded-lg font-semibold text-sm text-white transition-all duration-300 flex items-center justify-center gap-2"
-            style={{ background: 'linear-gradient(135deg, #dc2626, #b91c1c)' }}
-            onClick={() => {
-              navigate('/')
-              setMobileOpen(false)
-            }}
-          >
-            <Home size={16} />
-            Back to Event
-          </button>
-        </div>
-      )}
+              Back to Event
+            </Button>
+          </div>
+        )}
+      </div>
     </header>
   )
 }
