@@ -7,7 +7,6 @@ import BharatViewHighlights from '../components/bharatview/BharatViewHighlights'
 import BharatViewWhoShouldAttend from '../components/bharatview/BharatViewWhoShouldAttend'
 import BharatViewAwards from '../components/bharatview/BharatViewAwards'
 import BharatViewContact from '../components/bharatview/BharatViewContact'
-import BharatViewPartners from '../components/bharatview/BharatViewPartners'
 import { BHARAT_NAV_PAGES } from '../components/bharatview/bharatPageConfig'
 import { BHARAT_ROUTES } from '../components/bharatview/constants'
 
@@ -65,11 +64,7 @@ export const BharatViewLeadershipAwardsPage: React.FC = () => (
 )
 
 export const BharatViewPartnersPage: React.FC = () => (
-  <BharatViewLayout>
-    <div className="pt-20">
-      <BharatViewPartners />
-    </div>
-  </BharatViewLayout>
+  <SoonPageLayout {...BHARAT_NAV_PAGES[6]} />
 )
 
 export const BharatViewContactPage: React.FC = () => (
