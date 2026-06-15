@@ -1,6 +1,5 @@
 import React from 'react'
-import { ArrowRight, CalendarClock, Handshake, IndianRupee } from 'lucide-react'
-import { BHARAT_PARTNERS } from './bharatPartners'
+import { ArrowRight, CalendarClock, IndianRupee } from 'lucide-react'
 
 const BharatViewAwardsInfo: React.FC = () => {
   return (
@@ -87,41 +86,6 @@ const BharatViewAwardsInfo: React.FC = () => {
               August 30, 2026
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Partners */}
-      <div>
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4 bg-[var(--bharat-primary)]/10">
-            <Handshake size={28} className="text-[var(--bharat-primary)]" />
-          </div>
-          <h3 className="bharat-heading text-2xl md:text-3xl font-bold text-[var(--bharat-primary)] mb-3">
-            Partners
-          </h3>
-          <p className="text-[var(--bharat-text-muted)] text-sm md:text-base">
-            Proudly supported by our media and magazine partners
-          </p>
-          <div className="w-20 h-1 bg-[var(--bharat-secondary)] mx-auto rounded-full mt-6" />
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {BHARAT_PARTNERS.map((partner) => (
-            <div key={partner.name} className="space-y-4">
-              <h4 className="text-center text-base sm:text-lg font-bold text-[var(--bharat-primary)]">
-                {partner.role}
-              </h4>
-              <div className="bharat-awards-subcard rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md flex flex-col items-center justify-center p-8 min-h-[160px] transition-all duration-300">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-14 sm:h-16 md:h-20 w-auto max-w-full object-contain"
-                  loading="lazy"
-                />
-                <p className="mt-4 text-sm font-medium text-[var(--bharat-text-muted)]">{partner.name}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>
