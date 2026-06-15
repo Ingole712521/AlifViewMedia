@@ -831,6 +831,7 @@
   --bharat-text-main: #0f172a;
   --bharat-text-muted: #475569;
   color: var(--bharat-text-main);
+  scroll-behavior: smooth;
 }
 
 .bharatview-site .bharat-heading {
@@ -964,5 +965,84 @@
   }
   50% {
     transform: translateY(-6px);
+  }
+}
+
+/* BharatView Awards — smooth reveal & scroll highlight */
+.bharat-awards-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bharat-awards-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bharat-awards-category-target {
+  border-radius: 1rem;
+  transition: box-shadow 0.5s ease;
+}
+
+.bharat-awards-category-target.is-highlighted {
+  animation: bharat-awards-target-highlight 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes bharat-awards-target-highlight {
+  0% {
+    box-shadow: 0 0 0 0 rgba(30, 58, 138, 0.28);
+  }
+  35% {
+    box-shadow: 0 0 0 10px rgba(30, 58, 138, 0);
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+.bharat-awards-card {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bharat-awards-card:hover {
+  transform: translateY(-2px);
+}
+
+.bharat-awards-subcard {
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bharat-awards-subcard:hover {
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bharatview-site {
+    scroll-behavior: auto;
+  }
+
+  .bharat-awards-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .bharat-awards-card:hover,
+  .bharat-awards-subcard:hover {
+    transform: none;
+  }
+
+  .bharat-awards-category-target.is-highlighted {
+    animation: none;
   }
 }
