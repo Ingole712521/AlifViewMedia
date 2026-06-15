@@ -81,9 +81,9 @@ export const BHARAT_NAV_PAGES: BharatPageConfig[] = [
     label: 'Partners',
     to: BHARAT_ROUTES.partners,
     title: 'Partners',
-    subtitle: 'Our valued partners and collaborators will be announced soon.',
+    subtitle: 'Proudly supported by our media and magazine partners.',
     description:
-      'BharatView Business Summit & Awards 2026 is bringing together leading organizations and brands. Partnership details coming soon.',
+      'BharatView Business Summit & Awards 2026 is proudly supported by Media Mohalla and The Business Fame.',
     icon: <UsergroupAddOutlined className={iconClass} />
   },
   {

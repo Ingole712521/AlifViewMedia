@@ -1,18 +1,6 @@
 import React from 'react'
 import { ArrowRight, CalendarClock, Handshake, IndianRupee } from 'lucide-react'
-
-const PARTNERS = [
-  {
-    role: 'Media Partner',
-    name: 'Media Mohalla',
-    logo: '/logo/MM Logo Final 1-1.png'
-  },
-  {
-    role: 'Magazine Partner',
-    name: 'The Business Fame',
-    logo: '/partner/TBF-new-logo-PNG.png'
-  }
-]
+import { BHARAT_PARTNERS } from './bharatPartners'
 
 const BharatViewAwardsInfo: React.FC = () => {
   return (
@@ -118,7 +106,7 @@ const BharatViewAwardsInfo: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {PARTNERS.map((partner) => (
+          {BHARAT_PARTNERS.map((partner) => (
             <div key={partner.name} className="space-y-4">
               <h4 className="text-center text-base sm:text-lg font-bold text-[var(--bharat-primary)]">
                 {partner.role}
