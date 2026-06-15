@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Award, ChevronRight, X } from 'lucide-react'
 import { BHARAT_AWARD_CATEGORIES, BharatAwardCategory } from './bharatAwardCategories'
+import BharatViewAwardsInfo from './BharatViewAwardsInfo'
 
 interface AwardSubcategoryDetailProps {
   category: BharatAwardCategory
@@ -215,6 +216,8 @@ const BharatViewAwards: React.FC = () => {
             />
           </div>
         )}
+
+        <BharatViewAwardsInfo />
       </div>
     </section>
   )
