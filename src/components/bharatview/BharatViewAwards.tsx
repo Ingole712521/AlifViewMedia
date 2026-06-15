@@ -24,6 +24,10 @@ const AwardSubcategoryDetail: React.FC<AwardSubcategoryDetailProps> = ({
   if (!category.subcategories) return null
 
   const totalAwards = category.subcategories.reduce((sum, group) => sum + group.awards.length, 0)
+  const subcategoryGridClass =
+    category.subcategories.length === 2
+      ? 'grid grid-cols-1 lg:grid-cols-2 gap-4'
+      : 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4'
 
   return (
     <div
@@ -56,7 +60,7 @@ const AwardSubcategoryDetail: React.FC<AwardSubcategoryDetailProps> = ({
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className={subcategoryGridClass}>
         {category.subcategories.map((group, groupIndex) => (
           <div
             key={groupIndex}
@@ -115,9 +119,19 @@ const BharatViewAwards: React.FC = () => {
   }, [])
 
   const closeDetails = useCallback(() => {
+    const categoryId = selectedCategoryId
     setSelectedCategoryId(null)
     setHighlightedCategoryId(null)
-  }, [])
+
+    if (categoryId) {
+      window.setTimeout(() => {
+        document.getElementById(`awards-category-card-${categoryId}`)?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        })
+      }, 50)
+    }
+  }, [selectedCategoryId])
 
   return (
     <section className="bharat-section bg-white">
@@ -176,9 +190,10 @@ const BharatViewAwards: React.FC = () => {
             return category.subcategories ? (
               <button
                 key={category.id}
+                id={`awards-category-card-${category.id}`}
                 type="button"
                 onClick={() => openCategory(category.id)}
-                className={`${cardClass} text-left w-full hover:border-[var(--bharat-primary)]/30 hover:shadow-md ${
+                className={`${cardClass} scroll-mt-28 text-left w-full hover:border-[var(--bharat-primary)]/30 hover:shadow-md ${
                   isSelected
                     ? 'border-[var(--bharat-primary)]/40 shadow-md ring-2 ring-[var(--bharat-primary)]/15'
                     : 'border-gray-100 ring-1 ring-[var(--bharat-primary)]/10'

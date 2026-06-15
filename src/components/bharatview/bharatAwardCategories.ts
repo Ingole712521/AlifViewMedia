@@ -16,7 +16,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] =
     "title": "Advertising & Marketing Excellence Awards",
     "subcategories": [
       {
-        "title": "Award Categories",
+        "title": "Agency & Campaign Awards",
         "awards": [
           "Advertising Agency of the Year",
           "Marketing Company of the Year",
@@ -52,7 +52,12 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] =
           "Excellence in Media Buying",
           "Excellence in Digital Marketing",
           "Excellence in Performance Marketing",
-          "Excellence in Corporate Communications",
+          "Excellence in Corporate Communications"
+        ]
+      },
+      {
+        "title": "",
+        "awards": [
           "Marketing Leader of the Year",
           "Advertising Leader of the Year",
           "Chief Marketing Officer (CMO) of the Year",

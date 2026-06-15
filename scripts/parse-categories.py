@@ -103,6 +103,16 @@ if current:
 for category in categories:
     subs = category.get("subcategories", [])
     if len(subs) == 1 and subs[0]["title"] == "General Awards":
+        if category["id"] == 1:
+            awards = subs[0]["awards"]
+            split_at = "Marketing Leader of the Year"
+            if split_at in awards:
+                idx = awards.index(split_at)
+                category["subcategories"] = [
+                    {"title": "Agency & Campaign Awards", "awards": awards[:idx]},
+                    {"title": "Individual Awards", "awards": awards[idx:]},
+                ]
+                continue
         subs[0]["title"] = "Award Categories"
 
 OUT_JSON.write_text(json.dumps(categories, indent=2, ensure_ascii=False), encoding="utf-8")
