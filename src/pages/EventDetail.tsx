@@ -180,7 +180,7 @@ const EventDetail: React.FC = () => {
     {
       name: 'Dr. Nitin Athavle',
       role: 'AVP',
-      company: 'Kohinoor Group & Planedge Consultants',
+      company: 'Kohinoor Group & Planedge Consultants Pvt.Ltd',
       image: '/member/WhatsApp%20Image%202026-04-13%20at%201.07.37%20PM.jpeg'
     },
     {
@@ -227,7 +227,7 @@ const EventDetail: React.FC = () => {
     },
     {
       name: 'Kaushall Prakash',
-      role: 'Managing Director & CEO - Veenaa Group',
+      role: 'Founder & MD, Plotrix Pvt Ltd & VDPL',
       company: 'Founder - Plotrix Pvt. Ltd.',
       image: '/member/Kaushal%20Prakash.PNG'
     }
@@ -306,6 +306,7 @@ const EventDetail: React.FC = () => {
     | { kind: 'dropdown'; id: string; label: string; items: { label: string; to: string }[] }
   > = [
       { kind: 'scroll', id: 'home', label: 'Home' },
+      { kind: 'scroll', id: 'timeline', label: 'Timeline' },
       { kind: 'scroll', id: 'jury', label: 'JURY' },
       { kind: 'scroll', id: 'speakers', label: 'Speakers' },
       { kind: 'scroll', id: 'awards', label: 'Awards' },

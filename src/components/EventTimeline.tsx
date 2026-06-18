@@ -29,7 +29,7 @@ const agendaItems: AgendaItem[] = [
   {
     time: '12:00 PM – 12:45 PM',
     content:
-      'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\nModerator: Dr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants\nSpeakers:\nAmit Baid, Founder & Creative Director, A B See Advisory\nChintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\nDipika Badhe, Deputy VP - Luxury Cluster - Sales Head, Ruparel Realty\nGirish Chhalwani, Chief Executive Officer, THE EDGE\nYash Paleja, Real Estate Strategist'
+      'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\nModerator: Dr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants Pvt.Ltd\nSpeakers:\nAmit Baid, Founder & Creative Director, A B See Advisory\nChintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\nDipika Badhe, Deputy VP - Luxury Cluster - Sales Head, Ruparel Realty\nGirish Chhalwani, Chief Executive Officer, THE EDGE\nYash Paleja, Real Estate Strategist'
   },
   {
     time: '12:45 PM - 1:45 PM',
@@ -38,7 +38,7 @@ const agendaItems: AgendaItem[] = [
   {
     time: '1:45 PM - 2:45 PM',
     content:
-      "PANEL SESSION 2 - Rebuilding Maharashtra: Redevelopment, Urban Renewal & the Future of Cities\nModerator: Sagar Visawadia, Founder, Dream Properties & Asia's No.1 Real Estate Influencer\nSpeakers:\nMehul Vithalani, Proprietor, Just Properties\nKaushall Prakash, Managing Director & CEO - Veenaa Group | Founder - Plotrix Pvt. Ltd."
+      "PANEL SESSION 2 - Rebuilding Maharashtra: Redevelopment, Urban Renewal & the Future of Cities\nModerator: Sagar Visawadia, Founder, Dream Properties & Asia's No.1 Real Estate Influencer\nSpeakers:\nMehul Vithalani, Proprietor, Just Properties\nKaushall Prakash, Founder & MD, Plotrix Pvt Ltd & VDPL | Founder - Plotrix Pvt. Ltd."
   },
   {
     time: '2:45 PM - 3:00 PM',
