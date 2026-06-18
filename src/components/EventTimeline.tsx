@@ -28,7 +28,7 @@ const agendaItems: AgendaItem[] = [
   },
   {
     time: '12:00 PM – 12:45 PM',
-    content: 'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\n\nModerator:\nDr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants\n\nSpeakers:\n Amit Baid, Founder & Creative Director, A B See Advisory\n Chintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\n Dipika Badhe, Deputy VP - Luxury Cluster - Sales Head, Ruparel Realty\n Girish Chhalwani, Chief Executive Officer, THE EDGE\n Yash Paleja, Real Estate Strategist'
+    content: 'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\n\nModerator:\nDr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants Pvt. Ltd.\n\nSpeakers:\n Amit Baid, Founder & Creative Director, A B See Advisory\n Chintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\n Dipika Badhe, Deputy VP - Luxury Cluster - Sales Head, Ruparel Realty\n Girish Chhalwani, Chief Executive Officer, THE EDGE\n Yash Paleja, Real Estate Strategist'
   },
   {
     time: '12:45 PM - 1:45 PM',
@@ -173,14 +173,14 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ theme = 'light' }) => {
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-10 sm:mb-14">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3">
-            Event Timeline
+            Agenda
           </h2>
           <p className="text-sm sm:text-base md:text-lg font-semibold text-[var(--text-secondary)] max-w-3xl mx-auto px-2 leading-snug">
             REALTYVIEW LEADERSHIP SUMMIT &amp; AWARDS 2026 (MAHARASHTRA)
           </p>
-          <p className="mt-2 text-xs sm:text-sm text-[var(--text-secondary)] opacity-80">
+          {/* <p className="mt-2 text-xs sm:text-sm text-[var(--text-secondary)] opacity-80">
             27th June, 2026 · Sayaji Hotel, Pune
-          </p>
+          </p> */}
           <div
             className="w-24 sm:w-32 h-1 mx-auto mt-5 rounded-full"
             style={{ background: 'linear-gradient(135deg, #dc2626, #f59e0b)' }}

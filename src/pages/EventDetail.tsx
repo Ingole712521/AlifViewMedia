@@ -227,8 +227,8 @@ const EventDetail: React.FC = () => {
     },
     {
       name: 'Kaushall Prakash',
-      role: 'Founder & MD, Plotrix Pvt Ltd & VDPL',
-      company: 'Founder - Plotrix Pvt. Ltd.',
+      role: 'Founder & MD ',
+      company: 'Plotrix Pvt Ltd & VDPL',
       image: '/member/Kaushal%20Prakash.PNG'
     }
   ]
@@ -308,7 +308,7 @@ const EventDetail: React.FC = () => {
       { kind: 'scroll', id: 'home', label: 'Home' },
       { kind: 'scroll', id: 'jury', label: 'JURY' },
       { kind: 'scroll', id: 'speakers', label: 'Speakers' },
-      { kind: 'scroll', id: 'timeline', label: 'Timeline' },
+      { kind: 'scroll', id: 'timeline', label: 'Agenda' },
       { kind: 'scroll', id: 'awards', label: 'Awards' },
       { kind: 'scroll', id: 'partners', label: 'Partners' },
       {
