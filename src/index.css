@@ -656,11 +656,14 @@
   }
 
   .summit-timeline-card {
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 1.25rem 1.5rem;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     max-width: 100%;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .summit-timeline-card--left {
@@ -700,37 +703,80 @@
     font-size: 0.8rem;
     color: #9ca3af;
     font-weight: 500;
+    margin-bottom: 0.15rem;
   }
 
   .summit-timeline-entry-title {
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 0.9375rem;
+    font-weight: 700;
     line-height: 1.45;
+    margin: 0;
   }
 
   .summit-timeline-entry-desc {
-    font-size: 0.8rem;
-    line-height: 1.5;
-    margin-top: 0.15rem;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    margin: 0;
     max-width: 100%;
     text-align: left;
   }
 
+  .summit-timeline-moderator {
+    margin-top: 0.15rem;
+  }
+
+  .summit-timeline-role-label {
+    color: #9ca3af;
+    font-weight: 500;
+  }
+
+  .summit-timeline-person-name {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .summit-timeline-person-details {
+    color: #9ca3af;
+    font-weight: 400;
+  }
+
+  .summit-timeline-speakers-block {
+    margin-top: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
   .summit-timeline-entry-bullets {
     list-style: none;
-    margin: 0.35rem 0 0;
+    margin: 0;
     padding: 0;
-    font-size: 0.8rem;
-    line-height: 1.5;
+    font-size: 0.8125rem;
+    line-height: 1.55;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    gap: 0.25rem;
+    gap: 0.4rem;
+  }
+
+  .summit-timeline-entry-bullets li {
+    position: relative;
+    padding-left: 0.85rem;
   }
 
   .summit-timeline-entry-bullets li::before {
-    content: '• ';
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #9ca3af;
+  }
+
+  .summit-timeline-speakers-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.45;
   }
 
   @media (max-width: 767px) {

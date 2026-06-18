@@ -1,75 +1,115 @@
 import React from 'react'
 import { Calendar, CheckCircle2 } from 'lucide-react'
 
-interface TimelineEntry {
+/** Agenda rows from: Agenda_RealtyView Leadership Summit & Awards 2026 (Maharashtra).xls */
+interface AgendaItem {
   time: string
-  title: string
-  description?: string
-  bullets?: string[]
+  content: string
 }
 
-interface TimelinePhase {
-  timeLabel: string
-  heading: string
-  entries: TimelineEntry[]
-}
-
-const timelinePhases: TimelinePhase[] = [
+const agendaItems: AgendaItem[] = [
   {
-    timeLabel: '10:00 AM',
-    heading: 'Opening & Welcome',
-    entries: [
-      { time: '10:00 AM - 11:00 AM', title: 'REGISTRATION AND WELCOME TEA/COFFEE' },
-      { time: '11:00 AM – 11:15 AM', title: 'WELCOME ADDRESS' }
-    ]
+    time: '10:00 AM - 11:00 AM',
+    content: 'REGISTRATION AND WELCOME TEA/COFFEE'
   },
   {
-    timeLabel: '11:15 AM',
-    heading: 'Guest of Honor  & Keynote',
-    entries: [
-      {
-        time: '11:15 AM – 11:30 AM',
-        title: 'GUEST OF Honor ',
-        description:
-          'Nilesh Laddad, Director, Kohinoor Group | Managing Director, Planedge Consultants Pvt. Ltd.'
-      },
-      { time: '11:30 AM – 12:00 PM', title: 'KEYNOTE SESSION' }
-    ]
+    time: '11:00 AM – 11:15 AM',
+    content: 'WELCOME ADDRESS'
   },
   {
-    timeLabel: '12:00 PM',
-    heading: 'Panel Session 1 & Lunch',
-    entries: [
-      {
-        time: '12:00 PM – 12:45 PM',
-        title:
-          'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead',
-        bullets: [
-          'Dr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants',
-          'Dr. Adv. Harshul Savla, Managing Partner, M Realty (Suvidha Lifespaces), Best Selling Author, World Record Holder, TEDx Speaker',
-          '... more to join'
-        ]
-      },
-      { time: '12:45 PM - 1:45 PM', title: 'NETWORKING LUNCH' }
-    ]
+    time: '11:15 AM – 11:35 AM',
+    content:
+      'GUEST OF HONOR\nNIlesh Laddad, Director, Kohinoor Group | Managing Director, Planedge Consultants Pvt. \nLtd.'
   },
   {
-    timeLabel: '1:45 PM',
-    heading: 'Panel Session 2 & Awards',
-    entries: [
-      {
-        time: '1:45 PM - 2:45 PM',
-        title:
-          'PANEL SESSION 2 - Rebuilding Maharashtra: Redevelopment, Urban Renewal & the Future of Cities'
-      },
-      { time: '2:45 PM - 3:15 PM', title: 'AWARDS REGISTRATION' },
-      {
-        time: '3:15 PM - 4:30 PM',
-        title: 'REALTYVIEW LEADERSHIP AWARDS 2026 (MAHARASHTRA)'
-      }
-    ]
+    time: '11:35 AM – 12:00 PM',
+    content:
+      'KEYNOTE SESSION\nNaushad Panjwani, Chairman - Mandarus Partners | Co-Chairman - NAREDCO Marketing & Technology Committees'
+  },
+  {
+    time: '12:00 PM – 12:45 PM',
+    content:
+      'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\nModerator: Dr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants\nSpeakers:\nAmit Baid, Founder & Creative Director, A B See Advisory\nChintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\nDipika Badhe, Deputy VP - Luxury Cluster - Sales Head, Ruparel Realty\nGirish Chhalwani, Chief Executive Officer, THE EDGE\nYash Paleja, Real Estate Strategist'
+  },
+  {
+    time: '12:45 PM - 1:45 PM',
+    content: 'NETWORKING LUNCH'
+  },
+  {
+    time: '1:45 PM - 2:45 PM',
+    content:
+      "PANEL SESSION 2 - Rebuilding Maharashtra: Redevelopment, Urban Renewal & the Future of Cities\nModerator: Sagar Visawadia, Founder, Dream Properties & Asia's No.1 Real Estate Influencer\nSpeakers:\nMehul Vithalani, Proprietor, Just Properties\nKaushall Prakash, Managing Director & CEO - Veenaa Group | Founder - Plotrix Pvt. Ltd."
+  },
+  {
+    time: '2:45 PM - 3:00 PM',
+    content: 'AWARDS REGISTRATION'
+  },
+  {
+    time: '3:00 PM - 4:30 PM',
+    content: 'REALTYVIEW LEADERSHIP AWARDS 2026 (MAHARASHTRA)'
   }
 ]
+
+interface PersonLine {
+  name: string
+  details: string
+}
+
+interface ParsedAgenda {
+  title: string
+  moderator: PersonLine | null
+  person: PersonLine | null
+  speakers: PersonLine[]
+}
+
+function parsePersonLine(text: string): PersonLine {
+  const commaIndex = text.indexOf(',')
+  if (commaIndex === -1) {
+    return { name: text, details: '' }
+  }
+  return {
+    name: text.slice(0, commaIndex).trim(),
+    details: text.slice(commaIndex + 1).trim()
+  }
+}
+
+function parseAgendaContent(content: string): ParsedAgenda {
+  const lines = content.split('\n').map((line) => line.trim()).filter(Boolean)
+  const title = lines[0] ?? ''
+  const rest = lines.slice(1)
+
+  const speakersIndex = rest.findIndex((line) => line.toLowerCase() === 'speakers:')
+  if (speakersIndex !== -1) {
+    const beforeSpeakers = rest.slice(0, speakersIndex)
+    const moderatorLine = beforeSpeakers.find((line) => line.toLowerCase().startsWith('moderator:'))
+    const moderator = moderatorLine
+      ? parsePersonLine(moderatorLine.replace(/^moderator:\s*/i, ''))
+      : null
+    const speakers = rest.slice(speakersIndex + 1).map(parsePersonLine)
+    return { title, moderator, person: null, speakers }
+  }
+
+  if (rest.length > 0) {
+    return { title, moderator: null, person: parsePersonLine(rest.join(' ')), speakers: [] }
+  }
+
+  return { title, moderator: null, person: null, speakers: [] }
+}
+
+function timeAxisLabel(timeRange: string): string {
+  return timeRange.split(/[–\-]/)[0]?.trim() ?? timeRange
+}
+
+function PersonText({ person }: { person: PersonLine }) {
+  return (
+    <>
+      <span className="summit-timeline-person-name">{person.name}</span>
+      {person.details && (
+        <span className="summit-timeline-person-details">, {person.details}</span>
+      )}
+    </>
+  )
+}
 
 interface EventTimelineProps {
   theme?: 'light' | 'dark'
@@ -78,34 +118,47 @@ interface EventTimelineProps {
 const EventTimeline: React.FC<EventTimelineProps> = ({ theme = 'light' }) => {
   const isDark = theme === 'dark'
 
-  const renderCard = (phase: TimelinePhase, side: 'left' | 'right') => (
-    <div
-      className={`summit-timeline-card summit-timeline-card--${side}`}
-      style={{
-        backgroundColor: isDark ? 'rgba(30, 41, 59, 0.65)' : '#f5f5f5'
-      }}
-    >
-      <h3 className="summit-timeline-card-heading text-[var(--text-primary)]">{phase.heading}</h3>
-      <ul className="summit-timeline-card-list">
-        {phase.entries.map((entry) => (
-          <li key={`${entry.time}-${entry.title}`} className="summit-timeline-card-item">
-            <span className="summit-timeline-entry-time">{entry.time}</span>
-            <span className="summit-timeline-entry-title text-[var(--text-primary)]">{entry.title}</span>
-            {entry.description && (
-              <p className="summit-timeline-entry-desc text-[var(--text-secondary)]">{entry.description}</p>
-            )}
-            {entry.bullets && entry.bullets.length > 0 && (
-              <ul className="summit-timeline-entry-bullets text-[var(--text-secondary)]">
-                {entry.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
+  const renderAgendaCard = (item: AgendaItem, side: 'left' | 'right') => {
+    const { title, moderator, person, speakers } = parseAgendaContent(item.content)
+
+    return (
+      <div
+        className={`summit-timeline-card summit-timeline-card--${side}`}
+        style={{
+          backgroundColor: isDark ? 'rgba(30, 41, 59, 0.65)' : '#f5f5f5'
+        }}
+      >
+        <span className="summit-timeline-entry-time">{item.time}</span>
+        <h3 className="summit-timeline-entry-title text-[var(--text-primary)]">{title}</h3>
+
+        {person && (
+          <p className="summit-timeline-entry-desc">
+            <PersonText person={person} />
+          </p>
+        )}
+
+        {moderator && (
+          <p className="summit-timeline-entry-desc summit-timeline-moderator">
+            <span className="summit-timeline-role-label">Moderator:</span>{' '}
+            <PersonText person={moderator} />
+          </p>
+        )}
+
+        {speakers.length > 0 && (
+          <div className="summit-timeline-speakers-block">
+            <p className="summit-timeline-speakers-label text-[var(--text-primary)]">Speakers:</p>
+            <ul className="summit-timeline-entry-bullets">
+              {speakers.map((speaker) => (
+                <li key={`${speaker.name}-${speaker.details}`}>
+                  <PersonText person={speaker} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    )
+  }
 
   return (
     <section
@@ -127,7 +180,7 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ theme = 'light' }) => {
             REALTYVIEW LEADERSHIP SUMMIT &amp; AWARDS 2026 (MAHARASHTRA)
           </p>
           <p className="mt-2 text-xs sm:text-sm text-[var(--text-secondary)] opacity-80">
-            23 May 2026 · Sayaji Hotel, Pune
+            27th June, 2026 · Sayaji Hotel, Pune
           </p>
           <div
             className="w-24 sm:w-32 h-1 mx-auto mt-5 rounded-full"
@@ -144,36 +197,38 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ theme = 'light' }) => {
             </div>
           </div>
 
-          {timelinePhases.map((phase, index) => {
+          {agendaItems.map((item, index) => {
             const isLeft = index % 2 === 0
+            const axisLabel = timeAxisLabel(item.time)
+
             return (
               <div
-                key={phase.heading}
+                key={`${item.time}-${item.content}`}
                 className={`summit-timeline-row ${isLeft ? 'summit-timeline-row--left' : 'summit-timeline-row--right'}`}
               >
                 {isLeft ? (
                   <>
-                    {renderCard(phase, 'left')}
+                    {renderAgendaCard(item, 'left')}
                     <div className="summit-timeline-node-wrap">
                       <div className="summit-timeline-node" aria-hidden>
                         <Calendar className="w-4 h-4 text-amber-400" strokeWidth={2} />
                       </div>
                     </div>
                     <span className="summit-timeline-time-label summit-timeline-time-label--right text-[var(--text-secondary)]">
-                      {phase.timeLabel}
+                      {axisLabel}
                     </span>
                   </>
                 ) : (
                   <>
                     <span className="summit-timeline-time-label summit-timeline-time-label--left text-[var(--text-secondary)]">
-                      {phase.timeLabel}
+                      {axisLabel}
                     </span>
                     <div className="summit-timeline-node-wrap">
                       <div className="summit-timeline-node" aria-hidden>
                         <Calendar className="w-4 h-4 text-amber-400" strokeWidth={2} />
                       </div>
                     </div>
-                    {renderCard(phase, 'right')}
+                    {renderAgendaCard(item, 'right')}
                   </>
                 )}
               </div>
