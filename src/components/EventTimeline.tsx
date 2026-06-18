@@ -28,7 +28,8 @@ const agendaItems: AgendaItem[] = [
   },
   {
     time: '12:00 PM – 12:45 PM',
-    content: 'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\n\nModerator:\nDr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants Pvt. Ltd.\n\nSpeakers:\n Amit Baid, Founder & Creative Director, A B See Advisory\n Chintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\n Dipika Badhe, Deputy VP - Luxury Cluster - Sales Head, Ruparel Realty\n Girish Chhalwani, Chief Executive Officer, THE EDGE\n Yash Paleja, Real Estate Strategist'
+    content:
+      'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\n\nModerator:\nDr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants\n\nSpeakers:\nAmit Baid, Founder & Creative Director, A B See Advisory\nChintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\nDipika Badhe, Deputy VP - Luxury Cluster - Sales Head, Ruparel Realty\nGirish Chhalwani, Chief Executive Officer, THE EDGE\nYash Paleja, Real Estate Strategist'
   },
   {
     time: '12:45 PM - 1:45 PM',
@@ -80,10 +81,19 @@ function parseAgendaContent(content: string): ParsedAgenda {
   const speakersIndex = rest.findIndex((line) => line.toLowerCase() === 'speakers:')
   if (speakersIndex !== -1) {
     const beforeSpeakers = rest.slice(0, speakersIndex)
-    const moderatorLine = beforeSpeakers.find((line) => line.toLowerCase().startsWith('moderator:'))
-    const moderator = moderatorLine
-      ? parsePersonLine(moderatorLine.replace(/^moderator:\s*/i, ''))
-      : null
+    let moderator: PersonLine | null = null
+    const moderatorIndex = beforeSpeakers.findIndex(
+      (line) => line.toLowerCase() === 'moderator:' || line.toLowerCase().startsWith('moderator:')
+    )
+    if (moderatorIndex !== -1) {
+      const moderatorLine = beforeSpeakers[moderatorIndex]
+      const inlineMatch = moderatorLine.match(/^moderator:\s*(.+)$/i)
+      if (inlineMatch?.[1]) {
+        moderator = parsePersonLine(inlineMatch[1])
+      } else if (moderatorIndex + 1 < beforeSpeakers.length) {
+        moderator = parsePersonLine(beforeSpeakers[moderatorIndex + 1])
+      }
+    }
     const speakers = rest.slice(speakersIndex + 1).map(parsePersonLine)
     return { title, moderator, person: null, speakers }
   }
