@@ -306,9 +306,9 @@ const EventDetail: React.FC = () => {
     | { kind: 'dropdown'; id: string; label: string; items: { label: string; to: string }[] }
   > = [
       { kind: 'scroll', id: 'home', label: 'Home' },
-      { kind: 'scroll', id: 'timeline', label: 'Timeline' },
       { kind: 'scroll', id: 'jury', label: 'JURY' },
       { kind: 'scroll', id: 'speakers', label: 'Speakers' },
+      { kind: 'scroll', id: 'timeline', label: 'Timeline' },
       { kind: 'scroll', id: 'awards', label: 'Awards' },
       { kind: 'scroll', id: 'partners', label: 'Partners' },
       {

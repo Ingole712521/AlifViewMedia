@@ -28,8 +28,7 @@ const agendaItems: AgendaItem[] = [
   },
   {
     time: '12:00 PM – 12:45 PM',
-    content:
-      'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\nModerator: Dr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants\nSpeakers:\nAmit Baid, Founder & Creative Director, A B See Advisory\nChintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\nDipika Badhe, Deputy VP - Luxury Cluster - Sales Head, Ruparel Realty'
+    content: 'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\n\nModerator:\nDr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants\n\nSpeakers:\n Amit Baid, Founder & Creative Director, A B See Advisory\n Chintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\n Dipika Badhe, Deputy VP - Luxury Cluster - Sales Head, Ruparel Realty\n Girish Chhalwani, Chief Executive Officer, THE EDGE\n Yash Paleja, Real Estate Strategist'
   },
   {
     time: '12:45 PM - 1:45 PM',
