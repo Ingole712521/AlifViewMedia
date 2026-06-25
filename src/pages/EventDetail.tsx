@@ -279,6 +279,13 @@ const EventDetail: React.FC = () => {
     image: '/member/Naushad%20.jpeg'
   }
 
+  const specialGuest: PersonCard = {
+    name: 'Vinay Gachhi',
+    role: 'Vice President - Sales',
+    company: 'SMC Integrated Facility Management Solutions Limited',
+    image: '/member/vinay.jpeg'
+  }
+
   const juryMembers: PersonCard[] = [
     {
       name: 'Hardeep Sachdeva',
@@ -865,10 +872,11 @@ const EventDetail: React.FC = () => {
             }}></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 max-w-5xl mx-auto px-2 sm:px-0 mb-12 sm:mb-16 md:mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 max-w-7xl mx-auto px-2 sm:px-0 mb-12 sm:mb-16 md:mb-20">
             {[
               { title: 'Guest of Honor', person: guestOfHonor },
-              { title: 'Keynote Speaker', person: keynoteSpeaker }
+              { title: 'Keynote Speaker', person: keynoteSpeaker },
+              { title: 'Special Guest', person: specialGuest }
             ].map(({ title, person }) => (
               <div key={title}>
                 <div className="text-center mb-8 sm:mb-10">
