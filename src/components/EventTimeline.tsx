@@ -24,28 +24,28 @@ const agendaItems: AgendaItem[] = [
   {
     time: '11:35 AM – 12:00 PM',
     content:
-      'KEYNOTE SESSION\nNaushad Panjwani, Chairman - Mandarus Partners | Co-Chairman - NAREDCO Marketing & Technology Committees'
+      'KEYNOTE SESSION\nNaushad Panjwani, Chairman - Mandarus Partners | Co-Chairman - NAREDCO Marketing & Technology Committees\nSpecial Guest:\nVinay Gachhi, Vice President - Sales, SMC Integrated Facility Management Solutions Limited\nTOPIC: THE CIVILISATION BUILDERS'
   },
   {
-    time: '12:00 PM – 12:45 PM',
+    time: '12:00 PM – 01:00 PM',
     content:
-      'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\n\nModerator:\nDr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants\n\nSpeakers:\nAmit Baid, Founder & Creative Director, A B See Advisory\nChintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\nDipika Badhe, Deputy VP - Luxury Cluster - Sales Head, Ruparel Realty\nGirish Chhalwani, Chief Executive Officer, THE EDGE\nYash Paleja, Real Estate Strategist'
+      'PANEL SESSION 1 - Real Estate 360°: Industry Titans on Growth, Innovation & the Road Ahead\n\nModerator:\nDr. Nitin Athavle, AVP, Kohinoor Group & Planedge Consultants Pvt. Ltd.\n\nSpeakers:\nAmit Baid, Founder & Creative Director, A B See Brand Advisory\nChintan Vasani, Partner, Wisebiz Developers | Joint Treasurer, NAREDCO NextGen National\nDipika Badhe, Deputy Vice President, Cluster Head (Luxury Segment), Ruparel Realty\nGirish Chhalwani, Co-Founder - Lords of the Lands & CEO - THE EDGE\nAr. Mahesh Bangad, Founder, Studio7.Inc & Senior Associate, ADS\nYash Paleja, Founder, BlindSpot Podcast & India\'s Leading Real Estate Strategist'
   },
   {
-    time: '12:45 PM - 1:45 PM',
+    time: '01:00 PM – 02:00 PM',
     content: 'NETWORKING LUNCH'
   },
   {
-    time: '1:45 PM - 2:45 PM',
+    time: '02:00 PM – 03:00 PM',
     content:
-      "PANEL SESSION 2 - Rebuilding Maharashtra: Redevelopment, Urban Renewal & the Future of Cities\nModerator: Sagar Visawadia, Founder, Dream Properties & Asia's No.1 Real Estate Influencer\nSpeakers:\nMehul Vithalani, Proprietor, Just Properties\nKaushall Prakash, Managing Director & CEO - Veenaa Group | Founder - Plotrix Pvt. Ltd."
+      "PANEL SESSION 2 - Rebuilding Maharashtra: Redevelopment, Urban Renewal & the Future of Cities\n\nModerator:\nSagar Visawadia, Founder, Dream Properties & Asia's No.1 Real Estate Influencer\n\nSpeakers:\nAdeeth Kaaspatay, Director, Adeeth Landcrafts\nKaushall Prakash, Founder & MD, Plotrix Pvt Ltd & VDPL\nMehul Vithalani, Proprietor, Just Properties & President - REAAK Mumbai\nNilesh Vohra, MD & CEO, Kanchan Developers & Convener - CREDAI Youth Wing National\nRachit Bansal, Regional CEO - Pune, Xanadu Realty\nHiren Parmar, Partner, Parmar Realty"
   },
   {
-    time: '2:45 PM - 3:00 PM',
+    time: '03:00 PM – 03:10 PM',
     content: 'AWARDS REGISTRATION'
   },
   {
-    time: '3:00 PM - 4:30 PM',
+    time: '03:10 PM – 04:30 PM',
     content: 'REALTYVIEW LEADERSHIP AWARDS 2026 (MAHARASHTRA)'
   }
 ]
@@ -59,6 +59,8 @@ interface ParsedAgenda {
   title: string
   moderator: PersonLine | null
   person: PersonLine | null
+  specialGuest: PersonLine | null
+  topic: string | null
   speakers: PersonLine[]
 }
 
@@ -73,10 +75,46 @@ function parsePersonLine(text: string): PersonLine {
   }
 }
 
+function parseSpecialGuest(rest: string[]): { specialGuest: PersonLine | null; remaining: string[] } {
+  const specialGuestIndex = rest.findIndex(
+    (line) => line.toLowerCase() === 'special guest:' || line.toLowerCase().startsWith('special guest:')
+  )
+  if (specialGuestIndex === -1) {
+    return { specialGuest: null, remaining: rest }
+  }
+
+  const specialGuestLine = rest[specialGuestIndex]
+  const inlineMatch = specialGuestLine.match(/^special guest:\s*(.+)$/i)
+  let specialGuest: PersonLine | null = null
+  if (inlineMatch?.[1]) {
+    specialGuest = parsePersonLine(inlineMatch[1])
+  } else if (specialGuestIndex + 1 < rest.length) {
+    specialGuest = parsePersonLine(rest[specialGuestIndex + 1])
+  }
+
+  const remaining = [
+    ...rest.slice(0, specialGuestIndex),
+    ...rest.slice(specialGuestIndex + (inlineMatch?.[1] ? 1 : 2))
+  ]
+  return { specialGuest, remaining }
+}
+
+function parseTopic(rest: string[]): { topic: string | null; remaining: string[] } {
+  const topicIndex = rest.findIndex((line) => line.toLowerCase().startsWith('topic:'))
+  if (topicIndex === -1) {
+    return { topic: null, remaining: rest }
+  }
+
+  const topicLine = rest[topicIndex]
+  const topic = topicLine.replace(/^topic:\s*/i, '').trim() || null
+  const remaining = [...rest.slice(0, topicIndex), ...rest.slice(topicIndex + 1)]
+  return { topic, remaining }
+}
+
 function parseAgendaContent(content: string): ParsedAgenda {
   const lines = content.split('\n').map((line) => line.trim()).filter(Boolean)
   const title = lines[0] ?? ''
-  const rest = lines.slice(1)
+  let rest = lines.slice(1)
 
   const speakersIndex = rest.findIndex((line) => line.toLowerCase() === 'speakers:')
   if (speakersIndex !== -1) {
@@ -95,14 +133,33 @@ function parseAgendaContent(content: string): ParsedAgenda {
       }
     }
     const speakers = rest.slice(speakersIndex + 1).map(parsePersonLine)
-    return { title, moderator, person: null, speakers }
+    return { title, moderator, person: null, specialGuest: null, topic: null, speakers }
   }
+
+  const topicResult = parseTopic(rest)
+  rest = topicResult.remaining
+  const specialGuestResult = parseSpecialGuest(rest)
+  rest = specialGuestResult.remaining
 
   if (rest.length > 0) {
-    return { title, moderator: null, person: parsePersonLine(rest.join(' ')), speakers: [] }
+    return {
+      title,
+      moderator: null,
+      person: parsePersonLine(rest.join(' ')),
+      specialGuest: specialGuestResult.specialGuest,
+      topic: topicResult.topic,
+      speakers: []
+    }
   }
 
-  return { title, moderator: null, person: null, speakers: [] }
+  return {
+    title,
+    moderator: null,
+    person: null,
+    specialGuest: specialGuestResult.specialGuest,
+    topic: topicResult.topic,
+    speakers: []
+  }
 }
 
 function timeAxisLabel(timeRange: string): string {
@@ -128,7 +185,7 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ theme = 'light' }) => {
   const isDark = theme === 'dark'
 
   const renderAgendaCard = (item: AgendaItem, side: 'left' | 'right') => {
-    const { title, moderator, person, speakers } = parseAgendaContent(item.content)
+    const { title, moderator, person, specialGuest, topic, speakers } = parseAgendaContent(item.content)
 
     return (
       <div
@@ -143,6 +200,20 @@ const EventTimeline: React.FC<EventTimelineProps> = ({ theme = 'light' }) => {
         {person && (
           <p className="summit-timeline-entry-desc">
             <PersonText person={person} />
+          </p>
+        )}
+
+        {specialGuest && (
+          <p className="summit-timeline-entry-desc summit-timeline-moderator">
+            <span className="summit-timeline-role-label">Special Guest:</span>{' '}
+            <PersonText person={specialGuest} />
+          </p>
+        )}
+
+        {topic && (
+          <p className="summit-timeline-entry-desc summit-timeline-moderator">
+            <span className="summit-timeline-role-label">Topic:</span>{' '}
+            <span className="summit-timeline-person-details">{topic}</span>
           </p>
         )}
 
