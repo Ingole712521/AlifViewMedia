@@ -230,6 +230,30 @@ const EventDetail: React.FC = () => {
       role: 'Founder & MD ',
       company: 'Plotrix Pvt Ltd & VDPL',
       image: '/member/Kaushal%20Prakash.PNG'
+    },
+    {
+      name: 'Rachit Bansal',
+      role: 'Regional CEO - Pune',
+      company: 'Xanadu Realty',
+      image: '/member/ranchit.jpeg'
+    },
+    {
+      name: 'Nilesh Vohra',
+      role: 'MD & CEO - Kanchan Developers',
+      company: 'Convener - CREDAI Youth Wing National',
+      image: '/member/Nilesh-1.png'
+    },
+    {
+      name: 'Ar. Mahesh Bangad',
+      role: 'Founder, Studio7.Inc & Senior Associate',
+      company: 'ADS',
+      image: '/member/Mahessh.jpeg'
+    },
+    {
+      name: 'Hiren Parmar',
+      role: 'Partner',
+      company: 'Parmar Realty',
+      image: '/member/Hiren.jpeg'
     }
   ]
 
