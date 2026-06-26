@@ -214,6 +214,12 @@ const EventDetail: React.FC = () => {
       image: '/member/Sagar.jpeg'
     },
     {
+      name: 'Adeeth Kaaspatay',
+      role: 'Director',
+      company: 'Adeeth Landcrafts',
+      image: '/member/adeeth.jpeg'
+    },
+    {
       name: 'Dipika Badhe',
       role: 'Deputy Vice President, Cluster Head (Luxury Segment)',
       company: 'Ruparel Realty',
