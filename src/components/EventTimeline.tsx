@@ -19,7 +19,7 @@ const agendaItems: AgendaItem[] = [
   {
     time: '11:15 AM – 11:35 AM',
     content:
-      'GUEST OF HONOR\nNilesh Laddad, Director, Kohinoor Group | Managing Director, Planedge Consultants Pvt. Ltd.'
+      'GUEST OF HONOR\nAmol Joshi, Partner, Amol Joshi Landmarks'
   },
   {
     time: '11:35 AM – 12:00 PM',

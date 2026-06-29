@@ -272,10 +272,10 @@ const EventDetail: React.FC = () => {
   }
 
   const guestOfHonor: PersonCard = {
-    name: 'NIlesh Laddad',
-    role: 'Director - Engineering, Kohinoor Group',
-    company: 'Managing Director, Planedge Consultants Pvt. Ltd',
-    image: '/member/NIlesh.jpeg'
+    name: 'Amol Joshi',
+    role: 'Partner',
+    company: '',
+    image: '/member/joshi.jpeg'
   }
 
   const keynoteSpeaker: PersonCard = {
