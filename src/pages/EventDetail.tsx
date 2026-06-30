@@ -4,6 +4,7 @@ import { Users, Award, Handshake, Mail, Phone, ArrowRight, CheckCircle2, Star, H
 import ThemeToggle from '../components/ThemeToggle'
 import NominationProcess from '../components/NominationProcess'
 import EventTimeline from '../components/EventTimeline'
+import EventGallery from '../components/EventGallery'
 import { warmImageCache } from '../utils/preloadImage'
 
 const EVENT_HERO_WEBP = '/images/background.webp'
@@ -337,6 +338,35 @@ const EventDetail: React.FC = () => {
     }
   ]
 
+  const galleryImages = [
+    '/event_image/RelaityView/6.png',
+    '/event_image/RelaityView/9.jpeg',
+    '/event_image/RelaityView/10.png',
+    '/event_image/RelaityView/11.JPG',
+    '/event_image/RelaityView/12.jpeg',
+    '/event_image/RelaityView/14.JPG',
+    '/event_image/RelaityView/19.JPG',
+    '/event_image/RelaityView/26.JPG',
+    '/event_image/RelaityView/28.JPG',
+    '/event_image/RelaityView/29.JPG',
+    '/event_image/RelaityView/29.1.JPG',
+    '/event_image/RelaityView/30.JPG',
+    '/event_image/RelaityView/32.JPG',
+    '/event_image/RelaityView/34.JPG',
+    '/event_image/RelaityView/35.JPG',
+    '/event_image/RelaityView/36.JPG',
+    '/event_image/RelaityView/38.JPG',
+    '/event_image/RelaityView/43.JPG',
+    '/event_image/RelaityView/46.JPG',
+    '/event_image/RelaityView/48.JPG',
+    '/event_image/RelaityView/52.JPG',
+    '/event_image/RelaityView/55.JPG',
+    '/event_image/RelaityView/58.JPG',
+    '/event_image/RelaityView/59.3.JPG',
+    '/event_image/RelaityView/63.JPG',
+    '/event_image/RelaityView/69.JPG'
+  ]
+
   const navItems: Array<
     | { kind: 'scroll'; id: string; label: string }
     | { kind: 'route'; to: string; label: string }
@@ -348,6 +378,7 @@ const EventDetail: React.FC = () => {
       { kind: 'scroll', id: 'timeline', label: 'Agenda' },
       { kind: 'scroll', id: 'awards', label: 'Awards' },
       { kind: 'scroll', id: 'partners', label: 'Partners' },
+      { kind: 'scroll', id: 'gallery', label: 'Gallery' },
       {
         kind: 'dropdown',
         id: 'top-leader',
@@ -1245,6 +1276,34 @@ const EventDetail: React.FC = () => {
             </div>
           </div>
 
+        </div>
+      </div>
+
+      {/* Gallery Section */}
+      <div
+        id="event-gallery"
+        className="pt-10 sm:pt-12 md:pt-14 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+        style={{
+          backgroundColor: theme === 'dark' ? 'var(--bg-secondary)' : '#f8fafc',
+          background: theme === 'light'
+            ? 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #fef2f2 100%), radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.04) 0%, transparent 35%), radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.04) 0%, transparent 35%)'
+            : 'none'
+        }}
+      >
+        {theme === 'light' && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: 'linear-gradient(rgba(220, 38, 38, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.02) 1px, transparent 1px)',
+                backgroundSize: '40px 40px'
+              }}
+            ></div>
+          </div>
+        )}
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <EventGallery images={galleryImages} theme={theme} />
         </div>
       </div>
 

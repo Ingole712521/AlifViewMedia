@@ -1092,3 +1092,67 @@
     animation: none;
   }
 }
+
+.event-gallery-marquee-track {
+  animation: event-gallery-marquee-left 22s linear infinite;
+  will-change: transform;
+}
+
+.event-gallery-marquee-faster {
+  animation-duration: 16s;
+}
+
+.event-gallery-marquee-reverse {
+  animation-name: event-gallery-marquee-right;
+}
+
+.event-gallery-marquee:hover .event-gallery-marquee-track {
+  animation-play-state: paused;
+}
+
+.event-gallery-bento-item {
+  animation: event-gallery-bento-in 0.55s ease both;
+}
+
+@keyframes event-gallery-marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes event-gallery-marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes event-gallery-bento-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-gallery-marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .event-gallery-bento-item {
+    animation: none;
+  }
+}
