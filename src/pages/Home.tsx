@@ -5,7 +5,7 @@ import Hero from '../components/Hero'
 import About from '../components/About'
 import ObjectivesMission from '../components/ObjectivesMission'
 import Events from '../components/Events'
-import MediaGallery from '../components/MediaGallery'
+// import MediaGallery from '../components/MediaGallery'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 import VideoBackground from '../components/VideoBackground'
@@ -171,9 +171,9 @@ function Home() {
               <Events />
             </section>
             
-            <section id="gallery">
+            {/* <section id="gallery">
               <MediaGallery />
-            </section>
+            </section> */}
             
             <section id="contact">
               <Contact />
