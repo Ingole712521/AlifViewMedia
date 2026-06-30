@@ -341,13 +341,18 @@ const EventDetail: React.FC = () => {
 
   const galleryImages = [
     '/event_image/RelaityView/6.png',
+    '/event_image/RelaityView/8.png',
     '/event_image/RelaityView/9.jpeg',
     '/event_image/RelaityView/10.png',
     '/event_image/RelaityView/11.JPG',
     '/event_image/RelaityView/12.jpeg',
     '/event_image/RelaityView/14.JPG',
+    '/event_image/RelaityView/15.JPG',
     '/event_image/RelaityView/19.JPG',
+    '/event_image/RelaityView/24.JPG',
+    '/event_image/RelaityView/25.JPG',
     '/event_image/RelaityView/26.JPG',
+    '/event_image/RelaityView/27.JPG',
     '/event_image/RelaityView/28.JPG',
     '/event_image/RelaityView/29.JPG',
     '/event_image/RelaityView/29.1.JPG',
@@ -365,6 +370,7 @@ const EventDetail: React.FC = () => {
     '/event_image/RelaityView/58.JPG',
     '/event_image/RelaityView/59.3.JPG',
     '/event_image/RelaityView/63.JPG',
+    '/event_image/RelaityView/66.JPG',
     '/event_image/RelaityView/69.JPG'
   ]
 
