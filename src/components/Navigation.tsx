@@ -34,7 +34,7 @@ const Navigation: React.FC<NavigationProps> = ({
     { id: "about", label: "About Us" },
     { id: "objectives-mission", label: "Objectives & Mission" },
     { id: "events", label: "Events" },
-    { id: "gallery", label: "Gallery" },
+    // { id: "gallery", label: "Gallery" },
     { id: "contact", label: "Contact Us" },
   ];
 
