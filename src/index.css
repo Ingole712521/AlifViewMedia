@@ -277,6 +277,10 @@
   .nav-link {
     @apply text-[var(--text-primary)] hover:text-[var(--primary-color)] transition-colors duration-300 font-medium;
   }
+
+  .event-page-nav .event-nav-link {
+    @apply text-[11px] xl:text-xs 2xl:text-sm px-1 2xl:px-1.5 py-1 leading-none;
+  }
   
   .card {
     @apply p-8 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-105;

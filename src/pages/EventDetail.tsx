@@ -5,6 +5,7 @@ import ThemeToggle from '../components/ThemeToggle'
 import NominationProcess from '../components/NominationProcess'
 import EventTimeline from '../components/EventTimeline'
 import EventGallery from '../components/EventGallery'
+import AwardWinners2026 from '../components/AwardWinners2026'
 import { warmImageCache } from '../utils/preloadImage'
 
 const EVENT_HERO_WEBP = '/images/background.webp'
@@ -368,21 +369,22 @@ const EventDetail: React.FC = () => {
   ]
 
   const navItems: Array<
-    | { kind: 'scroll'; id: string; label: string }
-    | { kind: 'route'; to: string; label: string }
-    | { kind: 'dropdown'; id: string; label: string; items: { label: string; to: string }[] }
+    | { kind: 'scroll'; id: string; label: string; shortLabel?: string }
+    | { kind: 'route'; to: string; label: string; shortLabel?: string }
+    | { kind: 'dropdown'; id: string; label: string; shortLabel?: string; items: { label: string; to: string }[] }
   > = [
-      { kind: 'scroll', id: 'home', label: 'Home' },
       { kind: 'scroll', id: 'jury', label: 'JURY' },
       { kind: 'scroll', id: 'speakers', label: 'Speakers' },
       { kind: 'scroll', id: 'timeline', label: 'Agenda' },
       { kind: 'scroll', id: 'awards', label: 'Awards' },
+      { kind: 'scroll', id: 'award-winners', label: 'Award Winners 2026', shortLabel: 'Winners 2026' },
       { kind: 'scroll', id: 'partners', label: 'Partners' },
       { kind: 'scroll', id: 'gallery', label: 'Gallery' },
       {
         kind: 'dropdown',
         id: 'top-leader',
         label: 'Leadership Awards',
+        shortLabel: 'Leadership',
         items: [
           { label: 'Top Next-Gen Real Estate Leader', to: '/top-next-gen-awards' },
           { label: 'Grand Masters of Real Estate 2026', to: '/grand-masters-real-estate-2026' },
@@ -392,6 +394,13 @@ const EventDetail: React.FC = () => {
       { kind: 'scroll', id: 'contact', label: 'Contact' }
     ]
 
+  const renderNavLabel = (item: { label: string; shortLabel?: string }) => (
+    <>
+      <span className="2xl:hidden">{item.shortLabel ?? item.label}</span>
+      <span className="hidden 2xl:inline">{item.label}</span>
+    </>
+  )
+
  
   const topNavTheme: 'light' | 'dark' = isScrolled ? theme : theme === 'dark' ? 'light' : 'dark'
   const navOnImage = !isScrolled
@@ -400,9 +409,9 @@ const EventDetail: React.FC = () => {
     <div className="min-h-screen w-full" style={{ backgroundColor: 'var(--bg-primary)' }}>
       {/* Fixed Navigation Bar */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
-            ? "py-4 shadow-lg backdrop-blur-md"
-            : "py-6"
+        className={`event-page-nav fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+            ? "py-3 shadow-lg backdrop-blur-md"
+            : "py-4"
           }`}
         style={{
           backgroundColor: isScrolled
@@ -424,9 +433,9 @@ const EventDetail: React.FC = () => {
         }}
       >
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex justify-between items-center'>
+          <div className='flex items-center justify-between gap-3 xl:grid xl:grid-cols-[1fr_auto_1fr] xl:items-center'>
             {/* Logo */}
-            <div className='flex items-center space-x-3'>
+            <div className='flex-shrink-0 relative z-10 xl:justify-self-start'>
               <img
                 src={
                   navOnImage
@@ -444,21 +453,21 @@ const EventDetail: React.FC = () => {
               />
             </div>
 
-            {/* Desktop Navigation */}
-            <div className='hidden md:flex items-center space-x-8'>
+            {/* Desktop Navigation — centered */}
+            <div className='hidden xl:flex items-center justify-center gap-1 2xl:gap-2 min-w-0'>
               {navItems.map((item) => {
                 if (item.kind === 'dropdown') {
                   return (
-                    <div key={item.id} className="relative group">
+                    <div key={item.id} className="relative group flex-shrink-0">
                       <button
                         type="button"
-                        className={`nav-link flex items-center gap-1 ${navOnImage
+                        className={`event-nav-link nav-link flex items-center gap-0.5 whitespace-nowrap ${navOnImage
                             ? '!text-white hover:!text-white'
                             : ''
                           }`}
                       >
-                        {item.label}
-                        <ChevronDown className="w-4 h-4 shrink-0 opacity-80" aria-hidden />
+                        {renderNavLabel(item)}
+                        <ChevronDown className="w-3.5 h-3.5 shrink-0 opacity-80" aria-hidden />
                       </button>
                       <div
                         className="absolute left-0 top-full z-[60] pt-1 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-150"
@@ -505,22 +514,27 @@ const EventDetail: React.FC = () => {
                       if (item.kind === 'scroll') scrollToSection(item.id)
                       else navigate(item.to)
                     }}
-                    className={`nav-link ${navOnImage
+                    className={`event-nav-link nav-link flex-shrink-0 whitespace-nowrap ${navOnImage
                         ? '!text-white hover:!text-white'
                         : item.kind === 'scroll' && activeSection === item.id
                           ? 'text-[var(--primary-color)]'
                           : ''
                       }`}
                   >
-                    {item.label}
+                    {renderNavLabel(item)}
                   </button>
                 )
               })}
+            </div>
 
-              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            {/* Right actions */}
+            <div className='flex items-center justify-end gap-2 xl:gap-3 flex-shrink-0 xl:justify-self-end'>
+              <div className="hidden xl:block flex-shrink-0">
+                <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+              </div>
 
               <button
-                className='h-10 px-4 py-2 rounded-lg font-semibold text-sm text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center'
+                className='hidden xl:flex event-nav-home-btn h-9 px-3 2xl:h-10 2xl:px-4 py-2 rounded-lg font-semibold text-xs 2xl:text-sm text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg items-center justify-center flex-shrink-0'
                 style={{
                   background: 'linear-gradient(135deg, #dc2626, #b91c1c)'
                 }}
@@ -532,25 +546,25 @@ const EventDetail: React.FC = () => {
                 <Home size={16} className="mr-2" />
                 Home
               </button>
-            </div>
 
-            {/* Mobile Menu Button */}
-            <div className='md:hidden flex items-center space-x-4'>
-              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`hover:opacity-70 transition-opacity duration-200 ${navOnImage ? 'text-white hover:text-white' : (topNavTheme === 'dark' ? 'text-white hover:text-white' : 'text-[#1f2937] hover:text-gray-800')
-                  }`}
-              >
-                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
+              {/* Mobile Menu Button */}
+              <div className='xl:hidden flex items-center gap-3'>
+                <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className={`hover:opacity-70 transition-opacity duration-200 ${navOnImage ? 'text-white hover:text-white' : (topNavTheme === 'dark' ? 'text-white hover:text-white' : 'text-[#1f2937] hover:text-gray-800')
+                    }`}
+                >
+                  {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
             <div
-              className='md:hidden mt-4 py-4 border-t backdrop-blur-md rounded-lg'
+              className='xl:hidden mt-4 py-4 border-t backdrop-blur-md rounded-lg max-h-[70vh] overflow-y-auto'
               style={{
                 borderColor: theme === 'dark'
                   ? "rgba(55, 65, 81, 0.5)"
@@ -605,7 +619,7 @@ const EventDetail: React.FC = () => {
                       else navigate(item.to)
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`block w-full text-left py-3 px-4 nav-link rounded-md transition-colors duration-200 ${navOnImage ? '!text-white hover:!text-white' : ''
+                    className={`block w-full text-left py-3 px-4 nav-link rounded-md transition-colors duration-200 whitespace-normal ${navOnImage ? '!text-white hover:!text-white' : ''
                       } ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5'}`}
                   >
                     {item.label}
@@ -1097,6 +1111,8 @@ const EventDetail: React.FC = () => {
           <NominationProcess theme={theme} />
         </div>
       </div>
+
+      <AwardWinners2026 theme={theme} />
 
       {/* Partners Section */}
       <div id="event-partners" className="pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{
