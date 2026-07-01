@@ -53,7 +53,7 @@ const Events: React.FC = () => {
       title: 'BharatView Business Summit & Awards 2026',
       location: 'Mumbai',
       subtitle: 'Recognizing Excellence. Inspiring Leadership',
-      date: 'October, 2026',
+      date: 'September, 2026',
       venue: 'Mumbai (TBA)',
       description:
         'BharatView Business Summit & Awards 2026 is a prestigious platform celebrating excellence, leadership, and transformative contributions — convening visionaries, innovators, and changemakers from across India.',
