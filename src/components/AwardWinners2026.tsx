@@ -45,6 +45,10 @@ const awardWinners2026: WinnerCategory[] = [
       {
         award: 'PropTech-Enabled Corporate Mandate Consultant of the Year',
         winner: 'PrahaladSingh Patel, CEO & Managing Director, ProWaVe Consultants Pvt. Ltd.'
+      },
+      {
+        award: 'Realtor of the Year',
+        winner: 'Mehul Vithalani, Proprietor - Just Properties & President - REAAK Mumbai'
       }
     ]
   },
@@ -71,6 +75,10 @@ const awardWinners2026: WinnerCategory[] = [
       {
         award: 'Real Estate Business Leader of the Year',
         winner: 'Kaushall Prakash, Founder & MD, Plotrix Pvt Ltd & VDPL'
+      },
+      {
+        award: 'Real Estate Brand & Business Transformation Leader of the Year',
+        winner: 'Girish Chhalwani, Co-Founder - Lords of the Lands & CEO - THE EDGE'
       }
     ]
   }
