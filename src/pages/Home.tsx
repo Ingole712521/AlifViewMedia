@@ -69,6 +69,7 @@ function Home() {
     trackPageView(window.location.pathname)
 
     warmImageCache(
+      '/assets/homeBackground.png',
       '/images/background.webp',
       '/images/background.jpg',
       '/images/finalBharat.png'
