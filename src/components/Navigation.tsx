@@ -45,34 +45,25 @@ const Navigation: React.FC<NavigationProps> = ({
           : "py-6"
         }`}
       style={{
+        '--text-primary': '#ffffff',
         backgroundColor: isScrolled
-          ? theme === 'dark'
-            ? "rgba(17, 24, 39, 0.95)" // Dark mode with transparency
-            : "rgba(255, 255, 255, 0.95)" // Light mode with transparency
+          ? "rgba(17, 24, 39, 0.95)" // Always dark with transparency
           : "transparent",
         backdropFilter: isScrolled ? "blur(10px)" : "none",
         borderBottom: isScrolled
-          ? theme === 'dark'
-            ? "1px solid rgba(55, 65, 81, 0.3)"
-            : "1px solid rgba(229, 231, 235, 0.3)"
+          ? "1px solid rgba(55, 65, 81, 0.3)"
           : "none",
         boxShadow: isScrolled
-          ? theme === 'dark'
-            ? "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)"
-            : "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+          ? "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)"
           : "none"
-      }}
+      } as React.CSSProperties}
     >
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex justify-between items-center'>
           {/* Logo */}
           <div className='flex items-center space-x-3'>
             <img
-              src={
-                theme === "dark"
-                  ? "/images/Aliief_white.png"
-                  : "/images/company-logo.png"
-              }
+              src="/images/Aliief_white.png"
               alt='Alif View Media Logo'
               className='h-10 w-auto object-contain'
               onError={(e) => {
@@ -115,10 +106,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`text-[var(--text-primary)] hover:opacity-70 transition-opacity duration-200 ${theme === 'dark'
-                  ? 'hover:text-white'
-                  : 'hover:text-gray-800'
-                }`}
+              className="text-white hover:opacity-70 transition-opacity duration-200 hover:text-white"
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -130,12 +118,8 @@ const Navigation: React.FC<NavigationProps> = ({
           <div
             className='md:hidden mt-4 py-4 border-t backdrop-blur-md rounded-lg'
             style={{
-              borderColor: theme === 'dark'
-                ? "rgba(55, 65, 81, 0.5)"
-                : "rgba(229, 231, 235, 0.5)",
-              backgroundColor: theme === 'dark'
-                ? "rgba(17, 24, 39, 0.9)"
-                : "rgba(255, 255, 255, 0.9)",
+              borderColor: "rgba(55, 65, 81, 0.5)",
+              backgroundColor: "rgba(17, 24, 39, 0.9)",
               backdropFilter: "blur(10px)"
             }}
           >
@@ -146,10 +130,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   onSectionChange(item.id);
                   setIsMobileMenuOpen(false);
                 }}
-                className={`block w-full text-left py-3 px-4 nav-link rounded-md transition-colors duration-200 ${theme === 'dark'
-                    ? 'hover:bg-white/10'
-                    : 'hover:bg-black/5'
-                  }`}
+                className="block w-full text-left py-3 px-4 nav-link rounded-md transition-colors duration-200 hover:bg-white/10"
               >
                 {item.label}
               </button>
