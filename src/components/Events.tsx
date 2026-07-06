@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Calendar, MapPin, ArrowRight } from 'lucide-react'
 import { warmImageCache } from '../utils/preloadImage'
@@ -22,12 +22,14 @@ type EventItem = {
   imageBg?: string
   imageLayout?: 'default' | 'bharat'
   statusTag: 'Past Event' | 'Upcoming Event'
+  status: 'past' | 'upcoming'
   to: string
   onHoverPreload?: () => void
 }
 
 const Events: React.FC = () => {
   const navigate = useNavigate()
+  const [activeFilter, setActiveFilter] = useState<'past' | 'upcoming'>('upcoming')
 
   useEffect(() => {
     preloadEventHero()
@@ -47,6 +49,7 @@ const Events: React.FC = () => {
       image: '/poster/EventLogo.png',
       imageBg: '#050505',
       statusTag: 'Past Event',
+      status: 'past',
       to: '/event/realtyview-2026',
       onHoverPreload: preloadEventHero
     },
@@ -62,6 +65,7 @@ const Events: React.FC = () => {
       image: BHARAT_POSTER,
       imageLayout: 'bharat',
       statusTag: 'Upcoming Event',
+      status: 'upcoming',
       to: '/bharatview-summit-2026',
       onHoverPreload: preloadBharatHero
     }
@@ -76,6 +80,13 @@ const Events: React.FC = () => {
     navigate(event.to)
   }
 
+  const filteredEvents = events.filter((event) => event.status === activeFilter)
+
+  const filterOptions = [
+    { key: 'upcoming' as const, label: 'Upcoming Events' },
+    { key: 'past' as const, label: 'Past Events' },
+  ]
+
   return (
     <section
       className="section-padding w-full"
@@ -89,10 +100,40 @@ const Events: React.FC = () => {
           <p className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             Join us for transformative industry events and award ceremonies
           </p>
+
+          <div className="mt-8 inline-flex rounded-xl border border-[var(--border-color)] bg-[var(--bg-primary)] p-1 shadow-sm">
+            {filterOptions.map((option) => {
+              const isActive = activeFilter === option.key
+              return (
+                <button
+                  key={option.key}
+                  type="button"
+                  onClick={() => setActiveFilter(option.key)}
+                  className={`rounded-lg px-5 py-2.5 text-sm font-semibold transition-all duration-300 sm:px-7 sm:text-base ${
+                    isActive
+                      ? 'text-white shadow-md'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  }`}
+                  style={
+                    isActive
+                      ? {
+                          background:
+                            option.key === 'upcoming'
+                              ? 'linear-gradient(135deg, #059669, #10b981)'
+                              : 'linear-gradient(135deg, #475569, #334155)',
+                        }
+                      : undefined
+                  }
+                >
+                  {option.label}
+                </button>
+              )
+            })}
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
-          {events.map((event) => (
+        <div className="mx-auto grid max-w-2xl gap-8 lg:gap-10">
+          {filteredEvents.map((event) => (
             <article
               key={event.id}
               className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl p-6 sm:p-8 shadow-lg hover:-translate-y-2 hover:shadow-2xl transition-[transform,box-shadow] duration-500 ease-out"
