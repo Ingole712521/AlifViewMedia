@@ -91,9 +91,9 @@ const BharatViewAwardsInfo: React.FC = () => {
             href="https://forms.gle/qRsuXj3ZSxHSGaMa6"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-10 w-full max-w-xs mx-auto mt-8 inline-flex items-center justify-center gap-2.5 px-8 py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-white rounded-xl shadow-lg border border-amber-500/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
+            className="relative z-10 w-full max-w-xs mx-auto mt-8 inline-flex items-center justify-center gap-2.5 px-8 py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-white rounded-xl shadow-xl shadow-blue-900/30 ring-2 ring-blue-400/40 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-900/40 hover:ring-blue-300/60 active:scale-[0.98]"
             style={{
-              background: 'linear-gradient(135deg, var(--bharat-secondary), #b45309)'
+              background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #1d4ed8 100%)'
             }}
           >
             SUBMIT INTEREST
