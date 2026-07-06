@@ -21,6 +21,7 @@ type EventItem = {
   image: string
   imageBg?: string
   imageLayout?: 'default' | 'bharat'
+  statusTag: 'Past Event' | 'Upcoming Event'
   to: string
   onHoverPreload?: () => void
 }
@@ -45,6 +46,7 @@ const Events: React.FC = () => {
         'RealtyView Leadership Summit & Awards 2026 – Maharashtra is a distinguished platform celebrating excellence and driving strategic dialogue across one of India’s most dynamic real estate markets. Bringing together an elite gathering of leading developers, architects, urban planners, investors, policymakers, and industry visionaries from across Maharashtra, the summit fosters high-impact conversations around market evolution, investment opportunities, innovation, and sustainable urban development.',
       image: '/poster/EventLogo.png',
       imageBg: '#050505',
+      statusTag: 'Past Event',
       to: '/event/realtyview-2026',
       onHoverPreload: preloadEventHero
     },
@@ -59,6 +61,7 @@ const Events: React.FC = () => {
         'BharatView Business Summit & Awards 2026 is a prestigious platform celebrating excellence, leadership, and transformative contributions — convening visionaries, innovators, and changemakers from across India.',
       image: BHARAT_POSTER,
       imageLayout: 'bharat',
+      statusTag: 'Upcoming Event',
       to: '/bharatview-summit-2026',
       onHoverPreload: preloadBharatHero
     }
@@ -81,8 +84,8 @@ const Events: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6 leading-tight">
-            UpComing Events
-          </h2>
+            Events
+          </h2> 
           <p className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             Join us for transformative industry events and award ceremonies
           </p>
@@ -106,6 +109,16 @@ const Events: React.FC = () => {
                 style={{ backgroundColor: 'var(--primary-color)' }}
               />
               <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/0 to-white/10 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
+
+              <span
+                className={`absolute right-4 top-4 z-20 inline-flex items-center rounded-full px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide shadow-lg ${
+                  event.statusTag === 'Past Event'
+                    ? 'bg-slate-700 text-white ring-1 ring-white/20'
+                    : 'bg-emerald-600 text-white ring-1 ring-emerald-400/50'
+                }`}
+              >
+                {event.statusTag}
+              </span>
 
               <div className="relative z-10 flex flex-1 flex-col">
                 {event.imageLayout === 'bharat' ? (

@@ -4,17 +4,21 @@
     "title": "Advertising & Marketing Excellence Awards",
     "subcategories": [
       {
-        "title": "Award Categories",
+        "title": "Agency Excellence Awards",
         "awards": [
           "Advertising Agency of the Year",
           "Marketing Company of the Year",
-          "Excellence in Brand Building",
           "Creative Agency of the Year",
           "Digital Marketing Agency of the Year",
           "Media Agency of the Year",
           "Integrated Marketing Agency of the Year",
-          "Emerging Agency of the Year",
           "Social Media Agency of the Year",
+          "Emerging Agency of the Year"
+        ]
+      },
+      {
+        "title": "Campaign & Brand Excellence Awards",
+        "awards": [
           "Best Integrated Marketing Campaign of the Year",
           "Best Advertising Campaign of the Year",
           "Best Brand Launch Campaign",
@@ -24,39 +28,52 @@
           "Best Public Awareness Campaign",
           "Best Corporate Branding Campaign",
           "Best Social Media Campaign",
-          "Best Content Marketing Campaign",
-          "Best SEO Strategy",
+          "Best Content Marketing Campaign"
+        ]
+      },
+      {
+        "title": "Digital & Media Excellence Awards",
+        "awards": [
+          "Excellence in Digital Marketing",
+          "Excellence in Performance Marketing",
+          "Excellence in Marketing Automation",
+          "Best AI-Driven Marketing Campaign",
           "Best Search Marketing Campaign",
-          "Best Email Marketing Campaign",
-          "Best Mobile Marketing Campaign",
+          "Excellence in Media Planning",
+          "Excellence in Media Buying",
+          "Excellence in Corporate Communications"
+        ]
+      },
+      {
+        "title": "Creative Excellence Awards",
+        "awards": [
           "Best Outdoor Advertising Campaign",
           "Best Print Advertising Campaign",
           "Best Television Advertising Campaign",
           "Best Radio Advertising Campaign",
           "Best Digital Video Campaign",
-          "Best AI-Driven Marketing Campaign",
-          "Excellence in Marketing Automation",
-          "Excellence in Media Planning",
-          "Excellence in Media Buying",
-          "Excellence in Digital Marketing",
-          "Excellence in Performance Marketing",
-          "Excellence in Corporate Communications",
+          "Excellence in Brand Building"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "CEO of the Year (Advertising & Marketing)",
+          "Chief Marketing Officer (CMO) of the Year",
           "Marketing Leader of the Year",
           "Advertising Leader of the Year",
-          "Chief Marketing Officer (CMO) of the Year",
           "Brand Leader of the Year",
           "Woman Marketing Leader of the Year",
           "Emerging Marketing Leader of the Year",
-          "Young Advertising Professional of the Year",
-          "Best Brand Strategist of the Year",
-          "Best Digital Marketer of the Year",
-          "Best Media Planner of the Year",
-          "Best Creative Director of the Year",
-          "Best Marketing Consultant of the Year",
-          "Best Influencer Marketing Professional",
-          "Best PR & Communications Professional",
           "Rising Star in Advertising & Marketing",
-          "CEO of the Year"
+          "Young Advertising Professional of the Year",
+          "Brand Strategist of the Year",
+          "Digital Marketer of the Year",
+          "Media Planner of the Year",
+          "Creative Director of the Year",
+          "Marketing Consultant of the Year",
+          "Influencer Marketing Professional of the Year",
+          "PR & Communications Professional of the Year"
         ]
       }
     ]
@@ -289,7 +306,7 @@
     "title": "E-Learning Excellence Awards",
     "subcategories": [
       {
-        "title": "General Awards",
+        "title": "E-Learning Excellence Awards",
         "awards": [
           "E-Learning Company of the Year",
           "Digital Learning Platform of the Year",
@@ -375,74 +392,961 @@
   },
   {
     "id": 6,
-    "title": "E-Mobility Excellence Awards"
+    "title": "EV & Mobility Excellence Awards",
+    "subcategories": [
+      {
+        "title": "OEM & Manufacturing",
+        "awards": [
+          "Electric Vehicle Manufacturer of the Year",
+          "Electric Two-Wheeler Brand of the Year",
+          "Electric Three-Wheeler Brand of the Year",
+          "Electric Passenger Vehicle Brand of the Year",
+          "Electric Commercial Vehicle Manufacturer of the Year",
+          "Emerging EV Brand of the Year"
+        ]
+      },
+      {
+        "title": "Charging Infrastructure",
+        "awards": [
+          "EV Charging Infrastructure Company of the Year",
+          "Fast Charging Network of the Year",
+          "Charging Technology Innovation Award",
+          "Home & Workplace Charging Solution of the Year"
+        ]
+      },
+      {
+        "title": "Battery & Energy Storage",
+        "awards": [
+          "Battery Manufacturer of the Year",
+          "Battery Technology Innovation Award",
+          "Battery Swapping Solution Provider of the Year",
+          "Battery Recycling & Circular Economy Award"
+        ]
+      },
+      {
+        "title": "Components & Technology",
+        "awards": [
+          "EV Component Manufacturer of the Year",
+          "Connected Mobility Technology Award",
+          "Smart Mobility & Software Innovation Award"
+        ]
+      },
+      {
+        "title": "Sustainability & Innovation",
+        "awards": [
+          "Sustainable E-Mobility Initiative of the Year",
+          "Green Mobility Innovation Award",
+          "Clean Energy Integration Award",
+          "Excellence in EV Research & Development"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "E-Mobility Leader of the Year",
+          "EV Infrastructure Company of the Year",
+          "EV Entrepreneur of the Year",
+          "Emerging Leader in E-Mobility",
+          "Women Leader in EMobility",
+          "CEO of the Year",
+          "HR Leader of the Year"
+        ]
+      }
+    ]
   },
   {
     "id": 7,
-    "title": "Employment & Workplace Excellence Awards"
+    "title": "Employment & Workplace Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Organizational Excellence",
+        "awards": [
+          "Employer of the Year",
+          "Best Workplace of the Year",
+          "Great Place to Work Excellence Award",
+          "Emerging Employer of the Year",
+          "Workplace Culture Excellence Award"
+        ]
+      },
+      {
+        "title": "Talent & HR Excellence",
+        "awards": [
+          "Excellence in Talent Acquisition",
+          "Excellence in Learning & Development",
+          "Excellence in Employee Engagement",
+          "Excellence in Performance & Talent Management",
+          "Excellence in Leadership Development"
+        ]
+      },
+      {
+        "title": "Employee Well-being",
+        "awards": [
+          "Employee Well-being Excellence Award",
+          "Mental Health & Wellness Initiative of the Year",
+          "Best Work-Life Balance Initiative",
+          "Excellence in Employee Benefits & Rewards"
+        ]
+      },
+      {
+        "title": "Diversity, Equity & Inclusion",
+        "awards": [
+          "Diversity & Inclusion Excellence Award",
+          "Women Empowerment at Workplace Award",
+          "Inclusive Workplace of the Year"
+        ]
+      },
+      {
+        "title": "Technology & Innovation",
+        "awards": [
+          "HR Technology Innovation Award",
+          "Digital HR Transformation Award",
+          "Excellence in AI-Driven HR Solutions"
+        ]
+      },
+      {
+        "title": "ESG & Social Impact",
+        "awards": [
+          "ESG in Workplace Excellence Award",
+          "Excellence in Corporate Social Responsibility (Employee Impact)",
+          "Sustainability in Workplace Practices Award"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "CHRO of the Year",
+          "HR Leader of the Year",
+          "People Leader of the Year",
+          "Emerging HR Leader of the Year",
+          "Women HR Leader of the Year",
+          "Young HR Professional of the Year"
+        ]
+      }
+    ]
   },
   {
     "id": 8,
-    "title": "Fleet Excellence Awards"
+    "title": "Fleet Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Fleet Management Excellence",
+        "awards": [
+          "Fleet Operator of the Year",
+          "Fleet Management Company of the Year",
+          "Commercial Fleet of the Year",
+          "Corporate Fleet Excellence Award",
+          "Emerging Fleet Company of the Year"
+        ]
+      },
+      {
+        "title": "Logistics & Transportation",
+        "awards": [
+          "Logistics Fleet Excellence Award",
+          "Last-Mile Delivery Fleet of the Year",
+          "Cold Chain Fleet Excellence Award",
+          "Heavy Commercial Fleet of the Year",
+          "Passenger Transport Fleet Excellence Award"
+        ]
+      },
+      {
+        "title": "Technology & Innovation",
+        "awards": [
+          "Fleet Technology Innovation Award",
+          "Telematics & Fleet Management Solution of the Year",
+          "AI & Digital Fleet Transformation Award",
+          "Connected Fleet Excellence Award",
+          "Fleet Safety Technology Award"
+        ]
+      },
+      {
+        "title": "Sustainability & ESG",
+        "awards": [
+          "Green Fleet of the Year",
+          "Sustainable Fleet Management Award",
+          "Electric Fleet Transition Excellence Award",
+          "Carbon Reduction Initiative in Fleet Operations",
+          "Fleet ESG Excellence Award"
+        ]
+      },
+      {
+        "title": "Safety & Operations",
+        "awards": [
+          "Road Safety Excellence Award",
+          "Fleet Maintenance Excellence Award",
+          "Driver Safety & Training Excellence Award",
+          "Operational Excellence in Fleet Management",
+          "Best Fleet Reliability Award"
+        ]
+      },
+      {
+        "title": "Leadership Awards",
+        "awards": [
+          "Fleet Leader of the Year",
+          "Fleet Manager of the Year",
+          "Fleet Innovator of the Year",
+          "Woman Leader in Fleet Management",
+          "Emerging Fleet Professional of the Year",
+          "CEO of the Year",
+          "CXO of the Year"
+        ]
+      }
+    ]
   },
   {
     "id": 9,
-    "title": "Gems & Jewellery Excellence Awards"
+    "title": "Gems & Jewellery Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Brand Excellence Awards",
+        "awards": [
+          "Jewellery Brand of the Year",
+          "Emerging Jewellery Brand of the Year",
+          "Most Trusted Jewellery Brand",
+          "Luxury Jewellery Brand of the Year",
+          "Bridal Jewellery Brand of the Year",
+          "Regional Jewellery Brand of the Year"
+        ]
+      },
+      {
+        "title": "Design & Craftsmanship Awards",
+        "awards": [
+          "Excellence in Jewellery Design",
+          "Excellence in Diamond Jewellery",
+          "Excellence in Gold Jewellery",
+          "Excellence in Bridal Jewellery Collection",
+          "Excellence in Contemporary Jewellery Design",
+          "Excellence in Heritage & Traditional Craftsmanship",
+          "Excellence in Custom Jewellery Design"
+        ]
+      },
+      {
+        "title": "Retail & Customer Excellence Awards",
+        "awards": [
+          "Jewellery Retailer of the Year",
+          "Excellence in Customer Experience",
+          "Excellence in Omnichannel Jewellery Retail",
+          "Excellence in Visual Merchandising",
+          "Excellence in Product Innovation"
+        ]
+      },
+      {
+        "title": "Manufacturing & Innovation Awards",
+        "awards": [
+          "Excellence in Jewellery Manufacturing",
+          "Excellence in Sustainable & Ethical Jewellery Practices",
+          "Excellence in Technology & Innovation",
+          "Excellence in Export Performance",
+          "Excellence in Precious Gemstone Craftsmanship"
+        ]
+      },
+      {
+        "title": "Leadership Awards",
+        "awards": [
+          "Jewellery Business Leader of the Year",
+          "Visionary Jewellery Entrepreneur",
+          "Woman Leader in Gems & Jewellery",
+          "Young Jewellery Entrepreneur of the Year",
+          "Next-Gen Jewellery Leader",
+          "Lifetime Achievement Award"
+        ]
+      }
+    ]
   },
   {
     "id": 10,
-    "title": "HealthCare & Life Sciences Excellence Awards"
+    "title": "HealthCare & Life Sciences Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Healthcare Excellence Awards",
+        "awards": [
+          "Healthcare Organisation of the Year",
+          "Hospital of the Year",
+          "Emerging Healthcare Provider of the Year",
+          "Excellence in Patient Care",
+          "Excellence in Clinical Excellence",
+          "Excellence in Specialized Healthcare Services",
+          "Excellence in Preventive Healthcare",
+          "Excellence in Healthcare Quality & Safety"
+        ]
+      },
+      {
+        "title": "Life Sciences & Innovation Awards",
+        "awards": [
+          "Life Sciences Company of the Year",
+          "Excellence in Biotechnology Innovation",
+          "Excellence in Pharmaceutical Innovation",
+          "Excellence in Medical Devices & Diagnostics",
+          "Excellence in Research & Development",
+          "Excellence in Digital Health & HealthTech",
+          "Excellence in AI & Technology in Healthcare"
+        ]
+      },
+      {
+        "title": "Healthcare Services Awards",
+        "awards": [
+          "Excellence in Diagnostic Services",
+          "Excellence in Home Healthcare",
+          "Excellence in Telemedicine",
+          "Excellence in Healthcare Sustainability",
+          "Excellence in Medical Education & Training"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "Healthcare Business Leader of the Year",
+          "Visionary Healthcare Leader",
+          "Woman Leader in Healthcare",
+          "Young Healthcare Entrepreneur of the Year",
+          "Next-Gen Healthcare Leader",
+          "Lifetime Achievement in Healthcare"
+        ]
+      }
+    ]
   },
   {
     "id": 11,
-    "title": "Hospitality, Travel & Tourism Awards"
+    "title": "Hospitality, Travel & Tourism Awards",
+    "subcategories": [
+      {
+        "title": "Hospitality Excellence Awards",
+        "awards": [
+          "Hospitality Brand of the Year",
+          "Hotel of the Year",
+          "Luxury Hospitality Brand of the Year",
+          "Emerging Hospitality Brand of the Year",
+          "Excellence in Guest Experience",
+          "Excellence in Sustainable Hospitality",
+          "Excellence in Food & Beverage Services",
+          "Excellence in Wellness & Leisure Hospitality"
+        ]
+      },
+      {
+        "title": "Travel & Tourism Excellence Awards",
+        "awards": [
+          "Travel Company of the Year",
+          "Tourism Brand of the Year",
+          "Destination Marketing Excellence Award",
+          "Excellence in Travel Technology",
+          "Excellence in Travel Services",
+          "Excellence in Adventure & Experiential Tourism",
+          "Excellence in MICE & Business Tourism",
+          "Excellence in Responsible & Sustainable Tourism"
+        ]
+      },
+      {
+        "title": "Innovation & Customer Excellence",
+        "awards": [
+          "Excellence in Digital Transformation",
+          "Excellence in Customer Experience",
+          "Excellence in Tourism Promotion",
+          "Excellence in Innovation in Hospitality",
+          "Excellence in Luxury Travel Experiences"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "Hospitality Business Leader of the Year",
+          "Travel & Tourism Leader of the Year",
+          "Visionary Hospitality Entrepreneur",
+          "Woman Leader in Hospitality & Tourism",
+          "Young Hospitality Entrepreneur of the Year",
+          "Lifetime Achievement Award"
+        ]
+      }
+    ]
   },
   {
     "id": 12,
-    "title": "IT & Governance Excellence Awards"
+    "title": "IT & Governance Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Digital Transformation & IT Excellence",
+        "awards": [
+          "Digital Transformation Company of the Year",
+          "IT Company of the Year",
+          "Excellence in Enterprise Technology",
+          "Excellence in Cloud Transformation",
+          "Excellence in AI & Automation",
+          "Excellence in Data & Analytics",
+          "Excellence in Cybersecurity",
+          "Excellence in IT Infrastructure & Operations"
+        ]
+      },
+      {
+        "title": "Innovation Awards",
+        "awards": [
+          "Excellence in Software Innovation",
+          "Excellence in FinTech Innovation",
+          "Excellence in GovTech Innovation",
+          "Excellence in Smart Enterprise Solutions",
+          "Excellence in Emerging Technologies",
+          "Excellence in Digital Customer Experience"
+        ]
+      },
+      {
+        "title": "Governance & Risk Excellence",
+        "awards": [
+          "Excellence in Corporate Governance",
+          "Excellence in ESG Governance",
+          "Excellence in Risk Management",
+          "Excellence in Compliance & Regulatory Practices",
+          "Excellence in Information Security Governance",
+          "Excellence in Business Continuity & Resilience"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "CIO of the Year",
+          "CISO of the Year",
+          "Chief Digital Officer of the Year",
+          "Technology Business Leader of the Year",
+          "Visionary IT Leader",
+          "Woman Leader in Technology",
+          "Young Technology Leader",
+          "Lifetime Achievement in Technology"
+        ]
+      }
+    ]
   },
   {
     "id": 13,
-    "title": "Logistic & Supply Chain Awards"
+    "title": "Procurement, Logistic & Supply Chain Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Procurement Excellence",
+        "awards": [
+          "Procurement Team of the Year",
+          "Excellence in Strategic Sourcing",
+          "Excellence in Supplier Relationship Management",
+          "Excellence in Sustainable Procurement"
+        ]
+      },
+      {
+        "title": "Logistics Excellence",
+        "awards": [
+          "Logistics Company of the Year",
+          "Excellence in Transportation & Distribution",
+          "Excellence in Warehousing & Fulfilment",
+          "Excellence in Last-Mile Delivery"
+        ]
+      },
+      {
+        "title": "Supply Chain Excellence",
+        "awards": [
+          "Supply Chain Company of the Year",
+          "Excellence in Supply Chain Innovation",
+          "Excellence in Digital Supply Chain",
+          "Excellence in Inventory & Demand Planning",
+          "Excellence in Cold Chain Logistics",
+          "Excellence in Supply Chain Resilience",
+          "Excellence in Supply Chain Sustainability"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "Supply Chain Leader of the Year",
+          "Procurement Leader of the Year",
+          "Logistics Leader of the Year",
+          "Woman Leader in Supply Chain",
+          "Young Supply Chain Professional"
+        ]
+      }
+    ]
   },
   {
     "id": 14,
-    "title": "Manufacturing & Industrial Excellence Awards"
+    "title": "Manufacturing & Industrial Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Manufacturing Excellence Awards",
+        "awards": [
+          "Manufacturing Company of the Year",
+          "Emerging Manufacturing Company of the Year",
+          "Excellence in Smart Manufacturing",
+          "Excellence in Advanced Manufacturing",
+          "Excellence in Production & Operational Excellence",
+          "Excellence in Quality Management",
+          "Excellence in Lean Manufacturing",
+          "Excellence in Automation & Industry 4.0"
+        ]
+      },
+      {
+        "title": "Industrial Innovation Awards",
+        "awards": [
+          "Industrial Innovation of the Year",
+          "Excellence in Engineering & Industrial Design",
+          "Excellence in Product Innovation",
+          "Excellence in Industrial Safety",
+          "Excellence in Digital Manufacturing",
+          "Excellence in Industrial Infrastructure",
+          "Excellence in Sustainable Manufacturing"
+        ]
+      },
+      {
+        "title": "Operational Excellence Awards",
+        "awards": [
+          "Excellence in Supply Chain Integration",
+          "Excellence in Energy Efficiency",
+          "Excellence in ESG & Sustainability",
+          "Excellence in Export Performance",
+          "Excellence in Workforce Development"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "Manufacturing Business Leader of the Year",
+          "Industrial Leader of the Year",
+          "Visionary Manufacturing Leader",
+          "Woman Leader in Manufacturing",
+          "Young Manufacturing Entrepreneur",
+          "Lifetime Achievement in Manufacturing"
+        ]
+      }
+    ]
   },
   {
     "id": 15,
-    "title": "Media & Entertainment Awards"
+    "title": "Media & Entertainment Awards",
+    "subcategories": [
+      {
+        "title": "Media Excellence Awards",
+        "awards": [
+          "Media Company of the Year",
+          "Digital Media Brand of the Year",
+          "Broadcast Network of the Year",
+          "Print Media Brand of the Year",
+          "Emerging Media Company of the Year"
+        ]
+      },
+      {
+        "title": "Content & Entertainment Awards",
+        "awards": [
+          "Entertainment Company of the Year",
+          "Excellence in Content Creation",
+          "Excellence in OTT & Streaming Innovation",
+          "Excellence in Film & Television Production",
+          "Excellence in Music & Audio Entertainment",
+          "Excellence in Animation, VFX & Gaming",
+          "Excellence in Live Events & Experiences"
+        ]
+      },
+      {
+        "title": "Digital & Marketing Innovation Awards",
+        "awards": [
+          "Excellence in Digital Media Innovation",
+          "Excellence in Audience Engagement",
+          "Excellence in Brand Storytelling",
+          "Excellence in Content Marketing",
+          "Excellence in Creative Campaigns",
+          "Excellence in AI & Technology in Media"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "Media Business Leader of the Year",
+          "Entertainment Leader of the Year",
+          "Visionary Media Entrepreneur",
+          "Woman Leader in Media & Entertainment",
+          "Young Media Entrepreneur of the Year",
+          "Lifetime Achievement Award"
+        ]
+      }
+    ]
   },
   {
     "id": 16,
-    "title": "Multiplex & Shopping Mall Excellence Awards"
+    "title": "Multiplex & Shopping Mall Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Shopping Mall Excellence Awards",
+        "awards": [
+          "Shopping Mall of the Year",
+          "Luxury Shopping Mall of the Year",
+          "Emerging Shopping Mall of the Year",
+          "Excellence in Customer Experience",
+          "Excellence in Mall Design & Architecture",
+          "Excellence in Retail Mix & Leasing",
+          "Excellence in Sustainability & Green Mall Operations",
+          "Excellence in Marketing & Consumer Engagement"
+        ]
+      },
+      {
+        "title": "Multiplex Excellence Awards",
+        "awards": [
+          "Multiplex Chain of the Year",
+          "Excellence in Cinema Experience",
+          "Excellence in Premium Entertainment Experience",
+          "Excellence in Digital Innovation",
+          "Excellence in Food & Beverage Experience",
+          "Excellence in Customer Service"
+        ]
+      },
+      {
+        "title": "Innovation & Operations Awards",
+        "awards": [
+          "Excellence in Smart Facility Management",
+          "Excellence in Safety & Security",
+          "Excellence in Experiential Marketing",
+          "Excellence in Technology & Digital Transformation",
+          "Excellence in Community Engagement"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "Shopping Mall Leader of the Year",
+          "Multiplex Business Leader of the Year",
+          "Visionary Retail Destination Leader",
+          "Woman Leader in Retail & Entertainment",
+          "Young Business Leader of the Year",
+          "Lifetime Achievement Award"
+        ]
+      }
+    ]
   },
   {
     "id": 17,
-    "title": "Oil & Gas Excellence Awards"
+    "title": "Oil & Gas Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Energy & Business Excellence",
+        "awards": [
+          "Oil & Gas Company of the Year",
+          "Emerging Energy Company of the Year",
+          "Excellence in Upstream Operations",
+          "Excellence in Midstream Operations",
+          "Excellence in Downstream Operations",
+          "Excellence in Refining & Petrochemicals"
+        ]
+      },
+      {
+        "title": "Operational Excellence Awards",
+        "awards": [
+          "Excellence in Operational Excellence",
+          "Excellence in Health, Safety & Environment (HSE)",
+          "Excellence in Asset Integrity & Reliability",
+          "Excellence in Process Innovation",
+          "Excellence in Digital Transformation",
+          "Excellence in Supply Chain & Logistics"
+        ]
+      },
+      {
+        "title": "Sustainability & Innovation Awards",
+        "awards": [
+          "Excellence in Energy Innovation",
+          "Excellence in Decarbonisation & Carbon Management",
+          "Excellence in ESG & Sustainability",
+          "Excellence in Renewable Energy Integration",
+          "Excellence in Environmental Stewardship"
+        ]
+      },
+      {
+        "title": "Leadership Awards",
+        "awards": [
+          "Energy Business Leader of the Year",
+          "Visionary Oil & Gas Leader",
+          "Woman Leader in Energy",
+          "Young Energy Professional of the Year",
+          "Lifetime Achievement in Oil & Gas"
+        ]
+      }
+    ]
   },
   {
     "id": 18,
-    "title": "Procurement Excellence Awards"
+    "title": "Real Estate Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Developer Excellence Awards",
+        "awards": [
+          "Real Estate Developer of the Year",
+          "Emerging Real Estate Developer of the Year",
+          "Luxury Residential Developer of the Year",
+          "Affordable Housing Developer of the Year",
+          "Commercial Developer of the Year",
+          "Mixed-Use Development Excellence Award",
+          "Township Project of the Year",
+          "Sustainable Real Estate Developer of the Year",
+          "Redevelopment Project of the Year",
+          "Excellence in Integrated Township Development",
+          "Iconic Real Estate Brand of the Year",
+          "Fastest Growing Real Estate Company",
+          "Most Trusted Real Estate Brand",
+          "Excellence in Community Development",
+          "Excellence in Affordable Urban Living",
+          "Excellence in Customer Trust & Transparency"
+        ]
+      },
+      {
+        "title": "Project Excellence Awards",
+        "awards": [
+          "Residential Project of the Year",
+          "Luxury Residential Project of the Year",
+          "Affordable Housing Project of the Year",
+          "Commercial Project of the Year",
+          "Mixed-Use Project of the Year",
+          "Smart & Sustainable Project of the Year",
+          "Innovative Real Estate Project of the Year",
+          "Best Architectural Design Project",
+          "Best Customer-Centric Residential Project"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "Real Estate Business Leader of the Year",
+          "Visionary Real Estate Leader",
+          "Young Real Estate Entrepreneur of the Year",
+          "Woman Leader in Real Estate",
+          "Next-Gen Real Estate Leader",
+          "Lifetime Achievement in Real Estate"
+        ]
+      },
+      {
+        "title": "Innovation & Excellence Awards",
+        "awards": [
+          "PropTech Innovation of the Year",
+          "Excellence in Sustainable Development",
+          "Excellence in ESG & Green Building Practices",
+          "Excellence in Customer Experience",
+          "Excellence in Sales & Marketing",
+          "Excellence in Construction Quality",
+          "Excellence in Urban Redevelopment",
+          "Excellence in Smart Building Technology"
+        ]
+      },
+      {
+        "title": "Channel Partner & Service Excellence",
+        "awards": [
+          "Channel Partner of the Year",
+          "Real Estate Marketing Excellence Award",
+          "Realty Brand of the Year",
+          "Real Estate Consultancy of the Year",
+          "Interior Design Excellence Award",
+          "Architecture Firm of the Year",
+          "Facility Management Excellence Award"
+        ]
+      }
+    ]
   },
   {
     "id": 19,
-    "title": "Real Estate Excellence Awards"
+    "title": "Retail, E-Commerce & Consumer Brands Awards",
+    "subcategories": [
+      {
+        "title": "Brand Excellence Awards",
+        "awards": [
+          "Brand of the Year",
+          "Emerging Brand of the Year",
+          "Most Trusted Brand",
+          "Fastest Growing Brand",
+          "D2C Brand of the Year",
+          "Omnichannel Brand of the Year",
+          "Consumer Choice Brand of the Year"
+        ]
+      },
+      {
+        "title": "Retail & Commerce Excellence Awards",
+        "awards": [
+          "Retail Company of the Year",
+          "E-Commerce Company of the Year",
+          "Omnichannel Retail Excellence Award",
+          "Excellence in Customer Experience",
+          "Excellence in Digital Commerce",
+          "Excellence in Retail Innovation",
+          "Excellence in Store Experience & Visual Merchandising",
+          "Excellence in Supply Chain & Fulfilment"
+        ]
+      },
+      {
+        "title": "Innovation & Marketing Awards",
+        "awards": [
+          "Excellence in Brand Innovation",
+          "Excellence in Product Innovation",
+          "Excellence in Digital Marketing",
+          "Excellence in Customer Engagement",
+          "Excellence in Sustainability & Responsible Business",
+          "Excellence in AI & Technology Adoption"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "Retail & Consumer Business Leader of the Year",
+          "Visionary Business Leader",
+          "Woman Leader in Retail & Consumer Business",
+          "Young Entrepreneur of the Year",
+          "Next-Gen Business Leader",
+          "Lifetime Achievement Award"
+        ]
+      }
+    ]
   },
   {
     "id": 20,
-    "title": "Retail Excellence Awards"
+    "title": "Solar Energy & Sustainability Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Solar Energy Excellence Awards",
+        "awards": [
+          "Solar Energy Company of the Year",
+          "Solar Project of the Year",
+          "Solar EPC Company of the Year",
+          "Excellence in Utility-Scale Solar Projects",
+          "Excellence in Rooftop Solar Solutions",
+          "Excellence in Solar Technology Innovation",
+          "Excellence in Solar Manufacturing",
+          "Emerging Solar Energy Company of the Year"
+        ]
+      },
+      {
+        "title": "Sustainability Excellence Awards",
+        "awards": [
+          "Sustainability Leader of the Year",
+          "ESG Excellence Award",
+          "Green Business of the Year",
+          "Excellence in Carbon Reduction & Net Zero Initiatives",
+          "Excellence in Circular Economy Practices",
+          "Excellence in Water Conservation",
+          "Excellence in Waste Management & Recycling",
+          "Excellence in Energy Efficiency",
+          "Excellence in Green Building & Sustainable Infrastructure",
+          "Climate Action Excellence Award"
+        ]
+      },
+      {
+        "title": "Innovation Awards",
+        "awards": [
+          "Clean Energy Innovation of the Year",
+          "Renewable Energy Technology Excellence",
+          "Excellence in Green Mobility Solutions",
+          "Excellence in Sustainable Manufacturing",
+          "Excellence in Environmental Innovation"
+        ]
+      },
+      {
+        "title": "Leadership Awards",
+        "awards": [
+          "Renewable Energy Business Leader of the Year",
+          "Visionary Sustainability Leader",
+          "Woman Leader in Clean Energy",
+          "Young Sustainability Leader",
+          "Lifetime Achievement in Renewable Energy"
+        ]
+      }
+    ]
   },
   {
     "id": 21,
-    "title": "Retail, E-Commerce & Consumer Brands Awards"
+    "title": "Wind Energy Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Company Awards",
+        "awards": [
+          "Wind Energy Company of the Year",
+          "Emerging Wind Energy Company of the Year",
+          "Leading Wind Turbine Manufacturer of the Year",
+          "Wind Project Developer of the Year",
+          "Renewable Energy EPC Company of the Year",
+          "Wind Operations & Maintenance Company of the Year"
+        ]
+      },
+      {
+        "title": "Project Excellence Awards",
+        "awards": [
+          "Wind Power Project of the Year",
+          "Large-Scale Wind Farm of the Year",
+          "Hybrid Renewable Energy Project of the Year (Wind + Solar)",
+          "Sustainable Infrastructure Project of the Year"
+        ]
+      },
+      {
+        "title": "Innovation & Technology Awards",
+        "awards": [
+          "Wind Energy Innovation of the Year",
+          "Excellence in Digital Transformation & AI in Wind Energy",
+          "Excellence in Wind Farm Performance Optimization",
+          "Excellence in Renewable Energy Manufacturing"
+        ]
+      },
+      {
+        "title": "Sustainability Awards",
+        "awards": [
+          "Green Energy Excellence Award",
+          "ESG & Sustainability Excellence Award"
+        ]
+      },
+      {
+        "title": "Individual Leadership Awards",
+        "awards": [
+          "Wind Energy Business Leader of the Year",
+          "Emerging Leader in Wind Energy"
+        ]
+      }
+    ]
   },
   {
     "id": 22,
-    "title": "Solar Energy & Sustainability Excellence Awards"
-  },
-  {
-    "id": 23,
-    "title": "Wind Energy Excellence Awards"
+    "title": "Women Excellence Awards",
+    "subcategories": [
+      {
+        "title": "Business Leadership Awards",
+        "awards": [
+          "Woman Business Leader of the Year",
+          "Woman Entrepreneur of the Year",
+          "Woman CEO of the Year",
+          "Woman Founder of the Year",
+          "Emerging Woman Entrepreneur of the Year"
+        ]
+      },
+      {
+        "title": "Corporate Excellence Awards",
+        "awards": [
+          "Woman CXO of the Year",
+          "Woman in Technology Leadership Award",
+          "Woman in Finance Leadership Award",
+          "Woman in Manufacturing Leadership Award",
+          "Woman in Real Estate Leadership Award",
+          "Woman in Healthcare Leadership Award"
+        ]
+      },
+      {
+        "title": "Innovation & Impact Awards",
+        "awards": [
+          "Women Innovator of the Year",
+          "Excellence in Business Innovation",
+          "Excellence in Social Impact",
+          "Excellence in Sustainability Leadership",
+          "Excellence in Diversity, Equity & Inclusion (DEI)",
+          "Excellence in Community Leadership"
+        ]
+      },
+      {
+        "title": "Professional Excellence Awards",
+        "awards": [
+          "Young Woman Professional of the Year",
+          "Rising Star Award",
+          "Mentor of the Year",
+          "Excellence in Workforce Leadership",
+          "Excellence in Customer Excellence"
+        ]
+      },
+      {
+        "title": "Special Recognition Awards",
+        "awards": [
+          "Visionary Woman Leader of the Year",
+          "Inspirational Woman Leader of the Year",
+          "Women Icon of the Year",
+          "Lifetime Achievement Award",
+          "Hall of Fame Award"
+        ]
+      }
+    ]
   }
 ]

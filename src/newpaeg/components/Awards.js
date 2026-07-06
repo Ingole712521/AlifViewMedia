@@ -1,26 +1,27 @@
 function Awards() {
     const categories = [
-        "BFSI Excellence Awards",
-        "HealthCare & Life Sciences Excellence Awards",
-        "Education & Skill Development Excellence Awards",
         "Advertising & Marketing Excellence Awards",
-        "Employment & Workplace Excellence Awards",
+        "BFSI Excellence Awards",
         "Business Excellence Awards",
+        "Education & Skill Development Excellence Awards",
+        "E-Learning Excellence Awards",
+        "EV & Mobility Excellence Awards",
+        "Employment & Workplace Excellence Awards",
+        "Fleet Excellence Awards",
+        "Gems & Jewellery Excellence Awards",
+        "HealthCare & Life Sciences Excellence Awards",
+        "Hospitality, Travel & Tourism Awards",
         "IT & Governance Excellence Awards",
+        "Procurement, Logistic & Supply Chain Excellence Awards",
+        "Manufacturing & Industrial Excellence Awards",
+        "Media & Entertainment Awards",
+        "Multiplex & Shopping Mall Excellence Awards",
+        "Oil & Gas Excellence Awards",
+        "Real Estate Excellence Awards",
+        "Retail, E-Commerce & Consumer Brands Awards",
         "Solar Energy & Sustainability Excellence Awards",
         "Wind Energy Excellence Awards",
-        "EMobility Awards",
-        "Retail, E-Commerce & Consumer Brands Awards",
-        "Media & Entertainment Awards",
-        "Real Estate Excellence Awards",
-        "Hospitality, Travel & Tourism Awards",
-        "E-Learning Excellence Awards",
-        "Manufacturing & Industrial Excellence Awards",
-        "Logistic & Supply Chain Awards",
-        "Procurement Awards",
-        "Retail Excellence Awards",
-        "Oil & Gas Excellence awards",
-        "Multiplex & Shopping Mall Excellence Awards"
+        "Women Excellence Awards"
     ];
 
     return (
