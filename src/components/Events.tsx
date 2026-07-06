@@ -17,7 +17,6 @@ type EventItem = {
   subtitle: string
   date: string
   venue: string
-  description: string
   image: string
   imageBg?: string
   imageLayout?: 'default' | 'bharat'
@@ -44,8 +43,6 @@ const Events: React.FC = () => {
       subtitle: 'Convene. Connect. Celebrate Excellence',
       date: '27th June 2026',
       venue: 'Sayaji Hotel, Pune',
-      description:
-        'RealtyView Leadership Summit & Awards 2026 – Maharashtra is a distinguished platform celebrating excellence and driving strategic dialogue across one of India’s most dynamic real estate markets. Bringing together an elite gathering of leading developers, architects, urban planners, investors, policymakers, and industry visionaries from across Maharashtra, the summit fosters high-impact conversations around market evolution, investment opportunities, innovation, and sustainable urban development.',
       image: '/poster/EventLogo.png',
       imageBg: '#050505',
       statusTag: 'Past Event',
@@ -60,8 +57,6 @@ const Events: React.FC = () => {
       subtitle: 'Recognizing Excellence. Inspiring Leadership',
       date: 'September, 2026',
       venue: 'Mumbai (TBA)',
-      description:
-        'BharatView Business Summit & Awards 2026 is a prestigious platform celebrating excellence, leadership, and transformative contributions — convening visionaries, innovators, and changemakers from across India.',
       image: BHARAT_POSTER,
       imageLayout: 'bharat',
       statusTag: 'Upcoming Event',
@@ -214,7 +209,7 @@ const Events: React.FC = () => {
                   {event.subtitle}
                 </p>
 
-                <div className="mb-5 space-y-2.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)]/50 px-4 py-3">
+                <div className="mb-6 space-y-2.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)]/50 px-4 py-3">
                   <div className="flex items-center gap-2.5 text-sm text-[var(--text-secondary)]">
                     <Calendar size={16} className="shrink-0 text-[var(--primary-color)]" />
                     <span>{event.date}</span>
@@ -224,10 +219,6 @@ const Events: React.FC = () => {
                     <span>{event.venue}</span>
                   </div>
                 </div>
-
-                <p className="mb-6 flex-1 text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-3">
-                  {event.description}
-                </p>
 
                 <div
                   className="relative mt-auto flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl px-4 py-3 font-semibold text-white shadow-md"
