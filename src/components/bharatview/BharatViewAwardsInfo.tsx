@@ -4,7 +4,7 @@ import { ArrowRight, CalendarClock, IndianRupee } from 'lucide-react'
 const BharatViewAwardsInfo: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto mt-20 pt-16 border-t border-gray-100 space-y-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
         {/* Nomination Fee */}
         <div
           className="rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden"
@@ -66,10 +66,10 @@ const BharatViewAwardsInfo: React.FC = () => {
         </div>
 
         {/* Submission Deadline */}
-        <div className="rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 bg-[var(--bharat-bg)] flex flex-col justify-center items-center text-center relative overflow-hidden group">
+        <div className="rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 bg-[var(--bharat-bg)] flex flex-col justify-between items-center text-center relative overflow-hidden group min-h-full">
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[var(--bharat-primary)]/5" />
 
-          <div className="relative z-10 w-full">
+          <div className="relative z-10 w-full flex flex-col items-center justify-center flex-1 py-4">
             <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mx-auto flex items-center justify-center mb-6 bg-[var(--bharat-primary)]/10 group-hover:scale-110 transition-transform duration-300">
               <CalendarClock size={32} className="text-[var(--bharat-secondary)]" />
             </div>
@@ -86,6 +86,19 @@ const BharatViewAwardsInfo: React.FC = () => {
               August 30, 2026
             </div>
           </div>
+
+          <a
+            href="https://forms.gle/qRsuXj3ZSxHSGaMa6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative z-10 w-full max-w-xs mx-auto mt-8 inline-flex items-center justify-center gap-2.5 px-8 py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-white rounded-xl shadow-lg border border-amber-500/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
+            style={{
+              background: 'linear-gradient(135deg, var(--bharat-secondary), #b45309)'
+            }}
+          >
+            SUBMIT INTEREST
+            <ArrowRight size={18} className="shrink-0" />
+          </a>
         </div>
       </div>
     </div>
