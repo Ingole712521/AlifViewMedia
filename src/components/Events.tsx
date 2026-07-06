@@ -81,7 +81,7 @@ const Events: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6 leading-tight">
-            UpComing Events
+            Events
           </h2>
           <p className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             Join us for transformative industry events and award ceremonies
