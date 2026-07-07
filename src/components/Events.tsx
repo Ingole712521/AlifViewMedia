@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Calendar, MapPin, ArrowRight } from 'lucide-react'
 import { warmImageCache } from '../utils/preloadImage'
@@ -17,16 +17,18 @@ type EventItem = {
   subtitle: string
   date: string
   venue: string
-  description: string
   image: string
   imageBg?: string
   imageLayout?: 'default' | 'bharat'
+  statusTag: 'Past Event' | 'Upcoming Event'
+  status: 'past' | 'upcoming'
   to: string
   onHoverPreload?: () => void
 }
 
 const Events: React.FC = () => {
   const navigate = useNavigate()
+  const [activeFilter, setActiveFilter] = useState<'past' | 'upcoming'>('upcoming')
 
   useEffect(() => {
     preloadEventHero()
@@ -41,10 +43,10 @@ const Events: React.FC = () => {
       subtitle: 'Convene. Connect. Celebrate Excellence',
       date: '27th June 2026',
       venue: 'Sayaji Hotel, Pune',
-      description:
-        'RealtyView Leadership Summit & Awards 2026 – Maharashtra is a distinguished platform celebrating excellence and driving strategic dialogue across one of India’s most dynamic real estate markets. Bringing together an elite gathering of leading developers, architects, urban planners, investors, policymakers, and industry visionaries from across Maharashtra, the summit fosters high-impact conversations around market evolution, investment opportunities, innovation, and sustainable urban development.',
       image: '/poster/EventLogo.png',
       imageBg: '#050505',
+      statusTag: 'Past Event',
+      status: 'past',
       to: '/event/realtyview-2026',
       onHoverPreload: preloadEventHero
     },
@@ -55,10 +57,10 @@ const Events: React.FC = () => {
       subtitle: 'Recognizing Excellence. Inspiring Leadership',
       date: 'September, 2026',
       venue: 'Mumbai (TBA)',
-      description:
-        'BharatView Business Summit & Awards 2026 is a prestigious platform celebrating excellence, leadership, and transformative contributions — convening visionaries, innovators, and changemakers from across India.',
       image: BHARAT_POSTER,
       imageLayout: 'bharat',
+      statusTag: 'Upcoming Event',
+      status: 'upcoming',
       to: '/bharatview-summit-2026',
       onHoverPreload: preloadBharatHero
     }
@@ -73,6 +75,13 @@ const Events: React.FC = () => {
     navigate(event.to)
   }
 
+  const filteredEvents = events.filter((event) => event.status === activeFilter)
+
+  const filterOptions = [
+    { key: 'upcoming' as const, label: 'Upcoming Events' },
+    { key: 'past' as const, label: 'Past Events' },
+  ]
+
   return (
     <section
       className="section-padding w-full"
@@ -82,14 +91,44 @@ const Events: React.FC = () => {
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6 leading-tight">
             Events
-          </h2>
+          </h2> 
           <p className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             Join us for transformative industry events and award ceremonies
           </p>
+
+          <div className="mt-8 inline-flex rounded-xl border border-[var(--border-color)] bg-[var(--bg-primary)] p-1 shadow-sm">
+            {filterOptions.map((option) => {
+              const isActive = activeFilter === option.key
+              return (
+                <button
+                  key={option.key}
+                  type="button"
+                  onClick={() => setActiveFilter(option.key)}
+                  className={`rounded-lg px-5 py-2.5 text-sm font-semibold transition-all duration-300 sm:px-7 sm:text-base ${
+                    isActive
+                      ? 'text-white shadow-md'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  }`}
+                  style={
+                    isActive
+                      ? {
+                          background:
+                            option.key === 'upcoming'
+                              ? 'linear-gradient(135deg, #059669, #10b981)'
+                              : 'linear-gradient(135deg, #475569, #334155)',
+                        }
+                      : undefined
+                  }
+                >
+                  {option.label}
+                </button>
+              )
+            })}
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
-          {events.map((event) => (
+        <div className="mx-auto grid max-w-2xl gap-8 lg:gap-10">
+          {filteredEvents.map((event) => (
             <article
               key={event.id}
               className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl p-6 sm:p-8 shadow-lg hover:-translate-y-2 hover:shadow-2xl transition-[transform,box-shadow] duration-500 ease-out"
@@ -106,6 +145,16 @@ const Events: React.FC = () => {
                 style={{ backgroundColor: 'var(--primary-color)' }}
               />
               <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-white/0 via-white/0 to-white/10 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
+
+              <span
+                className={`absolute right-4 top-4 z-20 inline-flex items-center rounded-full px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide shadow-lg ${
+                  event.statusTag === 'Past Event'
+                    ? 'bg-slate-700 text-white ring-1 ring-white/20'
+                    : 'bg-emerald-600 text-white ring-1 ring-emerald-400/50'
+                }`}
+              >
+                {event.statusTag}
+              </span>
 
               <div className="relative z-10 flex flex-1 flex-col">
                 {event.imageLayout === 'bharat' ? (
@@ -160,7 +209,7 @@ const Events: React.FC = () => {
                   {event.subtitle}
                 </p>
 
-                <div className="mb-5 space-y-2.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)]/50 px-4 py-3">
+                <div className="mb-6 space-y-2.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-secondary)]/50 px-4 py-3">
                   <div className="flex items-center gap-2.5 text-sm text-[var(--text-secondary)]">
                     <Calendar size={16} className="shrink-0 text-[var(--primary-color)]" />
                     <span>{event.date}</span>
@@ -170,10 +219,6 @@ const Events: React.FC = () => {
                     <span>{event.venue}</span>
                   </div>
                 </div>
-
-                <p className="mb-6 flex-1 text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-3">
-                  {event.description}
-                </p>
 
                 <div
                   className="relative mt-auto flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl px-4 py-3 font-semibold text-white shadow-md"
