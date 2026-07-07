@@ -281,6 +281,56 @@
   .event-page-nav .event-nav-link {
     @apply text-[11px] xl:text-xs 2xl:text-sm px-1 2xl:px-1.5 py-1 leading-none;
   }
+
+  .event-cta-animated {
+    animation: event-cta-float 2.6s ease-in-out infinite;
+  }
+
+  .event-cta-animated:hover {
+    animation-play-state: paused;
+  }
+
+  .event-cta-shimmer {
+    background: linear-gradient(120deg, transparent 12%, rgba(255,255,255,0.08) 28%, rgba(255,255,255,0.4) 40%, rgba(255,255,255,0.08) 52%, transparent 68%);
+    background-size: 220% 100%;
+    animation: event-cta-shimmer 2.8s linear infinite;
+    pointer-events: none;
+  }
+
+  .event-cta-ring {
+    animation: event-cta-pulse 2s ease-in-out infinite;
+  }
+
+  .event-cta-icon {
+    animation: event-cta-badge-bounce 1.8s ease-in-out infinite;
+  }
+
+  .event-cta-arrow {
+    animation: event-cta-arrow-nudge 1.2s ease-in-out infinite;
+  }
+
+  .bharat-cta-animated {
+    animation: bharat-cta-float 2.8s ease-in-out infinite;
+  }
+
+  .bharat-cta-animated:hover {
+    animation-play-state: paused;
+  }
+
+  .bharat-cta-shimmer {
+    background: linear-gradient(120deg, transparent 12%, rgba(255,255,255,0.1) 28%, rgba(255,255,255,0.42) 40%, rgba(255,255,255,0.1) 52%, transparent 68%);
+    background-size: 220% 100%;
+    animation: bharat-cta-shimmer 3s linear infinite;
+    pointer-events: none;
+  }
+
+  .bharat-cta-ring {
+    animation: bharat-cta-pulse 2.1s ease-in-out infinite;
+  }
+
+  .bharat-cta-arrow {
+    animation: bharat-cta-arrow-nudge 1.2s ease-in-out infinite;
+  }
   
   .card {
     @apply p-8 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-105;
@@ -315,6 +365,91 @@
 
   .responsive-heading {
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  }
+
+  @keyframes event-cta-float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes event-cta-shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -20% 0;
+    }
+  }
+
+  @keyframes event-cta-pulse {
+    0%, 100% {
+      opacity: 0.55;
+      transform: scale(0.98);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+  }
+
+  @keyframes event-cta-badge-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px) scale(1.04);
+    }
+  }
+
+  @keyframes event-cta-arrow-nudge {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(4px);
+    }
+  }
+
+  @keyframes bharat-cta-float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes bharat-cta-shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -20% 0;
+    }
+  }
+
+  @keyframes bharat-cta-pulse {
+    0%, 100% {
+      opacity: 0.6;
+      transform: scale(0.98);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+  }
+
+  @keyframes bharat-cta-arrow-nudge {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(4px);
+    }
   }
 
   /* Mobile Navigation Improvements */
@@ -1093,6 +1228,18 @@
   }
 
   .bharat-awards-category-target.is-highlighted {
+    animation: none;
+  }
+
+  .event-cta-animated,
+  .event-cta-shimmer,
+  .event-cta-ring,
+  .event-cta-icon,
+  .event-cta-arrow,
+  .bharat-cta-animated,
+  .bharat-cta-shimmer,
+  .bharat-cta-ring,
+  .bharat-cta-arrow {
     animation: none;
   }
 }

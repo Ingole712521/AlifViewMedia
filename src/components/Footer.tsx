@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Mail,  Facebook, Twitter, Linkedin, Instagram, ArrowUp } from 'lucide-react'
+import { Mail, Facebook, Twitter, Linkedin, Instagram, ArrowUp } from 'lucide-react'
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
@@ -81,33 +81,33 @@ const Footer: React.FC = () => {
 
             {/* Social Media Icons */}
             <div className="flex space-x-4 pt-4">
-              <a 
-                href="https://www.facebook.com/profile.php?id=61562956484753" 
-                target="_blank" 
+              <a
+                href="https://www.facebook.com/profile.php?id=61562956484753"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors duration-300"
               >
                 <Facebook size={18} />
               </a>
-              <a 
-                href="https://x.com/home" 
-                target="_blank" 
+              <a
+                href="https://x.com/home"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-400 transition-colors duration-300"
               >
                 <Twitter size={18} />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/alifview-media-552358320/" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/in/alifview-media-552358320/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors duration-300"
               >
                 <Linkedin size={18} />
               </a>
-              <a 
-                href="https://www.instagram.com/alifviewmedia/" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/alifviewmedia/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-pink-600 transition-colors duration-300"
               >
@@ -143,9 +143,9 @@ const Footer: React.FC = () => {
           }}
           aria-label="Scroll to top"
         >
-          <ArrowUp 
-            size={24} 
-            className="text-white transform group-hover:-translate-y-1 transition-transform duration-300" 
+          <ArrowUp
+            size={24}
+            className="text-white transform group-hover:-translate-y-1 transition-transform duration-300"
           />
           <div className="absolute inset-0 rounded-full animate-ping opacity-20" style={{ backgroundColor: 'var(--primary-color)' }}></div>
         </button>

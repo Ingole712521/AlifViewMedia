@@ -91,13 +91,17 @@ const BharatViewAwardsInfo: React.FC = () => {
             href="https://forms.gle/qRsuXj3ZSxHSGaMa6"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-10 w-full max-w-xs mx-auto mt-8 inline-flex items-center justify-center gap-2.5 px-8 py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-white rounded-xl shadow-xl shadow-blue-900/30 ring-2 ring-blue-400/40 transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-900/40 hover:ring-blue-300/60 active:scale-[0.98]"
+            className="bharat-cta-animated relative z-10 isolate w-full max-w-xs mx-auto mt-8 inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-2xl border px-8 py-4 text-sm sm:text-base font-extrabold uppercase tracking-[0.18em] text-white shadow-2xl shadow-blue-900/35 transition-all duration-300 hover:scale-[1.03] hover:shadow-blue-900/50 active:scale-[0.98]"
             style={{
-              background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #1d4ed8 100%)'
+              background: 'linear-gradient(135deg, #172554 0%, #1d4ed8 50%, #38bdf8 100%)',
+              borderColor: 'rgba(147, 197, 253, 0.35)'
             }}
           >
-            SUBMIT INTEREST
-            <ArrowRight size={18} className="shrink-0" />
+            <span className="bharat-cta-shimmer absolute inset-0 rounded-2xl opacity-80" />
+            <span className="bharat-cta-ring absolute -inset-1 -z-10 rounded-[20px] bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.4),transparent_70%)] blur-xl" />
+           
+            <span className="relative z-10">SUBMIT INTEREST</span>
+            <ArrowRight size={18} className="bharat-cta-arrow relative z-10 shrink-0" />
           </a>
         </div>
       </div>
