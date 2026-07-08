@@ -7,10 +7,10 @@ import EventTimeline from '../components/EventTimeline'
 import EventGallery from '../components/EventGallery'
 import AwardWinners2026 from '../components/AwardWinners2026'
 import { warmImageCache } from '../utils/preloadImage'
+import { BHARAT_POSTER } from '../components/bharatview/constants'
 
 const EVENT_HERO_WEBP = '/images/background.webp'
 const EVENT_HERO_JPG = '/images/background.jpg'
-const BHARAT_POSTER = '/images/finalBharat.png'
 
 const EventDetail: React.FC = () => {
   const navigate = useNavigate()

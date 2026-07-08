@@ -13,6 +13,7 @@ import SEO from '../components/SEO'
 import { trackPageView } from '../utils/analytics'
 import { initPerformanceOptimizations } from '../utils/performance'
 import { warmImageCache } from '../utils/preloadImage'
+import { BHARAT_POSTER } from '../components/bharatview/constants'
 
 function Home() {
   const location = useLocation()
@@ -72,7 +73,7 @@ function Home() {
       '/assets/homeBackground.png',
       '/images/background.webp',
       '/images/background.jpg',
-      '/images/finalBharat.png'
+      BHARAT_POSTER
     )
   }, [])
 
