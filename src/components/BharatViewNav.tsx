@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'antd'
-import { HomeOutlined, MenuOutlined, CloseOutlined } from '@ant-design/icons'
+import { HomeOutlined, MenuOutlined, CloseOutlined, DownOutlined } from '@ant-design/icons'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ALIF_LOGO_DARK, BHARAT_ROUTES } from './bharatview/constants'
 import { BHARAT_NAV_PAGES } from './bharatview/bharatPageConfig'
@@ -10,11 +10,13 @@ const BharatViewNav: React.FC = () => {
   const { pathname } = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
   const isPoster = pathname === BHARAT_ROUTES.home
 
   useEffect(() => {
     setMobileOpen(false)
+    setOpenDropdown(null)
   }, [pathname])
 
   useEffect(() => {
@@ -27,6 +29,13 @@ const BharatViewNav: React.FC = () => {
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [isPoster, pathname])
+
+  useEffect(() => {
+    if (!openDropdown) return
+    const close = () => setOpenDropdown(null)
+    window.addEventListener('click', close)
+    return () => window.removeEventListener('click', close)
+  }, [openDropdown])
 
   const isActive = (to: string) => pathname === to
 
@@ -82,17 +91,81 @@ const BharatViewNav: React.FC = () => {
         />
       </button>
 
-      <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center min-w-0 overflow-x-auto bharat-nav-scroll px-1">
-        {BHARAT_NAV_PAGES.map((item) => (
-          <button
-            key={item.to}
-            type="button"
-            onClick={() => navigate(item.to)}
-            className={linkClass(isActive(item.to))}
-          >
-            {item.label}
-          </button>
-        ))}
+      <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center min-w-0 overflow-visible bharat-nav-scroll px-1">
+        {BHARAT_NAV_PAGES.map((item) =>
+          item.children ? (
+            <div
+              key={item.to}
+              className="relative shrink-0"
+              onMouseEnter={() => setOpenDropdown(item.to)}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setOpenDropdown((current) => (current === item.to ? null : item.to))
+                }}
+                className={`${linkClass(
+                  isActive(item.to) || item.children.some((child) => isActive(child.to))
+                )} inline-flex items-center gap-1`}
+                aria-expanded={openDropdown === item.to}
+                aria-haspopup="true"
+              >
+                {item.label}
+                <DownOutlined className="!text-[9px]" />
+              </button>
+
+              {openDropdown === item.to && (
+                <div
+                  className="absolute left-0 top-full z-[60] mt-1 min-w-[16rem] rounded-xl border border-slate-200 bg-white py-1.5 shadow-xl"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigate(item.to)
+                      setOpenDropdown(null)
+                    }}
+                    className={`block w-full px-4 py-2.5 text-left text-sm transition-colors ${
+                      isActive(item.to)
+                        ? 'bg-[var(--bharat-primary)]/10 font-semibold text-[var(--bharat-primary)]'
+                        : 'text-slate-700 hover:bg-slate-50 hover:text-[var(--bharat-primary)]'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                  {item.children.map((child) => (
+                    <button
+                      key={child.to}
+                      type="button"
+                      onClick={() => {
+                        navigate(child.to)
+                        setOpenDropdown(null)
+                      }}
+                      className={`block w-full px-4 py-2.5 text-left text-sm transition-colors ${
+                        isActive(child.to)
+                          ? 'bg-[var(--bharat-primary)]/10 font-semibold text-[var(--bharat-primary)]'
+                          : 'text-slate-700 hover:bg-slate-50 hover:text-[var(--bharat-primary)]'
+                      }`}
+                    >
+                      Leaders Under 45 Awards 2026
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <button
+              key={item.to}
+              type="button"
+              onClick={() => navigate(item.to)}
+              className={linkClass(isActive(item.to))}
+            >
+              {item.label}
+            </button>
+          )
+        )}
       </nav>
 
       <div className="hidden lg:flex items-center shrink-0">{backButton}</div>
@@ -120,17 +193,31 @@ const BharatViewNav: React.FC = () => {
       }`}
     >
       {BHARAT_NAV_PAGES.map((item) => (
-        <button
-          key={item.to}
-          type="button"
-          onClick={() => {
-            navigate(item.to)
-            setMobileOpen(false)
-          }}
-          className={`${linkClass(isActive(item.to))} w-full text-left text-sm`}
-        >
-          {item.label}
-        </button>
+        <React.Fragment key={item.to}>
+          <button
+            type="button"
+            onClick={() => {
+              navigate(item.to)
+              setMobileOpen(false)
+            }}
+            className={`${linkClass(isActive(item.to))} w-full text-left text-sm`}
+          >
+            {item.label}
+          </button>
+          {item.children?.map((child) => (
+            <button
+              key={child.to}
+              type="button"
+              onClick={() => {
+                navigate(child.to)
+                setMobileOpen(false)
+              }}
+              className={`${linkClass(isActive(child.to))} w-full text-left text-sm !pl-6`}
+            >
+              Leaders Under 45 Awards 2026
+            </button>
+          ))}
+        </React.Fragment>
       ))}
       <Button
         type={isPoster ? 'default' : 'primary'}

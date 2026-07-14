@@ -14,6 +14,7 @@ export const BHARAT_ROUTES = {
   speakers: '/bharatview-summit-2026/speakers',
   awards: '/bharatview-summit-2026/awards',
   leadershipAwards: '/bharatview-summit-2026/leadership-awards',
+  leadersUnder45Awards: '/bharatview-summit-2026/leaders-under-45-awards-2026',
   partners: '/bharatview-summit-2026/partners',
   contact: '/bharatview-summit-2026/contact'
 } as const

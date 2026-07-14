@@ -12,6 +12,7 @@ import {
   BharatViewSpeakersPage,
   BharatViewAwardsPage,
   BharatViewLeadershipAwardsPage,
+  BharatViewLeadersUnder45AwardsPage,
   BharatViewPartnersPage,
   BharatViewContactPage
 } from './pages/BharatViewPages'
@@ -31,6 +32,7 @@ function App() {
       <Route path="/bharatview-summit-2026/speakers" element={<BharatViewSpeakersPage />} />
       <Route path="/bharatview-summit-2026/awards" element={<BharatViewAwardsPage />} />
       <Route path="/bharatview-summit-2026/leadership-awards" element={<BharatViewLeadershipAwardsPage />} />
+      <Route path="/bharatview-summit-2026/leaders-under-45-awards-2026" element={<BharatViewLeadersUnder45AwardsPage />} />
       <Route path="/bharatview-summit-2026/partners" element={<BharatViewPartnersPage />} />
       <Route path="/bharatview-summit-2026/contact" element={<BharatViewContactPage />} />
       <Route path="/bharatview-summit-2026/event" element={<Navigate to="/bharatview-summit-2026/overview" replace />} />

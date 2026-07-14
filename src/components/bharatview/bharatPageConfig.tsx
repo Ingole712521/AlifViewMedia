@@ -5,6 +5,7 @@ import {
   CrownOutlined,
   MailOutlined,
   ReadOutlined,
+  StarOutlined,
   TeamOutlined,
   TrophyOutlined,
   UsergroupAddOutlined
@@ -20,6 +21,17 @@ export interface BharatPageConfig {
   subtitle: string
   description: string
   icon: React.ReactNode
+  children?: BharatPageConfig[]
+}
+
+export const BHARAT_LEADERS_UNDER_45_PAGE: BharatPageConfig = {
+  label: 'Leaders Under 45 Awards 2026',
+  to: BHARAT_ROUTES.leadersUnder45Awards,
+  title: 'Leaders Under 45 Awards 2026',
+  subtitle: 'Celebrating young leaders shaping the future of business and industry.',
+  description:
+    'Details about the Leaders Under 45 Awards 2026, categories, and nomination guidelines will be published here soon.',
+  icon: <StarOutlined className={iconClass} />
 }
 
 export const BHARAT_NAV_PAGES: BharatPageConfig[] = [
@@ -75,7 +87,8 @@ export const BHARAT_NAV_PAGES: BharatPageConfig[] = [
     subtitle: 'Honouring visionary leaders driving change and innovation.',
     description:
       'Information about the BharatView Leadership Awards and distinguished honourees will be available shortly.',
-    icon: <CrownOutlined className={iconClass} />
+    icon: <CrownOutlined className={iconClass} />,
+    children: [BHARAT_LEADERS_UNDER_45_PAGE]
   },
   {
     label: 'Partners',
