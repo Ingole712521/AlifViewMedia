@@ -8,13 +8,15 @@ interface BharatViewSoonPageProps {
   subtitle: string
   description: string
   icon: React.ReactNode
+  middle?: React.ReactNode
 }
 
 const BharatViewSoonPage: React.FC<BharatViewSoonPageProps> = ({
   title,
   subtitle,
   description,
-  icon
+  icon,
+  middle
 }) => {
   return (
     <section className="bharat-section bg-[var(--bharat-bg)] min-h-[60vh] flex items-center">
@@ -30,6 +32,8 @@ const BharatViewSoonPage: React.FC<BharatViewSoonPageProps> = ({
             {subtitle}
           </Text>
         </div>
+
+        {middle ? <div className="mb-10">{middle}</div> : null}
 
         <Card className="bharat-ant-card text-center" styles={{ body: { padding: '3rem 2rem' } }}>
           <Tag color="gold" className="!rounded-full !px-4 !py-1 !text-sm !font-medium !mb-4">

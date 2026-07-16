@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Button } from 'antd'
 import { HomeOutlined, MenuOutlined, CloseOutlined, DownOutlined } from '@ant-design/icons'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ALIF_LOGO_DARK, BHARAT_ROUTES } from './bharatview/constants'
 import { BHARAT_NAV_PAGES } from './bharatview/bharatPageConfig'
+
+const DROPDOWN_CLOSE_DELAY_MS = 2000
 
 const BharatViewNav: React.FC = () => {
   const navigate = useNavigate()
@@ -11,13 +13,39 @@ const BharatViewNav: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const dropdownCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const isPoster = pathname === BHARAT_ROUTES.home
 
+  const clearDropdownCloseTimer = () => {
+    if (dropdownCloseTimerRef.current) {
+      clearTimeout(dropdownCloseTimerRef.current)
+      dropdownCloseTimerRef.current = null
+    }
+  }
+
+  const openNavDropdown = (to: string) => {
+    clearDropdownCloseTimer()
+    setOpenDropdown(to)
+  }
+
+  const scheduleNavDropdownClose = () => {
+    clearDropdownCloseTimer()
+    dropdownCloseTimerRef.current = setTimeout(() => {
+      setOpenDropdown(null)
+      dropdownCloseTimerRef.current = null
+    }, DROPDOWN_CLOSE_DELAY_MS)
+  }
+
   useEffect(() => {
     setMobileOpen(false)
+    clearDropdownCloseTimer()
     setOpenDropdown(null)
   }, [pathname])
+
+  useEffect(() => {
+    return () => clearDropdownCloseTimer()
+  }, [])
 
   useEffect(() => {
     if (isPoster) {
@@ -32,7 +60,10 @@ const BharatViewNav: React.FC = () => {
 
   useEffect(() => {
     if (!openDropdown) return
-    const close = () => setOpenDropdown(null)
+    const close = () => {
+      clearDropdownCloseTimer()
+      setOpenDropdown(null)
+    }
     window.addEventListener('click', close)
     return () => window.removeEventListener('click', close)
   }, [openDropdown])
@@ -97,49 +128,53 @@ const BharatViewNav: React.FC = () => {
             <div
               key={item.to}
               className="relative shrink-0"
-              onMouseEnter={() => setOpenDropdown(item.to)}
-              onMouseLeave={() => setOpenDropdown(null)}
+              onMouseEnter={() => openNavDropdown(item.to)}
+              onMouseLeave={scheduleNavDropdownClose}
             >
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setOpenDropdown((current) => (current === item.to ? null : item.to))
-                }}
+              <div
                 className={`${linkClass(
                   isActive(item.to) || item.children.some((child) => isActive(child.to))
                 )} inline-flex items-center gap-1`}
-                aria-expanded={openDropdown === item.to}
-                aria-haspopup="true"
               >
-                {item.label}
-                <DownOutlined className="!text-[9px]" />
-              </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    clearDropdownCloseTimer()
+                    setOpenDropdown(null)
+                    navigate(item.to)
+                  }}
+                  className="bg-transparent border-0 p-0 m-0 font-inherit text-inherit cursor-pointer"
+                >
+                  {item.label}
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    clearDropdownCloseTimer()
+                    setOpenDropdown((current) => (current === item.to ? null : item.to))
+                  }}
+                  className="bg-transparent border-0 p-0 m-0 inline-flex items-center text-inherit cursor-pointer"
+                  aria-expanded={openDropdown === item.to}
+                  aria-haspopup="true"
+                  aria-label={`${item.label} menu`}
+                >
+                  <DownOutlined className="!text-[9px]" />
+                </button>
+              </div>
 
               {openDropdown === item.to && (
                 <div
                   className="absolute left-0 top-full z-[60] mt-1 min-w-[16rem] rounded-xl border border-slate-200 bg-white py-1.5 shadow-xl"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <button
-                    type="button"
-                    onClick={() => {
-                      navigate(item.to)
-                      setOpenDropdown(null)
-                    }}
-                    className={`block w-full px-4 py-2.5 text-left text-sm transition-colors ${
-                      isActive(item.to)
-                        ? 'bg-[var(--bharat-primary)]/10 font-semibold text-[var(--bharat-primary)]'
-                        : 'text-slate-700 hover:bg-slate-50 hover:text-[var(--bharat-primary)]'
-                    }`}
-                  >
-                    {item.label}
-                  </button>
                   {item.children.map((child) => (
                     <button
                       key={child.to}
                       type="button"
                       onClick={() => {
+                        clearDropdownCloseTimer()
                         navigate(child.to)
                         setOpenDropdown(null)
                       }}
@@ -149,7 +184,7 @@ const BharatViewNav: React.FC = () => {
                           : 'text-slate-700 hover:bg-slate-50 hover:text-[var(--bharat-primary)]'
                       }`}
                     >
-                      Leaders Under 45 Awards 2026
+                      {child.label}
                     </button>
                   ))}
                 </div>
