@@ -72,35 +72,6 @@ export const BharatViewLeadershipAwardsPage: React.FC = () => {
           subtitle={page.subtitle}
           description={page.description}
           icon={page.icon}
-          middle={
-            <div className="max-w-xl mx-auto rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xl text-center">
-              <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[var(--bharat-secondary)] mb-3">
-                Nomination Fees
-              </p>
-              <p className="text-2xl sm:text-3xl font-bold text-[var(--bharat-primary)] mb-2">
-                Rs. 20,000 + GST
-              </p>
-              <p className="text-sm sm:text-base text-[var(--bharat-text-muted)] mb-8">
-                Per nomination
-              </p>
-
-              <a
-                href="https://forms.gle/qRsuXj3ZSxHSGaMa6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bharat-cta-animated relative z-10 isolate w-full max-w-xs mx-auto inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-2xl border px-8 py-4 text-sm sm:text-base font-extrabold uppercase tracking-[0.18em] text-white shadow-2xl shadow-blue-900/35 transition-all duration-300 hover:scale-[1.03] hover:shadow-blue-900/50 active:scale-[0.98]"
-                style={{
-                  background: 'linear-gradient(135deg, #172554 0%, #1d4ed8 50%, #38bdf8 100%)',
-                  borderColor: 'rgba(147, 197, 253, 0.35)'
-                }}
-              >
-                <span className="bharat-cta-shimmer absolute inset-0 rounded-2xl opacity-80" />
-                <span className="bharat-cta-ring absolute -inset-1 -z-10 rounded-[20px] bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.4),transparent_70%)] blur-xl" />
-                <span className="relative z-10">Submit your Interest</span>
-                <ArrowRight size={18} className="bharat-cta-arrow relative z-10 shrink-0" />
-              </a>
-            </div>
-          }
         />
       </div>
     </BharatViewLayout>
@@ -109,10 +80,41 @@ export const BharatViewLeadershipAwardsPage: React.FC = () => {
 
 const LEADERS_UNDER_45_POSTER = '/images/leadersUnder45Poster.jpeg'
 
+const NominationInterestCard: React.FC = () => (
+  <div className="max-w-xl mx-auto rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xl text-center">
+    <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[var(--bharat-secondary)] mb-3">
+      Nomination Fees
+    </p>
+    <p className="text-2xl sm:text-3xl font-bold text-[var(--bharat-primary)] mb-2">
+      Rs. 20,000 + GST
+    </p>
+    <p className="text-sm sm:text-base text-[var(--bharat-text-muted)] mb-8">
+      Per nomination
+    </p>
+
+    <a
+      href="https://forms.gle/qRsuXj3ZSxHSGaMa6"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bharat-cta-animated relative z-10 isolate w-full max-w-xs mx-auto inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-2xl border px-8 py-4 text-sm sm:text-base font-extrabold uppercase tracking-[0.18em] text-white shadow-2xl shadow-blue-900/35 transition-all duration-300 hover:scale-[1.03] hover:shadow-blue-900/50 active:scale-[0.98]"
+      style={{
+        background: 'linear-gradient(135deg, #172554 0%, #1d4ed8 50%, #38bdf8 100%)',
+        borderColor: 'rgba(147, 197, 253, 0.35)'
+      }}
+    >
+      <span className="bharat-cta-shimmer absolute inset-0 rounded-2xl opacity-80" />
+      <span className="bharat-cta-ring absolute -inset-1 -z-10 rounded-[20px] bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.4),transparent_70%)] blur-xl" />
+      <span className="relative z-10">Submit your Interest</span>
+      <ArrowRight size={18} className="bharat-cta-arrow relative z-10 shrink-0" />
+    </a>
+  </div>
+)
+
 export const BharatViewLeadersUnder45AwardsPage: React.FC = () => (
   <BharatViewLayout>
     <div className="pt-24 pb-16 px-4 sm:px-6 bg-[var(--bharat-bg)] min-h-screen">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto space-y-8 sm:space-y-10">
+        <NominationInterestCard />
         <img
           src={LEADERS_UNDER_45_POSTER}
           alt={`${BHARAT_LEADERS_UNDER_45_PAGE.title} — 10th October 2026, Mumbai`}
