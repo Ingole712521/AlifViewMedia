@@ -91,6 +91,98 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
   },
   {
     id: 2,
+    title: 'AI, Robotics & Automation Excellence Awards',
+    subcategories: [
+      {
+        title: 'Company Excellence Awards',
+        awards: [
+          'Robotics Company of the Year',
+          'AI & Robotics Innovation Company of the Year',
+          'Industrial Automation Company of the Year',
+          'Intelligent Robotics Solution Provider of the Year',
+          'Emerging Robotics Company of the Year',
+          'Robotics Startup of the Year',
+          'Autonomous Systems Company of the Year',
+          'Smart Manufacturing Technology Company of the Year',
+          'Human-Robot Collaboration Excellence Award',
+          'Robotics R&D Excellence Award',
+          'Automation Technology Leader of the Year',
+          'Best Robotics Product Company',
+        ],
+      },
+      {
+        title: 'Product & Technology Excellence Awards',
+        awards: [
+          'Best Industrial Robot Solution',
+          'Best Service Robotics Solution',
+          'Best Healthcare Robotics Solution',
+          'Best Educational Robotics Platform',
+          'Best Warehouse Automation Solution',
+          'Best AI-Powered Robotics Solution',
+          'Best Collaborative Robot (Cobot) Solution',
+          'Best Drone Robotics Innovation',
+          'Best IoT & Robotics Integration',
+          'Best Machine Vision Solution',
+          'Best Autonomous Mobile Robot (AMR) Solution',
+          'Best Robotics Software Platform',
+          'Best Robotics Hardware Innovation',
+        ],
+      },
+      {
+        title: 'Industry Application Awards',
+        awards: [
+          'Excellence in Manufacturing Automation',
+          'Excellence in Logistics & Warehouse Robotics',
+          'Excellence in Retail Automation',
+          'Excellence in Healthcare Robotics',
+          'Excellence in Agriculture Robotics',
+          'Excellence in Construction Robotics',
+          'Excellence in Smart City Robotics',
+          'Excellence in Defence & Security Robotics',
+          'Excellence in Hospitality Automation',
+          'Excellence in Educational Robotics',
+        ],
+      },
+      {
+        title: 'Innovation Awards',
+        awards: [
+          'Breakthrough Robotics Innovation',
+          'AI-Driven Automation Excellence',
+          'Smart Factory Innovation Award',
+          'Industry 4.0 Excellence Award',
+          'Digital Manufacturing Excellence',
+          'Future Technology Innovation Award',
+          'Robotics for Social Impact',
+          'Sustainable Automation Innovation',
+        ],
+      },
+      {
+        title: 'Education & Skill Development',
+        awards: [
+          'Excellence in Robotics Education',
+          'Best STEM/STEAM Robotics Program',
+          'Robotics Skill Development Initiative',
+          'Excellence in AI & Robotics Training',
+          'Best Robotics Research Institution',
+          'Innovation in Engineering Education',
+        ],
+      },
+      {
+        title: 'Individual Leadership Awards',
+        awards: [
+          'Robotics Entrepreneur of the Year',
+          'Robotics Innovator of the Year',
+          'AI & Automation Leader of the Year',
+          'Woman Leader in Robotics',
+          'Young Robotics Leader',
+          'Lifetime Achievement in Robotics & Automation',
+          'Technology Visionary of the Year',
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
     title: 'BFSI Excellence Awards',
     subcategories: [
       {
@@ -192,7 +284,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: 'Business Excellence Awards',
     subcategories: [
       {
@@ -225,7 +317,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: 'Education & Skill Development Excellence Awards',
     subcategories: [
       {
@@ -313,7 +405,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: 'E-Learning Excellence Awards',
     subcategories: [
       {
@@ -402,7 +494,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     title: 'EV & Mobility Excellence Awards',
     subcategories: [
       {
@@ -466,7 +558,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 7,
+    id: 8,
     title: 'Employment & Workplace Excellence Awards',
     subcategories: [
       {
@@ -536,7 +628,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 8,
+    id: 9,
     title: 'Fleet Excellence Awards',
     subcategories: [
       {
@@ -604,7 +696,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 9,
+    id: 10,
     title: 'Gems & Jewellery Excellence Awards',
     subcategories: [
       {
@@ -664,7 +756,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 10,
+    id: 11,
     title: 'HealthCare & Life Sciences Excellence Awards',
     subcategories: [
       {
@@ -716,7 +808,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 11,
+    id: 12,
     title: 'Hospitality, Travel & Tourism Awards',
     subcategories: [
       {
@@ -769,7 +861,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 12,
+    id: 13,
     title: 'IT & Governance Excellence Awards',
     subcategories: [
       {
@@ -823,7 +915,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 13,
+    id: 14,
     title: 'Procurement, Logistic & Supply Chain Excellence Awards',
     subcategories: [
       {
@@ -869,7 +961,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 14,
+    id: 15,
     title: 'Manufacturing & Industrial Excellence Awards',
     subcategories: [
       {
@@ -921,7 +1013,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 15,
+    id: 16,
     title: 'Media & Entertainment Awards',
     subcategories: [
       {
@@ -971,7 +1063,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 16,
+    id: 17,
     title: 'Multiplex & Shopping Mall Excellence Awards',
     subcategories: [
       {
@@ -1022,7 +1114,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 17,
+    id: 18,
     title: 'Oil & Gas Excellence Awards',
     subcategories: [
       {
@@ -1070,7 +1162,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 18,
+    id: 19,
     title: 'Real Estate Excellence Awards',
     subcategories: [
       {
@@ -1147,7 +1239,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 19,
+    id: 20,
     title: 'Retail, E-Commerce & Consumer Brands Awards',
     subcategories: [
       {
@@ -1200,7 +1292,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 20,
+    id: 21,
     title: 'Solar Energy & Sustainability Excellence Awards',
     subcategories: [
       {
@@ -1254,7 +1346,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 21,
+    id: 22,
     title: 'Wind Energy Excellence Awards',
     subcategories: [
       {
@@ -1303,7 +1395,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 22,
+    id: 23,
     title: 'Women Excellence Awards',
     subcategories: [
       {
