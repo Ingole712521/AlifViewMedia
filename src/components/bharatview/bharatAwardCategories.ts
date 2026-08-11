@@ -183,6 +183,93 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
   },
   {
     id: 3,
+    title: 'Beauty, Cosmetics & Personal Care Excellence Awards',
+    subcategories: [
+      {
+        title: 'Company & Brand Excellence',
+        awards: [
+          'Beauty & Personal Care Company of the Year',
+          'Cosmetics Company of the Year',
+          'Personal Care Company of the Year',
+          'Emerging Beauty Brand of the Year',
+          'Premium Beauty Brand of the Year',
+          'Indian Beauty Brand of the Year',
+          'Global Beauty Brand of the Year',
+          'Consumer Brand Excellence Award',
+        ],
+      },
+      {
+        title: 'Product Excellence',
+        awards: [
+          'Best Skincare Product of the Year',
+          'Best Haircare Product of the Year',
+          'Best Makeup Product of the Year',
+          'Best Fragrance Brand/Product of the Year',
+          'Best Personal Hygiene Product of the Year',
+          "Best Men's Grooming Product of the Year",
+          'Best Beauty & Wellness Product of the Year',
+          'Best Natural & Organic Beauty Product',
+        ],
+      },
+      {
+        title: 'Innovation',
+        awards: [
+          'Beauty Innovation of the Year',
+          'Product Innovation Excellence Award',
+          'Technology Innovation in Beauty & Personal Care',
+          'R&D Excellence in Beauty & Cosmetics',
+          'AI & Digital Innovation in Beauty',
+          'Sustainable Product Innovation Award',
+        ],
+      },
+      {
+        title: 'Marketing & Consumer Excellence',
+        awards: [
+          'Beauty Marketing Campaign of the Year',
+          'Digital Marketing Excellence – Beauty & Personal Care',
+          'Social Media Campaign of the Year',
+          'Influencer Marketing Excellence Award',
+          'Consumer Engagement Excellence Award',
+          'Customer Experience Excellence Award',
+          'E-Commerce Excellence – Beauty & Personal Care',
+        ],
+      },
+      {
+        title: 'Retail & Distribution',
+        awards: [
+          'Beauty Retailer of the Year',
+          'D2C Beauty Brand of the Year',
+          'Omnichannel Excellence Award',
+          'Beauty E-Commerce Brand of the Year',
+          'Retail Innovation Excellence Award',
+          'Distribution Excellence Award',
+        ],
+      },
+      {
+        title: 'Sustainability',
+        awards: [
+          'Sustainable Beauty Brand of the Year',
+          'Green Packaging Innovation Award',
+          'Clean Beauty Excellence Award',
+          'ESG Excellence – Beauty & Personal Care',
+          'Sustainable Manufacturing Excellence Award',
+        ],
+      },
+      {
+        title: 'Leadership Awards',
+        awards: [
+          'Beauty Business Leader of the Year',
+          'Beauty Marketing Leader of the Year',
+          'Beauty Innovation Leader of the Year',
+          'Personal Care Leader of the Year',
+          'Emerging Leader – Beauty & Cosmetics',
+          'Woman Leader of the Year – Beauty & Personal Care',
+        ],
+      },
+    ],
+  },
+  {
+    id: 4,
     title: 'BFSI Excellence Awards',
     subcategories: [
       {
@@ -284,7 +371,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: 'Business Excellence Awards',
     subcategories: [
       {
@@ -317,7 +404,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: 'Education & Skill Development Excellence Awards',
     subcategories: [
       {
@@ -405,7 +492,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     title: 'E-Learning Excellence Awards',
     subcategories: [
       {
@@ -494,7 +581,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 7,
+    id: 8,
     title: 'EV & Mobility Excellence Awards',
     subcategories: [
       {
@@ -558,7 +645,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 8,
+    id: 9,
     title: 'Employment & Workplace Excellence Awards',
     subcategories: [
       {
@@ -628,7 +715,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 9,
+    id: 10,
     title: 'Fleet Excellence Awards',
     subcategories: [
       {
@@ -696,7 +783,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 10,
+    id: 11,
     title: 'Gems & Jewellery Excellence Awards',
     subcategories: [
       {
@@ -756,7 +843,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 11,
+    id: 12,
     title: 'HealthCare & Life Sciences Excellence Awards',
     subcategories: [
       {
@@ -808,7 +895,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 12,
+    id: 13,
     title: 'Hospitality, Travel & Tourism Awards',
     subcategories: [
       {
@@ -861,7 +948,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 13,
+    id: 14,
     title: 'IT & Governance Excellence Awards',
     subcategories: [
       {
@@ -915,7 +1002,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 14,
+    id: 15,
     title: 'Procurement, Logistic & Supply Chain Excellence Awards',
     subcategories: [
       {
@@ -961,7 +1048,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 15,
+    id: 16,
     title: 'Manufacturing & Industrial Excellence Awards',
     subcategories: [
       {
@@ -1013,7 +1100,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 16,
+    id: 17,
     title: 'Media & Entertainment Awards',
     subcategories: [
       {
@@ -1063,7 +1150,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 17,
+    id: 18,
     title: 'Multiplex & Shopping Mall Excellence Awards',
     subcategories: [
       {
@@ -1114,7 +1201,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 18,
+    id: 19,
     title: 'Oil & Gas Excellence Awards',
     subcategories: [
       {
@@ -1162,7 +1249,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 19,
+    id: 20,
     title: 'Real Estate Excellence Awards',
     subcategories: [
       {
@@ -1239,7 +1326,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 20,
+    id: 21,
     title: 'Retail, E-Commerce & Consumer Brands Awards',
     subcategories: [
       {
@@ -1292,7 +1379,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 21,
+    id: 22,
     title: 'Solar Energy & Sustainability Excellence Awards',
     subcategories: [
       {
@@ -1346,7 +1433,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 22,
+    id: 23,
     title: 'Wind Energy Excellence Awards',
     subcategories: [
       {
@@ -1395,7 +1482,7 @@ export const BHARAT_AWARD_CATEGORIES: BharatAwardCategory[] = [
     ],
   },
   {
-    id: 23,
+    id: 24,
     title: 'Women Excellence Awards',
     subcategories: [
       {
