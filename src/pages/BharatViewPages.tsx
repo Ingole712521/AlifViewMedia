@@ -41,16 +41,16 @@ export const BharatViewOverviewPage: React.FC = () => (
   </BharatViewLayout>
 )
 
-export const BharatViewAdvisoryBoardPage: React.FC = () => (
-  <SoonPageLayout {...BHARAT_NAV_PAGES[1]} />
-)
+// export const BharatViewAdvisoryBoardPage: React.FC = () => (
+//   <SoonPageLayout {...BHARAT_NAV_PAGES[1]} />
+// )
 
-export const BharatViewJuryMembersPage: React.FC = () => (
-  <SoonPageLayout {...BHARAT_NAV_PAGES[2]} />
-)
+// export const BharatViewJuryMembersPage: React.FC = () => (
+//   <SoonPageLayout {...BHARAT_NAV_PAGES[2]} />
+// )
 
 export const BharatViewSpeakersPage: React.FC = () => (
-  <SoonPageLayout {...BHARAT_NAV_PAGES[3]} />
+  <SoonPageLayout {...BHARAT_NAV_PAGES[1]} />
 )
 
 export const BharatViewAwardsPage: React.FC = () => (
@@ -62,7 +62,7 @@ export const BharatViewAwardsPage: React.FC = () => (
 )
 
 export const BharatViewLeadershipAwardsPage: React.FC = () => {
-  const page = BHARAT_NAV_PAGES[5]
+  const page = BHARAT_NAV_PAGES[3]
 
   return (
     <BharatViewLayout>

@@ -1,12 +1,12 @@
 import React from 'react'
 import {
   AudioOutlined,
-  AuditOutlined,
+  // AuditOutlined,
   CrownOutlined,
   MailOutlined,
   ReadOutlined,
   StarOutlined,
-  TeamOutlined,
+  // TeamOutlined,
   TrophyOutlined,
   UsergroupAddOutlined
 } from '@ant-design/icons'
@@ -44,24 +44,24 @@ export const BHARAT_NAV_PAGES: BharatPageConfig[] = [
       'A comprehensive overview of the summit, its objectives, and what to expect will be available here soon.',
     icon: <ReadOutlined className={iconClass} />
   },
-  {
-    label: 'Advisory Board',
-    to: BHARAT_ROUTES.advisoryBoard,
-    title: 'Advisory Board',
-    subtitle: 'Our distinguished advisory board members will be announced soon.',
-    description:
-      'We are curating an exceptional panel of industry leaders and experts to guide the BharatView Business Summit & Awards 2026.',
-    icon: <TeamOutlined className={iconClass} />
-  },
-  {
-    label: 'Jury Members',
-    to: BHARAT_ROUTES.juryMembers,
-    title: 'Jury Members',
-    subtitle: 'Meet the esteemed jury panel evaluating excellence across industries.',
-    description:
-      'The jury members for BharatView Business Awards 2026 will be revealed shortly. Stay tuned for updates.',
-    icon: <AuditOutlined className={iconClass} />
-  },
+  // {
+  //   label: 'Advisory Board',
+  //   to: BHARAT_ROUTES.advisoryBoard,
+  //   title: 'Advisory Board',
+  //   subtitle: 'Our distinguished advisory board members will be announced soon.',
+  //   description:
+  //     'We are curating an exceptional panel of industry leaders and experts to guide the BharatView Business Summit & Awards 2026.',
+  //   icon: <TeamOutlined className={iconClass} />
+  // },
+  // {
+  //   label: 'Jury Members',
+  //   to: BHARAT_ROUTES.juryMembers,
+  //   title: 'Jury Members',
+  //   subtitle: 'Meet the esteemed jury panel evaluating excellence across industries.',
+  //   description:
+  //     'The jury members for BharatView Business Awards 2026 will be revealed shortly. Stay tuned for updates.',
+  //   icon: <AuditOutlined className={iconClass} />
+  // },
   {
     label: 'Speakers',
     to: BHARAT_ROUTES.speakers,
