@@ -2,6 +2,13 @@ import React from 'react'
 import { Handshake } from 'lucide-react'
 import { BHARAT_PARTNERS } from './bharatPartners'
 
+const partnersByRole = BHARAT_PARTNERS.reduce<Record<string, typeof BHARAT_PARTNERS>>((groups, partner) => {
+  const group = groups[partner.role] ?? []
+  group.push(partner)
+  groups[partner.role] = group
+  return groups
+}, {})
+
 const BharatViewPartners: React.FC = () => {
   return (
     <section className="bharat-section bg-white">
@@ -19,20 +26,31 @@ const BharatViewPartners: React.FC = () => {
           <div className="w-20 h-1 bg-[var(--bharat-secondary)] mx-auto rounded-full mt-6" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {BHARAT_PARTNERS.map((partner) => (
-            <div key={partner.name} className="space-y-4">
+        <div className="space-y-10 max-w-4xl mx-auto">
+          {Object.entries(partnersByRole).map(([role, partners]) => (
+            <div key={role} className="space-y-4">
               <h3 className="text-center text-base sm:text-lg font-bold text-[var(--bharat-primary)]">
-                {partner.role}
+                {role}
               </h3>
-              <div className="bharat-awards-subcard rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md flex flex-col items-center justify-center p-8 min-h-[160px] transition-all duration-300">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-14 sm:h-16 md:h-20 w-auto max-w-full object-contain"
-                  loading="lazy"
-                />
-                <p className="mt-4 text-sm font-medium text-[var(--bharat-text-muted)]">{partner.name}</p>
+              <div
+                className={`grid gap-6 ${
+                  partners.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 max-w-md mx-auto'
+                }`}
+              >
+                {partners.map((partner) => (
+                  <div
+                    key={partner.name}
+                    className="bharat-awards-subcard rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md flex flex-col items-center justify-center p-8 min-h-[160px] transition-all duration-300"
+                  >
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="h-14 sm:h-16 md:h-20 w-auto max-w-full object-contain"
+                      loading="lazy"
+                    />
+                    <p className="mt-4 text-sm font-medium text-[var(--bharat-text-muted)]">{partner.name}</p>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

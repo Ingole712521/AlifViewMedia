@@ -96,7 +96,7 @@ export const BHARAT_NAV_PAGES: BharatPageConfig[] = [
     title: 'Partners',
     subtitle: 'Proudly supported by our media and magazine partners.',
     description:
-      'BharatView Business Summit & Awards 2026 is proudly supported by Media Mohalla and The Business Fame.',
+      'BharatView Business Summit & Awards 2026 is proudly supported by Media Mohalla, siliconindia, and The Business Fame.',
     icon: <UsergroupAddOutlined className={iconClass} />
   },
   {
