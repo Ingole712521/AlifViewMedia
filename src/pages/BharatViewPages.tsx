@@ -115,7 +115,7 @@ export const BharatViewLeadersUnder45AwardsPage: React.FC = () => (
       <div className="max-w-3xl mx-auto space-y-5 sm:space-y-6">
         <img
           src={LEADERS_UNDER_45_POSTER}
-          alt={`${BHARAT_LEADERS_UNDER_45_PAGE.title} — 10th October 2026, Mumbai`}
+          alt={`${BHARAT_LEADERS_UNDER_45_PAGE.title} — 17th October 2026, Orchid Hotel, Mumbai`}
           className="w-full h-auto rounded-2xl shadow-2xl ring-1 ring-black/10"
         />
         <NominationInterestCard />
