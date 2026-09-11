@@ -9,21 +9,9 @@ import BharatViewWhoShouldAttend from '../components/bharatview/BharatViewWhoSho
 import BharatViewAwards from '../components/bharatview/BharatViewAwards'
 import BharatViewContact from '../components/bharatview/BharatViewContact'
 import BharatViewPartners from '../components/bharatview/BharatViewPartners'
+import BharatViewSpeakers from '../components/bharatview/BharatViewSpeakers'
 import { BHARAT_NAV_PAGES, BHARAT_LEADERS_UNDER_45_PAGE } from '../components/bharatview/bharatPageConfig'
 import { BHARAT_ROUTES } from '../components/bharatview/constants'
-
-const SoonPageLayout: React.FC<(typeof BHARAT_NAV_PAGES)[number]> = ({
-  title,
-  subtitle,
-  description,
-  icon
-}) => (
-  <BharatViewLayout>
-    <div className="pt-20">
-      <BharatViewSoonPage title={title} subtitle={subtitle} description={description} icon={icon} />
-    </div>
-  </BharatViewLayout>
-)
 
 export const BharatViewSummit2026: React.FC = () => (
   <BharatViewLayout showFooter={false}>
@@ -50,7 +38,11 @@ export const BharatViewOverviewPage: React.FC = () => (
 // )
 
 export const BharatViewSpeakersPage: React.FC = () => (
-  <SoonPageLayout {...BHARAT_NAV_PAGES[1]} />
+  <BharatViewLayout>
+    <div className="pt-20">
+      <BharatViewSpeakers />
+    </div>
+  </BharatViewLayout>
 )
 
 export const BharatViewAwardsPage: React.FC = () => (

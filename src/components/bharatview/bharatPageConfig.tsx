@@ -68,7 +68,7 @@ export const BHARAT_NAV_PAGES: BharatPageConfig[] = [
     title: 'Speakers',
     subtitle: 'Inspiring voices and industry leaders taking the stage.',
     description:
-      'Our lineup of keynote speakers and panelists will be announced soon. Check back for the full speaker roster.',
+      'Meet the speakers taking the stage at BharatView Business Summit & Awards 2026. More voices will be announced soon.',
     icon: <AudioOutlined className={iconClass} />
   },
   {
