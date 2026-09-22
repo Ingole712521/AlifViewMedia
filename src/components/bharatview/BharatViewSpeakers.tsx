@@ -26,7 +26,9 @@ const BharatViewSpeakers: React.FC = () => {
           className={
             isSingleSpeaker
               ? 'max-w-sm mx-auto'
-              : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto'
+              : BHARAT_SPEAKERS.length === 2
+                ? 'grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto'
+                : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto'
           }
         >
           {BHARAT_SPEAKERS.map((speaker) => (

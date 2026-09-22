@@ -11,5 +11,11 @@ export const BHARAT_SPEAKERS: BharatSpeaker[] = [
     role: 'Co-Founder',
     company: 'BizDateUp',
     image: '/speakers/JeetChandan.jpg'
+  },
+  {
+    name: 'Dipika Badhe',
+    role: 'Deputy Vice President, Cluster Head (Luxury Segment)',
+    company: 'Ruparel Realty',
+    image: '/member/Dipika.jpeg'
   }
 ]
