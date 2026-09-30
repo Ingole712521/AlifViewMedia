@@ -55,7 +55,7 @@ const Events: React.FC = () => {
       title: 'BharatView Business Summit & Awards 2026',
       location: 'Mumbai',
       subtitle: 'Recognizing Excellence. Inspiring Leadership',
-      date: '17th October, 2026',
+      date: '27th November, 2026',
       venue: 'Orchid Hotel, Mumbai',
       image: BHARAT_POSTER,
       imageLayout: 'bharat',

@@ -83,7 +83,7 @@ const BharatViewAwardsInfo: React.FC = () => {
                 background: 'linear-gradient(135deg, var(--bharat-primary), #1e40af)'
               }}
             >
-            October 10, 2026
+            30th October, 2026
             </div>
           </div>
 
