@@ -89,14 +89,6 @@ The project uses Tailwind CSS with custom CSS variables for theming:
 - **Contact**: Contact form and information
 - **Footer**: Links and social media
 - **ThemeToggle**: Dark/light mode switcher
-
-## 🚀 Deployment
-
-The project is ready for deployment to any static hosting service:
-
-1. Run `npm run build`
-2. Deploy the `dist` folder to your hosting service
-
 ## 📄 License
 
 © 2026 Alif View Media. All rights reserved.
