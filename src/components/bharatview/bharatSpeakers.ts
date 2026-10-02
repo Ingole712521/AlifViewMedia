@@ -17,5 +17,11 @@ export const BHARAT_SPEAKERS: BharatSpeaker[] = [
     role: 'Deputy Vice President, Cluster Head (Luxury Segment)',
     company: 'Ruparel Realty',
     image: '/member/Dipika.jpeg'
+  },
+  {
+    name: 'Vinod Shete',
+    role: 'CFO',
+    company: 'CKSS Pvt. Ltd',
+    image: '/speakers/Vinod.png'
   }
 ]
